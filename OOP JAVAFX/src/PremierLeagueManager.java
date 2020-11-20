@@ -1,6 +1,7 @@
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Random;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 /*
@@ -770,7 +771,7 @@ public class PremierLeagueManager implements LeagueManager {
                                       int numberGoalScored_club_2, DateMatch date, String seasonPlayed,
                                       FootballClub footballClub, String matchType) {
 
-        System.out.println("\n Enter further statistics for the club " + clubName_02);
+//        System.out.println("\n Enter further statistics for the club " + clubName_02);
         MatchStats matchStats = getStatsOfMatch(footballClub);
         Match matchPlayed = new Match(numberGoalScored_club_2, numberGoalScored_club_1, matchStats, date,
                 clubName_01, seasonPlayed,matchType);
@@ -778,17 +779,18 @@ public class PremierLeagueManager implements LeagueManager {
     }
 
     private MatchStats getStatsOfMatch(FootballClub footballClub) {
+        Random random = new Random();
         // validating stats
-        int numberOfYellowCards = validatingIntegers(" Enter the number of yellow cards given: ");
-        int numberOfRedCards = validatingIntegers(" Enter the number of red cards given: ");
-        int shots = validatingIntegers(" Enter the number of shots taken: ");
-        int shotsOfTarget = validatingIntegers(" Enter the number of target shots taken: ");
-        int offSides = validatingIntegers(" Enter the number of off sides occurrence: ");
-        int fouls = validatingIntegers(" Enter the number of fouls: ");
-        int corners = validatingIntegers(" Enter the number of corner shots taken: ");
-        int passes = validatingIntegers(" Enter the number of passes given: ");
-        double passAccuracy = validatingFloatingValues(" Enter the pass accuracy (%): ");
-        double possession = validatingFloatingValues(" Enter the possession (%): ");
+        int numberOfYellowCards = random.nextInt(5);
+        int numberOfRedCards = random.nextInt(5);
+        int shots = random.nextInt(20);
+        int shotsOfTarget = random.nextInt(20);
+        int offSides = random.nextInt(30);
+        int fouls = random.nextInt(30);
+        int corners = random.nextInt(30);
+        int passes = random.nextInt(30);
+        double passAccuracy = Math.round(random.nextDouble()*1000)/10.0;
+        double possession = Math.round(random.nextDouble()*1000)/10.0;
 
         // updating the total red and yellow cards for the club
         footballClub.setTotalYellowCards((footballClub.getTotalYellowCards() + numberOfYellowCards));
@@ -915,4 +917,59 @@ public class PremierLeagueManager implements LeagueManager {
 
         return allSeasonAdded;
     }
+
+    // Generating a random match between 2 random clubs and update the txt file
+    // Note that all the new random data should not be same as previous
+    public void generateRandomMatch(String selectedSeason) {
+        Random random = new Random();
+        // step 01: randomly select 2 clubs
+        int randomClub_01 = random.nextInt(seasonFilteredClubs.size());
+        FootballClub selectedClub_O1 = seasonFilteredClubs.get(randomClub_01);
+
+        int randomClub_02 = random.nextInt(seasonFilteredClubs.size());
+
+        while (randomClub_02==randomClub_01){
+            randomClub_02 = random.nextInt(seasonFilteredClubs.size());
+        }
+        FootballClub selectedClub_O2 = seasonFilteredClubs.get(randomClub_02);
+
+
+        // step 02: randomly generate the necessary data
+        int numberGoalScored_club_1 = random.nextInt(21);
+        int numberGoalScored_club_2 = random.nextInt(21);
+
+        while (numberGoalScored_club_1==numberGoalScored_club_2){
+            numberGoalScored_club_2 = random.nextInt(21);
+        }
+
+        int seasonYear = Integer.parseInt(selectedSeason.split("-")[0]);
+        int day = random.nextInt(30)+1;
+        int month = random.nextInt(12)+1;
+        int year = seasonYear;
+
+        DateMatch date = new DateMatch(day, month, year);
+        String[] matchTypes = new String[]{"Home", "Away"};
+        String matchType = matchTypes[random.nextInt(2)];
+
+        // step 03: call the calculatingStatistics() wisely by passing all the generated random data
+        calculatingStatistics(selectedClub_O1.getName(), selectedClub_O2.getName(), numberGoalScored_club_1,
+                numberGoalScored_club_2, date, selectedSeason, matchType);
+
+
+        // step 04: call the save file method
+        saveDataIntoFile();
+
+        // step 05: call the load file method
+        loadingData();
+
+        // step 06: update the seasonBasedClubs[0] in the GUI class by calling the display table method and recalling that
+        //          variable
+
+
+
+
+    }
 }
+//    String clubName_01, String clubName_02, int numberGoalScored_club_1,
+//        int numberGoalScored_club_2, DateMatch date, String seasonPlayed,
+//        String matchType

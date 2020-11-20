@@ -286,7 +286,6 @@ public class PremierLeagueGUI extends Application {
             generateMatchBTN.setLayoutX(800);
             generateMatchBTN.setLayoutY(90);
 
-
             // back btn functionality completed
             backBTN.setOnAction(backEvent -> {
                 // go to the previous scene
@@ -300,12 +299,25 @@ public class PremierLeagueGUI extends Application {
                 start(primaryStage);
             });
 
-
-
             // Displaying the list view of the matches and its details
             ComboBox<String> matchPlayedComboBox = comboBox;
             matchPlayedComboBox.setLayoutX(450);
             matchPlayedComboBox.setLayoutY(95);
+
+            // generating random match for the club
+            generateMatchBTN.setOnAction(generateEvent -> {
+                premierLeagueManager.generateRandomMatch(matchPlayedComboBox.getValue());
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                premierLeagueManager.displayLeagueTable();
+                seasonBasedClubs[0] = PremierLeagueManager.seasonFilteredClubs;
+
+            });
+
+
             premierLeagueManager.displayLeagueTable();  // we run this to refresh/ update the seasonBasedClubs list
             ObservableList<HBox> matches = FXCollections.observableArrayList();
 
@@ -314,7 +326,6 @@ public class PremierLeagueGUI extends Application {
                 premierLeagueManager.displayLeagueTable();
                 seasonBasedClubs[0] = PremierLeagueManager.seasonFilteredClubs;
                 creatingTheMatchesRows(seasonBasedClubs[0], matches);
-
 
             });
 
@@ -360,7 +371,9 @@ public class PremierLeagueGUI extends Application {
     // creating the rows
     private void creatingTheMatchesRows(ArrayList<FootballClub> seasonBasedClub, ObservableList<HBox> matches) {
         matches.clear();
+
         for (FootballClub club: seasonBasedClub) {
+
             for (Match match: club.getMatchesPlayed()) {
                 //Instantiating the HBox class
                 HBox hbox = new HBox();
@@ -438,6 +451,7 @@ public class PremierLeagueGUI extends Application {
 
             }
         }
+
 
     }
 
