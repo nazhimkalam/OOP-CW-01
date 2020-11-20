@@ -21,7 +21,7 @@ public interface LeagueManager {
      void displayStats();
 
     // abstract method for displaying the league table results
-     ArrayList<FootballClub> displayLeagueTable();
+     void displayLeagueTable();
 
     // abstract method for adding a played match
     void addPlayedMatch();

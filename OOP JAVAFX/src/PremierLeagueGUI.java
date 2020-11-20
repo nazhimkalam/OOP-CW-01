@@ -13,6 +13,9 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class PremierLeagueGUI extends Application {
 
@@ -34,7 +37,7 @@ public class PremierLeagueGUI extends Application {
         // Heading label
         Label mainTitle = new Label("PREMIER LEAGUE TABLE");
         mainTitle.setId("mainTitle");
-        mainTitle.setLayoutX(360);
+        mainTitle.setLayoutX(315);
         mainTitle.setLayoutY(30);
 
        // Dropdown menu
@@ -58,7 +61,21 @@ public class PremierLeagueGUI extends Application {
         comboBox.setLayoutX(85);
         comboBox.setLayoutY(100);
 
-       // sort by goals btn
+        //
+        premierLeagueManager.displayLeagueTable();
+        final ArrayList<FootballClub>[] seasonBasedClubs = new ArrayList[1];
+        seasonBasedClubs[0] = PremierLeagueManager.seasonFilteredClubs;
+
+        Comparator<FootballClub> comparatorPoints = (club1, club2) -> {
+            if(club1.getClubStatistics().getTotalPointsScored() < club2.getClubStatistics().getTotalPointsScored()){
+                return 1;
+            }
+            return -1;
+        };
+        seasonBasedClubs[0].sort(comparatorPoints);
+        //
+
+        // sort by goals btn
         Button sortByGoalsBTN = new Button("SORT BY GOALS");
         sortByGoalsBTN.setId("sortByGoals");
         sortByGoalsBTN.setLayoutX(310);
@@ -78,11 +95,26 @@ public class PremierLeagueGUI extends Application {
 
         sortByGoalsBTN.setOnAction(event -> {
            // sort the table by goals
+            Comparator<FootballClub> comparatorGoals = (club1, club2) -> {
+                if(club1.getTotalGoalsScored() < club2.getTotalGoalsScored()){
+                    return 1;
+                }
+                return -1;
+            };
+            seasonBasedClubs[0].sort(comparatorGoals);
 
         });
 
         sortByWinsBTN.setOnAction(event -> {
             // sort the table by wins
+            Comparator<FootballClub> comparatorGoals = (club1, club2) -> {
+                if(club1.getClubStatistics().getTotalWins() < club2.getClubStatistics().getTotalWins()){
+                    return 1;
+                }
+                return -1;
+            };
+            seasonBasedClubs[0].sort(comparatorGoals);
+
 
         });
 
@@ -93,11 +125,9 @@ public class PremierLeagueGUI extends Application {
         table.setId("my-table");
 
 
-
         // loading the default season which is 2020-21 records
         final ObservableList<FootballClub> data = FXCollections.observableArrayList();
 
-        final ArrayList<FootballClub>[] seasonBasedClubs = new ArrayList[]{premierLeagueManager.displayLeagueTable()};
         int position = 1;
 //        System.out.println(seasonBasedClubs[0]);
         for (FootballClub club : seasonBasedClubs[0]) {
@@ -117,7 +147,8 @@ public class PremierLeagueGUI extends Application {
         comboBox.setOnAction(event -> {
             // get the clicked season and change the contents on the premier table
             data.clear();
-            seasonBasedClubs[0] = premierLeagueManager.displayLeagueTable();
+            premierLeagueManager.displayLeagueTable();
+            seasonBasedClubs[0] = PremierLeagueManager.seasonFilteredClubs;
             int NewPosition = 1;
             System.out.println(seasonBasedClubs[0]);
             for (FootballClub club : seasonBasedClubs[0]) {
@@ -226,7 +257,7 @@ public class PremierLeagueGUI extends Application {
             // Heading label
             Label mainTitleMatches = new Label("PLAYED  MATCHES");
             mainTitleMatches.setId("mainTitleMatches");
-            mainTitleMatches.setLayoutX(390);
+            mainTitleMatches.setLayoutX(360);
             mainTitleMatches.setLayoutY(20);
 
             // Search textField
@@ -234,26 +265,26 @@ public class PremierLeagueGUI extends Application {
             enteredDatedTxt.setPromptText("day / month / year");
             enteredDatedTxt.setId("enteredDatedTxt");
             enteredDatedTxt.setLayoutX(85);
-            enteredDatedTxt.setLayoutY(81);
+            enteredDatedTxt.setLayoutY(91);
 
             // Search btn
             Button searchByDateBTN = new Button("SEARCH");
             searchByDateBTN.setId("searchByDateBTN");
             searchByDateBTN.setLayoutX(240);
-            searchByDateBTN.setLayoutY(80);
+            searchByDateBTN.setLayoutY(90);
 
             // Go back btn
             Button backBTN = new Button("BACK");
             backBTN.setId("backBTN");
             backBTN.setLayoutX(730);
-            backBTN.setLayoutY(80);
+            backBTN.setLayoutY(90);
 
 
             // generate match btn
             Button generateMatchBTN = new Button("GENERATE MATCH");
             generateMatchBTN.setId("generateMatchBTN");
             generateMatchBTN.setLayoutX(800);
-            generateMatchBTN.setLayoutY(80);
+            generateMatchBTN.setLayoutY(90);
 
 
             // back btn functionality completed
@@ -272,10 +303,65 @@ public class PremierLeagueGUI extends Application {
 
 
             // Displaying the list view of the matches and its details
-
-            //list View for educational qualification
+            ComboBox<String> matchPlayedComboBox = comboBox;
+            matchPlayedComboBox.setLayoutX(450);
+            matchPlayedComboBox.setLayoutY(95);
+            premierLeagueManager.displayLeagueTable();  // we run this to refresh/ update the seasonBasedClubs list
             ObservableList<HBox> matches = FXCollections.observableArrayList();
-            for (int i = 0; i < 10; i++) {
+
+            // before coming to this lets display the matches played for 2020-21
+            matchPlayedComboBox.setOnAction(eventCombo -> {
+                premierLeagueManager.displayLeagueTable();
+                seasonBasedClubs[0] = PremierLeagueManager.seasonFilteredClubs;
+                creatingTheMatchesRows(seasonBasedClubs[0], matches);
+
+
+            });
+
+
+            creatingTheMatchesRows(seasonBasedClubs[0], matches);
+
+
+            ListView<HBox> listView = new ListView<>(matches);
+            listView.setId("listViewMatches");
+            listView.setPrefSize(700, 450);
+            listView.setLayoutX(150);
+            listView.setLayoutY(165);
+
+            // --- --- -- -- - ---------- ---------------- -------- ----
+
+            searchByDateBTN.setOnAction(searchEvent -> {
+                // filter the matches and display by date
+                System.out.println(enteredDatedTxt.getText());   // gets the date entered by the user
+
+
+            });
+
+            anchorPaneMatches.getStylesheets().clear();
+            anchorPaneMatches.getStylesheets().add(PremierLeagueGUI.class.getResource("styles.css").toExternalForm());
+            anchorPaneMatches.getChildren().addAll(mainTitleMatches, searchByDateBTN, enteredDatedTxt, backBTN,
+                    generateMatchBTN, listView, matchPlayedComboBox);
+            primaryStage.setTitle("Played Matches");
+            primaryStage.setScene(new Scene(anchorPaneMatches, 1000, 640));         //creating and setting scene
+            primaryStage.show();
+        });
+
+
+        anchorPane.getStylesheets().clear();
+        anchorPane.getStylesheets().add(PremierLeagueGUI.class.getResource("styles.css").toExternalForm());
+        anchorPane.getChildren().addAll(mainTitle,seasonLabel,comboBox,sortByGoalsBTN, sortByWinsBTN, playedMatchesBTN
+                , vbox, table );
+        primaryStage.setTitle("Premier League Table");
+        primaryStage.setScene(new Scene(anchorPane, 1000, 620));
+        primaryStage.setResizable(false);
+        primaryStage.show();
+    }
+
+    // creating the rows
+    private void creatingTheMatchesRows(ArrayList<FootballClub> seasonBasedClub, ObservableList<HBox> matches) {
+        matches.clear();
+        for (FootballClub club: seasonBasedClub) {
+            for (Match match: club.getMatchesPlayed()) {
                 //Instantiating the HBox class
                 HBox hbox = new HBox();
                 hbox.setId("hboxMatches");
@@ -289,23 +375,30 @@ public class PremierLeagueGUI extends Application {
                 VBox vboxClubTwo = new VBox();
                 vboxClubTwo.setId("vboxClubTwo");
 
-                // Adding content for the VBox
-                Label clubNameOneLBL = new Label("Juventus");
+                // Adding content for the VBox (Main club)
+                Label clubNameOneLBL = new Label(club.getName().toUpperCase());
                 clubNameOneLBL.setId("clubNameOneLBL");
 
-                Label clubNameTwoLBL = new Label("Barca");
+                // clubTwo is the opponent club
+                Label clubNameTwoLBL = new Label(match.getOpponentClubName().toUpperCase());
                 clubNameTwoLBL.setId("clubNameTwoLBL");
 
-                Label dateOneLBL = new Label("14/02/2015");
-                Label matchTypeOneLBL = new Label("HOME");
+                Label dateOneLBL = new Label(match.getDate().getDay() + "/" +
+                        match.getDate().getMonth() + "/" + match.getDate().getYear());
 
-                Label dateTwoLBL = new Label("14/02/2015");
-                Label matchTypeTwoLBL = new Label("HOME");
+                Label matchTypeOneLBL = new Label(match.getMatchType().toUpperCase());
 
-                Label goalScoredByClubOneLBL = new Label("12");
+                Label dateTwoLBL = new Label(match.getDate().getDay() + "/" +
+                        match.getDate().getMonth() + "/" + match.getDate().getYear());
+
+                Label matchTypeTwoLBL = new Label(match.getMatchType().toUpperCase());
+
+                // main club score
+                Label goalScoredByClubOneLBL = new Label(match.getGoalScored() + "");
                 goalScoredByClubOneLBL.setId("goalScoredByClubOneLBL");
 
-                Label goalScoredByClubTwoLBL = new Label("7");
+                // opponent club score
+                Label goalScoredByClubTwoLBL = new Label(match.getGoalReceived() + "");
                 goalScoredByClubTwoLBL.setId("goalScoredByClubTwoLBL");
 
                 Label versusLBL = new Label("VS");
@@ -344,40 +437,9 @@ public class PremierLeagueGUI extends Application {
                 matches.add(hbox);
 
             }
-            ListView<HBox> listView = new ListView<>(matches);
-            listView.setId("listViewMatches");
-            listView.setPrefSize(700, 450);
-            listView.setLayoutX(150);
-            listView.setLayoutY(150);
+        }
 
-            // --- --- -- -- - ---------- ---------------- -------- ----
-
-            searchByDateBTN.setOnAction(searchEvent -> {
-                // filter the matches and display by date
-                System.out.println(enteredDatedTxt.getText());   // gets the date entered by the user
-
-
-            });
-
-            anchorPaneMatches.getStylesheets().clear();
-            anchorPaneMatches.getStylesheets().add(PremierLeagueGUI.class.getResource("styles.css").toExternalForm());
-            anchorPaneMatches.getChildren().addAll(mainTitleMatches, searchByDateBTN, enteredDatedTxt, backBTN, generateMatchBTN, listView);
-            primaryStage.setTitle("Played Matches");
-            primaryStage.setScene(new Scene(anchorPaneMatches, 1000, 620));         //creating and setting scene
-            primaryStage.show();
-        });
-
-
-        anchorPane.getStylesheets().clear();
-        anchorPane.getStylesheets().add(PremierLeagueGUI.class.getResource("styles.css").toExternalForm());
-        anchorPane.getChildren().addAll(mainTitle,seasonLabel,comboBox,sortByGoalsBTN, sortByWinsBTN, playedMatchesBTN
-                , vbox, table );
-        primaryStage.setTitle("Premier League Table");
-        primaryStage.setScene(new Scene(anchorPane, 1000, 620));
-        primaryStage.setResizable(false);
-        primaryStage.show();
     }
-
 
 
     public static void main(String[] args) {

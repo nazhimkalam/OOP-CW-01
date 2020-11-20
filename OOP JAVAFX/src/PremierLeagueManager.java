@@ -317,7 +317,7 @@ public class PremierLeagueManager implements LeagueManager {
 
     // Overriding the displayLeagueTable method from the interface
     @Override
-    public ArrayList<FootballClub> displayLeagueTable() {
+    public void displayLeagueTable() {
         String seasonPlayed = PremierLeagueGUI.comboBox.getValue();   // you get the season from this
         System.out.println("This is the clicked value " + seasonPlayed);
         try {
@@ -344,7 +344,6 @@ public class PremierLeagueManager implements LeagueManager {
 //        System.out.println("This is from the manager class");
 //        System.out.println(seasonFilteredClubs);
 //        System.out.println("=======================");
-        return seasonFilteredClubs;
     }
 
     // This method returns a list of football clubs filtered by season with updated stats for that season only.
