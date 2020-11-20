@@ -1,0 +1,7 @@
+Steps to follow to create the GUI
+
+1. Load all the data from the text file (use absolute path and we have to use only 1 file for both cli and gui)
+2. Copy/Paste the necessary classes used in cli
+3. Create the GUI for the premier league table with dummy data then later the data from the files can be used.
+4. As well add dummy values and create the functionality for the buttons to direct to the other scene.
+5. Create the Played Matches GUI with the implementation by using a dummy data.
