@@ -774,18 +774,18 @@ public class PremierLeagueManager implements LeagueManager {
         for (FootballClub footballClub: premierLeagueFootballClubList) {
             // we have added the matched played by each club to their respective list of matches
             if(footballClub.getName().equalsIgnoreCase(clubName_01)){
-                addPlayedMatchToClub(clubName_02, clubName_01, numberGoalScored_club_2, numberGoalScored_club_1, date,
+                addPlayedMatchToClub(clubName_02, numberGoalScored_club_2, numberGoalScored_club_1, date,
                         seasonPlayed, footballClub, matchType);
 
             }else if(footballClub.getName().equalsIgnoreCase(clubName_02)){
-                addPlayedMatchToClub(clubName_01, clubName_02, numberGoalScored_club_1, numberGoalScored_club_2, date,
+                addPlayedMatchToClub(clubName_01, numberGoalScored_club_1, numberGoalScored_club_2, date,
                         seasonPlayed, footballClub, matchType);
             }
         }
         System.out.println("\n Match Successfully added! \n");
     }
 
-    private void addPlayedMatchToClub(String clubName_01, String clubName_02, int numberGoalScored_club_1,
+    private void addPlayedMatchToClub(String clubName_01, int numberGoalScored_club_1,
                                       int numberGoalScored_club_2, DateMatch date, String seasonPlayed,
                                       FootballClub footballClub, String matchType) {
 
@@ -939,6 +939,7 @@ public class PremierLeagueManager implements LeagueManager {
     // Generating a random match between 2 random clubs and update the txt file
     // Note that all the new random data should not be same as previous
     public void generateRandomMatch(String selectedSeason) {
+        allSeasonAdded.add(selectedSeason);
         Random random = new Random();
         // step 01: randomly select 2 clubs
         int randomClub_01 = random.nextInt(seasonFilteredClubs.size());

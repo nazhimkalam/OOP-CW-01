@@ -283,8 +283,12 @@ public class PremierLeagueManager implements LeagueManager {
                     } catch (CloneNotSupportedException e) {
                         e.printStackTrace();
                     }
-                    for (FootballClub club: seasonFilteredClubs){
-                        if(club.getName().equalsIgnoreCase(clubName)) club.toString();
+                    if (seasonFilteredClubs != null) {
+                        for (FootballClub club: seasonFilteredClubs){
+                            if(club.getName().equalsIgnoreCase(clubName)) {
+                                System.out.println(club);
+                            };
+                        }
                     }
                 }
 

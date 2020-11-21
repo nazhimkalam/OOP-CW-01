@@ -259,6 +259,7 @@ public class PremierLeagueGUI extends Application {
 
             // Displaying the list view of the matches and its details
             ComboBox<String> matchPlayedComboBox = comboBox;
+            matchPlayedComboBox.setValue("2020-21");
             matchPlayedComboBox.setLayoutX(450);
             matchPlayedComboBox.setLayoutY(95);
 
