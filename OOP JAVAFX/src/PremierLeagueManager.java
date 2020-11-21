@@ -953,19 +953,18 @@ public class PremierLeagueManager implements LeagueManager {
 
 
         // step 02: randomly generate the necessary data
-        int numberGoalScored_club_1 = random.nextInt(11);
-        int numberGoalScored_club_2 = random.nextInt(11);
+        int numberGoalScored_club_1 = random.nextInt(7);
+        int numberGoalScored_club_2 = random.nextInt(7);
 
         while (numberGoalScored_club_1==numberGoalScored_club_2){
-            numberGoalScored_club_2 = random.nextInt(11);
+            numberGoalScored_club_2 = random.nextInt(7);
         }
 
         int seasonYear = Integer.parseInt(selectedSeason.split("-")[0]);
         int day = random.nextInt(30)+1;
         int month = random.nextInt(12)+1;
-        int year = seasonYear;
 
-        DateMatch date = new DateMatch(day, month, year);
+        DateMatch date = new DateMatch(day, month, seasonYear);
         String[] matchTypes = new String[]{"Home", "Away"};
         String matchType = matchTypes[random.nextInt(2)];
 

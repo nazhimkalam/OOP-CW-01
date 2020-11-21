@@ -957,7 +957,7 @@ public class PremierLeagueManager implements LeagueManager {
             file.write("");
             file.close();
         } catch (IOException e) {
-//            e.printStackTrace();
+            e.printStackTrace();
         }
 
         System.out.println("\n Clearing the contents of the file . . .");
