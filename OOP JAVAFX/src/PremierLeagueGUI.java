@@ -100,19 +100,8 @@ public class PremierLeagueGUI extends Application {
         // loading the default season which is 2020-21 records
         final ObservableList<FootballClub> data = FXCollections.observableArrayList();
 
-        int position = 1;
-//        System.out.println(seasonBasedClubs[0]);
-        for (FootballClub club : seasonBasedClubs[0]) {
+        updatingTableContent(data, seasonBasedClubs[0]);
 
-            ClubStats clubStats = new ClubStats(club.getClubStatistics().getTotalMatchesPlayed(),
-                    club.getClubStatistics().getTotalWins(),club.getClubStatistics().getTotalDraws(),
-                    club.getClubStatistics().getTotalDefeats(), club.getClubStatistics().getTotalPointsScored());
-
-            data.add(new FootballClub(position, club.getName(), clubStats,
-                    club.getTotalGoalsScored(), club.getTotalGoalsReceived(),
-                    club.getTotalGoalsDifference()));
-            position++;
-        }
         //--------------------------------------------------
 
         // FUNCTIONALITY FOR THE PREMIER LEAGUE TABLE BUTTONS
@@ -254,6 +243,9 @@ public class PremierLeagueGUI extends Application {
 
             // back btn functionality completed
             backBTN.setOnAction(backEvent -> {
+                sortByWinsClicked = false;
+                sortByGoalsClicked = false;
+
                 // go to the previous scene
                 primaryStage.close();
                 try {                                                       // displaying the stage delay
@@ -270,6 +262,9 @@ public class PremierLeagueGUI extends Application {
             matchPlayedComboBox.setLayoutX(450);
             matchPlayedComboBox.setLayoutY(95);
 
+            premierLeagueManager.displayLeagueTable();  // we run this to refresh/ update the seasonBasedClubs list
+            ObservableList<HBox> matches = FXCollections.observableArrayList();
+
             // generating random match for the club
             generateMatchBTN.setOnAction(generateEvent -> {
                 premierLeagueManager.generateRandomMatch(matchPlayedComboBox.getValue());
@@ -280,12 +275,10 @@ public class PremierLeagueGUI extends Application {
                 }
                 premierLeagueManager.displayLeagueTable();
                 seasonBasedClubs[0] = PremierLeagueManager.seasonFilteredClubs;
+                creatingTheMatchesRows(seasonBasedClubs[0], matches);
+
 
             });
-
-
-            premierLeagueManager.displayLeagueTable();  // we run this to refresh/ update the seasonBasedClubs list
-            ObservableList<HBox> matches = FXCollections.observableArrayList();
 
             // before coming to this lets display the matches played for 2020-21
             matchPlayedComboBox.setOnAction(eventCombo -> {
