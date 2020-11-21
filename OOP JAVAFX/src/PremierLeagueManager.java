@@ -326,25 +326,43 @@ public class PremierLeagueManager implements LeagueManager {
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }
-        // sorting by goals and points
-        Comparator<FootballClub> comparator = (club1, club2) -> {
-            if(club1.getClubStatistics().getTotalPointsScored() == (club2.getClubStatistics().getTotalPointsScored())){
-                if(club1.getTotalGoalsScored() < club2.getTotalGoalsScored()){
-                    return 1;
-                }
-            }else{
+
+        // sorting by points
+        if(PremierLeagueGUI.sortByPointsClicked
+                && !PremierLeagueGUI.sortByWinsClicked
+                && !PremierLeagueGUI.sortByGoalsClicked){
+
+            Comparator<FootballClub> comparator = (club1, club2) -> {
                 if(club1.getClubStatistics().getTotalPointsScored() < club2.getClubStatistics().getTotalPointsScored()){
                     return 1;
                 }
-            }
-            return -1;
-        };
+                return -1;
+            };
+            seasonFilteredClubs.sort(comparator);  // sorting the clubs
+        }
 
+        // sort by goals
+        if(PremierLeagueGUI.sortByGoalsClicked){
+            Comparator<FootballClub> comparator = (club1, club2) -> {
+                if(club1.getTotalGoalsScored() < club2.getTotalGoalsScored()){
+                    return 1;
+                }
+                return -1;
+            };
+            seasonFilteredClubs.sort(comparator);  // sorting the clubs
+        }
 
-        seasonFilteredClubs.sort(comparator);  // sorting the clubs
-//        System.out.println("This is from the manager class");
-//        System.out.println(seasonFilteredClubs);
-//        System.out.println("=======================");
+        // sort by wins
+        if(PremierLeagueGUI.sortByWinsClicked){
+            Comparator<FootballClub> comparator = (club1, club2) -> {
+                if(club1.getClubStatistics().getTotalWins() < club2.getClubStatistics().getTotalWins()){
+                    return 1;
+                }
+                return -1;
+            };
+            seasonFilteredClubs.sort(comparator);  // sorting the clubs
+        }
+
     }
 
     // This method returns a list of football clubs filtered by season with updated stats for that season only.
@@ -935,11 +953,11 @@ public class PremierLeagueManager implements LeagueManager {
 
 
         // step 02: randomly generate the necessary data
-        int numberGoalScored_club_1 = random.nextInt(21);
-        int numberGoalScored_club_2 = random.nextInt(21);
+        int numberGoalScored_club_1 = random.nextInt(11);
+        int numberGoalScored_club_2 = random.nextInt(11);
 
         while (numberGoalScored_club_1==numberGoalScored_club_2){
-            numberGoalScored_club_2 = random.nextInt(21);
+            numberGoalScored_club_2 = random.nextInt(11);
         }
 
         int seasonYear = Integer.parseInt(selectedSeason.split("-")[0]);
@@ -965,11 +983,5 @@ public class PremierLeagueManager implements LeagueManager {
         // step 06: update the seasonBasedClubs[0] in the GUI class by calling the display table method and recalling that
         //          variable
 
-
-
-
     }
 }
-//    String clubName_01, String clubName_02, int numberGoalScored_club_1,
-//        int numberGoalScored_club_2, DateMatch date, String seasonPlayed,
-//        String matchType

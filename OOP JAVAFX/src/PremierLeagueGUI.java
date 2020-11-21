@@ -22,6 +22,9 @@ public class PremierLeagueGUI extends Application {
     PremierLeagueManager premierLeagueManager = new PremierLeagueManager();
     public ObservableList<String> options;
     public static ComboBox<String> comboBox = new ComboBox<>();
+    public static boolean sortByGoalsClicked = false;
+    public static boolean sortByWinsClicked = false;
+    public static boolean sortByPointsClicked = false;
 
 
     @Override
@@ -65,15 +68,8 @@ public class PremierLeagueGUI extends Application {
         premierLeagueManager.displayLeagueTable();
         final ArrayList<FootballClub>[] seasonBasedClubs = new ArrayList[1];
         seasonBasedClubs[0] = PremierLeagueManager.seasonFilteredClubs;
+        sortByPointsClicked = true;
 
-        Comparator<FootballClub> comparatorPoints = (club1, club2) -> {
-            if(club1.getClubStatistics().getTotalPointsScored() < club2.getClubStatistics().getTotalPointsScored()){
-                return 1;
-            }
-            return -1;
-        };
-        seasonBasedClubs[0].sort(comparatorPoints);
-        //
 
         // sort by goals btn
         Button sortByGoalsBTN = new Button("SORT BY GOALS");
@@ -93,30 +89,6 @@ public class PremierLeagueGUI extends Application {
         playedMatchesBTN.setLayoutX(800);
         playedMatchesBTN.setLayoutY(100);
 
-        sortByGoalsBTN.setOnAction(event -> {
-           // sort the table by goals
-            Comparator<FootballClub> comparatorGoals = (club1, club2) -> {
-                if(club1.getTotalGoalsScored() < club2.getTotalGoalsScored()){
-                    return 1;
-                }
-                return -1;
-            };
-            seasonBasedClubs[0].sort(comparatorGoals);
-
-        });
-
-        sortByWinsBTN.setOnAction(event -> {
-            // sort the table by wins
-            Comparator<FootballClub> comparatorGoals = (club1, club2) -> {
-                if(club1.getClubStatistics().getTotalWins() < club2.getClubStatistics().getTotalWins()){
-                    return 1;
-                }
-                return -1;
-            };
-            seasonBasedClubs[0].sort(comparatorGoals);
-
-
-        });
 
         // Displaying the Premier League Table--------------------------
 
@@ -146,26 +118,20 @@ public class PremierLeagueGUI extends Application {
         // FUNCTIONALITY FOR THE PREMIER LEAGUE TABLE BUTTONS
         comboBox.setOnAction(event -> {
             // get the clicked season and change the contents on the premier table
-            data.clear();
-            premierLeagueManager.displayLeagueTable();
-            seasonBasedClubs[0] = PremierLeagueManager.seasonFilteredClubs;
-            int NewPosition = 1;
-            System.out.println(seasonBasedClubs[0]);
-            for (FootballClub club : seasonBasedClubs[0]) {
-                ClubStats clubStats = new ClubStats(club.getClubStatistics().getTotalMatchesPlayed(),
-                        club.getClubStatistics().getTotalWins(),club.getClubStatistics().getTotalDraws(),
-                        club.getClubStatistics().getTotalDefeats(), club.getClubStatistics().getTotalPointsScored());
-
-                data.add(new FootballClub(NewPosition, club.getName(), clubStats,
-                        club.getTotalGoalsScored(), club.getTotalGoalsReceived(),
-                        club.getTotalGoalsDifference()));
-
-                NewPosition++;
-            }
-
+            updatingTableContent(data, seasonBasedClubs[0]);
         });
 
+        sortByGoalsBTN.setOnAction(event -> {
+            sortByGoalsClicked = true;
+            sortByWinsClicked = false;
+            updatingTableContent(data, seasonBasedClubs[0]);
+        });
 
+        sortByWinsBTN.setOnAction(event -> {
+            sortByWinsClicked = true;
+            sortByGoalsClicked = false;
+            updatingTableContent(data, seasonBasedClubs[0]);
+        });
 
         //Creating columns
         TableColumn<FootballClub, String> positionCOL = new TableColumn<>("POS");
@@ -368,6 +334,26 @@ public class PremierLeagueGUI extends Application {
         primaryStage.show();
     }
 
+    // updating the table content
+    private void updatingTableContent(ObservableList<FootballClub> data, ArrayList<FootballClub> seasonBasedClub) {
+        data.clear();
+        premierLeagueManager.displayLeagueTable();
+        seasonBasedClub = PremierLeagueManager.seasonFilteredClubs;
+        int NewPosition = 1;
+        System.out.println(seasonBasedClub);
+        for (FootballClub club : seasonBasedClub) {
+            ClubStats clubStats = new ClubStats(club.getClubStatistics().getTotalMatchesPlayed(),
+                    club.getClubStatistics().getTotalWins(),club.getClubStatistics().getTotalDraws(),
+                    club.getClubStatistics().getTotalDefeats(), club.getClubStatistics().getTotalPointsScored());
+
+            data.add(new FootballClub(NewPosition, club.getName(), clubStats,
+                    club.getTotalGoalsScored(), club.getTotalGoalsReceived(),
+                    club.getTotalGoalsDifference()));
+
+            NewPosition++;
+        }
+    }
+
     // creating the rows
     private void creatingTheMatchesRows(ArrayList<FootballClub> seasonBasedClub, ObservableList<HBox> matches) {
         matches.clear();
@@ -482,6 +468,9 @@ public class PremierLeagueGUI extends Application {
 
 
     }
+
+
+
 
 
     public static void main(String[] args) {
