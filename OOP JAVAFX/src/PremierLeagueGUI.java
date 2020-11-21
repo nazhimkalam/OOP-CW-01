@@ -376,6 +376,20 @@ public class PremierLeagueGUI extends Application {
 
         for (FootballClub club: seasonBasedClub) {
 
+            // sort the matches in ascending order of the date
+            Comparator<Match> sortByDate = (match1, match2) -> {
+                if ( match1.getDate().getMonth() == match2.getDate().getMonth()){
+                    if(match1.getDate().getDay() > match2.getDate().getDay()){
+                        return 1;
+                    }
+                }else if ( match1.getDate().getMonth() > match2.getDate().getMonth()){
+                    return 1;
+                }
+                return -1;
+            };
+
+            club.getMatchesPlayed().sort(sortByDate);  // sorting the clubs
+
             for (Match match: club.getMatchesPlayed()) {
                 boolean matchNotAvailable = true;
 
@@ -394,7 +408,6 @@ public class PremierLeagueGUI extends Application {
                         }
                     }
                 }
-
 
                 if(matchNotAvailable){
                     matchesDisplayed.add(match);
