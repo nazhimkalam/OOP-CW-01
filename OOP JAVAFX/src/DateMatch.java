@@ -1,7 +1,9 @@
 import java.io.Serializable;
+import java.util.Objects;
 
 public class DateMatch implements Serializable {
     // this class is used to handle the day, month and year
+    private static final long serialVersionUID = -741281696630909407L;
     private int day;
     private int month;
     private int year;
@@ -48,4 +50,18 @@ public class DateMatch implements Serializable {
 
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        DateMatch dateMatch = (DateMatch) o;
+        return day == dateMatch.day &&
+                month == dateMatch.month &&
+                year == dateMatch.year;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(day, month, year);
+    }
 }

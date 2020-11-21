@@ -372,83 +372,111 @@ public class PremierLeagueGUI extends Application {
     private void creatingTheMatchesRows(ArrayList<FootballClub> seasonBasedClub, ObservableList<HBox> matches) {
         matches.clear();
 
+        // these both arrayList will be of the same size
+        ArrayList<String> clubNamePlayed = new ArrayList<>(); // this set becomes the opponent name for other team
+        ArrayList<Match> matchesDisplayed = new ArrayList<>();
+
         for (FootballClub club: seasonBasedClub) {
 
             for (Match match: club.getMatchesPlayed()) {
-                //Instantiating the HBox class
-                HBox hbox = new HBox();
-                hbox.setId("hboxMatches");
+                boolean matchNotAvailable = true;
 
-                VBox vboxClubOne = new VBox();
-                vboxClubOne.setId("vboxClubOne");
+                // NOTE THAT THIS IS TO PREVENT THE REPEATING OF MATCHES IN ALL CLUBS WHICH IS DUPLICATING
+                for (int index = 0; index < clubNamePlayed.size(); index++) {
+                    if(match.getOpponentClubName().equalsIgnoreCase(clubNamePlayed.get(index))){
+                        // goal scored from the club is equal to goal received from the opponent club
+                        if(
+                                (matchesDisplayed.get(index).getGoalReceived() == match.getGoalScored()) &&
+                                (matchesDisplayed.get(index).getGoalScored() == match.getGoalReceived()) &&
+                                (matchesDisplayed.get(index).getMatchType().equalsIgnoreCase(match.getMatchType())) &&
+                                (matchesDisplayed.get(index).getOpponentClubName().equalsIgnoreCase(club.getName())) &&
+                                (matchesDisplayed.get(index).getDate().equals(match.getDate()))
+                        ){
+                            matchNotAvailable = false;
+                        }
+                    }
+                }
 
-                VBox versus = new VBox();
-                versus.setId("versus");
 
-                VBox vboxClubTwo = new VBox();
-                vboxClubTwo.setId("vboxClubTwo");
+                if(matchNotAvailable){
+                    matchesDisplayed.add(match);
+                    clubNamePlayed.add(club.getName());
 
-                // Adding content for the VBox (Main club)
-                Label clubNameOneLBL = new Label(club.getName().toUpperCase());
-                clubNameOneLBL.setId("clubNameOneLBL");
+                    //Instantiating the HBox class
+                    HBox hbox = new HBox();
+                    hbox.setId("hboxMatches");
 
-                // clubTwo is the opponent club
-                Label clubNameTwoLBL = new Label(match.getOpponentClubName().toUpperCase());
-                clubNameTwoLBL.setId("clubNameTwoLBL");
+                    VBox vboxClubOne = new VBox();
+                    vboxClubOne.setId("vboxClubOne");
 
-                Label dateOneLBL = new Label(match.getDate().getDay() + "/" +
-                        match.getDate().getMonth() + "/" + match.getDate().getYear());
+                    VBox versus = new VBox();
+                    versus.setId("versus");
 
-                Label matchTypeOneLBL = new Label(match.getMatchType().toUpperCase());
+                    VBox vboxClubTwo = new VBox();
+                    vboxClubTwo.setId("vboxClubTwo");
 
-                Label dateTwoLBL = new Label(match.getDate().getDay() + "/" +
-                        match.getDate().getMonth() + "/" + match.getDate().getYear());
+                    // Adding content for the VBox (Main club)
+                    Label clubNameOneLBL = new Label(club.getName().toUpperCase());
+                    clubNameOneLBL.setId("clubNameOneLBL");
 
-                Label matchTypeTwoLBL = new Label(match.getMatchType().toUpperCase());
+                    // clubTwo is the opponent club
+                    Label clubNameTwoLBL = new Label(match.getOpponentClubName().toUpperCase());
+                    clubNameTwoLBL.setId("clubNameTwoLBL");
 
-                // main club score
-                Label goalScoredByClubOneLBL = new Label(match.getGoalScored() + "");
-                goalScoredByClubOneLBL.setId("goalScoredByClubOneLBL");
+                    Label dateOneLBL = new Label(match.getDate().getDay() + "/" +
+                            match.getDate().getMonth() + "/" + match.getDate().getYear());
 
-                // opponent club score
-                Label goalScoredByClubTwoLBL = new Label(match.getGoalReceived() + "");
-                goalScoredByClubTwoLBL.setId("goalScoredByClubTwoLBL");
+                    Label matchTypeOneLBL = new Label(match.getMatchType().toUpperCase());
 
-                Label versusLBL = new Label("VS");
-                versus.setId("versusLBL");
+                    Label dateTwoLBL = new Label(match.getDate().getDay() + "/" +
+                            match.getDate().getMonth() + "/" + match.getDate().getYear());
 
-                // setting the widths
-                vboxClubOne.setPrefWidth(150);
-                vboxClubTwo.setPrefWidth(150);
-                versus.setPrefWidth(150);
+                    Label matchTypeTwoLBL = new Label(match.getMatchType().toUpperCase());
 
-                // adding content for vboxClubOne
-                vboxClubOne.setSpacing(5);
-                vboxClubOne.getChildren().addAll(clubNameOneLBL, goalScoredByClubOneLBL, matchTypeOneLBL, dateOneLBL);
+                    // main club score
+                    Label goalScoredByClubOneLBL = new Label(match.getGoalScored() + "");
+                    goalScoredByClubOneLBL.setId("goalScoredByClubOneLBL");
 
-                // adding content for versus
-                versus.setSpacing(5);
-                versus.getChildren().addAll(versusLBL);
+                    // opponent club score
+                    Label goalScoredByClubTwoLBL = new Label(match.getGoalReceived() + "");
+                    goalScoredByClubTwoLBL.setId("goalScoredByClubTwoLBL");
 
-                // adding content for vboxClubTwo
-                vboxClubTwo.setSpacing(5);
-                vboxClubTwo.getChildren().addAll(clubNameTwoLBL, goalScoredByClubTwoLBL, matchTypeTwoLBL, dateTwoLBL);
+                    Label versusLBL = new Label("VS");
+                    versus.setId("versusLBL");
 
-                // ending adding content for the VBox
+                    // setting the widths
+                    vboxClubOne.setPrefWidth(150);
+                    vboxClubTwo.setPrefWidth(150);
+                    versus.setPrefWidth(150);
 
-                //Setting the space between the nodes of a HBox pane
-                hbox.setSpacing(10);
+                    // adding content for vboxClubOne
+                    vboxClubOne.setSpacing(5);
+                    vboxClubOne.getChildren().addAll(clubNameOneLBL, goalScoredByClubOneLBL, matchTypeOneLBL, dateOneLBL);
 
-                //Setting the margin to the nodes
-                HBox.setMargin(vboxClubOne, new Insets(5));
-                HBox.setMargin(versus, new Insets(5));
-                HBox.setMargin(vboxClubTwo, new Insets(5));
+                    // adding content for versus
+                    versus.setSpacing(5);
+                    versus.getChildren().addAll(versusLBL);
 
-                //retrieving the observable list of the HBox
-                hbox.getChildren().addAll(vboxClubOne, versus, vboxClubTwo);
+                    // adding content for vboxClubTwo
+                    vboxClubTwo.setSpacing(5);
+                    vboxClubTwo.getChildren().addAll(clubNameTwoLBL, goalScoredByClubTwoLBL, matchTypeTwoLBL, dateTwoLBL);
 
-                matches.add(hbox);
+                    // ending adding content for the VBox
 
+                    //Setting the space between the nodes of a HBox pane
+                    hbox.setSpacing(10);
+
+                    //Setting the margin to the nodes
+                    HBox.setMargin(vboxClubOne, new Insets(5));
+                    HBox.setMargin(versus, new Insets(5));
+                    HBox.setMargin(vboxClubTwo, new Insets(5));
+
+                    //retrieving the observable list of the HBox
+                    hbox.getChildren().addAll(vboxClubOne, versus, vboxClubTwo);
+
+                    matches.add(hbox);
+
+                }
             }
         }
 
