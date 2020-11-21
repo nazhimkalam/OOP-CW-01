@@ -371,47 +371,60 @@ public class PremierLeagueGUI extends Application {
         matches.clear();
 
         // these both arrayList will be of the same size
-        ArrayList<String> clubNamePlayed = new ArrayList<>(); // this set becomes the opponent name for other team
         ArrayList<Match> matchesDisplayed = new ArrayList<>();
+        ArrayList<Match> allMatches = new ArrayList<>();
 
-        for (FootballClub club: seasonBasedClub) {
+        // populating the allMatches list will all the matches from the seasonBasedClub
+        // adding all the matches played for that season inside the allMatches list
+        System.out.println("-------------------------------------------");
+        for (FootballClub footballClub: seasonBasedClub) {
+            allMatches.addAll(footballClub.getMatchesPlayed());
+        }
+        for (FootballClub footballClub: seasonBasedClub) {
+            for (Match match : footballClub.getMatchesPlayed()) {
+                System.out.println(match);
+            }
+        }
+            System.out.println("-------------------------------------------");
+
 
             // sort the matches in ascending order of the date
             Comparator<Match> sortByDate = (match1, match2) -> {
-                if ( match1.getDate().getMonth() == match2.getDate().getMonth()){
-                    if(match1.getDate().getDay() > match2.getDate().getDay()){
+                if (match1.getDate().getMonth() == match2.getDate().getMonth()) {
+                    if (match1.getDate().getDay() > match2.getDate().getDay()) {
                         return 1;
                     }
-                }else if ( match1.getDate().getMonth() > match2.getDate().getMonth()){
+                } else if (match1.getDate().getMonth() > match2.getDate().getMonth()) {
                     return 1;
                 }
                 return -1;
             };
+            allMatches.sort(sortByDate);  // sorting the matches according to the date
 
-            club.getMatchesPlayed().sort(sortByDate);  // sorting the clubs
-
-            for (Match match: club.getMatchesPlayed()) {
+            allMatches.forEach(match -> {
+                System.out.println(match.getParticipatedCLubName());
+            });
+            // MAIN CODE FOR DISPLAYING THE MATCHES
+            for (Match match : allMatches) {
                 boolean matchNotAvailable = true;
 
                 // NOTE THAT THIS IS TO PREVENT THE REPEATING OF MATCHES IN ALL CLUBS WHICH IS DUPLICATING
-                for (int index = 0; index < clubNamePlayed.size(); index++) {
-                    if(match.getOpponentClubName().equalsIgnoreCase(clubNamePlayed.get(index))){
-                        // goal scored from the club is equal to goal received from the opponent club
-                        if(
+                for (int index = 0; index < matchesDisplayed.size(); index++) {
+                    if (match.getOpponentClubName().equalsIgnoreCase(matchesDisplayed.get(index).getParticipatedCLubName())) {
+                        // NOTE: goal scored from the club is equal to goal received from the opponent club
+                        if (
                                 (matchesDisplayed.get(index).getGoalReceived() == match.getGoalScored()) &&
-                                (matchesDisplayed.get(index).getGoalScored() == match.getGoalReceived()) &&
-                                (matchesDisplayed.get(index).getMatchType().equalsIgnoreCase(match.getMatchType())) &&
-                                (matchesDisplayed.get(index).getOpponentClubName().equalsIgnoreCase(club.getName())) &&
-                                (matchesDisplayed.get(index).getDate().equals(match.getDate()))
-                        ){
+                                        (matchesDisplayed.get(index).getGoalScored() == match.getGoalReceived()) &&
+                                        (matchesDisplayed.get(index).getMatchType().equalsIgnoreCase(match.getMatchType())) &&
+                                        (matchesDisplayed.get(index).getDate().equals(match.getDate()))
+                        ) {
                             matchNotAvailable = false;
                         }
                     }
                 }
 
-                if(matchNotAvailable){
+                if (matchNotAvailable) {
                     matchesDisplayed.add(match);
-                    clubNamePlayed.add(club.getName());
 
                     //Instantiating the HBox class
                     HBox hbox = new HBox();
@@ -427,7 +440,7 @@ public class PremierLeagueGUI extends Application {
                     vboxClubTwo.setId("vboxClubTwo");
 
                     // Adding content for the VBox (Main club)
-                    Label clubNameOneLBL = new Label(club.getName().toUpperCase());
+                    Label clubNameOneLBL = new Label(match.getParticipatedCLubName().toUpperCase());
                     clubNameOneLBL.setId("clubNameOneLBL");
 
                     // clubTwo is the opponent club
@@ -488,10 +501,8 @@ public class PremierLeagueGUI extends Application {
                     matches.add(hbox);
 
                 }
-            }
+
         }
-
-
     }
 
 

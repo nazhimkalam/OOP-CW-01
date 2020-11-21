@@ -72,6 +72,7 @@ public class PremierLeagueTester {
 
             default:
                 System.out.println(" You have entered an invalid option!");
+//                premierLeagueManager.testerMethod();
                 System.out.println(" Please check the menu properly and re-enter!");
                 displayMenu(premierLeagueManager);
 

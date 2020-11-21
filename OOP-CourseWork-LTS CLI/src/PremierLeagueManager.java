@@ -841,7 +841,7 @@ public class PremierLeagueManager implements LeagueManager {
         System.out.println("\n Enter further statistics for the club " + clubName_02);
         MatchStats matchStats = getStatsOfMatch(footballClub);
         Match matchPlayed = new Match(numberGoalScored_club_2, numberGoalScored_club_1, matchStats, date,
-                clubName_01, seasonPlayed,matchType);
+                clubName_01, seasonPlayed,matchType, clubName_02);
         footballClub.getMatchesPlayed().add(matchPlayed);  // adding the played match into the list of matches
     }
 
@@ -968,4 +968,14 @@ public class PremierLeagueManager implements LeagueManager {
         System.out.println(" Successfully cleared the file details!");
         loadingData();      // loading the empty file now
     }
+
+//    public void testerMethod() {
+//        for (FootballClub fb: premierLeagueFootballClubList) {
+//            for (Match m: fb.getMatchesPlayed()) {
+//                if(m.getSeason().equalsIgnoreCase("2020-21")){
+//                    System.out.println(m.getParticipatedCLubName());
+//                }
+//            }
+//        }
+//    }
 }

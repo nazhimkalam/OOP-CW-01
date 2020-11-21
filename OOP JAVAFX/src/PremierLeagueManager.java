@@ -774,25 +774,25 @@ public class PremierLeagueManager implements LeagueManager {
         for (FootballClub footballClub: premierLeagueFootballClubList) {
             // we have added the matched played by each club to their respective list of matches
             if(footballClub.getName().equalsIgnoreCase(clubName_01)){
-                addPlayedMatchToClub(clubName_02, numberGoalScored_club_2, numberGoalScored_club_1, date,
+                addPlayedMatchToClub(clubName_02, clubName_01, numberGoalScored_club_2, numberGoalScored_club_1, date,
                         seasonPlayed, footballClub, matchType);
 
             }else if(footballClub.getName().equalsIgnoreCase(clubName_02)){
-                addPlayedMatchToClub(clubName_01, numberGoalScored_club_1, numberGoalScored_club_2, date,
+                addPlayedMatchToClub(clubName_01,clubName_02, numberGoalScored_club_1, numberGoalScored_club_2, date,
                         seasonPlayed, footballClub, matchType);
             }
         }
         System.out.println("\n Match Successfully added! \n");
     }
 
-    private void addPlayedMatchToClub(String clubName_01, int numberGoalScored_club_1,
+    private void addPlayedMatchToClub(String clubName_01, String clubName_02, int numberGoalScored_club_1,
                                       int numberGoalScored_club_2, DateMatch date, String seasonPlayed,
                                       FootballClub footballClub, String matchType) {
 
 //        System.out.println("\n Enter further statistics for the club " + clubName_02);
         MatchStats matchStats = getStatsOfMatch(footballClub);
         Match matchPlayed = new Match(numberGoalScored_club_2, numberGoalScored_club_1, matchStats, date,
-                clubName_01, seasonPlayed,matchType);
+                clubName_01, seasonPlayed,matchType, clubName_02);
         footballClub.getMatchesPlayed().add(matchPlayed);  // adding the played match into the list of matches
     }
 

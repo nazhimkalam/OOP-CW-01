@@ -42,6 +42,7 @@ public class FootballClub extends SportClub{
         autoGeneratePlayers();      // auto generating the players whenever you instantiate a club
     }
 
+    // this constructor was for the GUI
     public FootballClub(int position, String name, ClubStats clubStats, int totalGoalsScored,
                         int totalGoalsReceived, int totalGoalsDifference) {
         super(name,"",clubStats);
