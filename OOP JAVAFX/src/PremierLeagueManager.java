@@ -983,4 +983,50 @@ public class PremierLeagueManager implements LeagueManager {
         //          variable
 
     }
+
+    // This will return an arraylist which will filter all the matches of the club by date
+    public ArrayList<FootballClub> filterMatchesByDate(ArrayList<FootballClub> seasonBasedClub, String dateEntered)
+            throws CloneNotSupportedException {
+        ArrayList<FootballClub> filteredClubListByDate = new ArrayList<>();
+
+        // we are cloning or creating a copy of the arraylist which has to be filtered
+        for (int index = 0; index < seasonBasedClub.size(); index++) {
+            filteredClubListByDate.add((FootballClub) seasonBasedClub.get(index).clone());
+        }
+
+        // check and split the date entered by the user
+        if(!dateEntered.isEmpty()){
+
+
+            // looping through the clubs checking for matches without the match with the given date and removing them
+            for (FootballClub club: filteredClubListByDate) {
+                int numberOfMatchesPlayed = club.getMatchesPlayed().size();
+                int index = 0;
+                while(index < numberOfMatchesPlayed){
+
+                    int matchDay = club.getMatchesPlayed().get(index).getDate().getDay();
+                    int matchMonth = club.getMatchesPlayed().get(index).getDate().getMonth();
+                    int matchYear = club.getMatchesPlayed().get(index).getDate().getYear();
+                    String matchDate = matchDay + "/" + matchMonth + "/" + matchYear;
+
+                    if(!dateEntered.trim().equalsIgnoreCase(matchDate.trim())){
+//                        System.out.println("removing club with the date" + club.getMatchesPlayed().get(index).getDate());
+                        club.getMatchesPlayed().remove(club.getMatchesPlayed().get(index));
+                        numberOfMatchesPlayed--;
+                    }else{
+                        index++;
+//                        System.out.println("Sucker . .. . ");
+//                        System.out.println("-----------------------");
+//                        System.out.println(dateEntered);
+//                        System.out.println(matchDate);
+//                        System.out.println("-----------------------");
+                    }
+                }
+
+            }
+        }
+
+        return filteredClubListByDate;
+
+    }
 }

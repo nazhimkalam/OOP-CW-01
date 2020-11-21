@@ -269,7 +269,7 @@ public class PremierLeagueGUI extends Application {
             generateMatchBTN.setOnAction(generateEvent -> {
                 premierLeagueManager.generateRandomMatch(matchPlayedComboBox.getValue());
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(300);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -277,6 +277,29 @@ public class PremierLeagueGUI extends Application {
                 seasonBasedClubs[0] = PremierLeagueManager.seasonFilteredClubs;
                 creatingTheMatchesRows(seasonBasedClubs[0], matches);
 
+
+            });
+
+            // searching matches by date
+            searchByDateBTN.setOnAction(searchEvent -> {
+                // filter the matches and display by date
+                ArrayList<FootballClub> footballClubsWithFilteredMatchByDate =
+                        seasonBasedClubs[0];  // seasonBasedClubs[0] to prevent the null safety problem
+                try {
+                    footballClubsWithFilteredMatchByDate = premierLeagueManager.filterMatchesByDate(seasonBasedClubs[0],
+                            enteredDatedTxt.getText());
+                } catch (CloneNotSupportedException e) {
+                    e.printStackTrace();
+                    System.out.println("Error when cloning the football club");
+                }
+
+                try {
+                    Thread.sleep(300);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                creatingTheMatchesRows(footballClubsWithFilteredMatchByDate, matches);
 
             });
 
@@ -288,8 +311,8 @@ public class PremierLeagueGUI extends Application {
 
             });
 
-
             creatingTheMatchesRows(seasonBasedClubs[0], matches);
+
 
 
             ListView<HBox> listView = new ListView<>(matches);
@@ -300,12 +323,7 @@ public class PremierLeagueGUI extends Application {
 
             // --- --- -- -- - ---------- ---------------- -------- ----
 
-            searchByDateBTN.setOnAction(searchEvent -> {
-                // filter the matches and display by date
-                System.out.println(enteredDatedTxt.getText());   // gets the date entered by the user
 
-
-            });
 
             anchorPaneMatches.getStylesheets().clear();
             anchorPaneMatches.getStylesheets().add(PremierLeagueGUI.class.getResource("styles.css").toExternalForm());
