@@ -6,11 +6,15 @@ import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Optional;
@@ -30,9 +34,8 @@ public class PremierLeagueGUI extends Application {
 
         displayMenu(premierLeagueManager, primaryStage);
 
-
-
     }
+
     public void displayMenu(PremierLeagueManager premierLeagueManager, Stage primaryStage) {
         System.out.println(" ________________________________________________________________________________________________\n" +
                 "|                                        W E L C O M E                                           |\n" +
@@ -118,18 +121,51 @@ public class PremierLeagueGUI extends Application {
         AnchorPane anchorPane = new AnchorPane();
         anchorPane.setId("premierLeague-pane");
 
-        // Heading label
-        Label mainTitle = new Label("PREMIER LEAGUE TABLE");
-        mainTitle.setId("mainTitle");
-        mainTitle.setLayoutX(315);
-        mainTitle.setLayoutY(30);
+        // Heading Image
+        //Creating an image
+        Image image = null;
+        Image playerImage = null;
+        try {
+            image = new Image(new FileInputStream("src/plh.png"));
+            playerImage = new Image(new FileInputStream("src/ronaldo.png"));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        //Setting the image view
+        ImageView imageView = new ImageView(image);
+        ImageView imageViewPlayer = new ImageView(playerImage);
+
+        //Setting the position of the image
+        imageView.setLayoutX(180);
+        imageView.setLayoutY(-35);
+
+        //setting the fit height and width of the image view
+        imageView.setFitHeight(600);
+        imageView.setFitWidth(650);
+
+        //Setting the preserve ratio of the image view
+        imageView.setPreserveRatio(true);
+
+        // Adding player image
+        //Setting the position of the image
+        imageViewPlayer.setLayoutX(950);
+        imageViewPlayer.setLayoutY(30);
+
+        //setting the fit height and width of the image view
+        imageViewPlayer.setFitHeight(600);
+        imageViewPlayer.setFitWidth(600);
+
+        //Setting the preserve ratio of the image view
+        imageViewPlayer.setPreserveRatio(true);
+
 
         // Dropdown menu
         // Season Text
         Label seasonLabel = new Label("SEASON");
         seasonLabel.setId("seasonLabel");
         seasonLabel.setLayoutX(100);
-        seasonLabel.setLayoutY(75);
+        seasonLabel.setLayoutY(105);
 
         // Drop down
         options = FXCollections.observableArrayList();
@@ -142,7 +178,7 @@ public class PremierLeagueGUI extends Application {
         comboBox.setId("comboBox");
         comboBox.setStyle("");
         comboBox.setLayoutX(85);
-        comboBox.setLayoutY(100);
+        comboBox.setLayoutY(130);
 
         //
         premierLeagueManager.displayLeagueTableGUI();
@@ -155,19 +191,19 @@ public class PremierLeagueGUI extends Application {
         Button sortByGoalsBTN = new Button("SORT BY GOALS");
         sortByGoalsBTN.setId("sortByGoals");
         sortByGoalsBTN.setLayoutX(310);
-        sortByGoalsBTN.setLayoutY(100);
+        sortByGoalsBTN.setLayoutY(130);
 
         // sort by wins btn
         Button sortByWinsBTN = new Button("SORT BY WINS");
         sortByWinsBTN.setId("sortByWins");
         sortByWinsBTN.setLayoutX(590);
-        sortByWinsBTN.setLayoutY(100);
+        sortByWinsBTN.setLayoutY(130);
 
         // view played matches btn
         Button playedMatchesBTN = new Button("PLAYED MATCHES");
         playedMatchesBTN.setId("playedMatched");
         playedMatchesBTN.setLayoutX(800);
-        playedMatchesBTN.setLayoutY(100);
+        playedMatchesBTN.setLayoutY(130);
 
 
         // Displaying the Premier League Table--------------------------
@@ -231,7 +267,7 @@ public class PremierLeagueGUI extends Application {
         TableColumn<FootballClub, String> goalReceivedCOL = new TableColumn<>("GOAL RECEIVED");
         goalReceivedCOL.setCellValueFactory(new PropertyValueFactory<>("totalGoalsReceived"));
 
-        TableColumn<FootballClub, String> goalDifferenceCOL = new TableColumn<>("GOAL DIFFERENCE");
+        TableColumn<FootballClub, String> goalDifferenceCOL = new TableColumn<>("GOAL DIFFER");
         goalDifferenceCOL.setCellValueFactory(new PropertyValueFactory<>("totalGoalsDifference"));
 
         TableColumn<FootballClub, String> pointsCOL = new TableColumn<>("POINTS");
@@ -273,7 +309,7 @@ public class PremierLeagueGUI extends Application {
         vbox.getChildren().addAll(table);
         table.setPrefWidth(925);
         table.setLayoutX(40);
-        table.setLayoutY(175);
+        table.setLayoutY(205);
         // -----------------------------------
 
 
@@ -422,10 +458,10 @@ public class PremierLeagueGUI extends Application {
 
         anchorPane.getStylesheets().clear();
         anchorPane.getStylesheets().add(PremierLeagueGUI.class.getResource("styles.css").toExternalForm());
-        anchorPane.getChildren().addAll(mainTitle,seasonLabel,comboBox,sortByGoalsBTN, sortByWinsBTN, playedMatchesBTN
-                , vbox, table );
+        anchorPane.getChildren().addAll(imageView,seasonLabel,comboBox,sortByGoalsBTN, sortByWinsBTN, playedMatchesBTN
+                , vbox, table,imageViewPlayer );
         primaryStage.setTitle("Premier League Table");
-        primaryStage.setScene(new Scene(anchorPane, 1000, 620));
+        primaryStage.setScene(new Scene(anchorPane, 1200, 620));
         primaryStage.setResizable(false);
         primaryStage.show();
         primaryStage.setOnCloseRequest(event2 -> {      //on close request
