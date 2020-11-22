@@ -20,17 +20,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4ffd9da0-df3c-4a45-8b09-2b7528f01daf" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../OOP JAVAFX/out/production/OOP JAVAFX/PremierLeagueGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/../OOP JAVAFX/out/production/OOP JAVAFX/PremierLeagueGUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OOP JAVAFX/out/production/OOP JAVAFX/PremierLeagueManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/../OOP JAVAFX/out/production/OOP JAVAFX/PremierLeagueManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OOP JAVAFX/out/production/OOP JAVAFX/PremierLeagueTester.class" beforeDir="false" afterPath="$PROJECT_DIR$/../OOP JAVAFX/out/production/OOP JAVAFX/PremierLeagueTester.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OOP JAVAFX/src/PremierLeagueGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/../OOP JAVAFX/src/PremierLeagueGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../OOP JAVAFX/src/PremierLeagueManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/../OOP JAVAFX/src/PremierLeagueManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OOP JAVAFX/src/PremierLeagueTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/../OOP JAVAFX/src/PremierLeagueTester.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OOP-CourseWork/FootballClub.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OOP-CourseWork/FootballClub.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OOP-CourseWork/PremierLeagueManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OOP-CourseWork/PremierLeagueManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OOP-CourseWork/PremierLeagueTester.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OOP-CourseWork/PremierLeagueTester.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OOP-CourseWork/Tester.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OOP-CourseWork/Tester.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FootballClub.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FootballClub.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PremierLeagueManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PremierLeagueManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PremierLeagueTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PremierLeagueTester.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Tester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tester.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../objectDataFile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../objectDataFile.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../objectDataFile.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,9 +75,9 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.import" />
   </component>
   <component name="RunManager" selected="Application.PremierLeagueTester">
@@ -167,6 +166,7 @@
       <workItem from="1606033445732" duration="143000" />
       <workItem from="1606033945967" duration="3535000" />
       <workItem from="1606040093040" duration="57000" />
+      <workItem from="1606057924553" duration="162000" />
     </task>
     <task id="LOCAL-00012" summary="commit">
       <created>1604851031613</created>
@@ -594,11 +594,11 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="354" y="43" key="RollbackChangesDialog/0.0.1280.680/1920.0.1360.728@0.0.1280.680" timestamp="1604822003451" />
-    <state x="129" y="0" key="SettingsEditor" timestamp="1605029334075">
+    <state x="129" y="0" key="SettingsEditor" timestamp="1606058065703">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="129" y="0" key="SettingsEditor/0.0.1280.680/1920.0.1360.728@0.0.1280.680" timestamp="1605027049128" />
-    <state x="129" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1605029334075" />
+    <state x="129" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1606058065703" />
     <state x="371" y="98" key="extract.method.dialog" timestamp="1605038097472">
       <screen x="0" y="0" width="1280" height="680" />
     </state>

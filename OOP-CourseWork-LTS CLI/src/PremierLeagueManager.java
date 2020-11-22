@@ -37,7 +37,7 @@ public class PremierLeagueManager implements LeagueManager {
     }
 
     private void loadingData() {
-        File file = new File("../objectDataFile.txt");
+        File file = new File("objectDataFile.txt");
         FileInputStream fileInputStream = null;
         ObjectInputStream objectInputStream = null;
 
@@ -922,7 +922,7 @@ public class PremierLeagueManager implements LeagueManager {
         * This is because Serializable interface gives the permission to save the objects
         */
 
-        File file = new File("../objectDataFile.txt");
+        File file = new File("objectDataFile.txt");
         FileOutputStream fileOutputStream = null;
         ObjectOutputStream objectOutputStream = null;
 
@@ -967,7 +967,7 @@ public class PremierLeagueManager implements LeagueManager {
         * This makes sure that the file is empty, by overriding the content of the file with a single ""
         */
         try {
-            FileWriter file = new FileWriter("../objectDataFile.txt");
+            FileWriter file = new FileWriter("objectDataFile.txt");
             file.write("");
             file.close();
         } catch (IOException e) {
