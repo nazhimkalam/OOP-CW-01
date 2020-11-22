@@ -1,8 +1,5 @@
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 import java.util.stream.Collectors;
 /*
  * @author Nazhim Kalam
@@ -659,8 +656,32 @@ public class PremierLeagueManager implements LeagueManager {
         int month = validatingIntegers(" Enter the month (only integers are accepted): ");
         int year = validatingIntegers(" Enter the year (only integers are accepted): ");
 
-        // input the season of the match played
-        String seasonPlayed = validatingSeason();
+        // we are displaying the season options possible for the match played for the given date
+        String[] possibleSeason = new String[2];
+        System.out.println(" These are the possible seasons for the match played from the given date");
+
+        int lastTwoDigitsOfTheYear = Integer.parseInt(String.valueOf(year).substring(2));
+
+        possibleSeason[0] = (year-1) + "-" + (lastTwoDigitsOfTheYear);
+        possibleSeason[1] = (year) + "-" + (lastTwoDigitsOfTheYear+1);
+
+        for (int i = 0; i < possibleSeason.length; i++) {
+            System.out.println("  " + (i+1) + ". " + possibleSeason[i]);
+        }
+
+        int seasonOption = validatingIntegers(" Please select a season from the given list (Enter '1' or '2') : ");
+
+        boolean invalidOption = true;
+        while (invalidOption){                           // validating the inputs
+            if(seasonOption!=1 && seasonOption!=2){
+                System.out.println(" Invalid Input!");
+                seasonOption = validatingIntegers(" Please select a season from the given list (Enter '1' or '2') : ");
+            }else{
+                invalidOption=false;
+            }
+        }
+        String seasonPlayed = possibleSeason[seasonOption-1];
+
         allSeasonAdded.add(seasonPlayed);
 
         // type of match played 'Home' or 'Away'
@@ -955,6 +976,6 @@ public class PremierLeagueManager implements LeagueManager {
 
         System.out.println("\n Clearing the contents of the file . . .");
         System.out.println(" Successfully cleared the file details!");
-        loadingData();      // loading the empty file now
+        loadingData();       // loading the empty file now
     }
 }

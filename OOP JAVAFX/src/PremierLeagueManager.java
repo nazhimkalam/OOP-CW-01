@@ -1030,11 +1030,22 @@ public class PremierLeagueManager implements LeagueManager {
             numberGoalScored_club_2 = random.nextInt(7);
         }
 
+        // setting the random date
+        int[] possibleYears = new int[2];
+
         int seasonYear = Integer.parseInt(selectedSeason.split("-")[0]);
+
+        int lastTwoDigitsOfTheYear = Integer.parseInt(String.valueOf(seasonYear).substring(2));
+        possibleYears[0] = seasonYear;
+        possibleYears[1] = seasonYear + 1;
+
+
         int day = random.nextInt(30)+1;
         int month = random.nextInt(12)+1;
+        System.out.println(seasonYear);
+        int year = possibleYears[random.nextInt(2)];
 
-        DateMatch date = new DateMatch(day, month, seasonYear);
+        DateMatch date = new DateMatch(day, month, year);
         String[] matchTypes = new String[]{"Home", "Away"};
         String matchType = matchTypes[random.nextInt(2)];
 

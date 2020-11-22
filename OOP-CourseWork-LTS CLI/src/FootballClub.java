@@ -193,7 +193,7 @@ public class FootballClub extends SportClub{
             Player player = new Player(playerNames[i],
                     foot[random.nextInt(2)],
                     Math.round(random.nextDouble()*1000)/10.0,
-                    random.nextInt(20)+1,
+                    random.nextInt(10)+1,
                     random.nextInt(50)+1);
 
             playersList.add(player);

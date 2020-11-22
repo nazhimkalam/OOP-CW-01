@@ -404,13 +404,18 @@ public class PremierLeagueGUI extends Application {
 
         // sort the matches in ascending order of the date
         Comparator<Match> sortByDate = (match1, match2) -> {
-            if (match1.getDate().getMonth() == match2.getDate().getMonth()) {
-                if (match1.getDate().getDay() > match2.getDate().getDay()) {
+            if(match1.getDate().getYear() == match2.getDate().getYear()){
+                if (match1.getDate().getMonth() == match2.getDate().getMonth()) {
+                    if (match1.getDate().getDay() > match2.getDate().getDay()) {
+                        return 1;
+                    }
+                } else if (match1.getDate().getMonth() > match2.getDate().getMonth()) {
                     return 1;
                 }
-            } else if (match1.getDate().getMonth() > match2.getDate().getMonth()) {
+            }else if (match1.getDate().getYear() > match2.getDate().getYear()) {
                 return 1;
             }
+
             return -1;
         };
         allMatches.sort(sortByDate);  // sorting the matches according to the date
@@ -420,14 +425,14 @@ public class PremierLeagueGUI extends Application {
             boolean matchNotAvailable = true;
 
             // NOTE THAT THIS IS TO PREVENT THE REPEATING OF MATCHES IN ALL CLUBS WHICH IS DUPLICATING
-            for (int index = 0; index < matchesDisplayed.size(); index++) {
-                if (match.getOpponentClubName().equalsIgnoreCase(matchesDisplayed.get(index).getParticipatedCLubName())) {
+            for (Match value : matchesDisplayed) {
+                if (match.getOpponentClubName().equalsIgnoreCase(value.getParticipatedCLubName())) {
                     // NOTE: goal scored from the club is equal to goal received from the opponent club
                     if (
-                            (matchesDisplayed.get(index).getGoalReceived() == match.getGoalScored()) &&
-                                    (matchesDisplayed.get(index).getGoalScored() == match.getGoalReceived()) &&
-                                    (matchesDisplayed.get(index).getMatchType().equalsIgnoreCase(match.getMatchType())) &&
-                                    (matchesDisplayed.get(index).getDate().equals(match.getDate()))
+                            (value.getGoalReceived() == match.getGoalScored()) &&
+                                    (value.getGoalScored() == match.getGoalReceived()) &&
+                                    (value.getMatchType().equalsIgnoreCase(match.getMatchType())) &&
+                                    (value.getDate().equals(match.getDate()))
                     ) {
                         matchNotAvailable = false;
                     }
