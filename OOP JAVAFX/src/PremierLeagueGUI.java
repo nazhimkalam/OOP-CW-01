@@ -3,6 +3,7 @@ import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.embed.swing.JFXPanel;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -15,6 +16,7 @@ import javafx.stage.Stage;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Optional;
+import java.util.concurrent.CountDownLatch;
 
 public class PremierLeagueGUI extends Application {
 
@@ -25,9 +27,9 @@ public class PremierLeagueGUI extends Application {
     public static boolean sortByWinsClicked = false;
     public static boolean sortByPointsClicked = false;
 
-
     @Override
     public void start(Stage primaryStage) {
+
         // call the load method from the main class
         premierLeagueManager.loadingData();
 
