@@ -1,3 +1,6 @@
+import javafx.application.Application;
+import javafx.application.Platform;
+
 import java.util.Scanner;
 
 public class PremierLeagueTester {
@@ -6,7 +9,7 @@ public class PremierLeagueTester {
         displayMenu(premierLeagueManager);
     }
 
-    private static void displayMenu(PremierLeagueManager premierLeagueManager) {
+    public static void displayMenu(PremierLeagueManager premierLeagueManager) {
         System.out.println(" ________________________________________________________________________________________________\n" +
         "|                                        W E L C O M E                                           |\n" +
         "|________________________________________________________________________________________________|\n" +
@@ -19,7 +22,8 @@ public class PremierLeagueTester {
         "| (Option 5) Enter '5' to add a played match                                                     |\n" +
         "| (Option 6) Enter '6' to save all the information entered into a file                           |\n" +
         "| (Option 7) Enter '7' to clear the data in the file                                             |\n" +
-        "| (Option 8) Enter '8' to exit the program                                                       |\n" +
+        "| (Option 8) Enter '8' to display the GUI                                                        |\n" +
+        "| (Option 9) Enter '9' to exit the program                                                       |\n" +
         "|________________________________________________________________________________________________|\n");
 
         // getting the users input
@@ -57,6 +61,9 @@ public class PremierLeagueTester {
                 displayMenu(premierLeagueManager);
                 break;
             case 8:
+                Application.launch(PremierLeagueGUI.class);
+                break;
+            case 9:
                 // Asking the user if he needs to save before exiting or not
                 Scanner input = new Scanner(System.in);
                 System.out.println("\n Do you want to save before exiting? ");

@@ -1,5 +1,5 @@
 import javafx.application.Application;
-import javafx.beans.property.SimpleIntegerProperty;
+import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -13,9 +13,8 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.Comparator;
+import java.util.Optional;
 
 public class PremierLeagueGUI extends Application {
 
@@ -31,7 +30,6 @@ public class PremierLeagueGUI extends Application {
     public void start(Stage primaryStage) {
         // call the load method from the main class
         premierLeagueManager.loadingData();
-        //
 
         // Main pane
         AnchorPane anchorPane = new AnchorPane();
@@ -53,7 +51,6 @@ public class PremierLeagueGUI extends Application {
         // Drop down
         options = FXCollections.observableArrayList();
         ArrayList<String> orderSeasons = premierLeagueManager.sortingTheSeasonsInAscendingOrder();
-        System.out.println(orderSeasons);
         // update the dropdown
         options.addAll(orderSeasons);
 
@@ -65,7 +62,7 @@ public class PremierLeagueGUI extends Application {
         comboBox.setLayoutY(100);
 
         //
-        premierLeagueManager.displayLeagueTable();
+        premierLeagueManager.displayLeagueTableGUI();
         final ArrayList<FootballClub>[] seasonBasedClubs = new ArrayList[1];
         seasonBasedClubs[0] = PremierLeagueManager.seasonFilteredClubs;
         sortByPointsClicked = true;
@@ -263,7 +260,7 @@ public class PremierLeagueGUI extends Application {
             matchPlayedComboBox.setLayoutX(450);
             matchPlayedComboBox.setLayoutY(95);
 
-            premierLeagueManager.displayLeagueTable();  // we run this to refresh/ update the seasonBasedClubs list
+            premierLeagueManager.displayLeagueTableGUI();  // we run this to refresh/ update the seasonBasedClubs list
             ObservableList<HBox> matches = FXCollections.observableArrayList();
 
             // generating random match for the club
@@ -274,7 +271,7 @@ public class PremierLeagueGUI extends Application {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                premierLeagueManager.displayLeagueTable();
+                premierLeagueManager.displayLeagueTableGUI();
                 seasonBasedClubs[0] = PremierLeagueManager.seasonFilteredClubs;
                 creatingTheMatchesRows(seasonBasedClubs[0], matches);
 
@@ -306,7 +303,7 @@ public class PremierLeagueGUI extends Application {
 
             // before coming to this lets display the matches played for 2020-21
             matchPlayedComboBox.setOnAction(eventCombo -> {
-                premierLeagueManager.displayLeagueTable();
+                premierLeagueManager.displayLeagueTableGUI();
                 seasonBasedClubs[0] = PremierLeagueManager.seasonFilteredClubs;
                 creatingTheMatchesRows(seasonBasedClubs[0], matches);
 
@@ -333,6 +330,10 @@ public class PremierLeagueGUI extends Application {
             primaryStage.setTitle("Played Matches");
             primaryStage.setScene(new Scene(anchorPaneMatches, 1000, 640));         //creating and setting scene
             primaryStage.show();
+            primaryStage.setOnCloseRequest(event2 -> {      //on close request
+                event2.consume();
+                closeProgram(primaryStage);
+            });
         });
 
 
@@ -344,15 +345,33 @@ public class PremierLeagueGUI extends Application {
         primaryStage.setScene(new Scene(anchorPane, 1000, 620));
         primaryStage.setResizable(false);
         primaryStage.show();
+        primaryStage.setOnCloseRequest(event2 -> {      //on close request
+            event2.consume();
+            closeProgram(primaryStage);
+        });
+    }
+
+    // when user close the program
+    private void closeProgram(Stage primaryStage) {
+        Alert confirmationBox = new Alert(Alert.AlertType.CONFIRMATION);         //creating the confirmation box
+        confirmationBox.setTitle("Close program");                               //setting title for the confirmation box
+        confirmationBox.setHeaderText("Are you sure you want to close ?");       //setting header for the confirmation box
+        ButtonType yes = new ButtonType("Yes");                                  //creating the button YES
+        ButtonType no = new ButtonType("No");                                    //creating the button NO
+        confirmationBox.getButtonTypes().setAll(yes, no);
+        Optional<ButtonType> result = confirmationBox.showAndWait();             //displays the confirmation box
+        if (result.get() == yes){                                                //checks if the user has clicked YES
+            primaryStage.close();                                                       //closes the window
+            PremierLeagueTester.displayMenu(premierLeagueManager);                      //calls the displayMenu method
+        }
     }
 
     // updating the table content
     private void updatingTableContent(ObservableList<FootballClub> data, ArrayList<FootballClub> seasonBasedClub) {
         data.clear();
-        premierLeagueManager.displayLeagueTable();
+        premierLeagueManager.displayLeagueTableGUI();
         seasonBasedClub = PremierLeagueManager.seasonFilteredClubs;
         int NewPosition = 1;
-        System.out.println(seasonBasedClub);
         for (FootballClub club : seasonBasedClub) {
             ClubStats clubStats = new ClubStats(club.getClubStatistics().getTotalMatchesPlayed(),
                     club.getClubStatistics().getTotalWins(),club.getClubStatistics().getTotalDraws(),
@@ -376,137 +395,124 @@ public class PremierLeagueGUI extends Application {
 
         // populating the allMatches list will all the matches from the seasonBasedClub
         // adding all the matches played for that season inside the allMatches list
-        System.out.println("-------------------------------------------");
         for (FootballClub footballClub: seasonBasedClub) {
             allMatches.addAll(footballClub.getMatchesPlayed());
         }
-        for (FootballClub footballClub: seasonBasedClub) {
-            for (Match match : footballClub.getMatchesPlayed()) {
-                System.out.println(match);
-            }
-        }
-            System.out.println("-------------------------------------------");
 
 
-            // sort the matches in ascending order of the date
-            Comparator<Match> sortByDate = (match1, match2) -> {
-                if (match1.getDate().getMonth() == match2.getDate().getMonth()) {
-                    if (match1.getDate().getDay() > match2.getDate().getDay()) {
-                        return 1;
-                    }
-                } else if (match1.getDate().getMonth() > match2.getDate().getMonth()) {
+        // sort the matches in ascending order of the date
+        Comparator<Match> sortByDate = (match1, match2) -> {
+            if (match1.getDate().getMonth() == match2.getDate().getMonth()) {
+                if (match1.getDate().getDay() > match2.getDate().getDay()) {
                     return 1;
                 }
-                return -1;
-            };
-            allMatches.sort(sortByDate);  // sorting the matches according to the date
+            } else if (match1.getDate().getMonth() > match2.getDate().getMonth()) {
+                return 1;
+            }
+            return -1;
+        };
+        allMatches.sort(sortByDate);  // sorting the matches according to the date
 
-            allMatches.forEach(match -> {
-                System.out.println(match.getParticipatedCLubName());
-            });
-            // MAIN CODE FOR DISPLAYING THE MATCHES
-            for (Match match : allMatches) {
-                boolean matchNotAvailable = true;
+        // MAIN CODE FOR DISPLAYING THE MATCHES
+        for (Match match : allMatches) {
+            boolean matchNotAvailable = true;
 
-                // NOTE THAT THIS IS TO PREVENT THE REPEATING OF MATCHES IN ALL CLUBS WHICH IS DUPLICATING
-                for (int index = 0; index < matchesDisplayed.size(); index++) {
-                    if (match.getOpponentClubName().equalsIgnoreCase(matchesDisplayed.get(index).getParticipatedCLubName())) {
-                        // NOTE: goal scored from the club is equal to goal received from the opponent club
-                        if (
-                                (matchesDisplayed.get(index).getGoalReceived() == match.getGoalScored()) &&
-                                        (matchesDisplayed.get(index).getGoalScored() == match.getGoalReceived()) &&
-                                        (matchesDisplayed.get(index).getMatchType().equalsIgnoreCase(match.getMatchType())) &&
-                                        (matchesDisplayed.get(index).getDate().equals(match.getDate()))
-                        ) {
-                            matchNotAvailable = false;
-                        }
+            // NOTE THAT THIS IS TO PREVENT THE REPEATING OF MATCHES IN ALL CLUBS WHICH IS DUPLICATING
+            for (int index = 0; index < matchesDisplayed.size(); index++) {
+                if (match.getOpponentClubName().equalsIgnoreCase(matchesDisplayed.get(index).getParticipatedCLubName())) {
+                    // NOTE: goal scored from the club is equal to goal received from the opponent club
+                    if (
+                            (matchesDisplayed.get(index).getGoalReceived() == match.getGoalScored()) &&
+                                    (matchesDisplayed.get(index).getGoalScored() == match.getGoalReceived()) &&
+                                    (matchesDisplayed.get(index).getMatchType().equalsIgnoreCase(match.getMatchType())) &&
+                                    (matchesDisplayed.get(index).getDate().equals(match.getDate()))
+                    ) {
+                        matchNotAvailable = false;
                     }
                 }
+            }
 
-                if (matchNotAvailable) {
-                    matchesDisplayed.add(match);
+            if (matchNotAvailable) {
+                matchesDisplayed.add(match);
 
-                    //Instantiating the HBox class
-                    HBox hbox = new HBox();
-                    hbox.setId("hboxMatches");
+                //Instantiating the HBox class
+                HBox hbox = new HBox();
+                hbox.setId("hboxMatches");
 
-                    VBox vboxClubOne = new VBox();
-                    vboxClubOne.setId("vboxClubOne");
+                VBox vboxClubOne = new VBox();
+                vboxClubOne.setId("vboxClubOne");
 
-                    VBox versus = new VBox();
-                    versus.setId("versus");
+                VBox versus = new VBox();
+                versus.setId("versus");
 
-                    VBox vboxClubTwo = new VBox();
-                    vboxClubTwo.setId("vboxClubTwo");
+                VBox vboxClubTwo = new VBox();
+                vboxClubTwo.setId("vboxClubTwo");
 
-                    // Adding content for the VBox (Main club)
-                    Label clubNameOneLBL = new Label(match.getParticipatedCLubName().toUpperCase());
-                    clubNameOneLBL.setId("clubNameOneLBL");
+                // Adding content for the VBox (Main club)
+                Label clubNameOneLBL = new Label(match.getParticipatedCLubName().toUpperCase());
+                clubNameOneLBL.setId("clubNameOneLBL");
 
-                    // clubTwo is the opponent club
-                    Label clubNameTwoLBL = new Label(match.getOpponentClubName().toUpperCase());
-                    clubNameTwoLBL.setId("clubNameTwoLBL");
+                // clubTwo is the opponent club
+                Label clubNameTwoLBL = new Label(match.getOpponentClubName().toUpperCase());
+                clubNameTwoLBL.setId("clubNameTwoLBL");
 
-                    Label dateOneLBL = new Label(match.getDate().getDay() + "/" +
-                            match.getDate().getMonth() + "/" + match.getDate().getYear());
+                Label dateOneLBL = new Label(match.getDate().getDay() + "/" +
+                        match.getDate().getMonth() + "/" + match.getDate().getYear());
 
-                    Label matchTypeOneLBL = new Label(match.getMatchType().toUpperCase());
+                Label matchTypeOneLBL = new Label(match.getMatchType().toUpperCase());
 
-                    Label dateTwoLBL = new Label(match.getDate().getDay() + "/" +
-                            match.getDate().getMonth() + "/" + match.getDate().getYear());
+                Label dateTwoLBL = new Label(match.getDate().getDay() + "/" +
+                        match.getDate().getMonth() + "/" + match.getDate().getYear());
 
-                    Label matchTypeTwoLBL = new Label(match.getMatchType().toUpperCase());
+                Label matchTypeTwoLBL = new Label(match.getMatchType().toUpperCase());
 
-                    // main club score
-                    Label goalScoredByClubOneLBL = new Label(match.getGoalScored() + "");
-                    goalScoredByClubOneLBL.setId("goalScoredByClubOneLBL");
+                // main club score
+                Label goalScoredByClubOneLBL = new Label(match.getGoalScored() + "");
+                goalScoredByClubOneLBL.setId("goalScoredByClubOneLBL");
 
-                    // opponent club score
-                    Label goalScoredByClubTwoLBL = new Label(match.getGoalReceived() + "");
-                    goalScoredByClubTwoLBL.setId("goalScoredByClubTwoLBL");
+                // opponent club score
+                Label goalScoredByClubTwoLBL = new Label(match.getGoalReceived() + "");
+                goalScoredByClubTwoLBL.setId("goalScoredByClubTwoLBL");
 
-                    Label versusLBL = new Label("VS");
-                    versus.setId("versusLBL");
+                Label versusLBL = new Label("VS");
+                versus.setId("versusLBL");
 
-                    // setting the widths
-                    vboxClubOne.setPrefWidth(150);
-                    vboxClubTwo.setPrefWidth(150);
-                    versus.setPrefWidth(150);
+                // setting the widths
+                vboxClubOne.setPrefWidth(150);
+                vboxClubTwo.setPrefWidth(150);
+                versus.setPrefWidth(150);
 
-                    // adding content for vboxClubOne
-                    vboxClubOne.setSpacing(5);
-                    vboxClubOne.getChildren().addAll(clubNameOneLBL, goalScoredByClubOneLBL, matchTypeOneLBL, dateOneLBL);
+                // adding content for vboxClubOne
+                vboxClubOne.setSpacing(5);
+                vboxClubOne.getChildren().addAll(clubNameOneLBL, goalScoredByClubOneLBL, matchTypeOneLBL, dateOneLBL);
 
-                    // adding content for versus
-                    versus.setSpacing(5);
-                    versus.getChildren().addAll(versusLBL);
+                // adding content for versus
+                versus.setSpacing(5);
+                versus.getChildren().addAll(versusLBL);
 
-                    // adding content for vboxClubTwo
-                    vboxClubTwo.setSpacing(5);
-                    vboxClubTwo.getChildren().addAll(clubNameTwoLBL, goalScoredByClubTwoLBL, matchTypeTwoLBL, dateTwoLBL);
+                // adding content for vboxClubTwo
+                vboxClubTwo.setSpacing(5);
+                vboxClubTwo.getChildren().addAll(clubNameTwoLBL, goalScoredByClubTwoLBL, matchTypeTwoLBL, dateTwoLBL);
 
-                    // ending adding content for the VBox
+                // ending adding content for the VBox
 
-                    //Setting the space between the nodes of a HBox pane
-                    hbox.setSpacing(10);
+                //Setting the space between the nodes of a HBox pane
+                hbox.setSpacing(10);
 
-                    //Setting the margin to the nodes
-                    HBox.setMargin(vboxClubOne, new Insets(5));
-                    HBox.setMargin(versus, new Insets(5));
-                    HBox.setMargin(vboxClubTwo, new Insets(5));
+                //Setting the margin to the nodes
+                HBox.setMargin(vboxClubOne, new Insets(5));
+                HBox.setMargin(versus, new Insets(5));
+                HBox.setMargin(vboxClubTwo, new Insets(5));
 
-                    //retrieving the observable list of the HBox
-                    hbox.getChildren().addAll(vboxClubOne, versus, vboxClubTwo);
+                //retrieving the observable list of the HBox
+                hbox.getChildren().addAll(vboxClubOne, versus, vboxClubTwo);
 
-                    matches.add(hbox);
+                matches.add(hbox);
 
-                }
+            }
 
         }
     }
-
-
-
 
 
     public static void main(String[] args) {
