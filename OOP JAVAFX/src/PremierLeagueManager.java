@@ -968,6 +968,7 @@ public class PremierLeagueManager implements LeagueManager {
 
         System.out.println("\n Saving the data . . .");
         System.out.println(" Successfully saved!");
+        loadingData();
 
     }
 
@@ -1042,7 +1043,7 @@ public class PremierLeagueManager implements LeagueManager {
 
         int day = random.nextInt(30)+1;
         int month = random.nextInt(12)+1;
-        System.out.println(seasonYear);
+//        System.out.println(seasonYear);
         int year = possibleYears[random.nextInt(2)];
 
         DateMatch date = new DateMatch(day, month, year);

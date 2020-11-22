@@ -334,7 +334,7 @@ public class PremierLeagueGUI extends Application {
                     e.printStackTrace();
                 }
 
-                start(primaryStage);
+                guiProgram(primaryStage);
             });
 
             // Displaying the list view of the matches and its details
