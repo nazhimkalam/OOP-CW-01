@@ -20,22 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4ffd9da0-df3c-4a45-8b09-2b7528f01daf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../OOP JAVAFX/out/production/OOP JAVAFX/FootballClub.class" beforeDir="false" afterPath="$PROJECT_DIR$/../OOP JAVAFX/out/production/OOP JAVAFX/FootballClub.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../OOP JAVAFX/out/production/OOP JAVAFX/Match.class" beforeDir="false" afterPath="$PROJECT_DIR$/../OOP JAVAFX/out/production/OOP JAVAFX/Match.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../OOP JAVAFX/out/production/OOP JAVAFX/PremierLeagueGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/../OOP JAVAFX/out/production/OOP JAVAFX/PremierLeagueGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../OOP JAVAFX/out/production/OOP JAVAFX/PremierLeagueManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/../OOP JAVAFX/out/production/OOP JAVAFX/PremierLeagueManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../OOP JAVAFX/src/FootballClub.java" beforeDir="false" afterPath="$PROJECT_DIR$/../OOP JAVAFX/src/FootballClub.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../OOP JAVAFX/src/Match.java" beforeDir="false" afterPath="$PROJECT_DIR$/../OOP JAVAFX/src/Match.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../OOP JAVAFX/src/PremierLeagueGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/../OOP JAVAFX/src/PremierLeagueGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../OOP JAVAFX/src/PremierLeagueManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/../OOP JAVAFX/src/PremierLeagueManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OOP-CourseWork/Match.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OOP-CourseWork/Match.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OOP-CourseWork/PremierLeagueManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OOP-CourseWork/PremierLeagueManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OOP-CourseWork/PremierLeagueTester.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OOP-CourseWork/PremierLeagueTester.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Match.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Match.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PremierLeagueManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PremierLeagueManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PremierLeagueTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PremierLeagueTester.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../objectDataFile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../objectDataFile.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -167,6 +152,7 @@
       <workItem from="1605965037720" duration="77000" />
       <workItem from="1605965603734" duration="90000" />
       <workItem from="1605966001475" duration="63000" />
+      <workItem from="1606024012831" duration="85000" />
     </task>
     <task id="LOCAL-00012" summary="commit">
       <created>1604851031613</created>

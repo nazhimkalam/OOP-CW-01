@@ -1,6 +1,7 @@
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Random;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 /*
@@ -838,7 +839,7 @@ public class PremierLeagueManager implements LeagueManager {
                                       int numberGoalScored_club_2, DateMatch date, String seasonPlayed,
                                       FootballClub footballClub, String matchType) {
 
-        System.out.println("\n Enter further statistics for the club " + clubName_02);
+//        System.out.println("\n Enter further statistics for the club " + clubName_02);
         MatchStats matchStats = getStatsOfMatch(footballClub);
         Match matchPlayed = new Match(numberGoalScored_club_2, numberGoalScored_club_1, matchStats, date,
                 clubName_01, seasonPlayed,matchType, clubName_02);
@@ -846,17 +847,17 @@ public class PremierLeagueManager implements LeagueManager {
     }
 
     private MatchStats getStatsOfMatch(FootballClub footballClub) {
-        // validating stats
-        int numberOfYellowCards = validatingIntegers(" Enter the number of yellow cards given: ");
-        int numberOfRedCards = validatingIntegers(" Enter the number of red cards given: ");
-        int shots = validatingIntegers(" Enter the number of shots taken: ");
-        int shotsOfTarget = validatingIntegers(" Enter the number of target shots taken: ");
-        int offSides = validatingIntegers(" Enter the number of off sides occurrence: ");
-        int fouls = validatingIntegers(" Enter the number of fouls: ");
-        int corners = validatingIntegers(" Enter the number of corner shots taken: ");
-        int passes = validatingIntegers(" Enter the number of passes given: ");
-        double passAccuracy = validatingFloatingValues(" Enter the pass accuracy (%): ");
-        double possession = validatingFloatingValues(" Enter the possession (%): ");
+        Random random = new Random();
+        int numberOfYellowCards = random.nextInt(5);
+        int numberOfRedCards = random.nextInt(5);
+        int shots = random.nextInt(20);
+        int shotsOfTarget = random.nextInt(20);
+        int offSides = random.nextInt(30);
+        int fouls = random.nextInt(30);
+        int corners = random.nextInt(30);
+        int passes = random.nextInt(30);
+        double passAccuracy = Math.round(random.nextDouble()*1000)/10.0;
+        double possession = Math.round(random.nextDouble()*1000)/10.0;
 
         // updating the total red and yellow cards for the club
         footballClub.setTotalYellowCards((footballClub.getTotalYellowCards() + numberOfYellowCards));
@@ -889,18 +890,6 @@ public class PremierLeagueManager implements LeagueManager {
             input.next();
         }
         return input.nextInt();
-    }
-
-    // validating the floating values or decimal values
-    private double validatingFloatingValues(String message){
-        Scanner input = new Scanner(System.in);
-        System.out.print(message);
-        while (!input.hasNextDouble()) {
-            System.out.println("\n Invalid input!");
-            System.out.print(message);
-            input.next();
-        }
-        return input.nextDouble();
     }
 
     // Overriding the saveDataIntoFile method from the interface
@@ -968,14 +957,4 @@ public class PremierLeagueManager implements LeagueManager {
         System.out.println(" Successfully cleared the file details!");
         loadingData();      // loading the empty file now
     }
-
-//    public void testerMethod() {
-//        for (FootballClub fb: premierLeagueFootballClubList) {
-//            for (Match m: fb.getMatchesPlayed()) {
-//                if(m.getSeason().equalsIgnoreCase("2020-21")){
-//                    System.out.println(m.getParticipatedCLubName());
-//                }
-//            }
-//        }
-//    }
 }

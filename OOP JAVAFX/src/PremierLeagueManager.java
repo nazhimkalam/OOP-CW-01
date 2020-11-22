@@ -924,18 +924,6 @@ public class PremierLeagueManager implements LeagueManager {
         return input.nextInt();
     }
 
-    // validating the floating values or decimal values
-    private double validatingFloatingValues(String message){
-        Scanner input = new Scanner(System.in);
-        System.out.print(message);
-        while (!input.hasNextDouble()) {
-            System.out.println("\n Invalid input!");
-            System.out.print(message);
-            input.next();
-        }
-        return input.nextDouble();
-    }
-
     // Overriding the saveDataIntoFile method from the interface
     @Override
     public void saveDataIntoFile() {
