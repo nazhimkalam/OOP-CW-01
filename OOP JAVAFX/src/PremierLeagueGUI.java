@@ -765,8 +765,8 @@ public class PremierLeagueGUI extends Application {
         switch (userSelectOption){
             case 1:
                 // creating an instance of the new footballClub and adding it into the premierClub list
-                FootballClub footballClub = new FootballClub(clubName, location, coachName);
-                result = premierLeagueManager.createClub(footballClub);
+                result = premierLeagueManager.createClub(clubName, location, coachName, null,
+                        "normal");
                 break;
 
             case 2:
@@ -774,9 +774,8 @@ public class PremierLeagueGUI extends Application {
                 String universityName = validateString(" Enter the university name: ");
 
                 // creating an instance of the new universityFootballClub and adding it into the premierClub list
-                UniversityFootballClub universityFootballClub = new UniversityFootballClub(clubName, location,
-                        coachName, universityName);
-                result = premierLeagueManager.createClub(universityFootballClub);
+                result = premierLeagueManager.createClub(clubName, location,
+                        coachName, universityName,"university");
                 break;
 
             case 3:
@@ -784,8 +783,7 @@ public class PremierLeagueGUI extends Application {
                 String schoolName = validateString(" Enter the school name: ");
 
                 // creating an instance of the new schoolFootballClub and adding it into the premierClub list
-                SchoolFootballClub schoolFootballClub = new SchoolFootballClub(clubName, location, coachName,schoolName);
-                result = premierLeagueManager.createClub(schoolFootballClub);
+                result = premierLeagueManager.createClub(clubName, location, coachName,schoolName,"school");
                 break;
 
             default:

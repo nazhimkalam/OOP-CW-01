@@ -70,11 +70,26 @@ public class PremierLeagueManager implements LeagueManager {
 
     // Overriding the createClub method from the interface
     @Override
-    public String createClub(SportClub club) {
+    public String createClub(String clubName, String location, String coachName, String universitySchoolName, String clubType) {
+        FootballClub club = null;
+
+        switch (clubType) {
+            case "normal":
+                club = new FootballClub(clubName, location, coachName);
+                break;
+
+            case "university":
+                club = new UniversityFootballClub(clubName, location, coachName, universitySchoolName);
+                break;
+
+            case "school":
+                club = new SchoolFootballClub(clubName, location, coachName, universitySchoolName);
+                break;
+        }
 
         if(premierLeagueFootballClubList.size()<20)         // This means that there is space to add more clubs/teams
         {
-            premierLeagueFootballClubList.add((FootballClub) club);
+            premierLeagueFootballClubList.add(club);
             return " Clubs Successfully added!";
         }
         return " Sorry there is no room for a new club, the maximum number of club limit has been reached!";
