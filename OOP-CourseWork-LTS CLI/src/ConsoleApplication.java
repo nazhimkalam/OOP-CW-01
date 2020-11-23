@@ -1,9 +1,21 @@
 import java.util.Scanner;
 
+/*
+ * @author Nazhim Kalam
+ * @UowID: w1761265
+ * @StudentID: SE2019281
+ * OOP CW 01
+ * Java version 8 or higher required
+ */
+
+/*
+ *   ASSUMPTIONS:
+ *   --> ALL THE FOOTBALL CLUB TEAMS CREATED SHOULD HAVE UNIQUE TEAM NAMES
+ */
+
 public class ConsoleApplication {
     // VARIABLES
     private static final LeagueManager premierLeagueManager = new PremierLeagueManager();
-
 
     // MAIN METHOD
     public static void main(String[] args) {
@@ -72,7 +84,6 @@ public class ConsoleApplication {
                 result = premierLeagueManager.clearDataFile();          // clearing the file
                 System.out.println(result);
 
-                PremierLeagueManager.loadingData();
                 displayMenu();
                 break;
             case 8:
@@ -237,7 +248,10 @@ public class ConsoleApplication {
         String result = premierLeagueManager.displayStats(clubName);
 
         // DISPLAYING THE RESULT IF THERE WAS NO CLUB WITH THE GIVEN NAME
-        if(!result.equalsIgnoreCase("Result Displayed")) System.out.println(result);
+        if(!result.equals(" Result Displayed")) {
+            System.out.println(result);
+
+        }
 
     }
 
@@ -249,37 +263,46 @@ public class ConsoleApplication {
         System.out.print(" Enter the name of the club you wish to remove from the premier league: ");
         String clubName = input.nextLine();
 
+        String confirmation = "";
+        boolean isValidClubName = false;
         // DISPLAY RESULT OF THE ITEM TO BE REMOVED
-        System.out.println("\n These are some details of the club you wanted to be deleted \n");
         for (int i = 0; i < PremierLeagueManager.premierLeagueFootballClubList.size(); i++) {
             if(PremierLeagueManager.premierLeagueFootballClubList.get(i).getName().equalsIgnoreCase(clubName)){
+                System.out.println("\n These are some details of the club you wanted to be deleted \n");
                 System.out.println(PremierLeagueManager.premierLeagueFootballClubList.get(i));
+                isValidClubName = true;
+
+                // ASK FOR CONFIRMATION
+                System.out.print(" Enter 'y' or 'Y' to confirm the deletion or enter any other key to skip the deletion: ");
+                confirmation = input.nextLine();
             }
         }
 
-        // ASK FOR CONFIRMATION
-        System.out.print(" Enter 'y' or 'Y' to confirm the deletion or enter any other key to skip the deletion: ");
-        String confirmation = input.nextLine();
-        if(confirmation.equalsIgnoreCase("y")){
+        if(isValidClubName){
+            if(confirmation.equalsIgnoreCase("y")){
 
-            // GETTING THE REMOVED CLUB RESULT (MAY BE NULL OR THE CLUB REMOVED)
-            FootballClub removedClub = (FootballClub) premierLeagueManager.deleteCLub(clubName);
+                // GETTING THE REMOVED CLUB RESULT (MAY BE NULL OR THE CLUB REMOVED)
+                FootballClub removedClub = (FootballClub) premierLeagueManager.deleteCLub(clubName);
 
-            // THIS GIVES THE OUTPUT TO THE USER INDICATING IF THE ITEM WAS SUCCESSFULLY REMOVED OR NOT
-            if(removedClub != null){
-                System.out.println("\n The club with the name '" + clubName + "' is successfully removed!\n");
-                System.out.println(" Here are some details related to the deleted club ");
-                System.out.println(removedClub);
+                // THIS GIVES THE OUTPUT TO THE USER INDICATING IF THE ITEM WAS SUCCESSFULLY REMOVED OR NOT
+                if(removedClub != null){
+                    System.out.println("\n The club with the name '" + clubName + "' is successfully removed!\n");
+                    System.out.println(" Here are some details related to the deleted club ");
+                    System.out.println(removedClub);
+                }else{
+                    System.out.println("\n Sorry, there is no club with the given name '" + clubName + "'");
+                }
+
             }else{
-                System.out.println("\n Sorry, there is no club with the given name '" + clubName + "'");
-            }
+                System.out.println(" Successfully cancelled the deletion request for club '" + clubName + "'");
 
+            }
         }else{
-            System.out.println(" Successfully cancelled the deletion request for club '" + clubName + "'");
+            System.out.println("\n Sorry, there is no club with the given name '" + clubName + "'");
 
         }
 
-        
+
     }
 
     // THIS DEALS WITH CREATING THE FOOTBALL CLUB FOR THE LIST
@@ -313,7 +336,7 @@ public class ConsoleApplication {
             notInRange = true;
         }while (userSelectOption < 1 || userSelectOption > 3);
 
-//        insert = new Scanner(System.in);
+        insert = new Scanner(System.in);
 
 
         System.out.println("\n NOTE: ALL THE CLUB NAMES HAS TO BE UNIQUE" +

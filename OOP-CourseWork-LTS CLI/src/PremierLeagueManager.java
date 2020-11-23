@@ -1,18 +1,14 @@
 import java.io.*;
 import java.util.*;
 import java.util.stream.Collectors;
+
 /*
  * @author Nazhim Kalam
  * @UowID: w1761265
  * @StudentID: SE2019281
+ * OOP CW 01
  * Java version 8 or higher required
- * ADVANCE VERSION WITH MORE STATS
  */
-
-/*
-*   ASSUMPTIONS:
-*   --> ALL THE FOOTBALL CLUB TEAMS CREATED SHOULD HAVE UNIQUE TEAM NAMES
-*/
 
 public class PremierLeagueManager implements LeagueManager {
     //  variables used
@@ -25,16 +21,6 @@ public class PremierLeagueManager implements LeagueManager {
         matchedAdded = false;
         premierLeagueFootballClubList= new ArrayList<>();   // initializing the variable to run methods
         loadingData();      // load the previously saved data from the file
-    }
-
-    // getting the list of football clubs
-    public ArrayList<FootballClub> getPremierLeagueFootballClubList() {
-        return premierLeagueFootballClubList;
-    }
-
-    // setting the list of football clubs
-    public void setPremierLeagueFootballClubList(ArrayList<FootballClub> premierLeagueFootballClubList) {
-        this.premierLeagueFootballClubList = premierLeagueFootballClubList;
     }
 
     public static void loadingData() {
@@ -60,6 +46,7 @@ public class PremierLeagueManager implements LeagueManager {
              * File not found exception
              */
 //            e.printStackTrace();
+            System.out.println(" Error: File not found !");
         }
     }
 
@@ -70,9 +57,9 @@ public class PremierLeagueManager implements LeagueManager {
         if(premierLeagueFootballClubList.size()<20)         // This means that there is space to add more clubs/teams
         {
             premierLeagueFootballClubList.add((FootballClub) club);
-            return "Clubs Successfully added!";
+            return " Clubs Successfully added!";
         }
-        return "Sorry there is no room for a new club, the maximum number of club limit has been reached!";
+        return " Sorry there is no room for a new club, the maximum number of club limit has been reached!";
 
     }
 
@@ -111,7 +98,6 @@ public class PremierLeagueManager implements LeagueManager {
                 System.out.println("\n =============>  FROM  ALL  SEASONS  <=============\n");
                 System.out.println(footballClub.toString());
 
-                // Display the total stats by season
 
                 // sorting the seasons in ascending
                 Comparator<String> comparator = (season1, season2) -> {
@@ -123,6 +109,8 @@ public class PremierLeagueManager implements LeagueManager {
 
                 allSeasonAdded = (ArrayList<String>)allSeasonAdded.stream().distinct().collect(Collectors.toList());
                 allSeasonAdded.sort(comparator);
+
+                // Display the total stats by season
 
                 for (String season : allSeasonAdded) {
                     System.out.println("\n =============> FOR SEASON (" + season + ") <=============\n");
@@ -175,7 +163,7 @@ public class PremierLeagueManager implements LeagueManager {
             return "\n Sorry, there is no club with the given name '" + clubName + "'";
         }
 
-        return "Result Displayed";
+        return " Result Displayed";
     }
 
     // Overriding the displayLeagueTable method from the interface
@@ -363,11 +351,6 @@ public class PremierLeagueManager implements LeagueManager {
           for (int i = 0; i < rightClubColSpace; i++) {
               RIGHT_CLUB_COL_SPACE.append(" ");
           }
-//          HORIZONTAL_DASHES.append("-".repeat(107+lengthOfClubNameTable));
-//          PREMIER_LEAGUE_SPACE_TILE_LEFT.append(" ".repeat(39 + (lengthOfClubNameTable/2)));
-//          PREMIER_LEAGUE_SPACE_TILE_RIGHT.append(" ".repeat(39 + (lengthOfClubNameTable - (lengthOfClubNameTable/2))));
-//          LEFT_CLUB_COL_SPACE.append(" ".repeat(leftClubColSpace));
-//          RIGHT_CLUB_COL_SPACE.append(" ".repeat(rightClubColSpace));
 
           System.out.println("\n"+HORIZONTAL_DASHES);
           System.out.println("|" + PREMIER_LEAGUE_SPACE_TILE_LEFT + "P R E M I E R - L E A G U E" +
@@ -456,17 +439,12 @@ public class PremierLeagueManager implements LeagueManager {
 
       }else{
           // creating the empty table
-//          HORIZONTAL_DASHES.append("-".repeat(106));           // to get 88 "-"
-//          PREMIER_LEAGUE_SPACE_TILE.append(" ".repeat(38));   // to get 30 empty spaces
-
           for (int j = 0; j < 106; j++) {
               HORIZONTAL_DASHES.append("-");
           }
-
           for (int j = 0; j < 38; j++) {
               PREMIER_LEAGUE_SPACE_TILE.append(" ");
           }
-
 
           System.out.println("\n"+HORIZONTAL_DASHES);
           System.out.println("|" + PREMIER_LEAGUE_SPACE_TILE + " P R E M I E R - L E A G U E" + PREMIER_LEAGUE_SPACE_TILE + "|");
@@ -608,7 +586,6 @@ public class PremierLeagueManager implements LeagueManager {
                                       int numberGoalScored_club_2, DateMatch date, String seasonPlayed,
                                       FootballClub footballClub, String matchType) {
 
-//        System.out.println("\n Enter further statistics for the club " + clubName_02);
         MatchStats matchStats = getStatsOfMatch(footballClub);
         Match matchPlayed = new Match(numberGoalScored_club_2, numberGoalScored_club_1, matchStats, date,
                 clubName_01, seasonPlayed,matchType, clubName_02);
