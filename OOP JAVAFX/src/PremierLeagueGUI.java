@@ -20,9 +20,22 @@ import java.util.Comparator;
 import java.util.Optional;
 import java.util.Scanner;
 
+/*
+ * @author Nazhim Kalam
+ * @UowID: w1761265
+ * @StudentID: SE2019281
+ * OOP CW 01
+ * Java version 8 or higher required
+ */
+
+/*
+ *   ASSUMPTIONS:
+ *   --> ALL THE FOOTBALL CLUB TEAMS CREATED SHOULD HAVE UNIQUE TEAM NAMES
+ */
+
 public class PremierLeagueGUI extends Application {
 
-    PremierLeagueManager premierLeagueManager = new PremierLeagueManager();
+    private static final PremierLeagueManager premierLeagueManager = new PremierLeagueManager();
     public ObservableList<String> options;
     public static ComboBox<String> comboBox = new ComboBox<>();
     public static boolean sortByGoalsClicked = false;
@@ -32,11 +45,11 @@ public class PremierLeagueGUI extends Application {
     @Override
     public void start(Stage primaryStage) {
 
-        displayMenu(premierLeagueManager, primaryStage);
+        displayMenu(primaryStage);
 
     }
 
-    public void displayMenu(PremierLeagueManager premierLeagueManager, Stage primaryStage) {
+    public void displayMenu(Stage primaryStage) {
         System.out.println(" ________________________________________________________________________________________________\n" +
                 "|                                        W E L C O M E                                           |\n" +
                 "|________________________________________________________________________________________________|\n" +
@@ -54,38 +67,49 @@ public class PremierLeagueGUI extends Application {
                 "|________________________________________________________________________________________________|\n");
 
         // getting the users input
-        int userSelectOption = premierLeagueManager.validatingIntegers(" Enter your option (please enter only integers): ");
-
+        int userSelectOption = validatingIntegers(" Enter your option (please enter only integers): ");
+        String result;
         // directing the users option to appropriate methods
         switch (userSelectOption)
         {
             case 1:
-                premierLeagueManager.createClub();             // this method creates a new football club and add it in the premier league
-                displayMenu(premierLeagueManager, primaryStage);
+                creatingClub();                 // THIS IS WERE I TAKE ALL THE USER INPUTS
+                displayMenu(primaryStage);
                 break;
+
             case 2:
-                premierLeagueManager.deleteCLub();             // this method deletes an existing club
-                displayMenu(premierLeagueManager, primaryStage);
+                deleteCLub();                   // THIS IS WERE I TAKE ALL THE USER INPUTS
+                displayMenu(primaryStage);
                 break;
+
             case 3:
-                premierLeagueManager.displayStats();           // displaying various statistics for a selected club
-                displayMenu(premierLeagueManager, primaryStage);
+                displayStatistics();            // THIS IS WERE I TAKE ALL THE USER INPUTS
+                displayMenu(primaryStage);
                 break;
+
             case 4:
-                premierLeagueManager.displayLeagueTable();     // displaying the Premier League Table
-                displayMenu(premierLeagueManager, primaryStage);
+                String seasonPlayed = validatingSeason();        // DISPLAYING THE PREMIER LEAGUE TABLE
+                premierLeagueManager.displayLeagueTable(seasonPlayed);
+                displayMenu(primaryStage);
                 break;
+
             case 5:
-                premierLeagueManager.addPlayedMatch();         // adding a played match
-                displayMenu(premierLeagueManager, primaryStage);
+                addPlayedMatch();              // THIS IS WERE I TAKE ALL THE USER INPUTS
+                displayMenu(primaryStage);
                 break;
+
             case 6:
-                premierLeagueManager.saveDataIntoFile();       // saving the data into a file
-                displayMenu(premierLeagueManager, primaryStage);
+                result = premierLeagueManager.saveDataIntoFile();       // saving the data into a file
+                System.out.println(result);
+
+                displayMenu(primaryStage);
                 break;
+
             case 7:
-                premierLeagueManager.clearDataFile();          // clearing the file
-                displayMenu(premierLeagueManager, primaryStage);
+                result = premierLeagueManager.clearDataFile();          // clearing the file
+                System.out.println(result);
+
+                displayMenu(primaryStage);
                 break;
             case 8:
                 guiProgram(primaryStage);
@@ -107,7 +131,7 @@ public class PremierLeagueGUI extends Application {
             default:
                 System.out.println(" You have entered an invalid option!");
                 System.out.println(" Please check the menu properly and re-enter!");
-                displayMenu(premierLeagueManager, primaryStage);
+                displayMenu(primaryStage);
 
         }
     }
@@ -115,7 +139,7 @@ public class PremierLeagueGUI extends Application {
     // this is the GUI main program code
     private void guiProgram(Stage primaryStage) {
         // call the load method from the main class
-        premierLeagueManager.loadingData();
+        PremierLeagueManager.loadingData();
 
         // Main pane
         AnchorPane anchorPane = new AnchorPane();
@@ -169,7 +193,7 @@ public class PremierLeagueGUI extends Application {
 
         // Drop down
         options = FXCollections.observableArrayList();
-        ArrayList<String> orderSeasons = premierLeagueManager.sortingTheSeasonsInAscendingOrder();
+        ArrayList<String> orderSeasons = PremierLeagueManager.sortingTheSeasonsInAscendingOrder();
         // update the dropdown
         options.addAll(orderSeasons);
 
@@ -180,8 +204,7 @@ public class PremierLeagueGUI extends Application {
         comboBox.setLayoutX(85);
         comboBox.setLayoutY(130);
 
-        //
-        premierLeagueManager.displayLeagueTableGUI();
+        PremierLeagueManager.displayLeagueTableGUI();
         final ArrayList<FootballClub>[] seasonBasedClubs = new ArrayList[1];
         seasonBasedClubs[0] = PremierLeagueManager.seasonFilteredClubs;
         sortByPointsClicked = true;
@@ -379,7 +402,7 @@ public class PremierLeagueGUI extends Application {
             matchPlayedComboBox.setLayoutX(450);
             matchPlayedComboBox.setLayoutY(95);
 
-            premierLeagueManager.displayLeagueTableGUI();  // we run this to refresh/ update the seasonBasedClubs list
+            PremierLeagueManager.displayLeagueTableGUI();  // we run this to refresh/ update the seasonBasedClubs list
             ObservableList<HBox> matches = FXCollections.observableArrayList();
 
             // generating random match for the club
@@ -390,7 +413,7 @@ public class PremierLeagueGUI extends Application {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                premierLeagueManager.displayLeagueTableGUI();
+                PremierLeagueManager.displayLeagueTableGUI();
                 seasonBasedClubs[0] = PremierLeagueManager.seasonFilteredClubs;
                 creatingTheMatchesRows(seasonBasedClubs[0], matches);
 
@@ -403,7 +426,7 @@ public class PremierLeagueGUI extends Application {
                 ArrayList<FootballClub> footballClubsWithFilteredMatchByDate =
                         seasonBasedClubs[0];  // seasonBasedClubs[0] to prevent the null safety problem
                 try {
-                    footballClubsWithFilteredMatchByDate = premierLeagueManager.filterMatchesByDate(seasonBasedClubs[0],
+                    footballClubsWithFilteredMatchByDate = PremierLeagueManager.filterMatchesByDate(seasonBasedClubs[0],
                             enteredDatedTxt.getText());
                 } catch (CloneNotSupportedException e) {
                     e.printStackTrace();
@@ -422,7 +445,7 @@ public class PremierLeagueGUI extends Application {
 
             // before coming to this lets display the matches played for 2020-21
             matchPlayedComboBox.setOnAction(eventCombo -> {
-                premierLeagueManager.displayLeagueTableGUI();
+                PremierLeagueManager.displayLeagueTableGUI();
                 seasonBasedClubs[0] = PremierLeagueManager.seasonFilteredClubs;
                 creatingTheMatchesRows(seasonBasedClubs[0], matches);
 
@@ -482,14 +505,14 @@ public class PremierLeagueGUI extends Application {
         Optional<ButtonType> result = confirmationBox.showAndWait();             //displays the confirmation box
         if (result.get() == yes){                                                //checks if the user has clicked YES
             primaryStage.close();                                                       //closes the window
-            displayMenu(premierLeagueManager, primaryStage);                      //calls the displayMenu method
+            displayMenu(primaryStage);                      //calls the displayMenu method
         }
     }
 
     // updating the table content
     private void updatingTableContent(ObservableList<FootballClub> data, ArrayList<FootballClub> seasonBasedClub) {
         data.clear();
-        premierLeagueManager.displayLeagueTableGUI();
+        PremierLeagueManager.displayLeagueTableGUI();
         seasonBasedClub = PremierLeagueManager.seasonFilteredClubs;
         int NewPosition = 1;
         for (FootballClub club : seasonBasedClub) {
@@ -638,6 +661,358 @@ public class PremierLeagueGUI extends Application {
 
         }
     }
+
+
+    // validates the Integers
+    public static int validatingIntegers(String message) {
+        Scanner input = new Scanner(System.in);
+        System.out.print(message);
+        while (!input.hasNextInt()) {
+            System.out.println("\n Invalid input!");
+            System.out.print(message);
+            input.next();
+        }
+        return input.nextInt();
+    }
+
+    // THIS DEALS WITH CREATING THE FOOTBALL CLUB FOR THE LIST
+    private static void creatingClub() {
+
+        // MAKE SURE THAT EACH CLUB NAMES ARE UNIQUE FROM EACH OTHER
+        Scanner insert = new Scanner(System.in);
+
+        // Asking user the type of football club
+        System.out.println(" Select the type of Football club: ");
+        System.out.println(" ---------------------------------------- ");
+        System.out.println("| (Option 1) Normal Football club        |");
+        System.out.println("| (Option 2) University Football club    |");
+        System.out.println("| (Option 3) School Football club        |");
+        System.out.println(" ---------------------------------------- ");
+
+        // getting the users input with validation to check if its an integer entered
+        int userSelectOption;
+        boolean notInRange = false;
+
+        do{
+            if(notInRange) System.out.println(" \n The entered option is not valid!\n " +
+                    "Available options are (1, 2, 3)\n");
+            System.out.print(" Enter your option number (integers only accepted): ");
+            while(!insert.hasNextInt()){
+                String input = insert.next();
+                System.out.println("\n '" + input + "' is an Invalid input!");
+                System.out.print(" Enter your option number (integers only accepted): ");
+            }
+            userSelectOption = insert.nextInt();
+            notInRange = true;
+        }while (userSelectOption < 1 || userSelectOption > 3);
+
+        insert = new Scanner(System.in);
+
+
+        System.out.println("\n NOTE: ALL THE CLUB NAMES HAS TO BE UNIQUE" +
+                "\n PLEASE ENTER A CLUB NAME WHICH IS NOT FROM THE GIVEN LIST BELOW !");
+
+        if(PremierLeagueManager.premierLeagueFootballClubList.size()!=0){
+            System.out.println(" --------------------------------");
+            for (FootballClub footballClub: PremierLeagueManager.premierLeagueFootballClubList) {
+                System.out.println(" * " + footballClub.getName());
+            }
+            System.out.println(" --------------------------------");
+        }else{
+            System.out.println(" * There are no club names created yet and you are the first one !\n");
+        }
+
+        // When a new footballClub is created all the stats are set to 0
+        // We ask for club name, location, coach name
+        System.out.print(" Enter the club name: ");
+        String clubName = insert.nextLine();
+
+        // Validation for club name
+        boolean invalidClubName = true;
+        while (invalidClubName){
+            if(PremierLeagueManager.premierLeagueFootballClubList.size()!=0){
+                for (FootballClub footballClub: PremierLeagueManager.premierLeagueFootballClubList) {
+                    if(footballClub.getName().equalsIgnoreCase(clubName)){
+                        invalidClubName = true;
+                        break;
+                    }else{
+                        invalidClubName = false;
+                    }
+                }
+            }else{
+                invalidClubName = false;
+            }
+
+            if(invalidClubName){
+                System.out.println(" There is already a team with the name '" + clubName + "', please enter another name\n");
+                System.out.print(" Enter the club name: ");
+                clubName = insert.nextLine();
+            }
+        }
+
+
+        // location can have numbers also so no need validation even it can have symbols such as '/'
+        System.out.print(" Enter the location: ");
+        String location = insert.nextLine();
+
+
+        // validating the coach Name
+        String coachName = validateString(" Enter the coach name: ");
+
+
+        // this switch case is to create the appropriate club with the user selected option
+        String result;
+        switch (userSelectOption){
+            case 1:
+                // creating an instance of the new footballClub and adding it into the premierClub list
+                FootballClub footballClub = new FootballClub(clubName, location, coachName);
+                result = premierLeagueManager.createClub(footballClub);
+                break;
+
+            case 2:
+                // getting the university name
+                String universityName = validateString(" Enter the university name: ");
+
+                // creating an instance of the new universityFootballClub and adding it into the premierClub list
+                UniversityFootballClub universityFootballClub = new UniversityFootballClub(clubName, location,
+                        coachName, universityName);
+                result = premierLeagueManager.createClub(universityFootballClub);
+                break;
+
+            case 3:
+                // getting the school name
+                String schoolName = validateString(" Enter the school name: ");
+
+                // creating an instance of the new schoolFootballClub and adding it into the premierClub list
+                SchoolFootballClub schoolFootballClub = new SchoolFootballClub(clubName, location, coachName,schoolName);
+                result = premierLeagueManager.createClub(schoolFootballClub);
+                break;
+
+            default:
+                throw new IllegalStateException("Unexpected value: " + userSelectOption);
+
+        }
+
+        System.out.println(result);     // display the result
+
+    }
+
+
+    // validate strings that should only have alphabets and return the result
+    private static String validateString(String message) {
+        Scanner input = new Scanner(System.in);
+        boolean validStringEntered;
+        String userInput;
+
+        do{
+            validStringEntered = false;
+            System.out.print(message);
+            userInput = input.nextLine();
+            if((userInput != null)&&userInput.matches("^[a-z A-Z]*$"))
+                validStringEntered = true;
+            else
+                System.out.println("\n Given input is not in proper format! ");
+        }while (!validStringEntered);
+
+        return userInput;
+    }
+
+    // THIS DEALS WITH DELETING THE FOOTBALL CLUB FROM THE LIST
+    private static void deleteCLub() {
+
+        // DELETING A CLUB (BY ITS NAME) FROM THE LIST OF CLUBS IN THE PREMIER LEAGUE
+        Scanner input = new Scanner(System.in);
+        System.out.print(" Enter the name of the club you wish to remove from the premier league: ");
+        String clubName = input.nextLine();
+
+        String confirmation = "";
+        boolean isValidClubName = false;
+        // DISPLAY RESULT OF THE ITEM TO BE REMOVED
+        for (int i = 0; i < PremierLeagueManager.premierLeagueFootballClubList.size(); i++) {
+            if(PremierLeagueManager.premierLeagueFootballClubList.get(i).getName().equalsIgnoreCase(clubName)){
+                System.out.println("\n These are some details of the club you wanted to be deleted \n");
+                System.out.println(PremierLeagueManager.premierLeagueFootballClubList.get(i));
+                isValidClubName = true;
+
+                // ASK FOR CONFIRMATION
+                System.out.print(" Enter 'y' or 'Y' to confirm the deletion or enter any other key to skip the deletion: ");
+                confirmation = input.nextLine();
+            }
+        }
+
+        if(isValidClubName){
+            if(confirmation.equalsIgnoreCase("y")){
+
+                // GETTING THE REMOVED CLUB RESULT (MAY BE NULL OR THE CLUB REMOVED)
+                FootballClub removedClub = (FootballClub) premierLeagueManager.deleteCLub(clubName);
+
+                // THIS GIVES THE OUTPUT TO THE USER INDICATING IF THE ITEM WAS SUCCESSFULLY REMOVED OR NOT
+                if(removedClub != null){
+                    System.out.println("\n The club with the name '" + clubName + "' is successfully removed!\n");
+                    System.out.println(" Here are some details related to the deleted club ");
+                    System.out.println(removedClub);
+                }else{
+                    System.out.println("\n Sorry, there is no club with the given name '" + clubName + "'");
+                }
+
+            }else{
+                System.out.println(" Successfully cancelled the deletion request for club '" + clubName + "'");
+
+            }
+        }else{
+            System.out.println("\n Sorry, there is no club with the given name '" + clubName + "'");
+
+        }
+
+
+    }
+
+    // THIS DEALS WITH DISPLAYING THE STATISTICS OF THE FOOTBALL CLUB
+    private static void displayStatistics() {
+
+        // DISPLAYING THE STATISTICS OF A SELECTED CLUB BY THE USER ITSELF
+        Scanner input = new Scanner(System.in);
+        System.out.print(" Enter the club name of which you need to display the statistics: ");
+        String clubName = input.nextLine();
+
+        String result = premierLeagueManager.displayStats(clubName);
+
+        // DISPLAYING THE RESULT IF THERE WAS NO CLUB WITH THE GIVEN NAME
+        if(!result.equals(" Result Displayed")) {
+            System.out.println(result);
+
+        }
+
+    }
+
+    // validating the season
+    private String validatingSeason() {
+        String seasonPlayed = "";
+        Scanner input = new Scanner(System.in);
+        boolean validatingSeason;
+        do{
+            validatingSeason = false;
+            System.out.print(" Season played (eg:- '2018-19')\n Enter the season of the match played: ");
+            seasonPlayed = input.nextLine();
+            if(seasonPlayed.matches("\\d{4}-\\d{2}"))
+                validatingSeason = true;
+            else
+                System.out.println("\n Given input is not in proper format! ");
+        }while (!validatingSeason);
+
+        return seasonPlayed;
+    }
+
+    private static void addPlayedMatch() {
+         /* ADD A PLAYED MATCH WITH IT'S SCORE AND UPDATE THE STATISTICS AND LIST OF MATCHES FOR THE RESPECTIVE CLUBS
+           PLAYED */
+
+        Scanner input = new Scanner(System.in);
+        System.out.println("\n Enter details of the played match");
+
+        // Checking if it is a valid club else throwing up and error and asking user to re-enter
+        String clubName_01 = checkingForValidClub(" Enter club 1 name: ");
+
+        // validation for the scores
+        int numberGoalScored_club_1 = validatingIntegers(" Enter the number of goal scored: ");
+
+        // Checking if it is a valid club else throwing up and error and asking user to re-enter
+        String clubName_02 = checkingForValidClub(" Enter club 2 name: ");
+
+        // validation for the scores and some stats
+        int numberGoalScored_club_2 = validatingIntegers(" Enter the number of goal scored: ");
+
+
+        // getting the date of the match played as the input from the user
+        int day = validatingIntegers(" Enter the day (only integers are accepted): ");
+        int month = validatingIntegers(" Enter the month (only integers are accepted): ");
+        int year = validatingIntegers(" Enter the year (only integers are accepted): ");
+        DateMatch date = new DateMatch(day, month, year);
+
+
+        // we are displaying the season options possible for the match played for the given date
+        String[] possibleSeason = new String[2];
+        System.out.println(" These are the possible seasons for the match played from the given date");
+
+        int lastTwoDigitsOfTheYear = Integer.parseInt(String.valueOf(year).substring(2));
+
+        possibleSeason[0] = (year-1) + "-" + (lastTwoDigitsOfTheYear);
+        possibleSeason[1] = (year) + "-" + (lastTwoDigitsOfTheYear+1);
+
+        for (int i = 0; i < possibleSeason.length; i++) {
+            System.out.println("  " + (i+1) + ". " + possibleSeason[i]);
+        }
+
+        int seasonOption = validatingIntegers(" Please select a season from the given list (Enter '1' or '2') : ");
+
+
+        boolean invalidOption = true;
+        while (invalidOption){                           // validating the inputs
+            if(seasonOption!=1 && seasonOption!=2){
+                System.out.println(" Invalid Input!");
+                seasonOption = validatingIntegers(" Please select a season from the given list (Enter '1' or '2') : ");
+            }else{
+                invalidOption=false;
+            }
+        }
+        String seasonPlayed = possibleSeason[seasonOption-1];
+
+        // type of match played 'Home' or 'Away'
+        boolean validMatchEntered;
+        String matchType;
+
+        do{
+            System.out.print(" Enter the type of match played (Home or Away): ");
+            matchType = input.nextLine();
+            validMatchEntered = matchType.equalsIgnoreCase("home") || matchType.equalsIgnoreCase("away");
+            if(!validMatchEntered)
+                System.out.println("Invalid match input!");
+
+        }while (!validMatchEntered);
+
+
+        System.out.print(" Are you sure that the details entered are correct, if you need to re-enter," +
+                " enter 'Y' or 'y'" + " else enter any key to continue: ");
+        input = new Scanner(System.in);
+        String confirmation = input.nextLine();
+
+        if (confirmation.equalsIgnoreCase("y")) {
+            System.out.println(" Please re-enter the details ");
+            addPlayedMatch();
+
+        }else{
+            String result = premierLeagueManager.addPlayedMatch(seasonPlayed, clubName_01, clubName_02, numberGoalScored_club_1,
+                    numberGoalScored_club_2, date, matchType);
+            System.out.println(result);
+
+        }
+
+    }
+
+    private static String checkingForValidClub(String message) {
+        // CHECKING FOR VALID CLUB ENTERED BY THE USER WHEN ADDING MATCH
+
+        Scanner input = new Scanner(System.in);
+        System.out.print(message);
+        String clubName = input.nextLine();
+
+        boolean invalidClubName = true;
+        while (invalidClubName){
+            for (FootballClub footballClub: PremierLeagueManager.premierLeagueFootballClubList) {
+                if (footballClub.getName().equalsIgnoreCase(clubName)) {
+                    invalidClubName = false;
+                    break;
+                }
+            }
+            if(invalidClubName){
+                System.out.println(" There is no team with the name '" + clubName + "', please enter another name\n");
+                System.out.print(message);
+                clubName = input.nextLine();
+            }
+        }
+        return clubName;
+    }
+
 
 
     public static void main(String[] args) {

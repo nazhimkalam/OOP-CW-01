@@ -8,21 +8,17 @@ import java.util.stream.Collectors;
  * @author Nazhim Kalam
  * @UowID: w1761265
  * @StudentID: SE2019281
+ * OOP CW 01
  * Java version 8 or higher required
- * ADVANCE VERSION WITH MORE STATS
  */
-
-/*
-*   ASSUMPTIONS:
-*   --> ALL THE FOOTBALL CLUB TEAMS CREATED SHOULD HAVE UNIQUE TEAM NAMES
-*/
 
 public class PremierLeagueManager implements LeagueManager {
     //  variables used
-    private ArrayList<FootballClub> premierLeagueFootballClubList;
-    private boolean matchedAdded;
-    private ArrayList<String> allSeasonAdded = new ArrayList<>();
+    public static ArrayList<FootballClub> premierLeagueFootballClubList;
+    private static boolean matchedAdded;
+    private static ArrayList<String> allSeasonAdded = new ArrayList<>();
     public static ArrayList<FootballClub> seasonFilteredClubs = new ArrayList<>();
+    private final int MAXIMUM_NUMBER_OF_CLUBS = 20;
 
 
     public PremierLeagueManager(){
@@ -41,10 +37,10 @@ public class PremierLeagueManager implements LeagueManager {
         this.premierLeagueFootballClubList = premierLeagueFootballClubList;
     }
 
-    public void loadingData() {
+    public static void loadingData() {
         File file = new File("objectDataFile.txt");
-        FileInputStream fileInputStream;
-        ObjectInputStream objectInputStream;
+        FileInputStream fileInputStream = null;
+        ObjectInputStream objectInputStream = null;
 
         try {
             fileInputStream = new FileInputStream(file);
@@ -53,7 +49,6 @@ public class PremierLeagueManager implements LeagueManager {
                 premierLeagueFootballClubList = (ArrayList<FootballClub>) objectInputStream.readObject();
                 matchedAdded = (boolean) objectInputStream.readObject();
                 allSeasonAdded = (ArrayList<String>) objectInputStream.readObject();
-
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }
@@ -64,117 +59,22 @@ public class PremierLeagueManager implements LeagueManager {
              * That can be reading/writing to a file
              * File not found exception
              */
-            e.printStackTrace();
+//            e.printStackTrace();
+            System.out.println(" Error: File not found !");
         }
     }
 
     // Overriding the createClub method from the interface
     @Override
-    public void createClub() {
-        // MAKE SURE THAT EACH CLUB NAMES ARE UNIQUE FROM EACH OTHER
-        Scanner insert = new Scanner(System.in);
+    public String createClub(SportClub club) {
 
-        // Asking user the type of football club
-        System.out.println(" Select the type of Football club: ");
-        System.out.println(" ---------------------------------------- ");
-        System.out.println("| (Option 1) Normal Football club        |");
-        System.out.println("| (Option 2) University Football club    |");
-        System.out.println("| (Option 3) School Football club        |");
-        System.out.println(" ---------------------------------------- ");
-
-        // getting the users input with validation to check if its an integer entered
-        int userSelectOption;
-        boolean notInRange = false;
-
-        do{
-            if(notInRange) System.out.println(" \n The entered option is not valid!\n " +
-                    "Available options are (1, 2, 3)\n");
-            System.out.print(" Enter your option number (integers only accepted): ");
-            while(!insert.hasNextInt()){
-                String input = insert.next();
-                System.out.println("\n '" + input + "' is an Invalid input!");
-                System.out.print(" Enter your option number (integers only accepted): ");
-            }
-            userSelectOption = insert.nextInt();
-            notInRange = true;
-        }while (userSelectOption < 1 || userSelectOption > 3);
-
-        insert = new Scanner(System.in);
-
-        System.out.println("\n NOTE: ALL THE CLUB NAMES HAS TO BE UNIQUE" +
-                "\n PLEASE ENTER A CLUB NAME WHICH IS NOT FROM THE GIVEN LIST BELOW !");
-
-        if(premierLeagueFootballClubList.size()!=0){
-            System.out.println(" --------------------------------");
-            for (FootballClub footballClub: premierLeagueFootballClubList) {
-                System.out.println(" * " + footballClub.getName());
-            }
-            System.out.println(" --------------------------------");
-        }else{
-            System.out.println(" * There are no club names created yet and you are the first one !\n");
+        if(premierLeagueFootballClubList.size()<20)         // This means that there is space to add more clubs/teams
+        {
+            premierLeagueFootballClubList.add((FootballClub) club);
+            return " Clubs Successfully added!";
         }
+        return " Sorry there is no room for a new club, the maximum number of club limit has been reached!";
 
-        // When a new footballClub is created all the stats are set to 0
-        // We ask for club name, location, coach name
-        System.out.print(" Enter the club name: ");
-        String clubName = insert.nextLine();
-
-        // Validation for club name
-        boolean invalidClubName = true;
-        while (invalidClubName){
-            if(premierLeagueFootballClubList.size()!=0){
-                for (FootballClub footballClub: premierLeagueFootballClubList) {
-                    if(footballClub.getName().equalsIgnoreCase(clubName)){
-                        invalidClubName = true;
-                        break;
-                    }else{
-                        invalidClubName = false;
-                    }
-                }
-            }else{
-                invalidClubName = false;
-            }
-
-            if(invalidClubName){
-                System.out.println(" There is already a team with the name '" + clubName + "', please enter another name\n");
-                System.out.print(" Enter the club name: ");
-                clubName = insert.nextLine();
-            }
-        }
-
-        System.out.print(" Enter the location: ");
-        String location = insert.nextLine();
-
-        // validating the coach Name
-        String coachName = validateString(" Enter the coach name: ");
-
-        // this switch case is to create the appropriate club with the user selected option
-        switch (userSelectOption){
-            case 1:
-                // creating an instance of the new footballClub and adding it into the premierClub list
-                FootballClub footballClub = new FootballClub(clubName, location, coachName);
-                premierLeagueFootballClubList.add(footballClub);
-                break;
-
-            case 2:
-                // getting the university name
-                String universityName = validateString(" Enter the university name: ");
-
-                // creating an instance of the new universityFootballClub and adding it into the premierClub list
-                UniversityFootballClub universityFootballClub = new UniversityFootballClub(clubName, location,
-                        coachName, universityName);
-                premierLeagueFootballClubList.add(universityFootballClub);
-                break;
-
-            case 3:
-                // getting the school name
-                String schoolName = validateString(" Enter the school name: ");
-
-                // creating an instance of the new schoolFootballClub and adding it into the premierClub list
-                SchoolFootballClub schoolFootballClub = new SchoolFootballClub(clubName, location, coachName,schoolName);
-                premierLeagueFootballClubList.add(schoolFootballClub);
-                break;
-        }
     }
 
     // validate strings that should only have alphabets and return the result
@@ -198,58 +98,22 @@ public class PremierLeagueManager implements LeagueManager {
 
     // Overriding the deleteCLub method from the interface
     @Override
-    public void deleteCLub() {
-        // deleting a club (by its name) from the list of clubs in the premier league
-        Scanner input = new Scanner(System.in);
-        System.out.print(" Enter the name of the club you wish to remove from the premier league: ");
-        String clubName = input.nextLine();
+    public FootballClub deleteCLub(String clubName) {
 
-        boolean itemRemoved = false;
-        FootballClub removedClub = null;
-
-        // display results of the item to be removed
-        System.out.println("\n These are some details of the club you wanted to be deleted \n");
-        for (int i = 0; i < premierLeagueFootballClubList.size(); i++) {
-            if(premierLeagueFootballClubList.get(i).getName().equalsIgnoreCase(clubName)){
-                System.out.println(premierLeagueFootballClubList.get(i));
+        // This loop searches for the club and deletes it from the list
+        for (int index = 0; index < premierLeagueFootballClubList.size(); index++) {
+            if(premierLeagueFootballClubList.get(index).getName().equalsIgnoreCase(clubName)){
+                return premierLeagueFootballClubList.remove(index);
             }
         }
-        // ask for confirmation
-        System.out.print(" Enter 'y' or 'Y' to confirm the deletion or enter any other key to skip the deletion: ");
-        String confirmation = input.nextLine();
-        if(confirmation.equalsIgnoreCase("y")){
-            // This loop searches for the club and deletes it from the list
-            for (int i = 0; i < premierLeagueFootballClubList.size(); i++) {
-                if(premierLeagueFootballClubList.get(i).getName().equalsIgnoreCase(clubName)){
-                    itemRemoved = true;
-                    removedClub = premierLeagueFootballClubList.remove(i);
-                }
-            }
 
-            // This gives the output to the user indicating if the item was successfully removed or not
-            if(itemRemoved){
-                System.out.println("\n The club with the name '" + clubName + "' is successfully removed!\n");
-                System.out.println(" Here are some details related to the deleted club ");
-                System.out.println(removedClub);
-            }else{
-                System.out.println("\n Sorry, there is no club with the given name '" + clubName + "'");
-            }
-        }else{
-            System.out.println(" Successfully cancelled the deletion request for club '" + clubName + "'");
-        }
-
-
+        return null;
 
     }
-
     // Overriding the displayStats method from the interface
     @Override
-    public void displayStats() {
+    public String displayStats(String clubName) {
 
-        // Displaying the statistics of a selected club by the user itself
-        Scanner input = new Scanner(System.in);
-        System.out.print(" Enter the club name of which you need to display the statistics: ");
-        String clubName = input.nextLine();
         boolean clubNameAvailable = false;
 
         // This loop searches for the club and displays it's statistics
@@ -266,10 +130,19 @@ public class PremierLeagueManager implements LeagueManager {
                 System.out.println("\n =============>  FROM  ALL  SEASONS  <=============\n");
                 System.out.println(footballClub.toString());
 
-                // Display the total stats by season
 
                 // sorting the seasons in ascending
-               allSeasonAdded = sortingTheSeasonsInAscendingOrder();
+                Comparator<String> comparator = (season1, season2) -> {
+                    if(Integer.parseInt(season1.split("-")[0]) > Integer.parseInt(season2.split("-")[0])){
+                        return 1;
+                    }
+                    return -1;
+                };
+
+                allSeasonAdded = (ArrayList<String>)allSeasonAdded.stream().distinct().collect(Collectors.toList());
+                allSeasonAdded.sort(comparator);
+
+                // Display the total stats by season
 
                 for (String season : allSeasonAdded) {
                     System.out.println("\n =============> FOR SEASON (" + season + ") <=============\n");
@@ -294,7 +167,7 @@ public class PremierLeagueManager implements LeagueManager {
                     System.out.println(" =============>  FROM  ALL  SEASONS  <=============\n");
                     System.out.println(" => Statistics of all the matches played by '"+ clubName + "' so far! <=");
                     for (Match match:footballClub.getMatchesPlayed()) {
-                        System.out.println("\n <===============> Match "+ (++number) +" <================>\n "
+                        String matchResult = "\n <===============> Match "+ (++number) +" <================>\n "
                                 + "* Opponent team name: '" + match.getOpponentClubName() + "'" + match.getDate()
                                 + "\n * Season: " + match.getSeason() + "\n\n * Match Type: '" + match.getMatchType() + "'"
                                 + "\n * Number of Goals Scored: " + match.getGoalScored()
@@ -310,22 +183,24 @@ public class PremierLeagueManager implements LeagueManager {
                                 + "\n * Number of passes: " + match.getMatchStats().getPasses()
                                 + "\n * Pass Accuracy: " + match.getMatchStats().getPassAccuracy() + "%"
                                 + "\n * Possession: " + match.getMatchStats().getPossession() + "%"
-                                + "\n\n ============================================= \n");
+                                + "\n\n ============================================= \n";
+
+                        System.out.println(matchResult);
                     }
                 }
             }
         }
+
         if(!clubNameAvailable){
-            System.out.println("\n Sorry, there is no club with the given name '" + clubName + "'");
+            return "\n Sorry, there is no club with the given name '" + clubName + "'";
         }
+
+        return " Result Displayed";
     }
 
     // Overriding the displayLeagueTable method from the interface
     @Override
-    public void displayLeagueTable() {
-
-        // Getting the season to display the table results
-        String seasonPlayed = validatingSeason();
+    public void displayLeagueTable(String seasonPlayed) {
 
         // we add all the football clubs with all the necessary matches related to the season and other removed.
         ArrayList<FootballClub> seasonFilteredClubs = null;
@@ -380,7 +255,7 @@ public class PremierLeagueManager implements LeagueManager {
     }
 
     // This method is for the GUI
-    public void displayLeagueTableGUI() {
+    public static void displayLeagueTableGUI() {
         String seasonPlayed = PremierLeagueGUI.comboBox.getValue();   // you get the season from this
         try {
             seasonFilteredClubs = seasonFilteredFootballCLubList(seasonPlayed);
@@ -427,7 +302,7 @@ public class PremierLeagueManager implements LeagueManager {
     }
 
     // This method returns a list of football clubs filtered by season with updated stats for that season only.
-    private ArrayList<FootballClub> seasonFilteredFootballCLubList(String seasonPlayed) throws CloneNotSupportedException {
+    private static ArrayList<FootballClub> seasonFilteredFootballCLubList(String seasonPlayed) throws CloneNotSupportedException {
         ArrayList<FootballClub> footballClubsListSeason = new ArrayList<>();
 
         // we add all the clubs, before adding the club remove the matches which aren't related
@@ -523,269 +398,191 @@ public class PremierLeagueManager implements LeagueManager {
     // Display the premier league table in a well structured format
     private void structuredTable(int lengthOfClubNameTable, ArrayList<FootballClub> seasonFilteredClubs) {
         /*
-        *  We take the length of the largest club name, then use this to create the main table width
-        */
+         *  We take the length of the largest club name, then use this to create the main table width
+         */
         StringBuilder HORIZONTAL_DASHES = new StringBuilder();
         StringBuilder PREMIER_LEAGUE_SPACE_TILE = new StringBuilder();
 
-      if(lengthOfClubNameTable != 0){
+        if(lengthOfClubNameTable != 0){
 
-          // creating the table with data
-          int clubNameColSpace = lengthOfClubNameTable + 2;
-          int leftClubColSpace = clubNameColSpace/2;
-          int rightClubColSpace = clubNameColSpace - leftClubColSpace;
+            // creating the table with data
+            int clubNameColSpace = lengthOfClubNameTable + 2;
+            int leftClubColSpace = clubNameColSpace/2;
+            int rightClubColSpace = clubNameColSpace - leftClubColSpace;
 
-          StringBuilder PREMIER_LEAGUE_SPACE_TILE_LEFT = new StringBuilder();
-          StringBuilder PREMIER_LEAGUE_SPACE_TILE_RIGHT = new StringBuilder();
-          StringBuilder LEFT_CLUB_COL_SPACE = new StringBuilder();
-          StringBuilder RIGHT_CLUB_COL_SPACE = new StringBuilder();
+            StringBuilder PREMIER_LEAGUE_SPACE_TILE_LEFT = new StringBuilder();
+            StringBuilder PREMIER_LEAGUE_SPACE_TILE_RIGHT = new StringBuilder();
+            StringBuilder LEFT_CLUB_COL_SPACE = new StringBuilder();
+            StringBuilder RIGHT_CLUB_COL_SPACE = new StringBuilder();
 
-          for (int i = 0; i < 107+lengthOfClubNameTable; i++) {
-              HORIZONTAL_DASHES.append("-");
-          }
-          for (int i = 0; i < 39 + (lengthOfClubNameTable/2); i++) {
-              PREMIER_LEAGUE_SPACE_TILE_LEFT.append(" ");
-          }
-          for (int i = 0; i < 39 + (lengthOfClubNameTable - (lengthOfClubNameTable/2)); i++) {
-              PREMIER_LEAGUE_SPACE_TILE_RIGHT.append(" ");
-          }
-          for (int i = 0; i < leftClubColSpace; i++) {
-              LEFT_CLUB_COL_SPACE.append(" ");
-          }
-          for (int i = 0; i < rightClubColSpace; i++) {
-              RIGHT_CLUB_COL_SPACE.append(" ");
-          }
+            for (int i = 0; i < 107+lengthOfClubNameTable; i++) {
+                HORIZONTAL_DASHES.append("-");
+            }
+            for (int i = 0; i < 39 + (lengthOfClubNameTable/2); i++) {
+                PREMIER_LEAGUE_SPACE_TILE_LEFT.append(" ");
+            }
+            for (int i = 0; i < 39 + (lengthOfClubNameTable - (lengthOfClubNameTable/2)); i++) {
+                PREMIER_LEAGUE_SPACE_TILE_RIGHT.append(" ");
+            }
+            for (int i = 0; i < leftClubColSpace; i++) {
+                LEFT_CLUB_COL_SPACE.append(" ");
+            }
+            for (int i = 0; i < rightClubColSpace; i++) {
+                RIGHT_CLUB_COL_SPACE.append(" ");
+            }
 
-          System.out.println("\n"+HORIZONTAL_DASHES);
-          System.out.println("|" + PREMIER_LEAGUE_SPACE_TILE_LEFT + "P R E M I E R - L E A G U E" +
-                  PREMIER_LEAGUE_SPACE_TILE_RIGHT + "|");
-          System.out.println(HORIZONTAL_DASHES);
-          System.out.println("| Position |" + LEFT_CLUB_COL_SPACE +"Club" + RIGHT_CLUB_COL_SPACE +
-                  "| Played | Won | Drawn | Lost | Goal-Scored | Goal-Received " +
-                  "| Goal-Difference  | Points |");
-          System.out.println(HORIZONTAL_DASHES);
+            System.out.println("\n"+HORIZONTAL_DASHES);
+            System.out.println("|" + PREMIER_LEAGUE_SPACE_TILE_LEFT + "P R E M I E R - L E A G U E" +
+                    PREMIER_LEAGUE_SPACE_TILE_RIGHT + "|");
+            System.out.println(HORIZONTAL_DASHES);
+            System.out.println("| Position |" + LEFT_CLUB_COL_SPACE +"Club" + RIGHT_CLUB_COL_SPACE +
+                    "| Played | Won | Drawn | Lost | Goal-Scored | Goal-Received " +
+                    "| Goal-Difference  | Points |");
+            System.out.println(HORIZONTAL_DASHES);
 
-          // display the content of the premierLeagueFootball List
-          for (int i = 0; i < seasonFilteredClubs.size(); i++) {
-              StringBuilder clubNameEndSpace = new StringBuilder();
-              for (int j = 0; j < 3; j++) {
-                  clubNameEndSpace.append(" ");
-              }
+            // display the content of the premierLeagueFootball List
+            for (int i = 0; i < seasonFilteredClubs.size(); i++) {
+                StringBuilder clubNameEndSpace = new StringBuilder();
 
-              // changing the width of the club name for each row
-              if(seasonFilteredClubs.get(i).getName().length() != lengthOfClubNameTable){
-                  // the length of the name will anyways be less than lengthOfClubNameTable
-                  int difference = lengthOfClubNameTable - seasonFilteredClubs.get(i).getName().length();
-                  for (int j = 0; j < difference; j++) {
-                      clubNameEndSpace.append(" ");
-                  }
-              }
+                for (int j = 0; j < 3; j++) {
+                    clubNameEndSpace.append(" ");
+                }
 
-              /*
-              *  creating an arraylist with organised data for the table
-              *  The content structure is [position, played match, won, drawn, lost, goal scored, goal received, points,
-              *  goal difference]
-              */
-              ArrayList<String> organisedResultList = new ArrayList<>();
-              if(i<9){
-                  organisedResultList.add("0"+(i+1));
-              }else{
-                  organisedResultList.add(String.valueOf(i+1));
-              }
+                // changing the width of the club name for each row
+                if(seasonFilteredClubs.get(i).getName().length() != lengthOfClubNameTable){
+                    // the length of the name will anyways be less than lengthOfClubNameTable
+                    int difference = lengthOfClubNameTable - seasonFilteredClubs.get(i).getName().length();
+//                  clubNameEndSpace.append(" ".repeat(difference));
+                    for (int j = 0; j < difference; j++) {
+                        clubNameEndSpace.append(" ");
+                    }
+                }
 
-              // getting the stats into an arraylist to organise it
-              for (int j = 0; j < seasonFilteredClubs.get(i).getMainStatistics().size(); j++) {
+                /*
+                 *  creating an arraylist with organised data for the table
+                 *  The content structure is [position, played match, won, drawn, lost, goal scored, goal received, points,
+                 *  goal difference]
+                 */
+                ArrayList<String> organisedResultList = new ArrayList<>();
+                if(i<9){
+                    organisedResultList.add("0"+(i+1));
+                }else{
+                    organisedResultList.add(String.valueOf(i+1));
+                }
 
-                  if(j==7){  // working with the goal difference
-                      if(seasonFilteredClubs.get(i).getMainStatistics().get(j)>-1){
-                          if(seasonFilteredClubs.get(i).getMainStatistics().get(j)<10) {
-                              organisedResultList.add("+0"+seasonFilteredClubs.get(i).getMainStatistics().get(j));
-                          }else{
-                              organisedResultList.add("+"+seasonFilteredClubs.get(i).getMainStatistics().get(j));
-                          }
-                      }else{
-                          if(seasonFilteredClubs.get(i).getMainStatistics().get(j)>-10) {
-                              organisedResultList.add("-0"+Math.abs(seasonFilteredClubs.get(i)
-                                      .getMainStatistics().get(j)));
-                          }else{
-                              organisedResultList.add(String.valueOf(seasonFilteredClubs.get(i)
-                                      .getMainStatistics().get(j)));
-                          }
-                      }
-                  }else{
-                      if(seasonFilteredClubs.get(i).getMainStatistics().get(j)<10){
-                          organisedResultList.add("0"+seasonFilteredClubs.get(i).getMainStatistics().get(j));
-                      }else{
-                          organisedResultList.add(String.valueOf(seasonFilteredClubs.get(i)
-                                  .getMainStatistics().get(j)));
-                      }
-                  }
-              }
+                // getting the stats into an arraylist to organise it
+                for (int j = 0; j < seasonFilteredClubs.get(i).getMainStatistics().size(); j++) {
 
-              // if not matches are added then fixed positions cannot be given for any club until they play a match
-              if(!matchedAdded){
-                  organisedResultList.set(0, "00");
-              }
+                    if(j==7){  // working with the goal difference
+                        if(seasonFilteredClubs.get(i).getMainStatistics().get(j)>-1){
+                            if(seasonFilteredClubs.get(i).getMainStatistics().get(j)<10) {
+                                organisedResultList.add("+0"+seasonFilteredClubs.get(i).getMainStatistics().get(j));
+                            }else{
+                                organisedResultList.add("+"+seasonFilteredClubs.get(i).getMainStatistics().get(j));
+                            }
+                        }else{
+                            if(seasonFilteredClubs.get(i).getMainStatistics().get(j)>-10) {
+                                organisedResultList.add("-0"+Math.abs(seasonFilteredClubs.get(i)
+                                        .getMainStatistics().get(j)));
+                            }else{
+                                organisedResultList.add(String.valueOf(seasonFilteredClubs.get(i)
+                                        .getMainStatistics().get(j)));
+                            }
+                        }
+                    }else{
+                        if(seasonFilteredClubs.get(i).getMainStatistics().get(j)<10){
+                            organisedResultList.add("0"+seasonFilteredClubs.get(i).getMainStatistics().get(j));
+                        }else{
+                            organisedResultList.add(String.valueOf(seasonFilteredClubs.get(i)
+                                    .getMainStatistics().get(j)));
+                        }
+                    }
+                }
 
-              // this is were the table is created
-              System.out.println("|    "+organisedResultList.get(0)+ "    |   "+ seasonFilteredClubs.get(i).getName()
-                      + clubNameEndSpace + "|   "+organisedResultList.get(1)+
-                      "   | "+organisedResultList.get(2)+"  |  "+
-                      organisedResultList.get(3)+"   |  "+
-                      organisedResultList.get(4)+"  |     "+
-                      organisedResultList.get(5)+"      |      "+
-                      organisedResultList.get(6)+"       |        "+
-                      organisedResultList.get(8)+"       |   "+
-                      organisedResultList.get(7)+"   |");
-          }
+                // if not matches are added then fixed positions cannot be given for any club until they play a match
+                if(!matchedAdded){
+                    organisedResultList.set(0, "00");
+                }
 
-      }else{
-          // creating the empty table
-          for (int j = 0; j < 106; j++) {
-              HORIZONTAL_DASHES.append("-");
-          }
+                // this is were the table is created
+                System.out.println("|    "+organisedResultList.get(0)+ "    |   "+ seasonFilteredClubs.get(i).getName()
+                        + clubNameEndSpace + "|   "+organisedResultList.get(1)+
+                        "   | "+organisedResultList.get(2)+"  |  "+
+                        organisedResultList.get(3)+"   |  "+
+                        organisedResultList.get(4)+"  |     "+
+                        organisedResultList.get(5)+"      |      "+
+                        organisedResultList.get(6)+"       |        "+
+                        organisedResultList.get(8)+"       |   "+
+                        organisedResultList.get(7)+"   |");
+            }
 
-          for (int j = 0; j < 38; j++) {
-              PREMIER_LEAGUE_SPACE_TILE.append(" ");
-          }
+        }else{
+            // creating the empty table
+            for (int j = 0; j < 106; j++) {
+                HORIZONTAL_DASHES.append("-");
+            }
+            for (int j = 0; j < 38; j++) {
+                PREMIER_LEAGUE_SPACE_TILE.append(" ");
+            }
 
-          System.out.println("\n"+HORIZONTAL_DASHES);
-          System.out.println("|" + PREMIER_LEAGUE_SPACE_TILE + " P R E M I E R - L E A G U E" + PREMIER_LEAGUE_SPACE_TILE + "|");
-          System.out.println(HORIZONTAL_DASHES);
-          System.out.println("| Position |         Club         | Played | Won | Drawn | Lost | Goal-Scored " +
-                  "| Goal-Difference | Points |");
-          System.out.println(HORIZONTAL_DASHES);
+            System.out.println("\n"+HORIZONTAL_DASHES);
+            System.out.println("|" + PREMIER_LEAGUE_SPACE_TILE + " P R E M I E R - L E A G U E" + PREMIER_LEAGUE_SPACE_TILE + "|");
+            System.out.println(HORIZONTAL_DASHES);
+            System.out.println("| Position |         Club         | Played | Won | Drawn | Lost | Goal-Scored " +
+                    "| Goal-Difference | Points |");
+            System.out.println(HORIZONTAL_DASHES);
 
-          //  creating the empty rows
-          for (int i = 0; i < 10; i++) {
-              System.out.println("|          |                      |        |     |       |      |           " +
-                      "  |                 |        |");
-          }
-      }
+            //  creating the empty rows
+            for (int i = 0; i < 10; i++) {
+                System.out.println("|          |                      |        |     |       |      |           " +
+                        "  |                 |        |");
+            }
+        }
         System.out.println("\n\n");
     }
 
     // Overriding the addPlayedMatch method from the interface
     @Override
-    public void addPlayedMatch() {
-        /* add a played match with it's score and update
-        the statistics and list of matches for the respective clubs played */
-        Scanner input = new Scanner(System.in);
-        System.out.println("\n Enter details of the played match");
+    public String addPlayedMatch(String seasonPlayed, String clubName_01, String clubName_02,int numberGoalScored_club_1,
+                                 int numberGoalScored_club_2, DateMatch dateOfMatch, String matchType) {
 
-        // Checking if it is a valid club else throwing up and error and asking user to re-enter
-        String clubName_01 = checkingForValidClub(" Enter club 1 name: ");
-
-        // validation for the scores
-        int numberGoalScored_club_1 = validatingIntegers(" Enter the number of goal scored: ");
-
-        // Checking if it is a valid club else throwing up and error and asking user to re-enter
-        String clubName_02 = checkingForValidClub(" Enter club 2 name: ");
-
-        // validation for the scores and some stats
-        int numberGoalScored_club_2 = validatingIntegers(" Enter the number of goal scored: ");
-
-        // getting the date of the match played as the input from the user
-        int day = validatingIntegers(" Enter the day (only integers are accepted): ");
-        int month = validatingIntegers(" Enter the month (only integers are accepted): ");
-        int year = validatingIntegers(" Enter the year (only integers are accepted): ");
-
-        // input the season of the match played
-        String seasonPlayed = validatingSeason();
         allSeasonAdded.add(seasonPlayed);
 
-        // type of match played 'Home' or 'Away'
-        boolean validMatchEntered;
-        String matchType;
+        // check if the enter clubs are real and display msg
+        boolean club01 = false;
+        boolean club02 = false;
+        for (FootballClub footballClub : premierLeagueFootballClubList) {
+            if(footballClub.getName().equalsIgnoreCase(clubName_01)) club01=true;
+            if(footballClub.getName().equalsIgnoreCase(clubName_02)) club02=true;
+        }
 
-        do{
-            System.out.print(" Enter the type of match played (Home or Away): ");
-            matchType = input.nextLine();
-            validMatchEntered = matchType.equalsIgnoreCase("home") || matchType.equalsIgnoreCase("away");
-            if(!validMatchEntered)
-                System.out.println("Invalid match input!");
+        // Displaying the error to the user
+        if(club01 && club02){
+            // valid club names so calculating the statistics and add them
+            calculatingStatistics(clubName_01, clubName_02, numberGoalScored_club_1, numberGoalScored_club_2,
+                    dateOfMatch,seasonPlayed, matchType);
+            return "\n Match Successfully added! \n";
 
-        }while (!validMatchEntered);
-
-
-        System.out.print(" Are you sure that the details entered are correct, if you need to re-enter," +
-                " enter 'Y' or 'y'" + " else enter any key to continue: ");
-        input = new Scanner(System.in);
-        String confirmation = input.nextLine();
-
-        if (confirmation.equalsIgnoreCase("y")) {
-            System.out.println(" Please re-enter the details ");
-            addPlayedMatch();
         }else{
-            // check if the enter clubs are real and display msg
-            boolean club01 = false;
-            boolean club02 = false;
-            for (FootballClub footballClub : premierLeagueFootballClubList) {
-                if(footballClub.getName().equalsIgnoreCase(clubName_01)) club01=true;
-                if(footballClub.getName().equalsIgnoreCase(clubName_02)) club02=true;
-            }
 
-            // Displaying the error to the user
-            if(club01 && club02){
-                // valid club names so calculating the statistics and add them
-                DateMatch date = new DateMatch(day, month, year);
-                calculatingStatistics(clubName_01, clubName_02, numberGoalScored_club_1, numberGoalScored_club_2,
-                        date,seasonPlayed, matchType);
-            }else{
-                if(!club01 && !club02){
-                    System.out.println("\n Sorry,there are no clubs with the names '" + clubName_01 + "' and '" +
-                            clubName_02 + "'");
-                }else {
-                    if(!club01){
-                        System.out.println("\n Sorry,there is no club with the given name '" + clubName_01 + "'");
-                    }else{
-                        System.out.println("\n Sorry,there is no club with the given name '" + clubName_02 + "'");
-                    }
+            if(!club01 && !club02){
+                return "\n Sorry,there are no clubs with the names '" + clubName_01 + "' and '" +
+                        clubName_02 + "'";
+
+            }else {
+                if(!club01){
+                    System.out.println();
+                    return "\n Sorry,there is no club with the given name '" + clubName_01 + "'";
+
                 }
             }
         }
+
+        return "\n Sorry,there is no club with the given name '" + clubName_02 + "'";
+
     }
 
-    // checking for valid club entered by the user when adding match.
-    private String checkingForValidClub(String message) {
-        Scanner input = new Scanner(System.in);
-        System.out.print(message);
-        String clubName = input.nextLine();
 
-        boolean invalidClubName = true;
-        while (invalidClubName){
-            for (FootballClub footballClub: premierLeagueFootballClubList) {
-                if (footballClub.getName().equalsIgnoreCase(clubName)) {
-                    invalidClubName = false;
-                    break;
-                }
-            }
-            if(invalidClubName){
-                System.out.println(" There is no team with the name '" + clubName + "', please enter another name\n");
-                System.out.print(message);
-                clubName = input.nextLine();
-            }
-        }
-        return clubName;
-    }
-
-    // validating the season
-    private String validatingSeason() {
-        String seasonPlayed = "";
-        Scanner input = new Scanner(System.in);
-        boolean validatingSeason;
-        do{
-            validatingSeason = false;
-            System.out.print(" Season played (eg:- '2018-19')\n Enter the season of the match played: ");
-            seasonPlayed = input.nextLine();
-            if(seasonPlayed.matches("\\d{4}-\\d{2}"))
-                validatingSeason = true;
-            else
-                System.out.println("\n Given input is not in proper format! ");
-        }while (!validatingSeason);
-
-        return seasonPlayed;
-    }
 
     private void calculatingStatistics(String clubName_01, String clubName_02, int numberGoalScored_club_1,
                                        int numberGoalScored_club_2, DateMatch date, String seasonPlayed,
@@ -864,14 +661,12 @@ public class PremierLeagueManager implements LeagueManager {
                         seasonPlayed, footballClub, matchType);
             }
         }
-        System.out.println("\n Match Successfully added! \n");
     }
 
     private void addPlayedMatchToClub(String clubName_01, String clubName_02, int numberGoalScored_club_1,
                                       int numberGoalScored_club_2, DateMatch date, String seasonPlayed,
                                       FootballClub footballClub, String matchType) {
 
-//        System.out.println("\n Enter further statistics for the club " + clubName_02);
         MatchStats matchStats = getStatsOfMatch(footballClub);
         Match matchPlayed = new Match(numberGoalScored_club_2, numberGoalScored_club_1, matchStats, date,
                 clubName_01, seasonPlayed,matchType, clubName_02);
@@ -912,26 +707,15 @@ public class PremierLeagueManager implements LeagueManager {
         }
     }
 
-    // validates the Integers
-    public int validatingIntegers(String message) {
-        Scanner input = new Scanner(System.in);
-        System.out.print(message);
-        while (!input.hasNextInt()) {
-            System.out.println("\n Invalid input!");
-            System.out.print(message);
-            input.next();
-        }
-        return input.nextInt();
-    }
 
     // Overriding the saveDataIntoFile method from the interface
     @Override
-    public void saveDataIntoFile() {
+    public String saveDataIntoFile() {
         /*
-        * If we need to write and object of a Class into a file, we have to make that class to implement the interface
-        * Serializable.
-        * This is because Serializable interface gives the permission to save the objects
-        */
+         * If we need to write and object of a Class into a file, we have to make that class to implement the interface
+         * Serializable.
+         * This is because Serializable interface gives the permission to save the objects
+         */
 
         File file = new File("objectDataFile.txt");
         FileOutputStream fileOutputStream = null;
@@ -951,7 +735,7 @@ public class PremierLeagueManager implements LeagueManager {
              * That can be reading/writing to a file
              * File not found exception
              */
-//            e.printStackTrace();
+            e.printStackTrace();
         } finally {
             try {
                 if (fileOutputStream != null) {
@@ -966,33 +750,30 @@ public class PremierLeagueManager implements LeagueManager {
             }
         }
 
-        System.out.println("\n Saving the data . . .");
-        System.out.println(" Successfully saved!");
-        loadingData();
-
+        return "\n Saving the data . . .\n Successfully saved!";
     }
 
     // Overriding the readDataFromFile method from the interface
     @Override
-    public void clearDataFile() {
+    public String clearDataFile() {
         // If the user needs to empty the text file details he has the option to do it as well
         /*
-        * This makes sure that the file is empty, by overriding the content of the file with a single ""
-        */
+         * This makes sure that the file is empty, by overriding the content of the file with a single ""
+         */
         try {
             FileWriter file = new FileWriter("objectDataFile.txt");
             file.write("");
             file.close();
         } catch (IOException e) {
             e.printStackTrace();
+
         }
 
-        System.out.println("\n Clearing the contents of the file . . .");
-        System.out.println(" Successfully cleared the file details!");
-        loadingData();      // loading the empty file now
+        return "\n Clearing the contents of the file . . .\n Successfully cleared the file details!";
+
     }
 
-    public ArrayList<String> sortingTheSeasonsInAscendingOrder() {
+    public static ArrayList<String> sortingTheSeasonsInAscendingOrder() {
         Comparator<String> comparator = (season1, season2) -> {
             if(Integer.parseInt(season1.split("-")[0]) > Integer.parseInt(season2.split("-")[0])){
                 return 1;
@@ -1067,13 +848,13 @@ public class PremierLeagueManager implements LeagueManager {
     }
 
     // This will return an arraylist which will filter all the matches of the club by date
-    public ArrayList<FootballClub> filterMatchesByDate(ArrayList<FootballClub> seasonBasedClub, String dateEntered)
+    public static ArrayList<FootballClub> filterMatchesByDate(ArrayList<FootballClub> seasonBasedClub, String dateEntered)
             throws CloneNotSupportedException {
         ArrayList<FootballClub> filteredClubListByDate = new ArrayList<>();
 
         // we are cloning or creating a copy of the arraylist which has to be filtered
-        for (int index = 0; index < seasonBasedClub.size(); index++) {
-            filteredClubListByDate.add((FootballClub) seasonBasedClub.get(index).clone());
+        for (FootballClub footballClub : seasonBasedClub) {
+            filteredClubListByDate.add((FootballClub) footballClub.clone());
         }
 
         // check and split the date entered by the user

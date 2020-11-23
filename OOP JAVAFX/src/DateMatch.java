@@ -1,6 +1,14 @@
 import java.io.Serializable;
 import java.util.Objects;
 
+/*
+ * @author Nazhim Kalam
+ * @UowID: w1761265
+ * @StudentID: SE2019281
+ * OOP CW 01
+ * Java version 8 or higher required
+ */
+
 public class DateMatch implements Serializable {
     // this class is used to handle the day, month and year
     private static final long serialVersionUID = -741281696630909407L;
