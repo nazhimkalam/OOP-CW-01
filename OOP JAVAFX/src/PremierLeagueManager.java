@@ -45,22 +45,40 @@ public class PremierLeagueManager implements LeagueManager {
         try {
             fileInputStream = new FileInputStream(file);
             objectInputStream = new ObjectInputStream(fileInputStream);
+
             try {
                 premierLeagueFootballClubList = (ArrayList<FootballClub>) objectInputStream.readObject();
                 matchedAdded = (boolean) objectInputStream.readObject();
                 allSeasonAdded = (ArrayList<String>) objectInputStream.readObject();
+
             } catch (ClassNotFoundException e) {
-                e.printStackTrace();
+                System.out.println(" ClassNotFoundException occurred Not able to find the class");
             }
-        } catch (IOException e) {
-            /*
-             * Handling exception when input/output operations are failed
-             * An error occurred during an input-output operation.
-             * That can be reading/writing to a file
-             * File not found exception
-             */
-//            e.printStackTrace();
-            System.out.println(" Error: File not found !");
+
+
+        }
+        catch (FileNotFoundException fileNotFoundException){
+            System.out.println(" File not found exception occurred!");
+        }
+        catch (IOException ioException) {
+            System.out.println( " Exception when performing read/write operations to the file!" +
+                    "\n No permission to read/write from or to the file");
+
+        }
+        finally {
+            try{
+                if (fileInputStream != null) {
+                    fileInputStream.close();
+                }
+                if (objectInputStream != null) {
+                    objectInputStream.close();
+                }
+            }
+            catch (IOException ioException) {
+                System.out.println(" Exception when performing read/write operations to the file!" +
+                        "\n No permission to read/write from or to the file");
+
+            }
         }
     }
 
@@ -710,6 +728,7 @@ public class PremierLeagueManager implements LeagueManager {
 
     // Overriding the saveDataIntoFile method from the interface
     @Override
+
     public String saveDataIntoFile() {
         /*
          * If we need to write and object of a Class into a file, we have to make that class to implement the interface
@@ -728,15 +747,21 @@ public class PremierLeagueManager implements LeagueManager {
             objectOutputStream.writeObject(matchedAdded);
             objectOutputStream.writeObject(allSeasonAdded);
 
-        } catch (IOException e) {
-            /*
-             * Handling exception when input/output operations are failed
-             * An error occurred during an input-output operation.
-             * That can be reading/writing to a file
-             * File not found exception
-             */
-            e.printStackTrace();
-        } finally {
+        }
+        catch (FileNotFoundException fileNotFoundException) {
+            return " File not found exception occurred!";
+
+        }
+        catch (IOException ioException) {
+            return " Exception when performing read/write operations to the file!" +
+                    "\n No permission to read/write from or to the file";
+
+        }
+        catch (Exception e){
+            return " An exception occurred!";
+
+        }
+        finally {
             try {
                 if (fileOutputStream != null) {
                     fileOutputStream.close();
@@ -744,13 +769,15 @@ public class PremierLeagueManager implements LeagueManager {
                 if (objectOutputStream != null) {
                     objectOutputStream.close();
                 }
-
-            } catch (IOException e) {
-                e.printStackTrace();
+            }
+            catch (IOException e) {
+                return " Exception when performing read/write operations to the file!" +
+                        "\n No permission to read/write from or to the file";
             }
         }
 
         return "\n Saving the data . . .\n Successfully saved!";
+
     }
 
     // Overriding the readDataFromFile method from the interface
@@ -760,13 +787,34 @@ public class PremierLeagueManager implements LeagueManager {
         /*
          * This makes sure that the file is empty, by overriding the content of the file with a single ""
          */
+        FileWriter file = null;
         try {
-            FileWriter file = new FileWriter("objectDataFile.txt");
+            file = new FileWriter("objectDataFile.txt");
             file.write("");
-            file.close();
-        } catch (IOException e) {
-            e.printStackTrace();
 
+        }
+        catch (FileNotFoundException fileNotFoundException) {
+            return " File not found exception occurred!";
+        }
+        catch (IOException ioException) {
+            return " Exception when performing read/write operations to the file!" +
+                    "\n No permission to read/write from or to the file";
+
+        }
+        catch (Exception e){
+            return " An exception occurred!";
+
+        }
+        finally {
+            try {
+                if (file != null) {
+                    file.close();
+                }
+            }
+            catch (IOException e) {
+                return " Exception when performing read/write operations to the file!" +
+                        "\n No permission to read/write from or to the file";
+            }
         }
 
         return "\n Clearing the contents of the file . . .\n Successfully cleared the file details!";
