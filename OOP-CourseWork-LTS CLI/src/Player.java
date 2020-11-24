@@ -13,7 +13,7 @@ public class Player implements Serializable
 {
     private String name;
     private String preferredFoot;
-    private Double shootingAccuracy;
+    private double shootingAccuracy;
     private int goalScoredPerMatch;
     private int passesPerMatch;
 
@@ -21,7 +21,7 @@ public class Player implements Serializable
 
     }
 
-    public Player(String name, String preferredFoot, Double shootingAccuracy,
+    public Player(String name, String preferredFoot, double shootingAccuracy,
                   int goalScoredPerMatch, int passesPerMatch) {
         this.name = name;
         this.preferredFoot = preferredFoot;
@@ -46,11 +46,11 @@ public class Player implements Serializable
         this.preferredFoot = preferredFoot;
     }
 
-    public Double getShootingAccuracy() {
+    public double getShootingAccuracy() {
         return shootingAccuracy;
     }
 
-    public void setShootingAccuracy(Double shootingAccuracy) {
+    public void setShootingAccuracy(double shootingAccuracy) {
         this.shootingAccuracy = shootingAccuracy;
     }
 
