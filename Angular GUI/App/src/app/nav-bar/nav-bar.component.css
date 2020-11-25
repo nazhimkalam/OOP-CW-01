@@ -4,4 +4,12 @@
     background-color: #36003C;
 }
 
-
+.navigation__barLogo{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 210px;
+}
+.nav-item{
+    margin: 0 10px;
+}
