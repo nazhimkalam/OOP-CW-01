@@ -17,10 +17,36 @@ public class PremierLeagueManager implements LeagueManager {
     private static ArrayList<String> allSeasonAdded = new ArrayList<>();
     private final int MAXIMUM_NUMBER_OF_CLUBS = 20;
 
-    public PremierLeagueManager(){
+    // used for the singleton design pattern, this is set to "null" for lazy initialization, so we only created the
+    // instance when required only," ---> non lazy way LeagueManager manager = new PremierLeagueManager(); "
+    private static LeagueManager manager = null;
+
+    private PremierLeagueManager(){
         matchedAdded = false;
         premierLeagueFootballClubList= new ArrayList<>();   // initializing the variable to run methods
         loadingData();      // load the previously saved data from the file
+    }
+
+    // This method is used for the Singleton Design Pattern
+    public static LeagueManager getInstance(){
+        // Double checked locking (due to the double If condition)
+
+        if(manager==null){
+            // This is to check if an instance of the manager has already been created or not (For the first time
+            // when the instance needed to be created), before adding the synchronized lock
+
+            synchronized (PremierLeagueManager.class){
+                // makes sure Thread Safe, if 2 instance are to be created at the same time
+
+                if(manager==null){
+                    // This is for ensuring and checking if another created instance when created it checks with this null
+                    // and only return the reference of the first instance than creating another one.
+
+                    manager = new PremierLeagueManager();
+                }
+            }
+        }
+        return manager;
     }
 
     public static void loadingData() {
@@ -87,7 +113,7 @@ public class PremierLeagueManager implements LeagueManager {
                 break;
         }
 
-        if(premierLeagueFootballClubList.size()<20)         // This means that there is space to add more clubs/teams
+        if(premierLeagueFootballClubList.size()<MAXIMUM_NUMBER_OF_CLUBS)         // This means that there is space to add more clubs/teams
         {
             premierLeagueFootballClubList.add(club);
             return " Clubs Successfully added!";

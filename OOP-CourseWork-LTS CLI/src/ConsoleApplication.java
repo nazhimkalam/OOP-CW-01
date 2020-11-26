@@ -15,7 +15,7 @@ import java.util.Scanner;
 
 public class ConsoleApplication {
     // VARIABLES
-    private static final LeagueManager premierLeagueManager = new PremierLeagueManager();
+    private static final LeagueManager premierLeagueManager = PremierLeagueManager.getInstance();
 
     // MAIN METHOD
     public static void main(String[] args) {

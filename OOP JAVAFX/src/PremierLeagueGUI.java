@@ -35,7 +35,7 @@ import java.util.Scanner;
 
 public class PremierLeagueGUI extends Application {
 
-    private static final PremierLeagueManager premierLeagueManager = new PremierLeagueManager();
+    private static final PremierLeagueManager premierLeagueManager = PremierLeagueManager.getInstance();;
     public ObservableList<String> options;
     public static ComboBox<String> comboBox = new ComboBox<>();
     public static boolean sortByGoalsClicked = false;
