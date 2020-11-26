@@ -917,6 +917,12 @@ public class PremierLeagueGUI extends Application {
         // Checking if it is a valid club else throwing up and error and asking user to re-enter
         String clubName_02 = checkingForValidClub(" Enter club 2 name: ");
 
+        // Checking if the user has entered duplicated club names
+        while(clubName_01.equalsIgnoreCase(clubName_02)){
+            System.out.println("\n Please enter a different club name ");
+            clubName_02 = checkingForValidClub(" Enter club 2 name: ");
+        }
+
         // validation for the scores and some stats
         int numberGoalScored_club_2 = validatingIntegers(" Enter the number of goal scored: ");
 

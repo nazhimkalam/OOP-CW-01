@@ -19,6 +19,8 @@ public class PremierLeagueManager implements LeagueManager {
     private static ArrayList<String> allSeasonAdded = new ArrayList<>();
     public static ArrayList<FootballClub> seasonFilteredClubs = new ArrayList<>();
     private final int MAXIMUM_NUMBER_OF_CLUBS = 20;
+    private static final int MAXIMUM_NUMBER_OF_MATCHES_PER_TEAM = 38;
+
 
     // used for the singleton design pattern, this is set to "null" for lazy initialization, so we only created the
     // instance when required only," ---> non lazy way LeagueManager manager = new PremierLeagueManager(); "
@@ -606,39 +608,87 @@ public class PremierLeagueManager implements LeagueManager {
     public String addPlayedMatch(String seasonPlayed, String clubName_01, String clubName_02,int numberGoalScored_club_1,
                                  int numberGoalScored_club_2, DateMatch dateOfMatch, String matchType) {
 
-        allSeasonAdded.add(seasonPlayed);
+        // checking if the maximum number of matches has been reached or not, even if either club reached to the max
+        // then the match is cancelled
+        boolean club1ReachedMaximumMatches = false;
+        boolean club2ReachedMaximumMatches = false;
+        FootballClub club1 = null;
+        FootballClub club2 = null;
+        int matchCounter = 0;
 
-        // check if the enter clubs are real and display msg
-        boolean club01 = false;
-        boolean club02 = false;
-        for (FootballClub footballClub : premierLeagueFootballClubList) {
-            if(footballClub.getName().equalsIgnoreCase(clubName_01)) club01=true;
-            if(footballClub.getName().equalsIgnoreCase(clubName_02)) club02=true;
+        // getting the clubs from the name of club received as the parameter
+        for (FootballClub club: premierLeagueFootballClubList) {
+            if(club.getName().equalsIgnoreCase(clubName_01)){
+                club1 = club;
+            }else if(club.getName().equalsIgnoreCase(clubName_02)){
+                club2 = club;
+            }
         }
 
-        // Displaying the error to the user
-        if(club01 && club02){
-            // valid club names so calculating the statistics and add them
-            calculatingStatistics(clubName_01, clubName_02, numberGoalScored_club_1, numberGoalScored_club_2,
-                    dateOfMatch,seasonPlayed, matchType);
-            return "\n Match Successfully added! \n";
+        if(club1!=null && club2!=null){
+            // checking for club1
+            for (Match match: club1.getMatchesPlayed()) {
+                if(match.getSeason().equals(seasonPlayed)){
+                    matchCounter++;
+                    club1ReachedMaximumMatches = matchCounter >= MAXIMUM_NUMBER_OF_MATCHES_PER_TEAM;
+                }
+            }
 
-        }else{
-
-            if(!club01 && !club02){
-                return "\n Sorry,there are no clubs with the names '" + clubName_01 + "' and '" +
-                        clubName_02 + "'";
-
-            }else {
-                if(!club01){
-                    System.out.println();
-                    return "\n Sorry,there is no club with the given name '" + clubName_01 + "'";
-
+            matchCounter = 0;
+            // checking for club2
+            for (Match match: club2.getMatchesPlayed()) {
+                if(match.getSeason().equals(seasonPlayed)){
+                    matchCounter++;
+                    club2ReachedMaximumMatches = matchCounter >= MAXIMUM_NUMBER_OF_MATCHES_PER_TEAM;
                 }
             }
         }
 
-        return "\n Sorry,there is no club with the given name '" + clubName_02 + "'";
+
+        if( !club2ReachedMaximumMatches && !club1ReachedMaximumMatches){
+            allSeasonAdded.add(seasonPlayed);
+
+            // check if the enter clubs are real and display msg
+            boolean club01 = false;
+            boolean club02 = false;
+            for (FootballClub footballClub : premierLeagueFootballClubList) {
+                if(footballClub.getName().equalsIgnoreCase(clubName_01)) club01=true;
+                if(footballClub.getName().equalsIgnoreCase(clubName_02)) club02=true;
+            }
+
+            // Displaying the error to the user
+            if(club01 && club02){
+                // valid club names so calculating the statistics and add them
+                calculatingStatistics(clubName_01, clubName_02, numberGoalScored_club_1, numberGoalScored_club_2,
+                        dateOfMatch,seasonPlayed, matchType);
+                return "\n Match Successfully added! \n";
+
+            }else{
+
+                if(!club01 && !club02){
+                    return "\n Sorry,there are no clubs with the names '" + clubName_01 + "' and '" +
+                            clubName_02 + "'";
+
+                }else {
+                    if(!club01){
+                        System.out.println();
+                        return "\n Sorry,there is no club with the given name '" + clubName_01 + "'";
+
+                    }
+                }
+            }
+
+            return "\n Sorry,there is no club with the given name '" + clubName_02 + "'";
+        }
+
+
+        if(club1ReachedMaximumMatches && club2ReachedMaximumMatches){
+            return "\n Sorry, both the clubs have reached the maximum number of matches played!";
+        }else if(club1ReachedMaximumMatches){
+            return "\n Sorry, '" + clubName_01 + "' has reached the maximum number of matches played!";
+        }
+
+        return "\n Sorry, '" + clubName_02 + "' has reached the maximum number of matches played!";
 
     }
 
@@ -921,9 +971,13 @@ public class PremierLeagueManager implements LeagueManager {
         String[] matchTypes = new String[]{"Home", "Away"};
         String matchType = matchTypes[random.nextInt(2)];
 
-        // step 03: call the calculatingStatistics() wisely by passing all the generated random data
-        calculatingStatistics(selectedClub_O1.getName(), selectedClub_O2.getName(), numberGoalScored_club_1,
-                numberGoalScored_club_2, date, selectedSeason, matchType);
+
+
+        // step 03: call the addPlayedMatch() wisely by passing all the generated random data
+        addPlayedMatch(selectedSeason,selectedClub_O1.getName(), selectedClub_O2.getName(), numberGoalScored_club_1,
+                numberGoalScored_club_2, date, matchType);
+//        calculatingStatistics(selectedClub_O1.getName(), selectedClub_O2.getName(), numberGoalScored_club_1,
+//                numberGoalScored_club_2, date, selectedSeason, matchType);
 
 
         // step 04: call the save file method
