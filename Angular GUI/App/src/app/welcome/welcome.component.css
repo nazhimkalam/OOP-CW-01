@@ -3,6 +3,7 @@
 }
 .welcome {
   background-color: #ece7ef;
+  font-family: Verdana, Geneva, Tahoma, sans-serif !important;
 }
 .welcome,
 .welcome__sectionBottom,
