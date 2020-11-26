@@ -20,12 +20,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4ffd9da0-df3c-4a45-8b09-2b7528f01daf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../Angular GUI/App/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Angular GUI/App/src/app/app.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../OOP JAVAFX/src/PremierLeagueGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/../OOP JAVAFX/src/PremierLeagueGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../OOP JAVAFX/src/PremierLeagueManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/../OOP JAVAFX/src/PremierLeagueManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PremierLeagueTester.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OOP-CourseWork.iml" beforeDir="false" afterPath="$PROJECT_DIR$/OOP-CourseWork.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/objectDataFile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/objectDataFile.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/OOP-CourseWork/ConsoleApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OOP-CourseWork/ConsoleApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/OOP-CourseWork/FootballClub.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OOP-CourseWork/FootballClub.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/OOP-CourseWork/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OOP-CourseWork/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/OOP-CourseWork/PremierLeagueManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OOP-CourseWork/PremierLeagueManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/OOP-CourseWork/Tester.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OOP-CourseWork/Tester.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ConsoleApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ConsoleApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PremierLeagueManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PremierLeagueManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tester.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,6 +72,10 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -110,11 +120,35 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PremierLeagueTester.testAddMatch" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="OOP-CourseWork" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="PremierLeagueTester" />
+      <option name="METHOD_NAME" value="testAddMatch" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.ConsoleApplication" />
-        <item itemvalue="Application.PremierLeagueTester" />
+        <item itemvalue="JUnit.PremierLeagueTester.testAddMatch" />
         <item itemvalue="Application.Tester" />
+        <item itemvalue="Application.PremierLeagueTester" />
         <item itemvalue="Application.PremierLeagueManager" />
       </list>
     </recent_temporary>
@@ -185,6 +219,8 @@
       <workItem from="1606202047096" duration="88000" />
       <workItem from="1606301415717" duration="71000" />
       <workItem from="1606369094734" duration="1644000" />
+      <workItem from="1606410169608" duration="4421000" />
+      <workItem from="1606418999272" duration="794000" />
     </task>
     <task id="LOCAL-00012" summary="commit">
       <created>1604851031613</created>
@@ -563,6 +599,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="121" y="0" key="#Project_Structure/0.0.1280.680/1920.0.1360.728@0.0.1280.680" timestamp="1604775493432" />
+    <state x="50" y="148" width="1095" height="504" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1606414601290">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="50" y="148" width="1095" height="504" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.1280.689/1920.0.1360.738@0.0.1280.689" timestamp="1606414601289" />
     <state x="446" y="24" key="#com.intellij.ide.util.MemberChooser" timestamp="1606141566953">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
@@ -574,30 +614,30 @@
     </state>
     <state x="421" y="95" key="FileChooserDialogImpl/0.0.1280.680/1920.0.1360.728@0.0.1280.680" timestamp="1606110858726" />
     <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.689/1920.0.1360.738@0.0.1280.689" timestamp="1606369314258" />
-    <state width="1237" height="2" key="GridCell.Tab.0.bottom" timestamp="1606142277241">
+    <state width="1237" height="95" key="GridCell.Tab.0.bottom" timestamp="1606419400994">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state width="1237" height="523" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.0.1360.728@0.0.1280.680" timestamp="1606123190261" />
     <state width="1237" height="517" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1606037862037" />
-    <state width="1237" height="2" key="GridCell.Tab.0.bottom/0.0.1280.689/1920.0.1360.738@0.0.1280.689" timestamp="1606142277241" />
-    <state width="1237" height="2" key="GridCell.Tab.0.center" timestamp="1606142277241">
+    <state width="1237" height="95" key="GridCell.Tab.0.bottom/0.0.1280.689/1920.0.1360.738@0.0.1280.689" timestamp="1606419400994" />
+    <state width="1237" height="95" key="GridCell.Tab.0.center" timestamp="1606419400994">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state width="1237" height="523" key="GridCell.Tab.0.center/0.0.1280.680/1920.0.1360.728@0.0.1280.680" timestamp="1606123190261" />
     <state width="1237" height="517" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1606037862035" />
-    <state width="1237" height="2" key="GridCell.Tab.0.center/0.0.1280.689/1920.0.1360.738@0.0.1280.689" timestamp="1606142277241" />
-    <state width="1237" height="2" key="GridCell.Tab.0.left" timestamp="1606142277241">
+    <state width="1237" height="95" key="GridCell.Tab.0.center/0.0.1280.689/1920.0.1360.738@0.0.1280.689" timestamp="1606419400994" />
+    <state width="1237" height="95" key="GridCell.Tab.0.left" timestamp="1606419400994">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state width="1237" height="523" key="GridCell.Tab.0.left/0.0.1280.680/1920.0.1360.728@0.0.1280.680" timestamp="1606123190260" />
     <state width="1237" height="517" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1606037862035" />
-    <state width="1237" height="2" key="GridCell.Tab.0.left/0.0.1280.689/1920.0.1360.738@0.0.1280.689" timestamp="1606142277241" />
-    <state width="1237" height="2" key="GridCell.Tab.0.right" timestamp="1606142277241">
+    <state width="1237" height="95" key="GridCell.Tab.0.left/0.0.1280.689/1920.0.1360.738@0.0.1280.689" timestamp="1606419400994" />
+    <state width="1237" height="95" key="GridCell.Tab.0.right" timestamp="1606419400994">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state width="1237" height="523" key="GridCell.Tab.0.right/0.0.1280.680/1920.0.1360.728@0.0.1280.680" timestamp="1606123190261" />
     <state width="1237" height="517" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1606037862037" />
-    <state width="1237" height="2" key="GridCell.Tab.0.right/0.0.1280.689/1920.0.1360.738@0.0.1280.689" timestamp="1606142277241" />
+    <state width="1237" height="95" key="GridCell.Tab.0.right/0.0.1280.689/1920.0.1360.738@0.0.1280.689" timestamp="1606419400994" />
     <state width="1237" height="7" key="GridCell.Tab.1.bottom" timestamp="1605965693406">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -622,16 +662,21 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="354" y="43" key="RollbackChangesDialog/0.0.1280.680/1920.0.1360.728@0.0.1280.680" timestamp="1604822003451" />
-    <state x="129" y="0" key="SettingsEditor" timestamp="1606107099051">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state x="129" y="0" key="SettingsEditor" timestamp="1606412257954">
+      <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state x="129" y="0" key="SettingsEditor/0.0.1280.680/1920.0.1360.728@0.0.1280.680" timestamp="1605027049128" />
     <state x="129" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1606107099051" />
-    <state x="2046" y="-19" width="1033" height="677" maximized="true" key="dock-window-1" timestamp="1606202077263">
-      <screen x="1920" y="0" width="1360" height="738" />
+    <state x="129" y="0" key="SettingsEditor/0.0.1280.689/1920.0.1360.738@0.0.1280.689" timestamp="1606412257954" />
+    <state x="376" y="237" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1606413196878">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="376" y="237" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1280.689/1920.0.1360.738@0.0.1280.689" timestamp="1606413196878" />
+    <state x="-71" y="-10" width="1118" height="726" maximized="true" key="dock-window-1" timestamp="1606412845274">
+      <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state x="1934" y="-15" width="1002" height="653" maximized="true" key="dock-window-1/0.0.1280.680/1920.0.1360.728@0.0.1280.680" timestamp="1606108022479" />
-    <state x="2046" y="-19" width="1033" height="677" maximized="true" key="dock-window-1/0.0.1280.689/1920.0.1360.738@0.0.1280.689" timestamp="1606202077263" />
+    <state x="-71" y="-10" width="1118" height="726" maximized="true" key="dock-window-1/0.0.1280.689/1920.0.1360.738@0.0.1280.689" timestamp="1606412845274" />
     <state x="2058" y="-32" width="1000" height="668" maximized="true" key="dock-window-2" timestamp="1606120087638">
       <screen x="1920" y="0" width="1360" height="728" />
     </state>
