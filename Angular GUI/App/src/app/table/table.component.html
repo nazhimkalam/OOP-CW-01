@@ -1,84 +1,86 @@
 <!-- Navigation Bar -->
-<app-nav-bar></app-nav-bar>
+<div class="tablePage">
+  <app-nav-bar></app-nav-bar>
 
-<div class="container pTable">
-  <h1 class="pTable__header">Table</h1>
+  <div class="container pTable">
+    <h1 class="pTable__header">Table</h1>
 
-  <div class="pTable__btnOptions mt-5 container">
-    <div class="pTable__selectedSeason">
-      <p>Season {{ selectedSeason }}</p>
-    </div>
-    <div>
-      <div class="btn-group season">
-        <button
-          class="btn btn-light btn-sm dropdown-toggle"
-          type="button"
-          data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false"
-        >
-          Season
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="#">2020-21</a>
-          <a class="dropdown-item" href="#">2019-20</a>
-          <a class="dropdown-item" href="#">2018-19</a>
+    <div class="pTable__btnOptions mt-5 container">
+      <div class="pTable__selectedSeason">
+        <p>Season {{ selectedSeason }}</p>
+      </div>
+      <div>
+        <div class="btn-group season">
+          <button
+            class="btn btn-light btn-sm dropdown-toggle"
+            type="button"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            Season
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#">2020-21</a>
+            <a class="dropdown-item" href="#">2019-20</a>
+            <a class="dropdown-item" href="#">2018-19</a>
+          </div>
+        </div>
+
+        <div class="btn-group sortBy">
+          <button
+            class="btn btn-light btn-sm dropdown-toggle"
+            type="button"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            Sort By
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#">Points</a>
+            <a class="dropdown-item" href="#">Goals</a>
+            <a class="dropdown-item" href="#">Wins</a>
+          </div>
         </div>
       </div>
-
-      <div class="btn-group sortBy">
-        <button
-          class="btn btn-light btn-sm dropdown-toggle"
-          type="button"
-          data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false"
-        >
-          Sort By
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="#">Points</a>
-          <a class="dropdown-item" href="#">Goals</a>
-          <a class="dropdown-item" href="#">Wins</a>
-        </div>
-      </div>
+    </div>
+    <div
+      class="container mt-4 pTable__table table-wrapper-scroll-y my-custom-scrollbar"
+    >
+      <table class="table">
+        <thead class="table__header">
+          <tr>
+            <th scope="col">Position</th>
+            <th scope="col">Club</th>
+            <th scope="col">Played</th>
+            <th scope="col">Won</th>
+            <th scope="col">Drawn</th>
+            <th scope="col">Lost</th>
+            <th scope="col">GF</th>
+            <th scope="col">GA</th>
+            <th scope="col">GD</th>
+            <th scope="col">Points</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of results">
+            <td scope="row">1</td>
+            <td>Titan FC</td>
+            <td>8</td>
+            <td>4</td>
+            <td>2</td>
+            <td>3</td>
+            <td>6</td>
+            <td>7</td>
+            <td>8</td>
+            <td>23</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
-  <div
-    class="container mt-4 pTable__table table-wrapper-scroll-y my-custom-scrollbar"
-  >
-    <table class="table">
-      <thead class="table__header">
-        <tr>
-          <th scope="col">Position</th>
-          <th scope="col">Club</th>
-          <th scope="col">Played</th>
-          <th scope="col">Won</th>
-          <th scope="col">Drawn</th>
-          <th scope="col">Lost</th>
-          <th scope="col">GF</th>
-          <th scope="col">GA</th>
-          <th scope="col">GD</th>
-          <th scope="col">Points</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let row of results">
-          <td scope="row">1</td>
-          <td>Titan FC</td>
-          <td>8</td>
-          <td>4</td>
-          <td>2</td>
-          <td>3</td>
-          <td>6</td>
-          <td>7</td>
-          <td>8</td>
-          <td>23</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+
+  <!-- Footer Section -->
+  <app-footer></app-footer>
 </div>
-
-<!-- Footer Section -->
-<app-footer></app-footer>
