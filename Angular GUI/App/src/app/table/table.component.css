@@ -1,0 +1,55 @@
+*{
+  font-family: Verdana, Geneva, Tahoma, sans-serif !important;
+}
+.pTable {
+  margin-top: 60px;
+}
+.pTable__header {
+  font-size: 50px;
+}
+.my-custom-scrollbar {
+  position: relative;
+  height: 500px;
+  overflow: auto;
+}
+.table-wrapper-scroll-y {
+  display: block;
+}
+
+th {
+  background: #36003c;
+  position: sticky;
+  color: white;
+  top: -11px; /* Don't forget this, required for the stickiness */
+  text-align: center;
+}
+
+td {
+  text-align: center;
+  height: 60px;
+  vertical-align: middle;
+}
+.season button,
+.sortBy button {
+  background-color: #fff;
+  color: #36003c;
+  border-color: #36003c;
+  margin: 0px 10px;
+  border-width: 2px;
+}
+
+.season button:hover {
+  background-color: rgb(243, 243, 243);
+}
+.pTable__table {
+  padding-top: 10px;
+  margin-bottom: 100px;
+}
+.pTable__btnOptions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.dropdown-item:active {
+  background-color: #36003c !important;
+}

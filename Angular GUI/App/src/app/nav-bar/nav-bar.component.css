@@ -1,3 +1,8 @@
+* {
+    font-family: Verdana, Geneva, Tahoma, sans-serif !important;
+    z-index: 9999;
+  }
+  
 .navigation__bar {
   display: flex;
   justify-content: space-between;
