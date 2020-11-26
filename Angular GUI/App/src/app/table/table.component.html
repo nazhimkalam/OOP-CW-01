@@ -5,41 +5,45 @@
   <h1 class="pTable__header">Table</h1>
 
   <div class="pTable__btnOptions mt-5 container">
-    <div class="btn-group season">
-      <button
-        class="btn btn-light btn-sm dropdown-toggle"
-        type="button"
-        data-toggle="dropdown"
-        aria-haspopup="true"
-        aria-expanded="false"
-      >
-        Season
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="#">2020-21</a>
-        <a class="dropdown-item" href="#">2019-20</a>
-        <a class="dropdown-item" href="#">2018-19</a>
-      </div>
+    <div class="pTable__selectedSeason">
+      <p>Season {{ selectedSeason }}</p>
     </div>
+    <div>
+      <div class="btn-group season">
+        <button
+          class="btn btn-light btn-sm dropdown-toggle"
+          type="button"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          Season
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="#">2020-21</a>
+          <a class="dropdown-item" href="#">2019-20</a>
+          <a class="dropdown-item" href="#">2018-19</a>
+        </div>
+      </div>
 
-    <div class="btn-group sortBy">
-      <button
-        class="btn btn-light btn-sm dropdown-toggle" 
-        type="button"
-        data-toggle="dropdown"
-        aria-haspopup="true"
-        aria-expanded="false"
-      >
-        Sort By
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="#">Points</a>
-        <a class="dropdown-item" href="#">Goals</a>
-        <a class="dropdown-item" href="#">Wins</a>
+      <div class="btn-group sortBy">
+        <button
+          class="btn btn-light btn-sm dropdown-toggle"
+          type="button"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          Sort By
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="#">Points</a>
+          <a class="dropdown-item" href="#">Goals</a>
+          <a class="dropdown-item" href="#">Wins</a>
+        </div>
       </div>
     </div>
   </div>
-
   <div
     class="container mt-4 pTable__table table-wrapper-scroll-y my-custom-scrollbar"
   >

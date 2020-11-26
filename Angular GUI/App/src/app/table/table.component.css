@@ -48,8 +48,13 @@ td {
 .pTable__btnOptions {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
 }
 .dropdown-item:active {
   background-color: #36003c !important;
+}
+.pTable__selectedSeason p{
+    font-size: 20px;
+    font-weight: 600;
+    color: #36003c;
 }
