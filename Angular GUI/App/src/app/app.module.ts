@@ -11,6 +11,7 @@ import { TableComponent } from './table/table.component';
 import { MatchesComponent } from './matches/matches.component';
 import { PlayersComponent } from './players/players.component';
 import { FooterComponent } from './footer/footer.component';
+import { ErrorComponent } from './error/error.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { FooterComponent } from './footer/footer.component';
     TableComponent,
     MatchesComponent,
     PlayersComponent,
-    FooterComponent
+    FooterComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
