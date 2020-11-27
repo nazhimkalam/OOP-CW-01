@@ -1,1 +1,27 @@
 <app-nav-bar></app-nav-bar>
+
+<div class="players container">
+  <div class="players__heading">
+    <h1>Players</h1>
+    <img src="../../assets/ball.png" alt="ball" height="60">
+  </div>
+
+  <div class="container players__list" >
+    <div class="card" style="width: 16rem" *ngFor="let player of players">
+      <img
+        class="card-img-top"
+        src="{{ player.imageUrl }}"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h1 class="card-text">{{ player.name }}</h1>
+        <p class="card-text">{{ player.position }}</p>
+        <p class="card-text">{{ player.teamName }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+<br>
+<app-footer></app-footer>

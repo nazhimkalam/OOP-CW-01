@@ -18,12 +18,11 @@
 }
 
 .about__description img{
-  transition: 0.3s ease-in-out;
-
+  transition: 1s ease-in-out;
 }
 .about__description img:hover {
-  transform: scale(1.01);
-  transition: 0.3s ease-in-out;
+  transform: scale(1.03);
+  transition: 1s ease-in-out;
 }
 
 .about__heading:hover {
