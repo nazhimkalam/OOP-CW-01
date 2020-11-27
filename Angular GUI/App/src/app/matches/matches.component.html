@@ -50,10 +50,34 @@
     </div>
   </div>
 
+  <!-- main card container -->
   <div class="matches__list container">
-        <div class="matches__matchCard">
 
-            
+    <!-- each match card -->
+        <div class="matches__matchCard" *ngFor = "let match of matches">
+
+            <div class="matches__club1">
+                <div><img src="../../assets/logo/{{match.club1_logo}}.png" height="75px" alt=""></div>
+                <div class="match__clubContent">
+                    <h1>{{match.club1_name}}</h1>
+                    <p class="match__date">{{match.date}}</p>
+                    <p class="match__score">{{match.club1_score}}</p>
+                </div>
+            </div>
+
+            <div class="matches__versus">
+                <p>VS</p>
+            </div>
+
+            <div class="matches__club2">
+                <div class="match__clubContent">
+                    <h1>{{match.club2_name}}</h1>
+                    <p class="match__date">{{match.date}}</p>
+                    <p class="match__score">{{match.club2_score}}</p>
+                </div>
+                <div><img src="../../assets/logo/{{match.club2_logo}}.png" height="75px" alt=""></div>
+            </div>
+
 
         </div>
   </div>
