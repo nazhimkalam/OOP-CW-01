@@ -108,6 +108,10 @@ table {
 .pTable__header__container img{
   padding-right: 70px;
 }
+
+.dropdown-item{
+  cursor: pointer !important;
+}
 /* Animation Part */
 
 .tablePage {

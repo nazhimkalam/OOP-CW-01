@@ -7,7 +7,7 @@
 
     <div class="pTable__btnOptions mt-5 container">
       <div class="pTable__selectedSeason">
-        <p>Season {{ selectedSeason }}</p>
+        <p>Season {{ currentSeason }}</p>
       </div>
       <div>
         <div class="btn-group season">
@@ -21,9 +21,12 @@
             Season
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="#">2020-21</a>
-            <a class="dropdown-item" href="#">2019-20</a>
-            <a class="dropdown-item" href="#">2018-19</a>
+            <a
+              class="dropdown-item"
+              *ngFor="let season of seasons"
+              (click)="handleClickedSeason(season)"
+              >{{ season }}</a
+            >
           </div>
         </div>
 
@@ -38,9 +41,9 @@
             Sort By
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" (click)="sortByPoints(this)">Points</a>
-            <a class="dropdown-item" >Goals</a>
-            <a class="dropdown-item" >Wins</a>
+            <div class="dropdown-item" (click)="sortByPoints()">Points</div>
+            <div class="dropdown-item" (click)="sortByGoals()">Goals</div>
+            <div class="dropdown-item" (click)="sortByWins()">Wins</div>
           </div>
         </div>
       </div>
@@ -64,21 +67,20 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let row of results">
-            <td scope="row">1</td>
-            <td>Titan FC</td>
-            <td>8</td>
-            <td>4</td>
-            <td>2</td>
-            <td>3</td>
-            <td>6</td>
-            <td>7</td>
-            <td>8</td>
-            <td>23</td>
+          <tr *ngFor="let rowResult of resultsRecords">
+            <td scope="row">{{ rowResult.position }}</td>
+            <td>{{ rowResult.clubName }}</td>
+            <td>{{ rowResult.numberOfPlayed }}</td>
+            <td>{{ rowResult.numberOfWins }}</td>
+            <td>{{ rowResult.numberOfDraws }}</td>
+            <td>{{ rowResult.numberOfLosses }}</td>
+            <td>{{ rowResult.totalGoalScored }}</td>
+            <td>{{ rowResult.totalGoalReceived }}</td>
+            <td>{{ rowResult.totalGoalDifference }}</td>
+            <td>{{ rowResult.totalPoints }}</td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
 </div>
-

@@ -6,6 +6,7 @@ import { Subject } from 'rxjs';
 })
 export class WelcomeInteractionService {
 
+  // T    is service is used to not display the navabar and the footer for the welcome page
   private _welcomePageMessage = new Subject<boolean>();
   welcomePageMessage = this._welcomePageMessage.asObservable();
 

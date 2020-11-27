@@ -1,4 +1,3 @@
-
 <div class="matches container">
   <div class="matches__titleContent">
     <h1 class="matches__header">Matches</h1>
@@ -11,17 +10,18 @@
     <div class="matches__textField">
       <form class="form-inline">
         <div class="form-group mx-sm-3 mb-2">
-          <label for="inputPassword2" class="sr-only">Date</label>
+          <label for="dateEntered" class="sr-only">Date</label>
           <input
             type="date"
-            class="form-control"
-            id="inputPassword2"
-            placeholder="Password"
+            class="form-control date__calender"
+            id="dateEntered"
+            (change)="setSelectedDate($event.target.value)"
           />
         </div>
         <button
-          type="submit"
+          type="button"
           class="btn btn-sm mb-2 matches__textField__searchBtn"
+          (click)="handleSearchSelectedDate()"
         >
           Search
         </button>
@@ -41,14 +41,17 @@
           Season
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" >2020-21</a>
-          <a class="dropdown-item" >2019-20</a>
-          <a class="dropdown-item" >2018-19</a>
+          <a
+            class="dropdown-item"
+            *ngFor="let season of seasons"
+            (click)="handleClickedSeason(season)"
+            >{{ season }}</a
+          >
         </div>
       </div>
 
       <!-- generate match btn -->
-      <button type="button" class="btn btn-primary btn-sm">
+      <button type="button" class="btn btn-primary btn-sm" (click)="generateMatch()">
         Generate Match
       </button>
     </div>
@@ -97,7 +100,6 @@
       </div>
     </div>
   </div>
- 
 </div>
 <br />
 <br />
