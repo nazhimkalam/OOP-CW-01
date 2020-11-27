@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark navigation__bar">
   <div>
-    <a class="navbar-brand navigation__barLogo" href="#"
-      ><img src="../../assets/head.jpg" height="55px" alt="" />
+    <a class="navbar-brand navigation__barLogo" routerLink="/about" (click)="onHandleClick('about')">
+      <img src="../../assets/head.jpg" height="55px" alt="" />
       <span>Premier League</span></a
     >
   </div>
@@ -11,7 +11,7 @@
         <a
           class="nav-link {{ activeLinks[0] }}"
           (click)="onHandleClick('about')"
-          href="#about"
+          routerLink="/about"
           >ABOUT
         </a>
       </li>
@@ -19,7 +19,7 @@
         <a
           class="nav-link {{ activeLinks[1] }}"
           (click)="onHandleClick('table')"
-          href="#table"
+          routerLink="/table"
           >TABLE</a
         >
       </li>
@@ -27,7 +27,7 @@
         <a
           class="nav-link {{ activeLinks[2] }}"
           (click)="onHandleClick('matches')"
-          href="#matches"
+          routerLink="/matches"
           >MATCHES</a
         >
       </li>
@@ -35,7 +35,7 @@
         <a
           class="nav-link {{ activeLinks[3] }}"
           (click)="onHandleClick('players')"
-          href="#players"
+          routerLink="/players"
           >PLAYERS</a
         >
       </li>
