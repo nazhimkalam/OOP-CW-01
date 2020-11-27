@@ -19,4 +19,10 @@ export class TableComponent implements OnInit {
       this.results.push('');
     }
   }
+
+
+  sortByPoints(event){
+    console.log(event);
+    console.log(event.value);
+  }
 }
