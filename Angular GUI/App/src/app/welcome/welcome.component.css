@@ -3,7 +3,7 @@
   overflow: hidden;
 }
 .welcome {
-  background-color: #ece7ef;
+  background-image: linear-gradient(to right, #feefff, #ffe0f2);
   font-family: Verdana, Geneva, Tahoma, sans-serif !important;
 }
 .welcome,
@@ -49,9 +49,9 @@
   padding: 3px;
 }
 .welcome__button button:hover {
-  color: #422872;
+  color: #ea2d9d;
   background-color: white;
-  border: 1px #422872 solid;
+  border: 1px #ea2d9d solid;
 }
 .welcome__button:hover {
   transition: 0.2s ease-in-out;

@@ -1,13 +1,13 @@
 * {
-    font-family: Verdana, Geneva, Tahoma, sans-serif !important;
-    z-index: 9999;
-  }
-  
+  font-family: Verdana, Geneva, Tahoma, sans-serif !important;
+  z-index: 9999;
+}
+
 .navigation__bar {
   display: flex;
   justify-content: space-between;
-  background-color: #36003c;
-  font-family: Verdana, Geneva, Tahoma, sans-serif !important;
+  /* background-color: #36003c; */
+  background-image: linear-gradient(to right, #36003c, #d4007f);
   position: sticky;
   top: 0;
 }

@@ -1,11 +1,35 @@
 * {
-    font-family: Verdana, Geneva, Tahoma, sans-serif !important;
-  }
-  
-.about__heading {
   font-family: Verdana, Geneva, Tahoma, sans-serif !important;
+}
+
+.about__container {
   padding-top: 80px;
+}
+.about__heading {
   font-size: 50px;
+  border: 3px solid #ea2d9d;
+  width: fit-content;
+  padding: 20px;
+  transition: 0.3s ease-in-out;
+  border-left: transparent;
+  padding-right: 30px;
+  border-top-right-radius: 100px;
+  border-bottom-right-radius: 100px;
+}
+
+.about__description img{
+  transition: 0.3s ease-in-out;
+
+}
+.about__description img:hover {
+  transform: scale(1.01);
+  transition: 0.3s ease-in-out;
+}
+
+.about__heading:hover {
+  transition: 0.3s ease-in-out;
+  animation-fill-mode: forwards;
+  transform: translateX(20px);
 }
 
 .about__description {
@@ -15,7 +39,6 @@
 }
 .about__description p {
   font-size: 16px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif !important;
   text-align: justify;
 }
 .about__description img {
