@@ -1,5 +1,57 @@
 <app-nav-bar></app-nav-bar>
 
+<div class="matches container">
+  <div class="matches__titleContent">
+    <h1 class="matches__header">Matches</h1>
+    <img src="../../assets/ball.png" alt="" height="60px" />
+  </div>
 
+  <div class="matches__inputs container">
+    <div class="matches__textField">
+      <form class="form-inline">
+        <div class="form-group mx-sm-3 mb-2">
+          <label for="inputPassword2" class="sr-only">Date</label>
+          <input
+            type="date"
+            class="form-control"
+            id="inputPassword2"
+            placeholder="Password"
+          />
+        </div>
+        <button type="submit" class="btn btn-sm mb-2 matches__textField__searchBtn">
+          Search
+        </button>
+      </form>
+    </div>
+
+    <div class="matches__btn">
+      <!-- drop down season -->
+      <div class="btn-group season">
+        <button
+          class="btn btn-light btn-sm dropdown-toggle"
+          type="button"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          Season
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="#">2020-21</a>
+          <a class="dropdown-item" href="#">2019-20</a>
+          <a class="dropdown-item" href="#">2018-19</a>
+        </div>
+      </div>
+
+      <!-- generate match btn -->
+      <button type="button" class="btn btn-primary btn-sm">Generate Match</button>
+    </div>
+  </div>
+
+  <div class="matches__list container">
+    <!-- have a scroll pane with the matches -->
+    <!-- create on match div then  the rest comes from the backend -->
+  </div>
+</div>
 
 <app-footer></app-footer>
