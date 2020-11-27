@@ -8,6 +8,7 @@ export class Match {
     public club2_name: string,
     public club2_score: number,
     public club2_logo: number,
+    public matchType: string,
     public date: string
   ) {}
 }
@@ -19,14 +20,54 @@ export class Match {
 })
 export class MatchesComponent implements OnInit {
   matches: Match[] = [
-    new Match('Juventus', 6, 23, 'Real Madrid', 8, 21, '14/12/2020'),
     new Match(
       'Barcelona',
       4,
-      (Math.floor(Math.random() * Math.floor(23)) + 1), 
+      Math.floor(Math.random() * Math.floor(23)) + 1,
       'Juventus',
       5,
-      (Math.floor(Math.random() * Math.floor(23)) + 1),
+      Math.floor(Math.random() * Math.floor(23)) + 1,
+      'Away',
+      '3/5/2020'
+    ),
+    new Match(
+      'Barcelona',
+      4,
+      Math.floor(Math.random() * Math.floor(23)) + 1,
+      'Juventus',
+      5,
+      Math.floor(Math.random() * Math.floor(23)) + 1,
+      'Away',
+      '3/5/2020'
+    ),
+    new Match(
+      'Barcelona',
+      4,
+      Math.floor(Math.random() * Math.floor(23)) + 1,
+      'Juventus',
+      5,
+      Math.floor(Math.random() * Math.floor(23)) + 1,
+      'Away',
+      '3/5/2020'
+    ),
+    new Match(
+      'Barcelona',
+      4,
+      Math.floor(Math.random() * Math.floor(23)) + 1,
+      'Juventus',
+      5,
+      Math.floor(Math.random() * Math.floor(23)) + 1,
+      'Away',
+      '3/5/2020'
+    ),
+    new Match(
+      'Barcelona',
+      4,
+      Math.floor(Math.random() * Math.floor(23)) + 1,
+      'Juventus',
+      5,
+      Math.floor(Math.random() * Math.floor(23)) + 1,
+      'Away',
       '3/5/2020'
     ),
   ];

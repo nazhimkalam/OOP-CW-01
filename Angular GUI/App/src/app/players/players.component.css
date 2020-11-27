@@ -57,6 +57,7 @@
 .card-body {
   background-image: linear-gradient(var(--colour-right), var(--colour-left));
   color: white;
+  height: 100%;
 }
 
 .card { /* now a container for the image */
