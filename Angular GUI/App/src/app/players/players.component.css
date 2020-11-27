@@ -55,14 +55,25 @@
   transition: 0.3s ease-in-out;
 }
 .card-body {
-  transition: 0.3s ease-in-out;
   background-image: linear-gradient(var(--colour-right), var(--colour-left));
   color: white;
 }
-.card-body:hover {
-  background-image: linear-gradient(var(--colour-left), var(--colour-right));
-  transition: 0.3s ease-in-out;
+
+.card { /* now a container for the image */
+  display: inline-block; /* shrink wrap to image */
+  overflow: hidden; /* hide the excess */
 }
+.card img {
+  display: block; /* no whitespace */
+  transition: .5s ease-in-out;
+}
+.card:hover img {
+  transform: scale(1.05);
+}
+
+
+
+
 /* Animation Part */
 .players {
   -webkit-animation: fadein 1s; /* Safari, Chrome and Opera > 12.1 */
