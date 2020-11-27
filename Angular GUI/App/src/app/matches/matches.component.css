@@ -60,3 +60,32 @@
 .dropdown-item:active {
   background-color: #ea2d9d !important;
 }
+.matches__list > div {
+  margin: 40px;
+}
+.matches__playedSoFar {
+  margin-top: 30px;
+  font-size: 20px;
+  font-weight: 600;
+  border: 3px solid #ea2d9d;
+  width: fit-content;
+  padding: 10px;
+  transition: 0.3s ease-in-out;
+  border-left: transparent;
+  padding-right: 30px;
+  border-top-right-radius: 100px;
+  border-bottom-right-radius: 100px;
+  color: #36003c;
+}
+
+.matches__playedSoFar:hover {
+  transition: 0.3s ease-in-out;
+  animation-fill-mode: forwards;
+  transform: translateX(20px);
+}
+.matches__list{
+  height: 450px;
+  overflow: scroll;
+  border: 1px dashed black;
+  margin-top: 30px;
+}
