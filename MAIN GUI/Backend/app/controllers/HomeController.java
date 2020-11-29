@@ -38,8 +38,8 @@ public class HomeController extends Controller {
 
         return ok(peopleJson);
     }
-    public Result welcome(String name) {
-        return ok("Welcome " + name);
+    public Result welcome(String name, String age) {
+        return ok("Welcome " + name + "Your age is " + age);
     }
 
     // sending all the season for the dropdown menu
@@ -135,15 +135,69 @@ public class HomeController extends Controller {
     public Result allMatches(String season){
 
         guiSeasonFilteredClubs = getGuiSeasonFilteredClubs(season);
-        ArrayList<Match> matchesDisplayed = getMatchesForSeason(season);
+        ArrayList<Match> matchesDisplayed = getMatchesForSeason(guiSeasonFilteredClubs);
         JsonNode matchesDisplayedJson = Json.toJson(matchesDisplayed);
         return ok(matchesDisplayedJson);
     }
 
     // sending all the matches data for a specific date
-    public Result matchesByDate(String date){
+    public Result matchesByDate(String date,String season){
+        guiSeasonFilteredClubs = getGuiSeasonFilteredClubs(season);
+        ArrayList<FootballClub> filteredClubsByDateForSeason;
+        ArrayList<Match> filteredMatchedOnDate = null;
+        try {
+            // returns the clubs with the filtered matches
+            filteredClubsByDateForSeason = filterMatchesByDate(guiSeasonFilteredClubs, date);
 
-        return ok();
+            // returns the matches form the filtered club
+            filteredMatchedOnDate = getMatchesForSeason(filteredClubsByDateForSeason);
+
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+
+        JsonNode filteredMatchedOnDateJson = Json.toJson(filteredMatchedOnDate);
+        return ok(filteredMatchedOnDateJson);
+    }
+
+    // This will return an arraylist which will filter all the matches of the club by date
+    public static ArrayList<FootballClub> filterMatchesByDate(ArrayList<FootballClub> seasonBasedClub,
+                                                              String dateEntered)
+            throws CloneNotSupportedException {
+        ArrayList<FootballClub> filteredClubListByDate = new ArrayList<>();
+
+        // we are cloning or creating a copy of the arraylist which has to be filtered
+        for (FootballClub footballClub : seasonBasedClub) {
+            filteredClubListByDate.add((FootballClub) footballClub.clone());
+        }
+
+        // check and split the date entered by the user
+        if(!dateEntered.isEmpty()){
+
+            // looping through the clubs checking for matches without the match with the given date and removing them
+            for (FootballClub club: filteredClubListByDate) {
+                int numberOfMatchesPlayed = club.getMatchesPlayed().size();
+                int index = 0;
+                while(index < numberOfMatchesPlayed){
+
+                    int matchDay = club.getMatchesPlayed().get(index).getDate().getDay();
+                    int matchMonth = club.getMatchesPlayed().get(index).getDate().getMonth();
+                    int matchYear = club.getMatchesPlayed().get(index).getDate().getYear();
+                    String matchDate = matchYear + "-" + matchMonth + "-" + matchDay;
+
+                    if(!dateEntered.trim().equalsIgnoreCase(matchDate.trim())){
+                        club.getMatchesPlayed().remove(club.getMatchesPlayed().get(index));
+                        numberOfMatchesPlayed--;
+                    }else{
+                        index++;
+                    }
+                }
+
+            }
+        }
+
+        return filteredClubListByDate;
+
     }
 
     // generating a new match
@@ -199,14 +253,14 @@ public class HomeController extends Controller {
 
         guiSeasonFilteredClubs = getGuiSeasonFilteredClubs(season);
 
-        ArrayList<Match> matchesDisplayed = getMatchesForSeason(season);
+        ArrayList<Match> matchesDisplayed = getMatchesForSeason(guiSeasonFilteredClubs);
         JsonNode matchesDisplayedJson = Json.toJson(matchesDisplayed);
 
         return ok(matchesDisplayedJson);
     }
 
     // This returns a list of matches for a given season
-    public ArrayList<Match> getMatchesForSeason(String season){
+    public ArrayList<Match> getMatchesForSeason(ArrayList<FootballClub> seasonBasedClub){
 
         // these both arrayList will be of the same size
         ArrayList<Match> matchesDisplayed = new ArrayList<>();
@@ -214,7 +268,7 @@ public class HomeController extends Controller {
 
         // populating the allMatches list will all the matches from the seasonBasedClub
         // adding all the matches played for that season inside the allMatches list
-        for (FootballClub footballClub: guiSeasonFilteredClubs) {
+        for (FootballClub footballClub: seasonBasedClub) {
             allMatches.addAll(footballClub.getMatchesPlayed());
         }
 
