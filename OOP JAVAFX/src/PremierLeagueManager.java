@@ -948,23 +948,22 @@ public class PremierLeagueManager implements LeagueManager {
         int numberGoalScored_club_1 = random.nextInt(7);
         int numberGoalScored_club_2 = random.nextInt(7);
 
-        while (numberGoalScored_club_1==numberGoalScored_club_2){
-            numberGoalScored_club_2 = random.nextInt(7);
-        }
+//        while (numberGoalScored_club_1==numberGoalScored_club_2){
+//            numberGoalScored_club_2 = random.nextInt(7);
+//        }
 
         // setting the random date
         int[] possibleYears = new int[2];
 
         int seasonYear = Integer.parseInt(selectedSeason.split("-")[0]);
 
-        int lastTwoDigitsOfTheYear = Integer.parseInt(String.valueOf(seasonYear).substring(2));
+//        int lastTwoDigitsOfTheYear = Integer.parseInt(String.valueOf(seasonYear).substring(2));
         possibleYears[0] = seasonYear;
         possibleYears[1] = seasonYear + 1;
 
 
         int day = random.nextInt(30)+1;
         int month = random.nextInt(12)+1;
-//        System.out.println(seasonYear);
         int year = possibleYears[random.nextInt(2)];
 
         DateMatch date = new DateMatch(day, month, year);

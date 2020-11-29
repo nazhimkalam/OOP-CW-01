@@ -6,6 +6,7 @@ import play.mvc.*;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 public class HomeController extends Controller {
@@ -64,11 +65,7 @@ public class HomeController extends Controller {
 
     // sending the sorted table data by points (descending order) by season
     public Result sortByPoints(String season){
-        try{
-            guiSeasonFilteredClubs = PremierLeagueManager.seasonFilteredFootballCLubList(season);
-        } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
-        }
+        guiSeasonFilteredClubs = getGuiSeasonFilteredClubs(season);
 
         // sorting by points only in descending order
         Comparator<FootballClub> comparator = (club1, club2) -> {
@@ -87,11 +84,7 @@ public class HomeController extends Controller {
 
     // sending the sorted table data by wins (descending order) by season
     public Result sortByWins(String season){
-        try {
-            guiSeasonFilteredClubs = PremierLeagueManager.seasonFilteredFootballCLubList(season);
-        } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
-        }
+        guiSeasonFilteredClubs = getGuiSeasonFilteredClubs(season);
 
         // sorting by points only in descending order
         Comparator<FootballClub> comparator = (club1, club2) -> {
@@ -110,11 +103,7 @@ public class HomeController extends Controller {
 
     // sending the sorted table data by goals (descending order) by season
     public Result sortByGoals(String season){
-        try {
-            guiSeasonFilteredClubs = PremierLeagueManager.seasonFilteredFootballCLubList(season);
-        } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
-        }
+        guiSeasonFilteredClubs = getGuiSeasonFilteredClubs(season);
 
         // sorting by points only in descending order
         Comparator<FootballClub> comparator = (club1, club2) -> {
@@ -131,14 +120,93 @@ public class HomeController extends Controller {
         return ok(guiSeasonFilteredClubsJson);
     }
 
-    // sending all the matches data by season
-    public Result allMatches(String season){
-
+    // This function is to return the listOfClubs filtered by season
+    public ArrayList<FootballClub> getGuiSeasonFilteredClubs(String season){
         try {
             guiSeasonFilteredClubs = PremierLeagueManager.seasonFilteredFootballCLubList(season);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }
+        return guiSeasonFilteredClubs;
+    }
+
+
+    // sending all the matches data by season
+    public Result allMatches(String season){
+
+        guiSeasonFilteredClubs = getGuiSeasonFilteredClubs(season);
+        ArrayList<Match> matchesDisplayed = getMatchesForSeason(season);
+        JsonNode matchesDisplayedJson = Json.toJson(matchesDisplayed);
+        return ok(matchesDisplayedJson);
+    }
+
+    // sending all the matches data for a specific date
+    public Result matchesByDate(String date){
+
+        return ok();
+    }
+
+    // generating a new match
+    public Result generateMatch(String season){
+
+        guiSeasonFilteredClubs = getGuiSeasonFilteredClubs(season);
+
+        Random random = new Random();
+
+        // step 01: randomly select 2 clubs
+        int randomClub_01 = random.nextInt(guiSeasonFilteredClubs.size());
+        FootballClub selectedClub_O1 = guiSeasonFilteredClubs.get(randomClub_01);
+
+        int randomClub_02 = random.nextInt(guiSeasonFilteredClubs.size());
+        while (randomClub_02==randomClub_01){   // make sure not to take the same club again
+            randomClub_02 = random.nextInt(guiSeasonFilteredClubs.size());
+        }
+        FootballClub selectedClub_O2 = guiSeasonFilteredClubs.get(randomClub_02);
+
+
+        // step 02: randomly generate the necessary data
+        int numberGoalScored_club_1 = random.nextInt(7);
+        int numberGoalScored_club_2 = random.nextInt(7);
+
+
+        // setting the random date
+        int[] possibleYears = new int[2];
+
+        int seasonYear = Integer.parseInt(season.split("-")[0]);
+
+        possibleYears[0] = seasonYear;
+        possibleYears[1] = seasonYear + 1;
+
+        int day = random.nextInt(30)+1;
+        int month = random.nextInt(12)+1;
+        int year = possibleYears[random.nextInt(2)];
+
+        DateMatch date = new DateMatch(day, month, year);
+        String[] matchTypes = new String[]{"Home", "Away"};
+        String matchType = matchTypes[random.nextInt(2)];
+
+
+        // step 03: call the addPlayedMatch() wisely by passing all the generated random data
+        premierLeagueManager.addPlayedMatch(season,selectedClub_O1.getName(), selectedClub_O2.getName(),
+                numberGoalScored_club_1, numberGoalScored_club_2, date, matchType);
+
+
+        // step 04: call the save file method
+        premierLeagueManager.saveDataIntoFile();
+
+        // step 05: call the load file method
+        PremierLeagueManager.loadingData();
+
+        guiSeasonFilteredClubs = getGuiSeasonFilteredClubs(season);
+
+        ArrayList<Match> matchesDisplayed = getMatchesForSeason(season);
+        JsonNode matchesDisplayedJson = Json.toJson(matchesDisplayed);
+
+        return ok(matchesDisplayedJson);
+    }
+
+    // This returns a list of matches for a given season
+    public ArrayList<Match> getMatchesForSeason(String season){
 
         // these both arrayList will be of the same size
         ArrayList<Match> matchesDisplayed = new ArrayList<>();
@@ -196,22 +264,9 @@ public class HomeController extends Controller {
             }
 
         }
-        JsonNode matchesDisplayedJson = Json.toJson(matchesDisplayed);
-        return ok(matchesDisplayedJson);
-    }
 
-    // sending all the matches data for a specific date
-    public Result matchesByDate(String date){
+        return matchesDisplayed;
 
-        return ok();
-    }
-
-    // generating a new match
-    public Result generateMatch(String season){
-
-        
-
-        return ok();
     }
 
 }
