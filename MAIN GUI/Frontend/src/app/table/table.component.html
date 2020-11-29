@@ -67,17 +67,17 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let rowResult of resultsRecords">
-            <td scope="row">{{ rowResult.position }}</td>
-            <td>{{ rowResult.clubName }}</td>
-            <td>{{ rowResult.numberOfPlayed }}</td>
-            <td>{{ rowResult.numberOfWins }}</td>
-            <td>{{ rowResult.numberOfDraws }}</td>
-            <td>{{ rowResult.numberOfLosses }}</td>
-            <td>{{ rowResult.totalGoalScored }}</td>
-            <td>{{ rowResult.totalGoalReceived }}</td>
-            <td>{{ rowResult.totalGoalDifference }}</td>
-            <td>{{ rowResult.totalPoints }}</td>
+          <tr *ngFor="let rowResult of resultsRecords; index as position">
+            <td scope="row">{{ position + 1 }}</td>
+            <td>{{ rowResult.name }}</td>
+            <td>{{ rowResult.clubStatistics.totalMatchesPlayed }}</td>
+            <td>{{ rowResult.clubStatistics.totalWins }}</td>
+            <td>{{ rowResult.clubStatistics.totalDraws }}</td>
+            <td>{{ rowResult.clubStatistics.totalDefeats }}</td>
+            <td>{{ rowResult.totalGoalsScored }}</td>
+            <td>{{ rowResult.totalGoalsReceived }}</td>
+            <td>{{ rowResult.totalGoalsDifference }}</td>
+            <td>{{ rowResult.clubStatistics.totalPointsScored }}</td>
           </tr>
         </tbody>
       </table>

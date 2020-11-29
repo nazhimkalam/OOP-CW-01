@@ -1,3 +1,4 @@
+import { FootballInteractionService } from './../service/football-interaction.service';
 import { Component, OnInit } from '@angular/core';
 
 export class Match {
@@ -19,7 +20,7 @@ export class Match {
   styleUrls: ['./matches.component.css'],
 })
 export class MatchesComponent implements OnInit {
-  matches: Match[] = [
+  public matches: Match[] = [
     new Match(
       'Barcelona',
       '4',
@@ -71,17 +72,18 @@ export class MatchesComponent implements OnInit {
       '3/5/2020'
     ),
   ];
-  currentSeason: string; // this is a must
-  seasons: string[]; // other seasons
-  selectedDate: string; // useSelectedDate
+  public currentSeason: string; // this is a must
+  public seasons: string[]; // other seasons
+  public selectedDate: string; // useSelectedDate
 
-  constructor() {
+  constructor(private _footballService: FootballInteractionService) {
     this.currentSeason = '2020-21';
     this.selectedDate = '';
   }
 
   ngOnInit(): void {
-    this.seasons = ['2020-21', '2019-20', '2018-19'];
+     // we have to set the seasons here when the user loads this page
+     this._footballService.getSeasons().subscribe( data => this.seasons = data);
   }
 
   handleClickedSeason(clickedSeason: string) {

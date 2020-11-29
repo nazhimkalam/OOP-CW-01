@@ -6,8 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./nav-bar.component.css'],
 })
 export class NavBarComponent implements OnInit {
-  linkNames: string[] = ['about', 'table', 'matches', 'players'];
-  activeLinks: string[] = [];
+  public linkNames: string[] = ['about', 'table', 'matches', 'players'];
+  public activeLinks: string[] = [];
 
   constructor() {}
 

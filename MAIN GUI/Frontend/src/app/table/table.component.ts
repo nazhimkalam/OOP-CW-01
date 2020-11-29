@@ -1,21 +1,6 @@
+import { FootballClub } from './../interfaces/FootballClub';
+import { FootballInteractionService } from './../service/football-interaction.service';
 import { Component, OnInit } from '@angular/core';
-
-
-export class ClubDetails {
-  constructor(
-    public position: string,
-    public clubName: string,
-    public numberOfPlayed: string,
-    public numberOfWins: string,
-    public numberOfDraws: string,
-    public numberOfLosses: string,
-    public totalGoalScored: string,
-    public totalGoalReceived: string,
-    public totalGoalDifference: string,
-    public totalPoints: string,
-    
-  ) {}
-}
 
 @Component({
   selector: 'app-table',
@@ -23,39 +8,53 @@ export class ClubDetails {
   styleUrls: ['./table.component.css'],
 })
 export class TableComponent implements OnInit {
-  resultsRecords: ClubDetails[]; // rows data
-  currentSeason: string;   // this is a must 
-  seasons: string[];       // other seasons
+  public resultsRecords: FootballClub[]; // rows data
+  public currentSeason: string; // this is a must
+  public seasons: string[]; // other seasons
 
-  constructor() {
+  constructor(private _footballService: FootballInteractionService) {
     this.resultsRecords = [];
     this.currentSeason = '2020-21';
   }
 
   ngOnInit(): void {
-    for (let index = 0; index < 50; index++) {
-      this.resultsRecords.push(new ClubDetails('1','Juventus','5','2','1','2','10','9','1','30'));
-    }
-    this.seasons = ['2020-21', '2019-20', '2018-19'];
+    // get all the records sorted by points initially when the records are loaded
+    this._footballService
+      .getSortedByPoints(this.currentSeason)
+      .subscribe((data) => (this.resultsRecords = data));
+
+    // we have to set the seasons here when the user loads this page
+    this._footballService
+      .getSeasons()
+      .subscribe((data) => (this.seasons = data));
   }
 
   sortByPoints() {
-    // sort by points
-    console.log('Sorting rows by points . . .');
+    //  get the records sorted by points
+    this._footballService
+      .getSortedByPoints(this.currentSeason)
+      .subscribe((data) => (this.resultsRecords = data));
   }
 
   sortByGoals() {
-    // sort by goals
-    console.log('Sorting rows by goals . . .');
+    // get the records sorted by goals
+    this._footballService
+      .getSortedByGoals(this.currentSeason)
+      .subscribe((data) => (this.resultsRecords = data));
   }
 
   sortByWins() {
-    // sort by wins
-    console.log('Sorting rows by wins . . .');
+    // get the records sorted by wins
+    this._footballService
+      .getSortedByWins(this.currentSeason)
+      .subscribe((data) => (this.resultsRecords = data));
   }
 
   handleClickedSeason(clickedSeason: string) {
     // get the new records by season clicked
-    console.log(`loading data for ${clickedSeason}`);
+    this.currentSeason = clickedSeason;
+    this._footballService
+      .getSortedByPoints(clickedSeason)
+      .subscribe((data) => (this.resultsRecords = data));
   }
 }

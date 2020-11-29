@@ -19,29 +19,6 @@ public class HomeController extends Controller {
         return ok(views.html.index.render());
     }
 
-    public Result about() {
-        Person person = new Person();
-        person.firstName = "Foo";
-        person.lastName = "Bar";
-        person.age = 30;
-
-        ArrayList<Person> people = new ArrayList<>();
-        people.add(person);
-        people.add(person);
-        people.add(person);
-        people.add(person);
-        people.add(person);
-        people.add(person);
-
-        JsonNode personJson = Json.toJson(person); // {"firstName": "Foo", "lastName": "Bar", "age": 30}
-        JsonNode peopleJson = Json.toJson(people);
-
-        return ok(peopleJson);
-    }
-    public Result welcome(String name, String age) {
-        return ok("Welcome " + name + "Your age is " + age);
-    }
-
     // sending all the season for the dropdown menu
     public Result allSeasons(){
         // sort the seasons using the comparator
