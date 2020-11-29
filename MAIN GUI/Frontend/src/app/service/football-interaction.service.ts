@@ -2,6 +2,7 @@ import { FootballClub } from './../interfaces/FootballClub';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { MatchPlayed } from '../interfaces/MatchPlayed';
 
 @Injectable({
   providedIn: 'root',
@@ -12,6 +13,10 @@ export class FootballInteractionService {
     'http://localhost:9000/records/sortPoints/';
   public tablesRecordsSortByWins = 'http://localhost:9000/records/sortWins/';
   public tablesRecordsSortByGoals = 'http://localhost:9000/records/sortGoals/';
+  public matchesBySeason = 'http://localhost:9000/matches/season/';
+  public matchesByDate = 'http://localhost:9000/matches/season/';
+  public matchGeneration =
+    'http://localhost:9000/matches/season/match/generate/';
 
   constructor(private http: HttpClient) {}
 
@@ -29,15 +34,25 @@ export class FootballInteractionService {
 
   // get records sorted by wins
   getSortedByWins(season: string): Observable<FootballClub[]> {
-    return this.http.get<FootballClub[]>(
-      this.tablesRecordsSortByWins + season
-    );
+    return this.http.get<FootballClub[]>(this.tablesRecordsSortByWins + season);
   }
 
   // get records sorted by goals
   getSortedByGoals(season: string): Observable<FootballClub[]> {
     return this.http.get<FootballClub[]>(
       this.tablesRecordsSortByGoals + season
+    );
+  }
+
+  // get matches for a season
+  getMatchesBySeason(season: string): Observable<MatchPlayed[]> {
+    return this.http.get<MatchPlayed[]>(this.matchesBySeason + season);
+  }
+
+  // get matches by date
+  getMatchesByDate(date: string, season: string): Observable<MatchPlayed[]> {
+    return this.http.get<MatchPlayed[]>(
+      this.matchesByDate + season + '/date/' + date
     );
   }
 }

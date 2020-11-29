@@ -28,6 +28,11 @@
       </form>
     </div>
 
+    <div class="matches__season">
+      <p>Season</p>
+      <p>{{ currentSeason }}</p>
+    </div>
+
     <div class="matches__btn">
       <!-- drop down season -->
       <div class="btn-group season">
@@ -51,7 +56,11 @@
       </div>
 
       <!-- generate match btn -->
-      <button type="button" class="btn btn-primary btn-sm" (click)="generateMatch()">
+      <button
+        type="button"
+        class="btn btn-primary btn-sm"
+        (click)="generateMatch()"
+      >
         Generate Match
       </button>
     </div>
@@ -60,21 +69,25 @@
   <!-- main card container -->
   <div class="matches__list container">
     <!-- each match card -->
-    <div class="matches__matchCard" *ngFor="let match of matches">
+    <div class="matches__matchCard" *ngFor="let match of matches; index as i">
       <div class="matches__club1">
         <div>
           <img
-            src="../../assets/logo/{{ match.club1_logo }}.png"
+            src="../../assets/logo/{{ clubLogo[i] }}.png"
             class="match__logo"
             height="75px"
             alt=""
           />
         </div>
         <div class="match__clubContent">
-          <h1>{{ match.club1_name }}</h1>
-          <p class="match__date">{{ match.date }}</p>
+          <h1>{{ match.participatedCLubName }}</h1>
+          <p class="match__date">
+            {{ match.date["day"] }}/{{ match.date["month"] }}/{{
+              match.date["year"]
+            }}
+          </p>
           <p class="match__type">{{ match.matchType }}</p>
-          <p class="match__score">{{ match.club1_score }}</p>
+          <p class="match__score">{{ match.goalScored }}</p>
         </div>
       </div>
 
@@ -84,14 +97,18 @@
 
       <div class="matches__club2">
         <div class="match__clubContent">
-          <h1>{{ match.club2_name }}</h1>
-          <p class="match__date">{{ match.date }}</p>
+          <h1>{{ match.opponentClubName }}</h1>
+          <p class="match__date">
+            {{ match.date["day"] }}/{{ match.date["month"] }}/{{
+              match.date["year"]
+            }}
+          </p>
           <p class="match__type">{{ match.matchType }}</p>
-          <p class="match__score">{{ match.club2_score }}</p>
+          <p class="match__score">{{ match.goalReceived }}</p>
         </div>
         <div>
           <img
-            src="../../assets/logo/{{ match.club2_logo }}.png"
+            src="../../assets/logo/{{ clubLogo[i+2] }}.png"
             class="match__logo"
             height="75px"
             alt=""
