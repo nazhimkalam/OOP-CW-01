@@ -159,7 +159,7 @@
   box-shadow: 2px 8px 10px #888888;
   /* border-radius: 20px; */
 }
-.matches__season:hover{
+.matches__season:hover {
   transform: scale(1.04);
   transition: 0.5s ease-in-out;
 }
@@ -173,6 +173,18 @@
   font-weight: 600;
   color: #ea2d9d;
 }
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 80px;
+}
+.loading img {
+  object-fit: contain;
+  height: 150px;
+}
+
 /* Animation Part */
 .matches {
   -webkit-animation: fadein 1s; /* Safari, Chrome and Opera > 12.1 */

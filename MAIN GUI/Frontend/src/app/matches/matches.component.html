@@ -67,7 +67,7 @@
   </div>
 
   <!-- main card container -->
-  <div class="matches__list container">
+  <div class="matches__list container" *ngIf="!loadingContent">
     <!-- each match card -->
     <div class="matches__matchCard" *ngFor="let match of matches; index as i">
       <div class="matches__club1">
@@ -108,7 +108,7 @@
         </div>
         <div>
           <img
-            src="../../assets/logo/{{ clubLogo[i+2] }}.png"
+            src="../../assets/logo/{{ clubLogo[i + 2] }}.png"
             class="match__logo"
             height="75px"
             alt=""
@@ -116,6 +116,9 @@
         </div>
       </div>
     </div>
+  </div>
+  <div class="container loading" *ngIf="loadingContent">
+    <img src="../../assets/loading.gif" alt="">
   </div>
 </div>
 <br />

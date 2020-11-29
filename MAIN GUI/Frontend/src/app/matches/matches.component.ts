@@ -13,11 +13,13 @@ export class MatchesComponent implements OnInit {
   public seasons: string[]; // other seasons
   public selectedDate: string; // useSelectedDate
   public clubLogo: number[]; // contains a random number representing the club logo
+  public loadingContent: boolean;
 
   constructor(private _footballService: FootballInteractionService) {
     this.currentSeason = '2020-21';
     this.selectedDate = '';
     this.matches = [];
+    this.loadingContent = true;
   }
 
   ngOnInit(): void {
@@ -32,25 +34,27 @@ export class MatchesComponent implements OnInit {
       .subscribe((data) => {
         this.matches = data;
         this.generateClubLogo();
+        this.loadingContent = false;
       });
   }
 
   handleClickedSeason(clickedSeason: string) {
     // get the new records by season clicked
+    this.loadingContent = true;
     this.currentSeason = clickedSeason;
     this._footballService
       .getMatchesBySeason(clickedSeason)
       .subscribe((data) => {
         this.matches = data;
         this.generateClubLogo();
+        this.loadingContent = false;
       });
   }
 
   // this is for the search btn
   handleSearchSelectedDate() {
-    console.log(
-      ' This is the selected date by the user ---> ' + this.selectedDate
-    );
+    this.loadingContent = true;
+
     this.generateClubLogo();
   }
 
@@ -61,7 +65,15 @@ export class MatchesComponent implements OnInit {
 
   // Generate match
   generateMatch() {
-    console.log('generating match . . .');
+    this.loadingContent = true;
+
+    this._footballService
+      .getGeneratedMatchesByDate(this.currentSeason)
+      .subscribe((data) => {
+        this.matches = data;
+        this.generateClubLogo();
+        this.loadingContent = false;
+      });
 
     this.generateClubLogo();
   }
