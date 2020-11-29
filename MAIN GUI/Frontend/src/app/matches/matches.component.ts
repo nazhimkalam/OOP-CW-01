@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./matches.component.css'],
 })
 export class MatchesComponent implements OnInit {
-  public matches: MatchPlayed[];
+  public matches: MatchPlayed[]; // stores all the matches
   public currentSeason: string; // this is a must
   public seasons: string[]; // other seasons
   public selectedDate: string; // useSelectedDate
@@ -54,7 +54,13 @@ export class MatchesComponent implements OnInit {
   // this is for the search btn
   handleSearchSelectedDate() {
     this.loadingContent = true;
-
+    this._footballService
+      .getMatchesByDate(this.selectedDate, this.currentSeason)
+      .subscribe((data) => {
+        this.matches = data;
+        this.generateClubLogo();
+        this.loadingContent = false;
+      });
     this.generateClubLogo();
   }
 
@@ -66,9 +72,8 @@ export class MatchesComponent implements OnInit {
   // Generate match
   generateMatch() {
     this.loadingContent = true;
-
     this._footballService
-      .getGeneratedMatchesByDate(this.currentSeason)
+      .getGeneratedMatchesBySeason(this.currentSeason)
       .subscribe((data) => {
         this.matches = data;
         this.generateClubLogo();

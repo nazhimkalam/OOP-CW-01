@@ -57,7 +57,7 @@ export class FootballInteractionService {
   }
 
   // generate a match and get the result
-  getGeneratedMatchesByDate(season: string): Observable<MatchPlayed[]> {
+  getGeneratedMatchesBySeason(season: string): Observable<MatchPlayed[]> {
     return this.http.get<MatchPlayed[]>(this.matchGeneration + season);
   }
 }

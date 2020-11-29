@@ -50,6 +50,7 @@
     </div>
     <div
       class="container mt-4 pTable__table table-wrapper-scroll-y my-custom-scrollbar"
+      *ngIf = "!isLoading"
     >
       <table class="table">
         <thead class="table__header">
@@ -81,6 +82,10 @@
           </tr>
         </tbody>
       </table>
+    </div>
+
+    <div class="container loading" *ngIf="isLoading">
+      <img src="../../assets/loading.gif" alt="">
     </div>
   </div>
 </div>

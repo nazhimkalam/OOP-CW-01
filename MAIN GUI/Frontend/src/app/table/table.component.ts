@@ -11,17 +11,23 @@ export class TableComponent implements OnInit {
   public resultsRecords: FootballClub[]; // rows data
   public currentSeason: string; // this is a must
   public seasons: string[]; // other seasons
+  public isLoading: boolean; // loading gif
 
   constructor(private _footballService: FootballInteractionService) {
     this.resultsRecords = [];
     this.currentSeason = '2020-21';
+    this.isLoading = true;
   }
 
   ngOnInit(): void {
     // get all the records sorted by points initially when the records are loaded
+    this.isLoading = true;
     this._footballService
       .getSortedByPoints(this.currentSeason)
-      .subscribe((data) => (this.resultsRecords = data));
+      .subscribe((data) => {
+        this.resultsRecords = data;
+        this.isLoading = false;
+      });
 
     // we have to set the seasons here when the user loads this page
     this._footballService
@@ -31,30 +37,44 @@ export class TableComponent implements OnInit {
 
   sortByPoints() {
     //  get the records sorted by points
+    this.isLoading = true;
     this._footballService
       .getSortedByPoints(this.currentSeason)
-      .subscribe((data) => (this.resultsRecords = data));
+      .subscribe((data) => {
+        this.resultsRecords = data;
+        this.isLoading = false;
+      });
   }
 
   sortByGoals() {
     // get the records sorted by goals
+    this.isLoading = true;
     this._footballService
       .getSortedByGoals(this.currentSeason)
-      .subscribe((data) => (this.resultsRecords = data));
+      .subscribe((data) => {
+        this.resultsRecords = data;
+        this.isLoading = false;
+      });
   }
 
   sortByWins() {
     // get the records sorted by wins
+    this.isLoading = true;
     this._footballService
       .getSortedByWins(this.currentSeason)
-      .subscribe((data) => (this.resultsRecords = data));
+      .subscribe((data) => {
+        this.resultsRecords = data;
+        this.isLoading = false;
+      });
   }
 
   handleClickedSeason(clickedSeason: string) {
     // get the new records by season clicked
     this.currentSeason = clickedSeason;
-    this._footballService
-      .getSortedByPoints(clickedSeason)
-      .subscribe((data) => (this.resultsRecords = data));
+    this.isLoading = true;
+    this._footballService.getSortedByPoints(clickedSeason).subscribe((data) => {
+      this.resultsRecords = data;
+      this.isLoading = false;
+    });
   }
 }

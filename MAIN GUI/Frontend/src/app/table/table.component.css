@@ -112,6 +112,23 @@ table {
 .dropdown-item{
   cursor: pointer !important;
 }
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 80px;
+}
+.loading img {
+  object-fit: contain;
+  height: 150px;
+}
+
+
+
+
+
+
 /* Animation Part */
 
 .tablePage {
