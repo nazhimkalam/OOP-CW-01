@@ -73,7 +73,7 @@ public class PremierLeagueManager implements LeagueManager {
 
         }
         catch (FileNotFoundException fileNotFoundException){
-            System.out.println(" File not found exception occurred!");
+            System.out.println(" File not found exception occurred when loading!");
         }
         catch (IOException ioException) {
             System.out.println( " Exception when performing read/write operations to the file!" +
@@ -766,7 +766,7 @@ public class PremierLeagueManager implements LeagueManager {
 
         }
         catch (FileNotFoundException fileNotFoundException) {
-            return " File not found exception occurred!";
+            return " File not found exception occurred when saving!";
 
         }
         catch (IOException ioException) {
@@ -811,7 +811,7 @@ public class PremierLeagueManager implements LeagueManager {
 
         }
         catch (FileNotFoundException fileNotFoundException) {
-            return " File not found exception occurred!";
+            return " File not found exception occurred when clearing the file!";
         }
         catch (IOException ioException) {
             return " Exception when performing read/write operations to the file!" +

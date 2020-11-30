@@ -84,8 +84,8 @@ public class ConsoleApplication {
 
             case 7:
                 result = premierLeagueManager.clearDataFile();          // clearing the file
-                System.out.println(result);
-
+                System.out.println(result + "\n");
+                PremierLeagueManager.loadingData();
                 displayMenu();
                 break;
             case 8:
@@ -420,7 +420,7 @@ public class ConsoleApplication {
 
         // validating the coach Name
         String coachName = validateString(" Enter the coach name: ");
-        coachName = coachName.substring(0, 1).toUpperCase() + clubName.toLowerCase().substring(1);
+        coachName = coachName.substring(0, 1).toUpperCase() + coachName.toLowerCase().substring(1);
 
 
         // this switch case is to create the appropriate club with the user selected option
