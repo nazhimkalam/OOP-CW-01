@@ -82,7 +82,7 @@ public class ConsoleApplication {
 
             case 7:
                 result = premierLeagueManager.clearDataFile();          // clearing the file
-                System.out.println(result);
+                System.out.println(result + "\n");
 
                 displayMenu();
                 break;

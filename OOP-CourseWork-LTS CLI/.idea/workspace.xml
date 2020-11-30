@@ -20,8 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4ffd9da0-df3c-4a45-8b09-2b7528f01daf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../MAIN GUI/Backend/app/controllers/ConsoleApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MAIN GUI/Backend/app/controllers/ConsoleApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MAIN GUI/Backend/app/models/objectDataFile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../MAIN GUI/Backend/app/models/objectDataFile.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/objectDataFile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/objectDataFile.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ConsoleApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ConsoleApplication.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -82,7 +82,7 @@
       <recent name="C:\Users\Nazhim\Documents\GitHub\w1761265_OOP_GUI--FX--_AND_CLI\OOP-CourseWork-LTS CLI\src" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Tester">
+  <component name="RunManager" selected="Application.ConsoleApplication">
     <configuration name="ConsoleApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ConsoleApplication" />
       <module name="OOP-CourseWork" />
@@ -93,6 +93,17 @@
     <configuration name="Tester" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Tester" />
       <module name="OOP-CourseWork" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -128,8 +139,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Tester" />
         <item itemvalue="Application.ConsoleApplication" />
+        <item itemvalue="Application.Tester" />
         <item itemvalue="JUnit.PremierLeagueTester" />
         <item itemvalue="JUnit.PremierLeagueTester.testCreatingClub" />
         <item itemvalue="JUnit.PremierLeagueTester.testAddMatch" />
@@ -215,6 +226,7 @@
       <workItem from="1606740024338" duration="51000" />
       <workItem from="1606740211197" duration="59000" />
       <workItem from="1606742811906" duration="146000" />
+      <workItem from="1606750646777" duration="632000" />
     </task>
     <task id="LOCAL-00012" summary="commit">
       <created>1604851031613</created>
@@ -608,33 +620,33 @@
     </state>
     <state x="421" y="95" key="FileChooserDialogImpl/0.0.1280.680/1920.0.1360.728@0.0.1280.680" timestamp="1606110858726" />
     <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.689/1920.0.1360.738@0.0.1280.689" timestamp="1606419869118" />
-    <state width="1237" height="460" key="GridCell.Tab.0.bottom" timestamp="1606739983817">
+    <state width="1237" height="2" key="GridCell.Tab.0.bottom" timestamp="1606751282713">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state width="1237" height="523" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.0.1360.728@0.0.1280.680" timestamp="1606123190261" />
     <state width="1237" height="517" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1606037862037" />
-    <state width="1237" height="460" key="GridCell.Tab.0.bottom/0.0.1280.689/1920.0.1360.738@0.0.1280.689" timestamp="1606739983817" />
+    <state width="1237" height="2" key="GridCell.Tab.0.bottom/0.0.1280.689/1920.0.1360.738@0.0.1280.689" timestamp="1606751282713" />
     <state width="1317" height="500" key="GridCell.Tab.0.bottom/0.0.1280.689/1920.0.1360.738@1920.0.1360.738" timestamp="1606628480777" />
-    <state width="1237" height="460" key="GridCell.Tab.0.center" timestamp="1606739983817">
+    <state width="1237" height="2" key="GridCell.Tab.0.center" timestamp="1606751282713">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state width="1237" height="523" key="GridCell.Tab.0.center/0.0.1280.680/1920.0.1360.728@0.0.1280.680" timestamp="1606123190261" />
     <state width="1237" height="517" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1606037862035" />
-    <state width="1237" height="460" key="GridCell.Tab.0.center/0.0.1280.689/1920.0.1360.738@0.0.1280.689" timestamp="1606739983817" />
+    <state width="1237" height="2" key="GridCell.Tab.0.center/0.0.1280.689/1920.0.1360.738@0.0.1280.689" timestamp="1606751282713" />
     <state width="1317" height="500" key="GridCell.Tab.0.center/0.0.1280.689/1920.0.1360.738@1920.0.1360.738" timestamp="1606628480777" />
-    <state width="1237" height="460" key="GridCell.Tab.0.left" timestamp="1606739983817">
+    <state width="1237" height="2" key="GridCell.Tab.0.left" timestamp="1606751282713">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state width="1237" height="523" key="GridCell.Tab.0.left/0.0.1280.680/1920.0.1360.728@0.0.1280.680" timestamp="1606123190260" />
     <state width="1237" height="517" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1606037862035" />
-    <state width="1237" height="460" key="GridCell.Tab.0.left/0.0.1280.689/1920.0.1360.738@0.0.1280.689" timestamp="1606739983817" />
+    <state width="1237" height="2" key="GridCell.Tab.0.left/0.0.1280.689/1920.0.1360.738@0.0.1280.689" timestamp="1606751282713" />
     <state width="1317" height="500" key="GridCell.Tab.0.left/0.0.1280.689/1920.0.1360.738@1920.0.1360.738" timestamp="1606628480777" />
-    <state width="1237" height="460" key="GridCell.Tab.0.right" timestamp="1606739983817">
+    <state width="1237" height="2" key="GridCell.Tab.0.right" timestamp="1606751282713">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state width="1237" height="523" key="GridCell.Tab.0.right/0.0.1280.680/1920.0.1360.728@0.0.1280.680" timestamp="1606123190261" />
     <state width="1237" height="517" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1606037862037" />
-    <state width="1237" height="460" key="GridCell.Tab.0.right/0.0.1280.689/1920.0.1360.738@0.0.1280.689" timestamp="1606739983817" />
+    <state width="1237" height="2" key="GridCell.Tab.0.right/0.0.1280.689/1920.0.1360.738@0.0.1280.689" timestamp="1606751282713" />
     <state width="1317" height="500" key="GridCell.Tab.0.right/0.0.1280.689/1920.0.1360.738@1920.0.1360.738" timestamp="1606628480777" />
     <state width="1237" height="7" key="GridCell.Tab.1.bottom" timestamp="1605965693406">
       <screen x="0" y="0" width="1280" height="680" />
