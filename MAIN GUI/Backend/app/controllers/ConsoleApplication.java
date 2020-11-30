@@ -120,17 +120,22 @@ public class ConsoleApplication {
 
         // Checking if it is a valid club else throwing up and error and asking user to re-enter
         String clubName_01 = checkingForValidClub(" Enter club 1 name: ");
+        clubName_01 = clubName_01.substring(0, 1).toUpperCase() + clubName_01.toLowerCase().substring(1);
+
 
         // validation for the scores
         int numberGoalScored_club_1 = validatingIntegers(" Enter the number of goal scored: ");
 
         // Checking if it is a valid club else throwing up and error and asking user to re-enter
         String clubName_02 = checkingForValidClub(" Enter club 2 name: ");
+        clubName_02 = clubName_02.substring(0, 1).toUpperCase() + clubName_02.toLowerCase().substring(1);
 
         // Checking if the user has entered duplicated club names
         while(clubName_01.equalsIgnoreCase(clubName_02)){
             System.out.println("\n Please enter a different club name ");
             clubName_02 = checkingForValidClub(" Enter club 2 name: ");
+            clubName_02 = clubName_02.substring(0, 1).toUpperCase() + clubName_02.toLowerCase().substring(1);
+
         }
 
         // validation for the scores and some stats
@@ -138,11 +143,28 @@ public class ConsoleApplication {
 
         // getting the date of the match played as the input from the user
         int day = validatingIntegers(" Enter the day (only integers are accepted): ");
+        // validating the day entered
+        while(day<1 || day>31){
+            System.out.println(" Invalid day entered! \n");
+            day = validatingIntegers(" Enter the day (only integers are accepted): ");
+        }
+
+
         int month = validatingIntegers(" Enter the month (only integers are accepted): ");
+        // validating the month entered
+        while(month<1 || month>12){
+            System.out.println(" Invalid month entered! \n");
+            month = validatingIntegers(" Enter the month (only integers are accepted): ");
+        }
+
         int year = validatingIntegers(" Enter the year (only integers are accepted): ");
+        // validating the year entered
+        while(year<1000 || year>3000){
+            System.out.println(" Invalid year entered! \n");
+            year = validatingIntegers(" Enter the year (only integers are accepted): ");
+        }
+
         DateMatch date = new DateMatch(day, month, year);
-
-
         // we are displaying the season options possible for the match played for the given date
         String[] possibleSeason = new String[2];
         System.out.println(" These are the possible seasons for the match played from the given date");
@@ -157,6 +179,7 @@ public class ConsoleApplication {
         }
 
         int seasonOption = validatingIntegers(" Please select a season from the given list (Enter '1' or '2') : ");
+
 
         boolean invalidOption = true;
         while (invalidOption){                           // validating the inputs
@@ -362,6 +385,7 @@ public class ConsoleApplication {
         // We ask for club name, location, coach name
         System.out.print(" Enter the club name: ");
         String clubName = insert.nextLine();
+        clubName = clubName.substring(0, 1).toUpperCase() + clubName.toLowerCase().substring(1);
 
         // Validation for club name
         boolean invalidClubName = true;
@@ -383,6 +407,8 @@ public class ConsoleApplication {
                 System.out.println(" There is already a team with the name '" + clubName + "', please enter another name\n");
                 System.out.print(" Enter the club name: ");
                 clubName = insert.nextLine();
+                clubName = clubName.substring(0, 1).toUpperCase() + clubName.toLowerCase().substring(1);
+
             }
         }
 
@@ -394,6 +420,7 @@ public class ConsoleApplication {
 
         // validating the coach Name
         String coachName = validateString(" Enter the coach name: ");
+        coachName = coachName.substring(0, 1).toUpperCase() + clubName.toLowerCase().substring(1);
 
 
         // this switch case is to create the appropriate club with the user selected option
