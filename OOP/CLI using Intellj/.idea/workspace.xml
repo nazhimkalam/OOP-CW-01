@@ -19,200 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4ffd9da0-df3c-4a45-8b09-2b7528f01daf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Backend/.g8/form/app/controllers/$model__Camel$Controller.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Backend/.g8/form/app/controllers/$model__Camel$Data.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Backend/.g8/form/app/views/$model__camel$/form.scala.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Backend/.g8/form/default.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Backend/.g8/form/generated-test/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Backend/.g8/form/generated-test/controllers/$model__Camel$ControllerTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Backend/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Backend/app/controllers/ClubStats.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Backend/app/controllers/ConsoleApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Backend/app/controllers/DateMatch.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Backend/app/controllers/FootballClub.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Backend/app/controllers/HomeController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Backend/app/controllers/LeagueManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Backend/app/controllers/Match.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Backend/app/controllers/MatchStats.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Backend/app/controllers/Player.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Backend/app/controllers/PremierLeagueManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Backend/app/controllers/PremierLeagueTester.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Backend/app/controllers/SchoolFootballClub.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Backend/app/controllers/SportClub.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Backend/app/controllers/UniversityFootballClub.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Backend/app/controllers/hamcrest-2.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Backend/app/controllers/junit-4.8.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Backend/app/models/objectDataFile.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Backend/app/views/index.scala.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Backend/app/views/main.scala.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Backend/build.sbt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Backend/conf/application.conf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Backend/conf/logback.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Backend/conf/routes" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Backend/project/build.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Backend/project/plugins.sbt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Backend/public/images/favicon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Backend/public/javascripts/main.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Backend/public/stylesheets/main.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Backend/test/controllers/HomeControllerTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/.browserslistrc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/.editorconfig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/angular.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/debug.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/e2e/protractor.conf.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/e2e/src/app.e2e-spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/e2e/src/app.po.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/e2e/tsconfig.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/karma.conf.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/app/about/about.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/app/about/about.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/app/about/about.component.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/app/about/about.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/app/app-routing.module.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/app/app.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/app/app.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/app/app.component.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/app/app.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/app/app.module.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/app/error/error.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/app/error/error.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/app/error/error.component.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/app/error/error.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/app/footer/footer.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/app/footer/footer.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/app/footer/footer.component.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/app/footer/footer.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/app/interfaces/ClubStatistics.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/app/interfaces/Date.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/app/interfaces/FootballClub.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/app/interfaces/MatchPlayed.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/app/matches/matches.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/app/matches/matches.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/app/matches/matches.component.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/app/matches/matches.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/app/nav-bar/nav-bar.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/app/nav-bar/nav-bar.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/app/nav-bar/nav-bar.component.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/app/nav-bar/nav-bar.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/app/players/players.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/app/players/players.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/app/players/players.component.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/app/players/players.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/app/service/football-interaction.service.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/app/service/football-interaction.service.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/app/service/welcome-interaction.service.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/app/service/welcome-interaction.service.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/app/table/table.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/app/table/table.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/app/table/table.component.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/app/table/table.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/app/welcome/welcome.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/app/welcome/welcome.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/app/welcome/welcome.component.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/app/welcome/welcome.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/assets/.gitkeep" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/assets/aboutPage/1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/assets/aboutPage/2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/assets/aboutPage/3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/assets/aboutPage/4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/assets/aboutPage/5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/assets/backgroundImage.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/assets/backgroundImage2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/assets/ball.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/assets/footerImage.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/assets/head.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/assets/images.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/assets/loading.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/assets/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/assets/logo/1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/assets/logo/10.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/assets/logo/11.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/assets/logo/12.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/assets/logo/13.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/assets/logo/14.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/assets/logo/15.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/assets/logo/16.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/assets/logo/17.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/assets/logo/18.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/assets/logo/19.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/assets/logo/2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/assets/logo/20.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/assets/logo/21.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/assets/logo/22.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/assets/logo/23.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/assets/logo/3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/assets/logo/4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/assets/logo/5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/assets/logo/6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/assets/logo/7.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/assets/logo/8.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/assets/logo/9.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/assets/premierLeague.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/assets/premierLeagueWelcome.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/assets/transparentLogo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/assets/trophy.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/assets/welcomeFireBall.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/environments/environment.prod.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/environments/environment.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/main.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/polyfills.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/styles.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/src/test.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/tsconfig.app.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/tsconfig.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/tsconfig.spec.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MAIN GUI/Frontend/tslint.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../OOP-CourseWork-LTS CLI/.idea/codeStyles/Project.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../OOP-CourseWork-LTS CLI/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../OOP-CourseWork-LTS CLI/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../OOP-CourseWork-LTS CLI/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../OOP-CourseWork-LTS CLI/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../OOP-CourseWork-LTS CLI/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../OOP-CourseWork-LTS CLI/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../OOP-CourseWork-LTS CLI/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../OOP-CourseWork-LTS CLI/OOP-CourseWork.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../OOP-CourseWork-LTS CLI/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../OOP-CourseWork-LTS CLI/objectDataFile.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../OOP-CourseWork-LTS CLI/out/production/OOP-CourseWork/ClubStats.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../OOP-CourseWork-LTS CLI/out/production/OOP-CourseWork/ConsoleApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../OOP-CourseWork-LTS CLI/out/production/OOP-CourseWork/DateMatch.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../OOP-CourseWork-LTS CLI/out/production/OOP-CourseWork/FootballClub.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../OOP-CourseWork-LTS CLI/out/production/OOP-CourseWork/LeagueManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../OOP-CourseWork-LTS CLI/out/production/OOP-CourseWork/Match.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../OOP-CourseWork-LTS CLI/out/production/OOP-CourseWork/MatchStats.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../OOP-CourseWork-LTS CLI/out/production/OOP-CourseWork/Player.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../OOP-CourseWork-LTS CLI/out/production/OOP-CourseWork/PremierLeagueManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../OOP-CourseWork-LTS CLI/out/production/OOP-CourseWork/PremierLeagueTester.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../OOP-CourseWork-LTS CLI/out/production/OOP-CourseWork/SchoolFootballClub.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../OOP-CourseWork-LTS CLI/out/production/OOP-CourseWork/SportClub.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../OOP-CourseWork-LTS CLI/out/production/OOP-CourseWork/Tester.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../OOP-CourseWork-LTS CLI/out/production/OOP-CourseWork/UniversityFootballClub.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../OOP-CourseWork-LTS CLI/out/production/OOP-CourseWork/hamcrest-2.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../OOP-CourseWork-LTS CLI/out/production/OOP-CourseWork/junit-4.8.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../OOP-CourseWork-LTS CLI/src/ClubStats.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../OOP-CourseWork-LTS CLI/src/ConsoleApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../OOP-CourseWork-LTS CLI/src/DateMatch.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../OOP-CourseWork-LTS CLI/src/FootballClub.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../OOP-CourseWork-LTS CLI/src/LeagueManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../OOP-CourseWork-LTS CLI/src/Match.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../OOP-CourseWork-LTS CLI/src/MatchStats.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../OOP-CourseWork-LTS CLI/src/Player.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../OOP-CourseWork-LTS CLI/src/PremierLeagueManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../OOP-CourseWork-LTS CLI/src/PremierLeagueTester.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../OOP-CourseWork-LTS CLI/src/SchoolFootballClub.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../OOP-CourseWork-LTS CLI/src/SportClub.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../OOP-CourseWork-LTS CLI/src/Tester.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../OOP-CourseWork-LTS CLI/src/UniversityFootballClub.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../OOP-CourseWork-LTS CLI/src/hamcrest-2.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../OOP-CourseWork-LTS CLI/src/junit-4.8.1.jar" beforeDir="false" />
-    </list>
+    <list default="true" id="4ffd9da0-df3c-4a45-8b09-2b7528f01daf" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -285,34 +92,64 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ConsoleApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ConsoleApplication" />
+    <configuration name="PremierLeagueTester (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OOP-CourseWork" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Tester" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Tester" />
-      <module name="OOP-CourseWork" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PremierLeagueTester" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="OOP-CourseWork" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="PremierLeagueTester" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="controllers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="controllers" />
+      <option name="MAIN_CLASS_NAME" value="controllers.PremierLeagueTester" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PremierLeagueTester.testCreatingClub" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PremierLeagueTester.testClearingDataIntoFile" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OOP-CourseWork" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="PremierLeagueTester" />
-      <option name="METHOD_NAME" value="testCreatingClub" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="controllers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="controllers" />
+      <option name="MAIN_CLASS_NAME" value="controllers.PremierLeagueTester" />
+      <option name="METHOD_NAME" value="testClearingDataIntoFile" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PremierLeagueTester.testLoadingDataIntoFile" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="OOP-CourseWork" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="controllers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="controllers" />
+      <option name="MAIN_CLASS_NAME" value="controllers.PremierLeagueTester" />
+      <option name="METHOD_NAME" value="testLoadingDataIntoFile" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PremierLeagueTester.testSavingDataIntoFile" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="OOP-CourseWork" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="controllers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="controllers" />
+      <option name="MAIN_CLASS_NAME" value="controllers.PremierLeagueTester" />
+      <option name="METHOD_NAME" value="testSavingDataIntoFile" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -321,10 +158,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.ConsoleApplication (1)" />
-        <item itemvalue="Application.ConsoleApplication" />
-        <item itemvalue="Application.Tester" />
-        <item itemvalue="JUnit.PremierLeagueTester" />
-        <item itemvalue="JUnit.PremierLeagueTester.testCreatingClub" />
+        <item itemvalue="JUnit.PremierLeagueTester (1)" />
+        <item itemvalue="JUnit.PremierLeagueTester.testClearingDataIntoFile" />
+        <item itemvalue="JUnit.PremierLeagueTester.testLoadingDataIntoFile" />
+        <item itemvalue="JUnit.PremierLeagueTester.testSavingDataIntoFile" />
       </list>
     </recent_temporary>
   </component>
@@ -414,6 +251,7 @@
       <workItem from="1606757413903" duration="338000" />
       <workItem from="1606757854548" duration="563000" />
       <workItem from="1606760888812" duration="158000" />
+      <workItem from="1606838206588" duration="1925000" />
     </task>
     <task id="LOCAL-00012" summary="commit">
       <created>1604851031613</created>
@@ -812,54 +650,58 @@
     <state x="421" y="95" key="FileChooserDialogImpl/0.0.1280.680/1920.0.1360.728@0.0.1280.680" timestamp="1606110858726" />
     <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.689/1920.0.1360.738@0.0.1280.689" timestamp="1606757931329" />
     <state x="2367" y="103" key="FileChooserDialogImpl/0.0.1280.689/1920.0.1360.738@1920.0.1360.738" timestamp="1606756563261" />
-    <state width="1237" height="532" key="GridCell.Tab.0.bottom" timestamp="1606758419266">
+    <state width="1237" height="31" key="GridCell.Tab.0.bottom" timestamp="1606840135508">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state width="1237" height="523" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.0.1360.728@0.0.1280.680" timestamp="1606123190261" />
     <state width="1237" height="517" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1606037862037" />
-    <state width="1237" height="532" key="GridCell.Tab.0.bottom/0.0.1280.689/1920.0.1360.738@0.0.1280.689" timestamp="1606758419266" />
+    <state width="1237" height="31" key="GridCell.Tab.0.bottom/0.0.1280.689/1920.0.1360.738@0.0.1280.689" timestamp="1606840135508" />
     <state width="1317" height="372" key="GridCell.Tab.0.bottom/0.0.1280.689/1920.0.1360.738@1920.0.1360.738" timestamp="1606757224454" />
-    <state width="1237" height="532" key="GridCell.Tab.0.center" timestamp="1606758419266">
+    <state width="1237" height="31" key="GridCell.Tab.0.center" timestamp="1606840135508">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state width="1237" height="523" key="GridCell.Tab.0.center/0.0.1280.680/1920.0.1360.728@0.0.1280.680" timestamp="1606123190261" />
     <state width="1237" height="517" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1606037862035" />
-    <state width="1237" height="532" key="GridCell.Tab.0.center/0.0.1280.689/1920.0.1360.738@0.0.1280.689" timestamp="1606758419266" />
+    <state width="1237" height="31" key="GridCell.Tab.0.center/0.0.1280.689/1920.0.1360.738@0.0.1280.689" timestamp="1606840135508" />
     <state width="1317" height="372" key="GridCell.Tab.0.center/0.0.1280.689/1920.0.1360.738@1920.0.1360.738" timestamp="1606757224454" />
-    <state width="1237" height="532" key="GridCell.Tab.0.left" timestamp="1606758419266">
+    <state width="1237" height="31" key="GridCell.Tab.0.left" timestamp="1606840135508">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state width="1237" height="523" key="GridCell.Tab.0.left/0.0.1280.680/1920.0.1360.728@0.0.1280.680" timestamp="1606123190260" />
     <state width="1237" height="517" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1606037862035" />
-    <state width="1237" height="532" key="GridCell.Tab.0.left/0.0.1280.689/1920.0.1360.738@0.0.1280.689" timestamp="1606758419266" />
+    <state width="1237" height="31" key="GridCell.Tab.0.left/0.0.1280.689/1920.0.1360.738@0.0.1280.689" timestamp="1606840135508" />
     <state width="1317" height="372" key="GridCell.Tab.0.left/0.0.1280.689/1920.0.1360.738@1920.0.1360.738" timestamp="1606757224454" />
-    <state width="1237" height="532" key="GridCell.Tab.0.right" timestamp="1606758419266">
+    <state width="1237" height="31" key="GridCell.Tab.0.right" timestamp="1606840135508">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state width="1237" height="523" key="GridCell.Tab.0.right/0.0.1280.680/1920.0.1360.728@0.0.1280.680" timestamp="1606123190261" />
     <state width="1237" height="517" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1606037862037" />
-    <state width="1237" height="532" key="GridCell.Tab.0.right/0.0.1280.689/1920.0.1360.738@0.0.1280.689" timestamp="1606758419266" />
+    <state width="1237" height="31" key="GridCell.Tab.0.right/0.0.1280.689/1920.0.1360.738@0.0.1280.689" timestamp="1606840135508" />
     <state width="1317" height="372" key="GridCell.Tab.0.right/0.0.1280.689/1920.0.1360.738@1920.0.1360.738" timestamp="1606757224454" />
-    <state width="1237" height="7" key="GridCell.Tab.1.bottom" timestamp="1605965693406">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state width="1237" height="7" key="GridCell.Tab.1.bottom" timestamp="1606840135501">
+      <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state width="1237" height="7" key="GridCell.Tab.1.bottom/0.0.1280.680/1920.0.1360.728@0.0.1280.680" timestamp="1605965693406" />
     <state width="1237" height="2" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1605096234567" />
-    <state width="1237" height="7" key="GridCell.Tab.1.center" timestamp="1605965693405">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state width="1237" height="7" key="GridCell.Tab.1.bottom/0.0.1280.689/1920.0.1360.738@0.0.1280.689" timestamp="1606840135501" />
+    <state width="1237" height="7" key="GridCell.Tab.1.center" timestamp="1606840135501">
+      <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state width="1237" height="7" key="GridCell.Tab.1.center/0.0.1280.680/1920.0.1360.728@0.0.1280.680" timestamp="1605965693405" />
     <state width="1237" height="2" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1605096234567" />
-    <state width="1237" height="7" key="GridCell.Tab.1.left" timestamp="1605965693405">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state width="1237" height="7" key="GridCell.Tab.1.center/0.0.1280.689/1920.0.1360.738@0.0.1280.689" timestamp="1606840135501" />
+    <state width="1237" height="7" key="GridCell.Tab.1.left" timestamp="1606840135501">
+      <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state width="1237" height="7" key="GridCell.Tab.1.left/0.0.1280.680/1920.0.1360.728@0.0.1280.680" timestamp="1605965693405" />
     <state width="1237" height="2" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1605096234567" />
-    <state width="1237" height="7" key="GridCell.Tab.1.right" timestamp="1605965693405">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state width="1237" height="7" key="GridCell.Tab.1.left/0.0.1280.689/1920.0.1360.738@0.0.1280.689" timestamp="1606840135501" />
+    <state width="1237" height="7" key="GridCell.Tab.1.right" timestamp="1606840135501">
+      <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state width="1237" height="7" key="GridCell.Tab.1.right/0.0.1280.680/1920.0.1360.728@0.0.1280.680" timestamp="1605965693405" />
     <state width="1237" height="2" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1605096234567" />
+    <state width="1237" height="7" key="GridCell.Tab.1.right/0.0.1280.689/1920.0.1360.738@0.0.1280.689" timestamp="1606840135501" />
     <state x="354" y="43" key="RollbackChangesDialog" timestamp="1604822003451">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -874,11 +716,11 @@
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state x="376" y="237" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1280.689/1920.0.1360.738@0.0.1280.689" timestamp="1606413196878" />
-    <state x="1920" y="0" width="1043" height="678" maximized="true" key="dock-window-1" timestamp="1606565795133">
+    <state x="2105" y="-13" width="1058" height="677" maximized="true" key="dock-window-1" timestamp="1606839412345">
       <screen x="1920" y="0" width="1360" height="738" />
     </state>
     <state x="1934" y="-15" width="1002" height="653" maximized="true" key="dock-window-1/0.0.1280.680/1920.0.1360.728@0.0.1280.680" timestamp="1606108022479" />
-    <state x="1920" y="0" width="1043" height="678" maximized="true" key="dock-window-1/0.0.1280.689/1920.0.1360.738@0.0.1280.689" timestamp="1606565795133" />
+    <state x="2105" y="-13" width="1058" height="677" maximized="true" key="dock-window-1/0.0.1280.689/1920.0.1360.738@0.0.1280.689" timestamp="1606839412345" />
     <state x="2101" y="48" width="1041" height="677" key="dock-window-2" timestamp="1606568572054">
       <screen x="1920" y="0" width="1360" height="738" />
     </state>

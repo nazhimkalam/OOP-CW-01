@@ -145,6 +145,30 @@ public class PremierLeagueTester
         PremierLeagueManager.premierLeagueFootballClubList = new java.util.ArrayList<>();
     }
 
+    @Test
+    public void testSavingDataIntoFile(){
+        String result = obj.saveDataIntoFile();
+        assertEquals("\n Saving the data . . .\n Successfully saved!", result);
+    }
+
+    @Test
+    public void testLoadingDataIntoFile(){
+
+        // Assuming that the file path is correct
+        String result = PremierLeagueManager.loadingData();
+        assertEquals("\n Successfully loaded all the data\n", result);
+
+    }
+
+    @Test
+    public void testClearingDataIntoFile(){
+
+        // Assuming that the file path is correct
+        String result = obj.clearDataFile();
+        assertEquals("\n Clearing the contents of the file . . .\n Successfully cleared the file details!", result);
+
+    }
+
     @After
     public void afterTesting(){
         // RUNS AFTER TESTING IS COMPLETED
