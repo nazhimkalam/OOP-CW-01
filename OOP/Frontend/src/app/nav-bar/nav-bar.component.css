@@ -6,7 +6,6 @@
 .navigation__bar {
   display: flex;
   justify-content: space-between;
-  /* background-color: #36003c; */
   background-image: linear-gradient(to right, #36003c, #d4007f);
   position: sticky;
   top: 0;
@@ -19,5 +18,10 @@
   width: 210px;
 }
 .nav-item {
+  transition: 0.1s ease-in-out;
   margin: 0 10px;
+}
+.nav-item:hover {
+  transform: scale(1.1);
+  transition: 0.1s ease-in-out;
 }

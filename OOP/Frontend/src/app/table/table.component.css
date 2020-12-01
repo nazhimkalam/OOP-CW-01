@@ -15,9 +15,23 @@
   border-top-right-radius: 100px;
   border-bottom-right-radius: 100px;
 }
+.pTable__selectedSeason p {
+  font-size: 20px;
+  font-weight: 600;
+  border: 3px solid #ea2d9d;
+  width: fit-content;
+  padding: 10px;
+  transition: 0.3s ease-in-out;
+  border-left: transparent;
+  padding-right: 30px;
+  border-top-right-radius: 100px;
+  border-bottom-right-radius: 100px;
+  color: #36003c;
+}
 .pTable__header:hover,
 .pTable__selectedSeason p:hover {
   transition: 0.3s ease-in-out;
+  border-right-width: 8px;
   animation-fill-mode: forwards;
   transform: translateX(20px);
 }
@@ -60,18 +74,30 @@ table {
   border-right: 1px solid #ea2d9d;
 }
 
+.pTable__header__container img {
+  transition: 0.2s ease-in-out;
+}
+.pTable__header__container img:hover {
+  transition: 0.2s ease-in-out;
+  transform: scale(1.1);
+}
 .season button,
 .sortBy button {
   background-color: #fff;
   color: #36003c;
   border-color: #36003c;
-  margin: 0px 10px;
+  transition: 0.1s ease-in-out;
+  margin: 1px 11px;
   border-width: 2px;
 }
 
 .season button:hover,
 .sortBy button:hover {
   border-color: #ea2d9d;
+  transition: 0.1s ease-in-out;
+  border-width: 3px;
+  margin: 0px 10px;
+  transform: scale(1.05);
   color: #ea2d9d;
 }
 .pTable__table {
@@ -86,30 +112,18 @@ table {
 .dropdown-item:active {
   background-color: #ea2d9d !important;
 }
-.pTable__selectedSeason p {
-  font-size: 20px;
-  font-weight: 600;
-  border: 3px solid #ea2d9d;
-  width: fit-content;
-  padding: 10px;
-  transition: 0.3s ease-in-out;
-  border-left: transparent;
-  padding-right: 30px;
-  border-top-right-radius: 100px;
-  border-bottom-right-radius: 100px;
-  color: #36003c;
-}
+
 
 .pTable__header__container {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.pTable__header__container img{
+.pTable__header__container img {
   padding-right: 70px;
 }
 
-.dropdown-item{
+.dropdown-item {
   cursor: pointer !important;
 }
 
@@ -123,11 +137,6 @@ table {
   object-fit: contain;
   height: 150px;
 }
-
-
-
-
-
 
 /* Animation Part */
 

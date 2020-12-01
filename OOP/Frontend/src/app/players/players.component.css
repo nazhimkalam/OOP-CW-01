@@ -30,6 +30,7 @@
 
 .players__heading h1:hover {
   transition: 0.3s ease-in-out;
+  border-right-width: 8px;
   animation-fill-mode: forwards;
   transform: translateX(20px);
 }
@@ -46,11 +47,12 @@
 
 .players__list > div {
   transition: 0.3s ease-in-out;
-  border: 1px  solid var(--colour-right);
+  border: 1px solid var(--colour-right);
   margin-top: 30px;
 }
 .players__list > div:hover {
-  transform: scale(1.05);
+  transform: scale(1.3);
+  z-index: 1;
   border: 2px #ea2d9d solid;
   transition: 0.3s ease-in-out;
 }
@@ -59,21 +61,30 @@
   color: white;
   height: 100%;
 }
-
-.card { /* now a container for the image */
+.card-body:hover {
+  animation-name: example;
+  animation-duration: 1s;
+}
+@keyframes example {
+  from {
+    background-image: linear-gradient(var(--colour-right), var(--colour-left));
+  }
+  to {
+    background-image: linear-gradient(var(--colour-left), var(--colour-right));
+  }
+}
+.card {
+  /* now a container for the image */
   display: inline-block; /* shrink wrap to image */
   overflow: hidden; /* hide the excess */
 }
 .card img {
   display: block; /* no whitespace */
-  transition: .5s ease-in-out;
+  transition: 0.5s ease-in-out;
 }
 .card:hover img {
   transform: scale(1.05);
 }
-
-
-
 
 /* Animation Part */
 .players {

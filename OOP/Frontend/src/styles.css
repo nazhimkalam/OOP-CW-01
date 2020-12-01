@@ -5,8 +5,8 @@ body {
   height: 100%;
   margin: 0;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-
-  background-image: url('/assets/backgroundImage2.jpg');
+  background-color: #6900520c;
+  background-image: url('/assets/backgroundNew.png');
   background-size: cover;
 }
 * {

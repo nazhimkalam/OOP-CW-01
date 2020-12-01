@@ -4,16 +4,22 @@
 .matches {
   margin-top: 60px;
 }
+.season:hover {
+  cursor: pointer !important;
+}
 .matches__titleContent {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
+#date__calender {
+  cursor: pointer !important;
+}
 .matches__titleContent img {
   transition: 0.7s ease-in-out;
 }
 .matches__titleContent img:hover {
-  transform: rotate(100deg);
+  transform: rotate(150deg);
   transition: 0.5s ease-in-out;
 }
 .matches__titleContent h1 {
@@ -31,7 +37,18 @@
 .matches__titleContent h1:hover {
   transition: 0.3s ease-in-out;
   animation-fill-mode: forwards;
+  border-right-width: 8px;
   transform: translateX(20px);
+}
+#dateEntered {
+  transition: 0.2s ease-in-out !important;
+  margin: 1px !important;
+}
+#dateEntered:hover {
+  transition: 0.2s ease-in-out !important;
+  border: 2px #ea2d9d solid !important;
+  transform: scale(1.05) !important;
+  margin: 0px !important;
 }
 
 .matches__textField__searchBtn,
@@ -40,14 +57,19 @@
   background-color: #fff;
   color: #36003c;
   border-color: #36003c;
-  margin: 0px 10px;
+  transition: 0.1s ease-in-out;
+  margin: 1px 11px;
   border-width: 2px;
 }
 
 .matches__textField__searchBtn:hover,
 .matches__btn button:hover,
 .matches__btn div button:hover {
+  transition: 0.1s ease-in-out;
   border-color: #ea2d9d;
+  margin: 0px 10px;
+  border-width: 3px;
+  transform: scale(1.05);
   color: #ea2d9d;
 }
 
@@ -79,6 +101,7 @@
 }
 
 .matches__playedSoFar:hover {
+  border-right-width: 8px;
   transition: 0.3s ease-in-out;
   animation-fill-mode: forwards;
   transform: translateX(20px);
@@ -147,21 +170,22 @@
 }
 
 .matches__season {
+  border: 2px #ea2d9d solid;
+  transition: 0.2s ease-in-out;
   display: flex;
+  margin: 1px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-.matches__season {
-  border: 2px #ea2d9d solid;
-  transition: 0.5s ease-in-out;
   padding: 7px 20px;
   box-shadow: 2px 8px 10px #888888;
   /* border-radius: 20px; */
 }
 .matches__season:hover {
-  transform: scale(1.04);
-  transition: 0.5s ease-in-out;
+  transform: scale(1.05);
+  border-width: 3px;
+  margin: 0px;
+  transition: 0.2s ease-in-out;
 }
 .matches__season p:first-child {
   font-size: 15px;
