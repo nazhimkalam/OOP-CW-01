@@ -12,6 +12,7 @@ export class TableComponent implements OnInit {
   public currentSeason: string; // this is a must
   public seasons: string[]; // other seasons
   public isLoading: boolean; // loading gif
+  public audio: any;
 
   constructor(private _footballService: FootballInteractionService) {
     this.resultsRecords = [];
@@ -37,6 +38,11 @@ export class TableComponent implements OnInit {
 
   sortByPoints() {
     //  get the records sorted by points
+    this.audio = new Audio();
+    this.audio.src = '../../assets/matchPlayed.mp3';
+    this.audio.load();
+    this.audio.play();
+    
     this.isLoading = true;
     this._footballService
       .getSortedByPoints(this.currentSeason)
@@ -48,6 +54,11 @@ export class TableComponent implements OnInit {
 
   sortByGoals() {
     // get the records sorted by goals
+    this.audio = new Audio();
+    this.audio.src = '../../assets/matchPlayed.mp3';
+    this.audio.load();
+    this.audio.play();
+
     this.isLoading = true;
     this._footballService
       .getSortedByGoals(this.currentSeason)
@@ -59,6 +70,11 @@ export class TableComponent implements OnInit {
 
   sortByWins() {
     // get the records sorted by wins
+    this.audio = new Audio();
+    this.audio.src = '../../assets/matchPlayed.mp3';
+    this.audio.load();
+    this.audio.play();
+
     this.isLoading = true;
     this._footballService
       .getSortedByWins(this.currentSeason)
@@ -70,6 +86,11 @@ export class TableComponent implements OnInit {
 
   handleClickedSeason(clickedSeason: string) {
     // get the new records by season clicked
+    this.audio = new Audio();
+    this.audio.src = '../../assets/matchPlayed.mp3';
+    this.audio.load();
+    this.audio.play();
+
     this.currentSeason = clickedSeason;
     this.isLoading = true;
     this._footballService.getSortedByPoints(clickedSeason).subscribe((data) => {

@@ -14,6 +14,7 @@ export class MatchesComponent implements OnInit {
   public selectedDate: string; // useSelectedDate
   public clubLogo: number[]; // contains a random number representing the club logo
   public loadingContent: boolean;
+  public audio: any;
 
   constructor(private _footballService: FootballInteractionService) {
     this.currentSeason = '2020-21';
@@ -40,6 +41,11 @@ export class MatchesComponent implements OnInit {
 
   handleClickedSeason(clickedSeason: string) {
     // get the new records by season clicked
+    this.audio = new Audio();
+    this.audio.src = '../../assets/matchPlayed.mp3';
+    this.audio.load();
+    this.audio.play();
+    
     this.loadingContent = true;
     this.currentSeason = clickedSeason;
     this._footballService
@@ -53,6 +59,11 @@ export class MatchesComponent implements OnInit {
 
   // this is for the search btn
   handleSearchSelectedDate() {
+    this.audio = new Audio();
+    this.audio.src = '../../assets/matchPlayed.mp3';
+    this.audio.load();
+    this.audio.play();
+
     this.loadingContent = true;
     this._footballService
       .getMatchesByDate(this.selectedDate, this.currentSeason)
@@ -71,6 +82,11 @@ export class MatchesComponent implements OnInit {
 
   // Generate match
   generateMatch() {
+    this.audio = new Audio();
+    this.audio.src = '../../assets/matchPlayed.mp3';
+    this.audio.load();
+    this.audio.play();
+    
     this.loadingContent = true;
     this._footballService
       .getGeneratedMatchesBySeason(this.currentSeason)
