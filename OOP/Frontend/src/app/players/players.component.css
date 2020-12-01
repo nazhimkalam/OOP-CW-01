@@ -2,19 +2,12 @@
   font-family: Verdana, Geneva, Tahoma, sans-serif !important;
 }
 .players {
-  margin-top: 60px;
+  margin-top: 80px;
 }
 .players__heading {
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-.players__heading img {
-  transition: 0.7s ease-in-out;
-}
-.players__heading img:hover {
-  transform: rotate(100deg);
-  transition: 0.5s ease-in-out;
 }
 .players__heading h1 {
   font-size: 50px !important;
@@ -42,7 +35,9 @@
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
-  margin-top: 50px;
+  box-shadow: 5px 10px 18px #888888;
+  margin-top: 90px;
+  padding-bottom: 50px;
 }
 
 .players__list > div {
@@ -153,3 +148,58 @@
     transform: scale(1);
   }
 }
+
+
+
+/* Change the ball rotation every second */
+.players__heading img  {
+  -webkit-animation: ballRotate 2s infinite; /* Chrome, Safari, Opera */
+  animation: 2s infinite ballRotate;
+}
+@keyframes ballRotate {
+  0% {
+    transform: rotate(0deg);
+    transition: 1s ease-in-out;
+  }
+  10% {
+    transform: rotate(36deg);
+    transition: 1s ease-in-out;
+  }
+  20% {
+    transform: rotate(72deg);
+    transition: 1s ease-in-out;
+  }
+  30% {
+    transform: rotate(108deg);
+    transition: 1s ease-in-out;
+  }
+  40% {
+    transform: rotate(144deg);
+    transition: 1s ease-in-out;
+  }
+  50% {
+    transform: rotate(180deg);
+    transition: 1s ease-in-out;
+  }
+  60% {
+    transform: rotate(216deg);
+    transition: 1s ease-in-out;
+  }
+  70% {
+    transform: rotate(252deg);
+    transition: 1s ease-in-out;
+  }
+  80% {
+    transform: rotate(288deg);
+    transition: 1s ease-in-out;
+  }
+  90% {
+    transform: rotate(324deg);
+    transition: 1s ease-in-out;
+  }
+  100% {
+    transform: rotate(360deg);
+    transition: 1s ease-in-out;
+  }
+}
+

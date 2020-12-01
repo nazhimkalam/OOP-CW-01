@@ -1,9 +1,9 @@
-*{
+* {
   font-family: Verdana, Geneva, Tahoma, sans-serif !important;
   overflow: hidden;
 }
 .welcome {
-  background-image: linear-gradient(to right, #feefff, #ffe0f2);
+  /* background-image: linear-gradient(to right, #fce0ff, #ffccea); */
   font-family: Verdana, Geneva, Tahoma, sans-serif !important;
 }
 .welcome,
@@ -131,5 +131,34 @@
   to {
     opacity: 1;
     transform: scale(1);
+  }
+}
+
+/* Change the background color every second */
+.welcome {
+  -webkit-animation: bgcolorchange 2s infinite; /* Chrome, Safari, Opera */
+  animation: 2s infinite bgcolorchange;
+}
+@keyframes bgcolorchange {
+  0% {
+    background-color: #fbd3ff;
+  }
+  50% {
+    background-color: hsl(0, 0%, 100%);
+  }
+  100% {
+    background-color: #fadfff;
+  }
+}
+/* Chrome, Safari, Opera */
+@-webkit-keyframes bgcolorchange {
+  0% {
+    background-color: #fbd3ff;
+  }
+  50% {
+    background-color: hsl(0, 0%, 100%);
+  }
+  100% {
+    background-color: #fadfff;
   }
 }

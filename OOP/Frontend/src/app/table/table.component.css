@@ -74,13 +74,6 @@ table {
   border-right: 1px solid #ea2d9d;
 }
 
-.pTable__header__container img {
-  transition: 0.2s ease-in-out;
-}
-.pTable__header__container img:hover {
-  transition: 0.2s ease-in-out;
-  transform: scale(1.1);
-}
 .season button,
 .sortBy button {
   background-color: #fff;
@@ -131,7 +124,7 @@ table {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 80px;
+  margin: 100px 0;
 }
 .loading img {
   object-fit: contain;
@@ -204,5 +197,26 @@ table {
   to {
     opacity: 1;
     transform: scale(1);
+  }
+}
+
+
+/* Change the ball rotation every second */
+.pTable__header__container img  {
+  -webkit-animation: ballRotate 2s infinite; /* Chrome, Safari, Opera */
+  animation: 2s infinite ballRotate;
+}
+@keyframes ballRotate {
+  0% {
+    transform: scale(0.6);
+    transition: 0.5s ease-in-out;
+  }
+  50% {
+    transform: scale(1.1);
+    transition: 0.5s ease-in-out;
+  }
+  100% {
+    transform: scale(0.6);
+    transition: 0.5s ease-in-out;
   }
 }
