@@ -1,0 +1,8 @@
+<div class="sponsors">
+  <div class="sponsors__all">
+    <div class="sponsors__each" *ngFor="let sponsor of sponsors">
+      <img src="{{ sponsor.imageURL }}" alt="" />
+      <p class="text-muted">{{ sponsor.sponsorName }}</p>
+    </div>
+  </div>
+</div>

@@ -203,10 +203,10 @@ table {
 
 /* Change the ball rotation every second */
 .pTable__header__container img  {
-  -webkit-animation: ballRotate 2s infinite; /* Chrome, Safari, Opera */
-  animation: 2s infinite ballRotate;
+  -webkit-animation: trophyZoom 2s infinite; /* Chrome, Safari, Opera */
+  animation: 2s infinite trophyZoom;
 }
-@keyframes ballRotate {
+@keyframes trophyZoom {
   0% {
     transform: scale(0.6);
     transition: 0.5s ease-in-out;

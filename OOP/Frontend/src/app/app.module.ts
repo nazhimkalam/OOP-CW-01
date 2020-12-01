@@ -13,7 +13,8 @@ import { PlayersComponent } from './players/players.component';
 import { FooterComponent } from './footer/footer.component';
 import { ErrorComponent } from './error/error.component';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+import { SponsorComponent } from './sponsor/sponsor.component'
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { HttpClientModule } from '@angular/common/http'
     PlayersComponent,
     FooterComponent,
     ErrorComponent,
+    SponsorComponent,
   ],
   imports: [BrowserModule, BrowserAnimationsModule, MatButtonModule, AppRoutingModule, HttpClientModule],
   providers: [],
