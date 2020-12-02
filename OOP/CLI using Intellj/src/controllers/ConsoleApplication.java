@@ -31,7 +31,7 @@ public class ConsoleApplication {
     }
 
     // THIS IS MENU METHOD
-    private static void displayMenu() {
+    public static void displayMenu() {
         System.out.println(" ________________________________________________________________________________________________\n" +
         "|                                        W E L C O M E                                           |\n" +
         "|________________________________________________________________________________________________|\n" +
@@ -127,7 +127,7 @@ public class ConsoleApplication {
     }
 
 
-    private static void addPlayedMatch() {
+    public static void addPlayedMatch() {
          /* ADD A PLAYED MATCH WITH IT'S SCORE AND UPDATE THE STATISTICS AND LIST OF MATCHES FOR THE RESPECTIVE CLUBS
            PLAYED */
 
@@ -240,7 +240,7 @@ public class ConsoleApplication {
 
     }
 
-    private static String checkingForValidClub(String message) {
+    public static String checkingForValidClub(String message) {
         // CHECKING FOR VALID CLUB ENTERED BY THE USER WHEN ADDING MATCH
 
         Scanner input = new Scanner(System.in);
@@ -265,7 +265,7 @@ public class ConsoleApplication {
     }
 
     // VALIDATING THE SEASON
-    private static String validatingSeason() {
+    public static String validatingSeason() {
         String seasonPlayed = "";
         Scanner input = new Scanner(System.in);
         boolean validatingSeason;
@@ -283,7 +283,7 @@ public class ConsoleApplication {
     }
 
     // THIS DEALS WITH DISPLAYING THE STATISTICS OF THE FOOTBALL CLUB
-    private static void displayStatistics() {
+    public static void displayStatistics() {
 
         // DISPLAYING THE STATISTICS OF A SELECTED CLUB BY THE USER ITSELF
         Scanner input = new Scanner(System.in);
@@ -301,7 +301,7 @@ public class ConsoleApplication {
     }
 
     // THIS DEALS WITH DELETING THE FOOTBALL CLUB FROM THE LIST
-    private static void deleteCLub() {
+    public static void deleteCLub() {
 
         // DELETING A CLUB (BY ITS NAME) FROM THE LIST OF CLUBS IN THE PREMIER LEAGUE
         Scanner input = new Scanner(System.in);
@@ -351,7 +351,7 @@ public class ConsoleApplication {
     }
 
     // THIS DEALS WITH CREATING THE FOOTBALL CLUB FOR THE LIST
-    private static void creatingClub() {
+    public static void creatingClub() {
 
         // MAKE SURE THAT EACH CLUB NAMES ARE UNIQUE FROM EACH OTHER
         Scanner insert = new Scanner(System.in);
@@ -476,7 +476,7 @@ public class ConsoleApplication {
 
 
     // validate strings that should only have alphabets and return the result
-    private static String validateString(String message) {
+    public static String validateString(String message) {
         Scanner input = new Scanner(System.in);
         boolean validStringEntered;
         String userInput;

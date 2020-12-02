@@ -4,9 +4,13 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
+// MAKE SURE THAT THE TXT FILE IS EMPTY BEFORE RUNNING THIS TESTS
 public class PremierLeagueTester
 {
     LeagueManager obj;
@@ -154,9 +158,13 @@ public class PremierLeagueTester
     @Test
     public void testLoadingDataIntoFile(){
 
-        // Assuming that the file path is correct
+        // Assuming that the file path is correct and file contains data
         String result = PremierLeagueManager.loadingData();
-        assertEquals("\n Successfully loaded all the data\n", result);
+//        assertEquals("\n Successfully loaded all the data\n", result);
+
+        // Assuming that the file contains no data to read
+        assertEquals(" Exception when performing read/write operations to the file!" +
+                "\n No permission to read/write from or to the file", result);
 
     }
 
@@ -167,6 +175,59 @@ public class PremierLeagueTester
         String result = obj.clearDataFile();
         assertEquals("\n Clearing the contents of the file . . .\n Successfully cleared the file details!", result);
 
+    }
+
+    @Test
+    public void testingCheckingForValidClub(){
+       obj.createClub("Juventus","Spain","Nazhim",null,
+                "normal");
+       obj.createClub("Barca","Spain","Hashim",null,
+                "normal");
+       obj.createClub("Titan Fc","Spain","Kalam",null,
+                "normal");
+
+       String[] clubNames = {"Juventus", "Barca", "Titan Fc"};
+       for (int i = 0; i < 3; i++) {
+           String input = clubNames[i];
+           InputStream in = new ByteArrayInputStream(input.getBytes());
+           System.setIn(in);
+           assertEquals(clubNames[i], ConsoleApplication.checkingForValidClub(input));
+        }
+//        assertEquals("JuventusFake", ConsoleApplication.checkingForValidClub(input)); This throws error for invalid
+    }
+
+    @Test
+    public void testingValidatingIntegers(){
+        for (int i = 0; i < 100; i++) {
+            int input = i;
+            InputStream in = new ByteArrayInputStream(String.valueOf(input).getBytes());
+            System.setIn(in);
+            assertEquals(i, ConsoleApplication.validatingIntegers("Testing integers"));
+        }
+
+//        assertEquals(14, ConsoleApplication.validatingIntegers("Testing integers")); Invalid number throws error
+    }
+
+    @Test
+    public void testingValidatingSeason(){
+        String[] seasons = {"2020-21", "2019-20", "2018-19", "2017-18", "2016-17"};
+        for (int i = 0; i < 5; i++) {
+            String input = seasons[i];
+            InputStream in = new ByteArrayInputStream(input.getBytes());
+            System.setIn(in);
+            assertEquals(seasons[i], ConsoleApplication.validatingSeason());
+        }
+    }
+
+    @Test
+    public void testingValidateString(){
+        String[] validStrings = {"Nazhim", "Kalam", "Mohammed", "Saman", "Lakshan"};
+        for (int i = 0; i < 5; i++) {
+            String input = validStrings[i];
+            InputStream in = new ByteArrayInputStream(input.getBytes());
+            System.setIn(in);
+            assertEquals(validStrings[i], ConsoleApplication.validateString("Validating Strings"));
+        }
     }
 
     @After
