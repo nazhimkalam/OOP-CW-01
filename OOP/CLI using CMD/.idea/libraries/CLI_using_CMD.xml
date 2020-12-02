@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="CLI using CMD">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/hamcrest-2.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/junit-4.8.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

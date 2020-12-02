@@ -42,28 +42,49 @@ public class HomeController extends Controller {
 
     // sending the sorted table data by points (descending order) by season
     public Result sortByPoints(String season){
+
+        // filters the football clubs according to the season
         guiSeasonFilteredClubs = getGuiSeasonFilteredClubs(season);
 
         // sorting by points only in descending order
+        guiSeasonFilteredClubs = sortMatchesByPoints(guiSeasonFilteredClubs);
+
+        JsonNode guiSeasonFilteredClubsJson = Json.toJson(guiSeasonFilteredClubs);
+        return ok(guiSeasonFilteredClubsJson);
+    }
+
+    // This function is used to sort the matches of a football club in a season by descending order of points
+    public ArrayList<FootballClub> sortMatchesByPoints(ArrayList<FootballClub> guiSeasonFilteredClubs) {
+
         Comparator<FootballClub> comparator = (club1, club2) -> {
-                if(club1.getClubStatistics().getTotalPointsScored() < club2.getClubStatistics().getTotalPointsScored()){
-                    return 1;
-                }
+            if(club1.getClubStatistics().getTotalPointsScored() < club2.getClubStatistics().getTotalPointsScored()){
+                return 1;
+            }
 
             return -1;
         };
         if (guiSeasonFilteredClubs != null) {
             guiSeasonFilteredClubs.sort(comparator);
         }
-        JsonNode guiSeasonFilteredClubsJson = Json.toJson(guiSeasonFilteredClubs);
-        return ok(guiSeasonFilteredClubsJson);
+
+        return guiSeasonFilteredClubs;
     }
 
     // sending the sorted table data by wins (descending order) by season
     public Result sortByWins(String season){
+        // filters the football clubs according to the season
         guiSeasonFilteredClubs = getGuiSeasonFilteredClubs(season);
 
-        // sorting by points only in descending order
+        // sorting by points only in descending order of wins
+        guiSeasonFilteredClubs = sortMatchesByWins(guiSeasonFilteredClubs);
+
+        JsonNode guiSeasonFilteredClubsJson = Json.toJson(guiSeasonFilteredClubs);
+        return ok(guiSeasonFilteredClubsJson);
+    }
+
+    // sorting by points only in descending order of wins
+    public ArrayList<FootballClub> sortMatchesByWins(ArrayList<FootballClub> guiSeasonFilteredClubs) {
+
         Comparator<FootballClub> comparator = (club1, club2) -> {
             if(club1.getClubStatistics().getTotalWins() < club2.getClubStatistics().getTotalWins()){
                 return 1;
@@ -74,15 +95,24 @@ public class HomeController extends Controller {
         if (guiSeasonFilteredClubs != null) {
             guiSeasonFilteredClubs.sort(comparator);
         }
-        JsonNode guiSeasonFilteredClubsJson = Json.toJson(guiSeasonFilteredClubs);
-        return ok(guiSeasonFilteredClubsJson);
+
+        return guiSeasonFilteredClubs;
     }
 
     // sending the sorted table data by goals (descending order) by season
     public Result sortByGoals(String season){
+        // filters the football clubs according to the season
         guiSeasonFilteredClubs = getGuiSeasonFilteredClubs(season);
 
-        // sorting by points only in descending order
+        // sorting by points only in descending order goal scored
+        guiSeasonFilteredClubs = sortMatchesByGoals(guiSeasonFilteredClubs);
+
+        JsonNode guiSeasonFilteredClubsJson = Json.toJson(guiSeasonFilteredClubs);
+        return ok(guiSeasonFilteredClubsJson);
+    }
+
+    // sorting by points only in descending order goal scored
+    public ArrayList<FootballClub> sortMatchesByGoals(ArrayList<FootballClub> guiSeasonFilteredClubs) {
         Comparator<FootballClub> comparator = (club1, club2) -> {
             if(club1.getTotalGoalsScored() < club2.getTotalGoalsScored()){
                 return 1;
@@ -93,8 +123,8 @@ public class HomeController extends Controller {
         if (guiSeasonFilteredClubs != null) {
             guiSeasonFilteredClubs.sort(comparator);
         }
-        JsonNode guiSeasonFilteredClubsJson = Json.toJson(guiSeasonFilteredClubs);
-        return ok(guiSeasonFilteredClubsJson);
+
+        return guiSeasonFilteredClubs;
     }
 
     // This function is to return the listOfClubs filtered by season
@@ -115,6 +145,7 @@ public class HomeController extends Controller {
         ArrayList<Match> matchesDisplayed = getMatchesForSeason(guiSeasonFilteredClubs);
         JsonNode matchesDisplayedJson = Json.toJson(matchesDisplayed);
         return ok(matchesDisplayedJson);
+
     }
 
     // sending all the matches data for a specific date

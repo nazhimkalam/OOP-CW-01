@@ -7,7 +7,6 @@ package controllers;
  * Java version 8 or higher required
  */
 
-import controllers.FootballClub;
 
 public class SchoolFootballClub extends FootballClub {
 
