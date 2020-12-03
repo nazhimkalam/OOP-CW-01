@@ -15,15 +15,19 @@ export class MatchesComponent implements OnInit {
   public clubLogo: number[]; // contains a random number representing the club logo
   public loadingContent: boolean;
   public audio: any;
+  public disableSearchBtn: boolean;
 
   constructor(private _footballService: FootballInteractionService) {
     this.currentSeason = '2020-21';
     this.selectedDate = '';
     this.matches = [];
     this.loadingContent = true;
+    this.disableSearchBtn = true;
+
   }
 
   ngOnInit(): void {
+    
     // we have to set the seasons here when the user loads this page
     this._footballService
       .getSeasons()
@@ -40,12 +44,13 @@ export class MatchesComponent implements OnInit {
   }
 
   handleClickedSeason(clickedSeason: string) {
+    this.selectedDate = '';
     // get the new records by season clicked
     this.audio = new Audio();
     this.audio.src = '../../assets/matchPlayed.mp3';
     this.audio.load();
     this.audio.play();
-    
+
     this.loadingContent = true;
     this.currentSeason = clickedSeason;
     this._footballService
@@ -63,6 +68,8 @@ export class MatchesComponent implements OnInit {
     this.audio.src = '../../assets/matchPlayed.mp3';
     this.audio.load();
     this.audio.play();
+    this.disableSearchBtn = true;
+
 
     this.loadingContent = true;
     this._footballService
@@ -77,16 +84,18 @@ export class MatchesComponent implements OnInit {
 
   // setting the selected data by the user to the variable for searching
   setSelectedDate(date: string) {
+    this.disableSearchBtn = false;
     this.selectedDate = date;
   }
 
   // Generate match
   generateMatch() {
+    this.selectedDate = '';
     this.audio = new Audio();
     this.audio.src = '../../assets/matchPlayed.mp3';
     this.audio.load();
     this.audio.play();
-    
+
     this.loadingContent = true;
     this._footballService
       .getGeneratedMatchesBySeason(this.currentSeason)

@@ -16,12 +16,14 @@
             class="form-control date__calender"
             id="dateEntered"
             (change)="setSelectedDate($event.target.value)"
+            value="{{ selectedDate }}"
           />
         </div>
         <button
           type="button"
           class="btn btn-sm mb-2 matches__textField__searchBtn"
           (click)="handleSearchSelectedDate()"
+          [disabled] = "disableSearchBtn"
         >
           Search
         </button>
@@ -118,7 +120,7 @@
     </div>
   </div>
   <div class="container loading" *ngIf="loadingContent">
-    <img src="../../assets/loading.gif" alt="">
+    <img src="../../assets/loading.gif" alt="" />
   </div>
 </div>
 <br />

@@ -12,7 +12,6 @@ export class WelcomeInteractionService {
 
   constructor() { }
 
-
   sendMessage(message: boolean){
     this._welcomePageMessage.next(message);
   }

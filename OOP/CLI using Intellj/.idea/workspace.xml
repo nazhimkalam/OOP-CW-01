@@ -79,17 +79,6 @@
     </key>
   </component>
   <component name="RunManager" selected="JUnit.PremierLeagueTester (1)">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="PremierLeagueTester (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OOP-CourseWork" />
       <extension name="coverage">
@@ -270,6 +259,7 @@
       <workItem from="1606902272358" duration="17000" />
       <workItem from="1606916928973" duration="149000" />
       <workItem from="1606934472406" duration="3559000" />
+      <workItem from="1606978593197" duration="1890000" />
     </task>
     <task id="LOCAL-00012" summary="commit">
       <created>1604851031613</created>

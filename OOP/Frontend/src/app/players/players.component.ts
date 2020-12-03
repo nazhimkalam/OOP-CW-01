@@ -15,7 +15,7 @@ export class Player {
   styleUrls: ['./players.component.css'],
 })
 export class PlayersComponent implements OnInit {
-  players: Player[] = [
+  public players: Player[] = [
     new Player(
       'Cristiano Ronaldo',
       'https://talksport.com/wp-content/uploads/sites/5/2020/01/GettyImages-1192179860.jpg?strip=all&w=960&quality=100',
