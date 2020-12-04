@@ -1,23 +1,34 @@
 <div class="welcome">
-  <div class="welcome__sectionTop">
-    <img
-      src="../../assets/premierLeagueWelcome.png"
-      alt="headingLogo"
-      height="300vh"
+  <!-- The video -->
+  <video autoplay muted loop id="myVideo">
+    <source
+      src="../../assets/Leo Messi - Dribbling Skills In Slow Motion.mp4"
+      type="video/mp4"
     />
-    <img
-      src="../../assets/welcomeFireBall.png"
-      height="120vh"
-      alt="fireballLogo"
-    />
-  </div>
-
-  <div class="welcome__sectionBottom">
-    <div class="welcome__button">
-      <button (click)="handleWelcome()" mat-raised-button routerLink="/about"><span>CONTINUE</span></button>
+  </video>
+  <div class="welcome_mainContainer">
+    <div class="welcome__sectionTop">
+      <img
+        src="../../assets/premierLeagueWelcome.png"
+        alt="headingLogo"
+        height="300vh"
+      />
+      <img
+        src="../../assets/welcomeFireBall.png"
+        height="120vh"
+        alt="fireballLogo"
+      />
     </div>
-    <div class="welcome__copyrightLaws">
-      <small>© PREMIER LEAGUE 2020</small>
+
+    <div class="welcome__sectionBottom">
+      <div class="welcome__button">
+        <button (click)="handleWelcome()" mat-raised-button routerLink="/about">
+          <span>CONTINUE</span>
+        </button>
+      </div>
+      <div class="welcome__copyrightLaws">
+        <small>© PREMIER LEAGUE 2020</small>
+      </div>
     </div>
   </div>
 </div>
