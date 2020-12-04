@@ -106,7 +106,10 @@
   box-shadow: 5px 10px 18px #888888;
   margin-top: 30px;
 }
+.date__calender{
+  box-shadow: 3px 7px 10px #888888;
 
+}
 .matches__matchCard {
   display: flex;
   align-items: center;
@@ -121,8 +124,9 @@
 .matches__matchCard:hover {
   transition: 0.5s ease-in-out;
   transform: scale(1.03);
-  border-left: 5px #ea2d9d solid;
-  border-right: 5px #36003c solid;
+  border-left: 7px #ea2d9d solid;
+  border-right: 7px #36003c solid;
+  padding: 10px;
 }
 .matches__club1,
 .matches__club2 {
@@ -172,7 +176,7 @@
   align-items: center;
   justify-content: center;
   padding: 7px 20px;
-  box-shadow: 2px 8px 10px #888888;
+  box-shadow: 1px 5px 8px #888888;
   /* border-radius: 20px; */
 }
 .matches__season:hover {
@@ -323,3 +327,60 @@
   }
 }
 
+/* Adding animation for the matches cards */
+.matches__matchCard:hover {
+  -webkit-animation: cardColorChange 2s infinite; /* Chrome, Safari, Opera */
+  animation: 2s infinite cardColorChange;
+}
+.matches__matchCard:hover > .matches__club1> div:first-child,
+.matches__matchCard:hover > .matches__club2> div:last-child
+{
+ transition: 1s ease-in-out;
+ transform: scale(1.1);
+}
+@keyframes cardColorChange {
+  0% {
+    background-color: #ea2d9e27;
+    transition: 1s ease-in-out;
+  }
+  10% {
+    background-color: #ea2d9e1e;
+    transition: 1s ease-in-out;
+  }
+  20% {
+    background-color: #ea2d9e36;
+    transition: 1s ease-in-out;
+  }
+  30% {
+    background-color: #ea2d9e3f;
+    transition: 1s ease-in-out;
+  }
+  40% {
+    background-color: #ea2d9e56;
+    transition: 1s ease-in-out;
+  }
+  50% {
+    background-color: #ea2d9e59;
+    transition: 1s ease-in-out;
+  }
+  60% {
+    background-color: #ea2dcb62;
+    transition: 1s ease-in-out;
+  }
+  70% {
+    background-color: #ea2dd16e;
+    transition: 1s ease-in-out;
+  }
+  80% {
+    background-color: #ea2de160;
+    transition: 1s ease-in-out;
+  }
+  90% {
+    background-color: #ea2dc163;
+    transition: 1s ease-in-out;
+  }
+  100% {
+    background-color: #ea2de148;
+    transition: 1s ease-in-out;
+  }
+}

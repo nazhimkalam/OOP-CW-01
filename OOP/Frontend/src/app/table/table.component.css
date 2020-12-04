@@ -46,12 +46,10 @@
 }
 
 th {
-  border-top: 5px solid #ea2d9d;
-}
-
-th {
   background: #36003c;
+  border-top: 5px solid #ea2d9d;
   position: sticky;
+  font-size: 16px;
   color: white;
   top: -12px; /* Don't forget this, required for the stickiness */
   transition: 0.1s ease-in-out;
@@ -67,6 +65,7 @@ td {
   text-align: center;
   height: 60px;
   vertical-align: middle;
+  font-size: 15px;
 }
 
 table {
