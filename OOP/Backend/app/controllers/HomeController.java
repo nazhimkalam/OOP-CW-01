@@ -11,8 +11,8 @@ import java.util.stream.Collectors;
 
 public class HomeController extends Controller {
 
-    LeagueManager premierLeagueManager = PremierLeagueManager.getInstance();
-    ArrayList<FootballClub> guiSeasonFilteredClubs = null;
+    private LeagueManager premierLeagueManager = PremierLeagueManager.getInstance();
+    private ArrayList<FootballClub> guiSeasonFilteredClubs = null;
 
 
     public Result index() {
