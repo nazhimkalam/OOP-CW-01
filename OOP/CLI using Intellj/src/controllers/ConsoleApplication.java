@@ -55,28 +55,38 @@ public class ConsoleApplication {
         switch (userSelectOption)
         {
             case 1:
+                PremierLeagueManager.loadingData();
                 creatingClub();                 // THIS IS WERE I TAKE ALL THE USER INPUTS
+                premierLeagueManager.saveDataIntoFile();
                 displayMenu();
                 break;
 
             case 2:
+                PremierLeagueManager.loadingData();
                 deleteCLub();                   // THIS IS WERE I TAKE ALL THE USER INPUTS
+                premierLeagueManager.saveDataIntoFile();
                 displayMenu();
                 break;
                 
             case 3:
+                PremierLeagueManager.loadingData();
                 displayStatistics();            // THIS IS WERE I TAKE ALL THE USER INPUTS
+                premierLeagueManager.saveDataIntoFile();
                 displayMenu();
                 break;
 
             case 4:
+                PremierLeagueManager.loadingData();
                 String seasonPlayed = validatingSeason();        // DISPLAYING THE PREMIER LEAGUE TABLE
                 premierLeagueManager.displayLeagueTable(seasonPlayed);
+                premierLeagueManager.saveDataIntoFile();
                 displayMenu();
                 break;
 
             case 5:
+                PremierLeagueManager.loadingData();
                 addPlayedMatch();              // THIS IS WERE I TAKE ALL THE USER INPUTS
+                premierLeagueManager.saveDataIntoFile();
                 displayMenu();
                 break;
 

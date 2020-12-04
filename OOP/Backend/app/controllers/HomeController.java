@@ -21,6 +21,8 @@ public class HomeController extends Controller {
 
     // sending all the season for the dropdown menu
     public Result allSeasons(){
+        PremierLeagueManager.loadingData();
+
         // sort the seasons using the comparator
         Comparator<String> comparator = (season1, season2) -> {
             if(Integer.parseInt(season1.split("-")[0]) > Integer.parseInt(season2.split("-")[0])){
@@ -42,6 +44,7 @@ public class HomeController extends Controller {
 
     // sending the sorted table data by points (descending order) by season
     public Result sortByPoints(String season){
+        PremierLeagueManager.loadingData();
 
         // filters the football clubs according to the season
         guiSeasonFilteredClubs = getGuiSeasonFilteredClubs(season);
@@ -72,6 +75,9 @@ public class HomeController extends Controller {
 
     // sending the sorted table data by wins (descending order) by season
     public Result sortByWins(String season){
+
+        PremierLeagueManager.loadingData();
+
         // filters the football clubs according to the season
         guiSeasonFilteredClubs = getGuiSeasonFilteredClubs(season);
 
@@ -101,6 +107,8 @@ public class HomeController extends Controller {
 
     // sending the sorted table data by goals (descending order) by season
     public Result sortByGoals(String season){
+        PremierLeagueManager.loadingData();
+
         // filters the football clubs according to the season
         guiSeasonFilteredClubs = getGuiSeasonFilteredClubs(season);
 
@@ -140,6 +148,7 @@ public class HomeController extends Controller {
 
     // sending all the matches data by season
     public Result allMatches(String season){
+        PremierLeagueManager.loadingData();
 
         guiSeasonFilteredClubs = getGuiSeasonFilteredClubs(season);
         ArrayList<Match> matchesDisplayed = getMatchesForSeason(guiSeasonFilteredClubs);
@@ -150,6 +159,8 @@ public class HomeController extends Controller {
 
     // sending all the matches data for a specific date
     public Result matchesByDate(String date,String season){
+        PremierLeagueManager.loadingData();
+
         guiSeasonFilteredClubs = getGuiSeasonFilteredClubs(season);
         ArrayList<FootballClub> filteredClubsByDateForSeason;
         ArrayList<Match> filteredMatchedOnDate = null;
@@ -210,6 +221,7 @@ public class HomeController extends Controller {
 
     // generating a new match
     public Result generateMatch(String season){
+        PremierLeagueManager.loadingData();
 
         guiSeasonFilteredClubs = getGuiSeasonFilteredClubs(season);
 
