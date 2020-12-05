@@ -1,5 +1,4 @@
 package controllers;
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -15,6 +14,7 @@ import java.util.stream.Collectors;
  */
 
 public class PremierLeagueManager implements LeagueManager {
+
     //  variables used
     public static ArrayList<FootballClub> premierLeagueFootballClubList;
     private static boolean matchedAdded;
@@ -22,10 +22,12 @@ public class PremierLeagueManager implements LeagueManager {
     private static final int MAXIMUM_NUMBER_OF_CLUBS = 20;
     private static final int MAXIMUM_NUMBER_OF_MATCHES_PER_TEAM = 38;
 
+    // We are using the Singleton design pattern because we only need one instance of PremierLeagueManager and not many
     // used for the singleton design pattern, this is set to "null" for lazy initialization, so we only created the
     // instance when required only," ---> non lazy way LeagueManager manager = new PremierLeagueManager(); "
     private static LeagueManager manager = null;
 
+    // Constructor
     private PremierLeagueManager(){
         matchedAdded = false;
         premierLeagueFootballClubList= new ArrayList<>();   // initializing the variable to run methods
@@ -33,7 +35,8 @@ public class PremierLeagueManager implements LeagueManager {
         System.out.println(result);
     }
 
-    // This method is used for the Singleton Design Pattern
+
+    // This method is used for the Singleton Design Pattern, inorder to get the single instance of the class
     public static LeagueManager getInstance(){
         // Double checked locking (due to the double If condition)
 
@@ -55,11 +58,15 @@ public class PremierLeagueManager implements LeagueManager {
         return manager;
     }
 
+    // this method is for loading the data from the file
     public static String loadingData() {
-        File file = new File("../Backend/app/models/objectDataFile.txt");
+
+        // variables used
+        File file = new File("../Backend/app/models/objectDataFile.txt");   // text file path
         FileInputStream fileInputStream = null;
         ObjectInputStream objectInputStream = null;
 
+        // handling the exceptions and loading the data from the file
         try {
             fileInputStream = new FileInputStream(file);
             objectInputStream = new ObjectInputStream(fileInputStream);
@@ -70,20 +77,24 @@ public class PremierLeagueManager implements LeagueManager {
                 allSeasonAdded = (ArrayList<String>) objectInputStream.readObject();
 
             } catch (ClassNotFoundException e) {
+                // Handles exception
                 return " ClassNotFoundException occurred Not able to find the class";
+
             }
-
-
         }
         catch (FileNotFoundException fileNotFoundException){
+            // Handles exception
             return" File not found exception occurred!";
+
         }
         catch (IOException ioException) {
+            // Handles exception
             return " Exception when performing read/write operations to the file!" +
                     "\n No permission to read/write from or to the file";
 
         }
         finally {
+            // closing the file once all the data is loaded
             try{
                 if (fileInputStream != null) {
                     fileInputStream.close();
@@ -93,6 +104,7 @@ public class PremierLeagueManager implements LeagueManager {
                 }
             }
             catch (IOException ioException) {
+                // Handles exception
                 return " Exception when performing read/write operations to the file!" +
                         "\n No permission to read/write from or to the file";
 
@@ -104,8 +116,11 @@ public class PremierLeagueManager implements LeagueManager {
     // Overriding the createClub method from the interface
     @Override
     public String createClub(String clubName, String location, String coachName, String universitySchoolName, String clubType) {
+
+        // variable used
         FootballClub club = null;
 
+        // this is to create the appropriate instance depending on the user input
         switch (clubType) {
             case "normal":
                 club = new FootballClub(clubName, location, coachName);
@@ -120,7 +135,8 @@ public class PremierLeagueManager implements LeagueManager {
                 break;
         }
 
-        if(premierLeagueFootballClubList.size()<MAXIMUM_NUMBER_OF_CLUBS)         // This means that there is space to add more clubs/teams
+        // Checking if the maximum number of clubs created limit has been reached to add the club or not
+        if(premierLeagueFootballClubList.size()<MAXIMUM_NUMBER_OF_CLUBS)
         {
             premierLeagueFootballClubList.add(club);
             return " Clubs Successfully added!";
@@ -154,16 +170,19 @@ public class PremierLeagueManager implements LeagueManager {
         for (FootballClub footballClub : premierLeagueFootballClubList) {
             if (footballClub.getName().equalsIgnoreCase(clubName)) {
                 clubNameAvailable = true;
+
                 System.out.println("\n ===============> S T A T I S T I C S <===============");
                 System.out.println("\n =============> PLAYERS - STATISTICS <=============\n");
+
+                // loops and displays the player details
                 for (int i = 0; i < footballClub.getPlayersList().size(); i++) {
                     System.out.println(" <------------ Player " + ( i + 1 ) + " ---------------->\n");
                     System.out.println(footballClub.getPlayersList().get(i));
                 }
 
+                // displays the total statistics together from all the seasons together
                 System.out.println("\n =============>  FROM  ALL  SEASONS  <=============\n");
                 System.out.println(footballClub.toString());
-
 
                 // sorting the seasons in ascending
                 Comparator<String> comparator = (season1, season2) -> {
@@ -176,13 +195,14 @@ public class PremierLeagueManager implements LeagueManager {
                 allSeasonAdded = (ArrayList<String>)allSeasonAdded.stream().distinct().collect(Collectors.toList());
                 allSeasonAdded.sort(comparator);
 
-                // Display the total stats by season
-
+                // Display the total stats by the clubs played in season wise
                 for (String season : allSeasonAdded) {
                     System.out.println("\n =============> FOR SEASON (" + season + ") <=============\n");
                     ArrayList<FootballClub> seasonFilteredClubs = null;
                     try {
+                        // gets the list of football clubs with the filtered matches by season
                         seasonFilteredClubs = seasonFilteredFootballCLubList(season);
+
                     } catch (CloneNotSupportedException e) {
                         e.printStackTrace();
                     }
@@ -196,6 +216,7 @@ public class PremierLeagueManager implements LeagueManager {
                 }
 
                 int number = 0;
+
                 // looping through each played match and displaying their stats
                 if(footballClub.getMatchesPlayed().size()!=0){
                     System.out.println(" =============>  FROM  ALL  SEASONS  <=============\n");
@@ -225,21 +246,26 @@ public class PremierLeagueManager implements LeagueManager {
             }
         }
 
+        // checking if the given club name is valid or not and return the appropriate message
         if(!clubNameAvailable){
             return "\n Sorry, there is no club with the given name '" + clubName + "'";
         }
-
         return " Result Displayed";
+
     }
+
 
     // Overriding the displayLeagueTable method from the interface
     @Override
     public void displayLeagueTable(String seasonPlayed) {
+        // This method is used to display the Premier League Table in the CLI
 
         // we add all the football clubs with all the necessary matches related to the season and other removed.
         ArrayList<FootballClub> seasonFilteredClubs = null;
         try {
+            // Gets the filtered football clubs by season entered
             seasonFilteredClubs = seasonFilteredFootballCLubList(seasonPlayed);
+
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }
@@ -252,7 +278,6 @@ public class PremierLeagueManager implements LeagueManager {
 
             for (FootballClub footballClub : seasonFilteredClubs) {
                 // we find the maximum length of the club names from the list of football clubs
-
                 if(footballClub.getName().length() > maxClubNameLength){
                     maxClubNameLength = footballClub.getName().length();
                 }
@@ -290,6 +315,7 @@ public class PremierLeagueManager implements LeagueManager {
 
     // This method returns a list of football clubs filtered by season with updated stats for that season only.
     private ArrayList<FootballClub> seasonFilteredFootballCLubList(String seasonPlayed) throws CloneNotSupportedException {
+
         ArrayList<FootballClub> footballClubsListSeason = new ArrayList<>();
 
         // we add all the clubs, before adding the club remove the matches which aren't related
@@ -313,18 +339,18 @@ public class PremierLeagueManager implements LeagueManager {
                                     footballClubsListSeason.get(i).getMatchesPlayed().get(matchIndexLoop).getGoalScored()
                     );
 
-                    footballClubsListSeason.get(i).setTotalGoalsReceived(             // updating total goal received
+                    footballClubsListSeason.get(i).setTotalGoalsReceived(               // updating total goal received
                             footballClubsListSeason.get(i).getTotalGoalsReceived() -
                                     footballClubsListSeason.get(i).getMatchesPlayed().get(matchIndexLoop).getGoalReceived()
                     );
 
-                    footballClubsListSeason.get(i).setTotalYellowCards(             // updating total yellow cards
+                    footballClubsListSeason.get(i).setTotalYellowCards(                // updating total yellow cards
                             footballClubsListSeason.get(i).getTotalYellowCards() -
                                     footballClubsListSeason.get(i).getMatchesPlayed().get(matchIndexLoop)
                                             .getMatchStats().getYellowCards()
                     );
 
-                    footballClubsListSeason.get(i).setTotalRedCards(             // updating total red cards
+                    footballClubsListSeason.get(i).setTotalRedCards(                  // updating total red cards
                             footballClubsListSeason.get(i).getTotalRedCards() -
                                     footballClubsListSeason.get(i).getMatchesPlayed().get(matchIndexLoop)
                                             .getMatchStats().getRedCards()
@@ -335,7 +361,7 @@ public class PremierLeagueManager implements LeagueManager {
                     );
 
                     if(goalScored > goalReceived){
-                        // update wins and points scored
+                                                                            // update wins and points scored
                         footballClubsListSeason.get(i).getClubStatistics().setTotalWins(
                                 footballClubsListSeason.get(i).getClubStatistics().getTotalWins() - 1
                         );
@@ -344,12 +370,12 @@ public class PremierLeagueManager implements LeagueManager {
                                 footballClubsListSeason.get(i).getClubStatistics().getTotalPointsScored() - 3
                         );
                     }else if (goalReceived > goalScored){
-                        // update defeats
+                                                                            // update defeats
                         footballClubsListSeason.get(i).getClubStatistics().setTotalDefeats(
                                 footballClubsListSeason.get(i).getClubStatistics().getTotalDefeats() - 1
                         );
                     }else{
-                        // update draws and points scored
+                                                                            // update draws and points scored
                         footballClubsListSeason.get(i).getClubStatistics().setTotalDraws(
                                 footballClubsListSeason.get(i).getClubStatistics().getTotalDraws() - 1
                         );
@@ -368,7 +394,7 @@ public class PremierLeagueManager implements LeagueManager {
             }
         }
 
-        // setting th position value to "00" if all the clubs didnt play for the given season
+        // setting the position value to "00" if all the clubs didnt play for the given season
         for (FootballClub footballClub: footballClubsListSeason) {
             if(footballClub.getClubStatistics().getTotalMatchesPlayed() != 0){
                 // then we can give positions to all the clubs
@@ -393,6 +419,7 @@ public class PremierLeagueManager implements LeagueManager {
       if(lengthOfClubNameTable != 0){
 
           // creating the table with data
+          // These variables are used to create the structure of the table
           int clubNameColSpace = lengthOfClubNameTable + 2;
           int leftClubColSpace = clubNameColSpace/2;
           int rightClubColSpace = clubNameColSpace - leftClubColSpace;
@@ -439,7 +466,6 @@ public class PremierLeagueManager implements LeagueManager {
               if(seasonFilteredClubs.get(i).getName().length() != lengthOfClubNameTable){
                   // the length of the name will anyways be less than lengthOfClubNameTable
                   int difference = lengthOfClubNameTable - seasonFilteredClubs.get(i).getName().length();
-//                  clubNameEndSpace.append(" ".repeat(difference));
                   for (int j = 0; j < difference; j++) {
                       clubNameEndSpace.append(" ");
                   }
@@ -550,8 +576,9 @@ public class PremierLeagueManager implements LeagueManager {
             }
         }
 
+        // if both the entered clubs are valid only we continue
         if(club1!=null && club2!=null){
-            // checking for club1
+            // we are checking if the club will reach the maximum limit of matches played per club for (club1)
             for (Match match: club1.getMatchesPlayed()) {
                 if(match.getSeason().equals(seasonPlayed)){
                     matchCounter++;
@@ -560,7 +587,7 @@ public class PremierLeagueManager implements LeagueManager {
             }
 
             matchCounter = 0;
-            // checking for club2
+            // we are checking if the club will reach the maximum limit of matches played per club for (club2)
             for (Match match: club2.getMatchesPlayed()) {
                 if(match.getSeason().equals(seasonPlayed)){
                     matchCounter++;
@@ -569,8 +596,9 @@ public class PremierLeagueManager implements LeagueManager {
             }
         }
 
-
+        // If both of the clubs didn't the max number to matches limit only we then add the match
         if( !club2ReachedMaximumMatches && !club1ReachedMaximumMatches){
+            // Adding the played season
             allSeasonAdded.add(seasonPlayed);
 
             // check if the enter clubs are real and display msg
@@ -581,7 +609,7 @@ public class PremierLeagueManager implements LeagueManager {
                 if(footballClub.getName().equalsIgnoreCase(clubName_02)) club02=true;
             }
 
-            // Displaying the error to the user
+            // Checking if the entered club names are valid to further proceed
             if(club01 && club02){
                 // valid club names so calculating the statistics and add them
                 calculatingStatistics(clubName_01, clubName_02, numberGoalScored_club_1, numberGoalScored_club_2,
@@ -590,6 +618,7 @@ public class PremierLeagueManager implements LeagueManager {
 
             }else{
 
+                // If in valid club names we return an appropriate message to the user
                 if(!club01 && !club02){
                     return "\n Sorry,there are no clubs with the names '" + clubName_01 + "' and '" +
                             clubName_02 + "'";
@@ -602,15 +631,17 @@ public class PremierLeagueManager implements LeagueManager {
                     }
                 }
             }
-
             return "\n Sorry,there is no club with the given name '" + clubName_02 + "'";
+
         }
 
-
+        // if maximum number of matches limit has reaches we return an appropriate message to the user
         if(club1ReachedMaximumMatches && club2ReachedMaximumMatches){
             return "\n Sorry, both the clubs have reached the maximum number of matches played!";
+
         }else if(club1ReachedMaximumMatches){
             return "\n Sorry, '" + clubName_01 + "' has reached the maximum number of matches played!";
+
         }
 
         return "\n Sorry, '" + clubName_02 + "' has reached the maximum number of matches played!";
@@ -644,14 +675,17 @@ public class PremierLeagueManager implements LeagueManager {
             if(footballClub.getName().equalsIgnoreCase(clubName_01)){
                 scored = numberGoalScored_club_1;
                 received = numberGoalScored_club_2;
+
                 // calculating the goal difference to club 01
                 goalDifference = numberGoalScored_club_1 - numberGoalScored_club_2;
 
             }else if(footballClub.getName().equalsIgnoreCase(clubName_02)){
                 scored = numberGoalScored_club_2;
                 received = numberGoalScored_club_1;
+
                 // calculating the goal difference to club 02
                 goalDifference = numberGoalScored_club_2 - numberGoalScored_club_1;
+
             }
             // setting goals received and scored
             footballClub.setTotalGoalsScored(footballClub.getTotalGoalsScored() + scored);
@@ -684,6 +718,7 @@ public class PremierLeagueManager implements LeagueManager {
 
         // creating the Match object and adding for both the clubs played with their own scores
         for (FootballClub footballClub: premierLeagueFootballClubList) {
+
             // we have added the matched played by each club to their respective list of matches
             if(footballClub.getName().equalsIgnoreCase(clubName_01)){
                 addPlayedMatchToClub(clubName_02, clubName_01, numberGoalScored_club_2, numberGoalScored_club_1, date,
@@ -692,10 +727,12 @@ public class PremierLeagueManager implements LeagueManager {
             }else if(footballClub.getName().equalsIgnoreCase(clubName_02)){
                 addPlayedMatchToClub(clubName_01, clubName_02, numberGoalScored_club_1, numberGoalScored_club_2, date,
                         seasonPlayed, footballClub, matchType);
+
             }
         }
     }
 
+    // This method is used to add the played match to the club
     private void addPlayedMatchToClub(String clubName_01, String clubName_02, int numberGoalScored_club_1,
                                       int numberGoalScored_club_2, DateMatch date, String seasonPlayed,
                                       FootballClub footballClub, String matchType) {
@@ -706,6 +743,7 @@ public class PremierLeagueManager implements LeagueManager {
         footballClub.getMatchesPlayed().add(matchPlayed);  // adding the played match into the list of matches
     }
 
+    // This method is used to get the match statistics which are randomly generated
     private MatchStats getStatsOfMatch(FootballClub footballClub) {
         Random random = new Random();
         int numberOfYellowCards = random.nextInt(5);
@@ -749,11 +787,12 @@ public class PremierLeagueManager implements LeagueManager {
         * This is because Serializable interface gives the permission to save the objects
         */
 
-        File file = new File("../Backend/app/models/objectDataFile.txt");
+        File file = new File("../Backend/app/models/objectDataFile.txt");  // getting the path to save the data
         FileOutputStream fileOutputStream = null;
         ObjectOutputStream objectOutputStream = null;
 
         try {
+            // saving the data into the fi;e
             fileOutputStream = new FileOutputStream(file);
             objectOutputStream = new ObjectOutputStream(fileOutputStream);
             objectOutputStream.writeObject(premierLeagueFootballClubList);
@@ -762,19 +801,24 @@ public class PremierLeagueManager implements LeagueManager {
 
         }
         catch (FileNotFoundException fileNotFoundException) {
+            // Handles the exception
             return " File not found exception occurred!";
 
         }
         catch (IOException ioException) {
+            // Handles the exception
             return " Exception when performing read/write operations to the file!" +
                     "\n No permission to read/write from or to the file";
 
         }
         catch (Exception e){
+            // Handles the exception
             return " An exception occurred!";
 
         }
         finally {
+            // once all the data is saved into the file we close it
+
             try {
                 if (fileOutputStream != null) {
                     fileOutputStream.close();
@@ -784,11 +828,11 @@ public class PremierLeagueManager implements LeagueManager {
                 }
             }
             catch (IOException e) {
+                // Handles the exception
                 return " Exception when performing read/write operations to the file!" +
                         "\n No permission to read/write from or to the file";
             }
         }
-
         return "\n Saving the data . . .\n Successfully saved!";
 
     }
@@ -800,25 +844,31 @@ public class PremierLeagueManager implements LeagueManager {
         /*
         * This makes sure that the file is empty, by overriding the content of the file with a single ""
         */
+
         FileWriter file = null;
         try {
             file = new FileWriter("../Backend/app/models/objectDataFile.txt");
+            // clearing the content of the file by overriding with an empty string
             file.write("");
 
         }
         catch (FileNotFoundException fileNotFoundException) {
+            // Handles the exception
             return " File not found exception occurred!";
         }
         catch (IOException ioException) {
+            // Handles the exception
             return " Exception when performing read/write operations to the file!" +
                     "\n No permission to read/write from or to the file";
 
         }
         catch (Exception e){
+            // Handles the exception
             return " An exception occurred!";
 
         }
         finally {
+            // closes the file once all the operations are completed
             try {
                 if (file != null) {
                     file.close();
