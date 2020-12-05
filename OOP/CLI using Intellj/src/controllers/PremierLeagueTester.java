@@ -1,19 +1,18 @@
 package controllers;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
-// MAKE SURE THAT THE TXT FILE IS EMPTY BEFORE RUNNING THIS TESTS
+// MAKE SURE THAT THE TXT FILE IS EMPTY (which is inside the backend model folder) BEFORE RUNNING THIS TESTS
+
 public class PremierLeagueTester
 {
-    LeagueManager obj;
+    // variable used
+    private LeagueManager obj;
 
     @Before
     public void beforeTesting(){
@@ -80,6 +79,7 @@ public class PremierLeagueTester
     @Test
     public void testAddMatch()
     {
+        // Testing adding match into a club
         obj.createClub("barca","spain","nazhim",null,"normal");
         obj.createClub("juventus","japan","hashim",null,"normal");
         obj.createClub("realMadrid","australia","saman",null,"normal");
@@ -151,12 +151,15 @@ public class PremierLeagueTester
 
     @Test
     public void testSavingDataIntoFile(){
+        // Testing the saving the data into the file
         String result = obj.saveDataIntoFile();
         assertEquals("\n Saving the data . . .\n Successfully saved!", result);
+
     }
 
     @Test
     public void testLoadingDataIntoFile(){
+        // Testing the loading data from the file method
 
         // Assuming that the file path is correct and file contains data
         String result = PremierLeagueManager.loadingData();
@@ -170,6 +173,7 @@ public class PremierLeagueTester
 
     @Test
     public void testClearingDataIntoFile(){
+        // Testing the clearing the data from the file method
 
         // Assuming that the file path is correct
         String result = obj.clearDataFile();
@@ -179,6 +183,7 @@ public class PremierLeagueTester
 
     @Test
     public void testingCheckingForValidClub(){
+       // testing for checking valid club method
        obj.createClub("Juventus","Spain","Nazhim",null,
                 "normal");
        obj.createClub("Barca","Spain","Hashim",null,
@@ -198,18 +203,22 @@ public class PremierLeagueTester
 
     @Test
     public void testingValidatingIntegers(){
+        // testing for the validation of integers entered
+
         for (int i = 0; i < 100; i++) {
             int input = i;
             InputStream in = new ByteArrayInputStream(String.valueOf(input).getBytes());
             System.setIn(in);
             assertEquals(i, ConsoleApplication.validatingIntegers("Testing integers"));
         }
-
 //        assertEquals(14, ConsoleApplication.validatingIntegers("Testing integers")); Invalid number throws error
     }
 
     @Test
     public void testingValidatingSeason(){
+        // testing for the validation of season
+        // When testing with invalid data the program throws exception which is common
+
         String[] seasons = {"2020-21", "2019-20", "2018-19", "2017-18", "2016-17"};
         for (int i = 0; i < 5; i++) {
             String input = seasons[i];
@@ -221,6 +230,9 @@ public class PremierLeagueTester
 
     @Test
     public void testingValidateString(){
+        // testing for valid String entered
+        // When testing with invalid data the program throws exception which is common
+
         String[] validStrings = {"Nazhim", "Kalam", "Mohammed", "Saman", "Lakshan"};
         for (int i = 0; i < 5; i++) {
             String input = validStrings[i];

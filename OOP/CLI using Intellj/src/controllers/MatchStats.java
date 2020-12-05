@@ -1,7 +1,5 @@
 package controllers;
-
 import java.io.Serializable;
-
 /*
  * @author Nazhim Kalam
  * @UowID: w1761265
@@ -10,10 +8,9 @@ import java.io.Serializable;
  * Java version 8 or higher required
  */
 
-
 public class MatchStats implements Serializable
 {
-    // [ yellow cards, red cards, shots, shots of target, off sides, fouls, corners, passes, pass accuracy, possession]
+    // These are the variables
     private int yellowCards;
     private int redCards;
     private int shots;
@@ -45,6 +42,7 @@ public class MatchStats implements Serializable
         this.possession = possession;
     }
 
+    // overriding the toString() to display the details of the statistics of the match
     @Override
     public String toString() {
         return
@@ -60,6 +58,7 @@ public class MatchStats implements Serializable
                 "\n Possession = " + possession + "%";
     }
 
+    // SETTERS AND GETTERS
     public int getYellowCards() {
         return yellowCards;
     }

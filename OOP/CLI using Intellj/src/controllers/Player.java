@@ -1,5 +1,4 @@
 package controllers;
-
 import java.io.Serializable;
 
 /*
@@ -10,19 +9,21 @@ import java.io.Serializable;
  * Java version 8 or higher required
  */
 
-
 public class Player implements Serializable
 {
+    // variables used for the Players
     private String name;
     private String preferredFoot;
     private double shootingAccuracy;
     private int goalScoredPerMatch;
     private int passesPerMatch;
 
+    // The Default Constructor
     public Player() {
 
     }
 
+    // Argument Constructor
     public Player(String name, String preferredFoot, double shootingAccuracy,
                   int goalScoredPerMatch, int passesPerMatch) {
         this.name = name;
@@ -32,6 +33,7 @@ public class Player implements Serializable
         this.passesPerMatch = passesPerMatch;
     }
 
+    // GETTERS and SETTERS used
     public String getName() {
         return name;
     }
@@ -72,6 +74,7 @@ public class Player implements Serializable
         this.passesPerMatch = passesPerMatch;
     }
 
+    // overriding the toString() method to display the details of the players
     @Override
     public String toString() {
         return  " ==> * Name = '" + name + '\'' +

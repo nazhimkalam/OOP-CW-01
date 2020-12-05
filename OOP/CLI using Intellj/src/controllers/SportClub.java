@@ -1,6 +1,6 @@
 package controllers;
-
 import java.io.Serializable;
+
 /*
  * @author Nazhim Kalam
  * @UowID: w1761265
@@ -9,9 +9,11 @@ import java.io.Serializable;
  * Java version 8 or higher required
  */
 
+
 // public abstract class SportClub, abstract because you can't make an object from the SportsClub class
 public abstract class SportClub implements Serializable, Cloneable{
-    // These are the private variables for Encapsulation
+
+    // Variables used
     private String name;
     private String location;
     protected ClubStats clubStatistics;
@@ -28,6 +30,7 @@ public abstract class SportClub implements Serializable, Cloneable{
         this.clubStatistics = clubStatistics;
     }
 
+    // GETTERS AND SETTERS FOR THE CLASS
     public String getName() {
         return name;
     }
@@ -52,6 +55,7 @@ public abstract class SportClub implements Serializable, Cloneable{
         this.clubStatistics = clubStatistics;
     }
 
+    // overriding the toString() method to display the details of the club
     @Override
     public String toString() {
         return  " * Club Name = '" + name + "'\n * Club Location = '" + location + "'" + clubStatistics.toString();

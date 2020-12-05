@@ -24,6 +24,7 @@ public class UniversityFootballClub extends FootballClub {
         this.universityName = universityName;
     }
 
+    // GETTERS AND SETTERS FOR THE CLASS
     public String getUniversityName() {
         return universityName;
     }
@@ -32,6 +33,7 @@ public class UniversityFootballClub extends FootballClub {
         this.universityName = universityName;
     }
 
+    // overriding the toString() method to display the details of the university
     @Override
     public String toString() {
         return  super.toString() + " * University Name = '" + universityName + "'";

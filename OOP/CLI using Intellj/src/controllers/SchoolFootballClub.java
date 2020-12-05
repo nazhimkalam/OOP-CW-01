@@ -7,6 +7,7 @@ package controllers;
  * Java version 8 or higher required
  */
 
+// Inheritance with the FootballClub
 public class SchoolFootballClub extends FootballClub {
 
     // These are the private variables for Encapsulation
@@ -23,6 +24,7 @@ public class SchoolFootballClub extends FootballClub {
         this.schoolName = schoolName;
     }
 
+    // GETTERS AND SETTERS FOR THE CLASS
     public String getSchoolName() {
         return schoolName;
     }
@@ -31,6 +33,7 @@ public class SchoolFootballClub extends FootballClub {
         this.schoolName = schoolName;
     }
 
+    // overriding the toString() method to display the details of the school
     @Override
     public String toString() {
         return  super.toString() + " * School Name = '" + schoolName + "' ";

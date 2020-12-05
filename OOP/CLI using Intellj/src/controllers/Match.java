@@ -1,6 +1,5 @@
 package controllers;
 import java.io.Serializable;
-
 /*
  * @author Nazhim Kalam
  * @UowID: w1761265
@@ -20,7 +19,6 @@ public class Match implements Serializable, Cloneable {
     private String opponentClubName;
     private String matchType;
     private String participatedCLubName;
-
 
     // default constructor
     public Match(){
@@ -128,5 +126,4 @@ public class Match implements Serializable, Cloneable {
     protected Object clone() throws CloneNotSupportedException {
         return super.clone();
     }
-
 }
