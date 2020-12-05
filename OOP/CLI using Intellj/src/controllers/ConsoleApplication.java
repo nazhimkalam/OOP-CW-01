@@ -16,18 +16,16 @@ import java.util.Scanner;
 
 /*
  *   ASSUMPTIONS:
- *   --> ALL THE FOOTBALL CLUB TEAMS CREATED SHOULD HAVE UNIQUE TEAM NAMES
+ *   --> ALL FOOTBALL CLUBS SHOULD HAVE UNIQUE NAMES
  */
 
 public class ConsoleApplication {
-    // VARIABLES
+    // Variable used
     private static final LeagueManager premierLeagueManager = PremierLeagueManager.getInstance();
 
     // MAIN METHOD
     public static void main(String[] args) {
-
         displayMenu();
-
     }
 
     // THIS IS MENU METHOD
@@ -48,79 +46,105 @@ public class ConsoleApplication {
         "| (Option 9) Enter '9' to exit the program                                                       |\n" +
         "|________________________________________________________________________________________________|\n");
 
-        // getting the users input
+        // get user selected option
         int userSelectOption = validatingIntegers(" Enter your option (please enter only integers): ");
         String result;
-        // directing the users option to appropriate methods
+
+        // Fires the appropriate method depending on the user selected option
         switch (userSelectOption)
         {
             case 1:
                 PremierLeagueManager.loadingData();
-                creatingClub();                 // THIS IS WERE I TAKE ALL THE USER INPUTS
+
+                // method to get user inputs for creating the club
+                creatingClub();
+
                 premierLeagueManager.saveDataIntoFile();
                 displayMenu();
                 break;
 
             case 2:
                 PremierLeagueManager.loadingData();
-                deleteCLub();                   // THIS IS WERE I TAKE ALL THE USER INPUTS
+
+                // method to get user inputs for deleting a club
+                deleteCLub();
+
                 premierLeagueManager.saveDataIntoFile();
                 displayMenu();
                 break;
                 
             case 3:
                 PremierLeagueManager.loadingData();
-                displayStatistics();            // THIS IS WERE I TAKE ALL THE USER INPUTS
+
+                // method to get user inputs for displaying the club details
+                displayStatistics();
+
                 premierLeagueManager.saveDataIntoFile();
                 displayMenu();
                 break;
 
             case 4:
                 PremierLeagueManager.loadingData();
-                String seasonPlayed = validatingSeason();        // DISPLAYING THE PREMIER LEAGUE TABLE
+
+                // gets the season entered by the user which is validated
+                String seasonPlayed = validatingSeason();
+
+                // method to display the CLI premier League table
                 premierLeagueManager.displayLeagueTable(seasonPlayed);
+
                 premierLeagueManager.saveDataIntoFile();
                 displayMenu();
                 break;
 
             case 5:
                 PremierLeagueManager.loadingData();
-                addPlayedMatch();              // THIS IS WERE I TAKE ALL THE USER INPUTS
+
+                // method to get user inputs to add match played
+                addPlayedMatch();
+
                 premierLeagueManager.saveDataIntoFile();
                 displayMenu();
                 break;
 
             case 6:
+                // used to open the external browser with the URL "http://localhost:4200" to open the GUI
                 Desktop desktop = Desktop.getDesktop();
                 try {
                     desktop.browse(new URI(("http://localhost:4200")));
                     System.out.println(" Opening the GUI at localhost: 4200\n");
                     displayMenu();
+
                 } catch (IOException | URISyntaxException ioException) {
+                    // Handling caught exception
                     System.out.println("Error when opening the browser! ");
                     ioException.printStackTrace();
+
                 }
                 break;
+
             case 7:
-                result = premierLeagueManager.saveDataIntoFile();       // saving the data into a file
+                // method to save the data
+                result = premierLeagueManager.saveDataIntoFile();
                 System.out.println(result);
 
                 displayMenu();
                 break;
 
             case 8:
-                result = premierLeagueManager.clearDataFile();          // clearing the file
+                // method to clear the data from the txt file
+                result = premierLeagueManager.clearDataFile();
                 System.out.println(result + "\n");
 
                 displayMenu();
                 break;
+
             case 9:
-                // Asking the user if he needs to save before exiting or not
+                // this section is to ask user if they need to save the data before existing and continue to exit
                 Scanner input = new Scanner(System.in);
                 System.out.println("\n Do you want to save before exiting? ");
                 System.out.print(" Enter 'Y' or 'y' to save else enter any other key to exit: ");
-                String saveOrExit = input.nextLine();
 
+                String saveOrExit = input.nextLine();
                 if(saveOrExit.equals("y") || saveOrExit.equals("Y")){
                     premierLeagueManager.saveDataIntoFile();       // saving
                 }
@@ -129,6 +153,7 @@ public class ConsoleApplication {
                 System.exit(200);
 
             default:
+                // Re looping when the user has entered an invalid option
                 System.out.println(" You have entered an invalid option!");
                 System.out.println(" Please check the menu properly and re-enter!");
                 displayMenu();
@@ -144,19 +169,18 @@ public class ConsoleApplication {
         Scanner input = new Scanner(System.in);
         System.out.println("\n Enter details of the played match");
 
-        // Checking if it is a valid club else throwing up and error and asking user to re-enter
+        // "checkingForValidClub()" checks if it is a valid club else throwing up and error and asking user to re-enter
         String clubName_01 = checkingForValidClub(" Enter club 1 name: ");
         clubName_01 = clubName_01.substring(0, 1).toUpperCase() + clubName_01.toLowerCase().substring(1);
 
-
-        // validation for the scores
+        // validating the scores to make sure its an integer entered
         int numberGoalScored_club_1 = validatingIntegers(" Enter the number of goal scored: ");
 
-        // Checking if it is a valid club else throwing up and error and asking user to re-enter
+        // "checkingForValidClub()" checks if it is a valid club else throwing up and error and asking user to re-enter
         String clubName_02 = checkingForValidClub(" Enter club 2 name: ");
         clubName_02 = clubName_02.substring(0, 1).toUpperCase() + clubName_02.toLowerCase().substring(1);
 
-        // Checking if the user has entered duplicated club names
+        // Checking if the user has entered the same club name again for the next team name
         while(clubName_01.equalsIgnoreCase(clubName_02)){
             System.out.println("\n Please enter a different club name ");
             clubName_02 = checkingForValidClub(" Enter club 2 name: ");
@@ -164,33 +188,39 @@ public class ConsoleApplication {
 
         }
 
-        // validation for the scores and some stats
+        // validating the scores to make sure its an integer entered
         int numberGoalScored_club_2 = validatingIntegers(" Enter the number of goal scored: ");
 
-        // getting the date of the match played as the input from the user
+        // getting the date of the match played as the input from the user and validating if its a integer or not
         int day = validatingIntegers(" Enter the day (only integers are accepted): ");
-        // validating the day entered
+
+        // validating the day entered which has to be in between 1 and 31
         while(day<1 || day>31){
             System.out.println(" Invalid day entered! \n");
             day = validatingIntegers(" Enter the day (only integers are accepted): ");
         }
 
-
+        //  getting the month of the match played as the input from the user and validating if its a integer or not
         int month = validatingIntegers(" Enter the month (only integers are accepted): ");
-        // validating the month entered
+
+        // validating the month entered which has to be in between 1 and 12
         while(month<1 || month>12){
             System.out.println(" Invalid month entered! \n");
             month = validatingIntegers(" Enter the month (only integers are accepted): ");
         }
 
+        //  getting the year of the match played as the input from the user and validating if its a integer or not
         int year = validatingIntegers(" Enter the year (only integers are accepted): ");
+
         // validating the year entered
         while(year<1000 || year>3000){
             System.out.println(" Invalid year entered! \n");
             year = validatingIntegers(" Enter the year (only integers are accepted): ");
         }
 
+        // creating the date object for the match played
         DateMatch date = new DateMatch(day, month, year);
+
         // we are displaying the season options possible for the match played for the given date
         String[] possibleSeason = new String[2];
         System.out.println(" These are the possible seasons for the match played from the given date");
@@ -200,15 +230,18 @@ public class ConsoleApplication {
         possibleSeason[0] = (year-1) + "-" + (lastTwoDigitsOfTheYear);
         possibleSeason[1] = (year) + "-" + (lastTwoDigitsOfTheYear+1);
 
+        // Displaying the season options for the entered year of the match
         for (int i = 0; i < possibleSeason.length; i++) {
             System.out.println("  " + (i+1) + ". " + possibleSeason[i]);
         }
 
+        // getting the season user input an validating it to check if an integer is entered
         int seasonOption = validatingIntegers(" Please select a season from the given list (Enter '1' or '2') : ");
 
-
+        // This is to validate if the user has entered a correct season option, (only enter 1 or 2 else we ask user
+        // to re-enter)
         boolean invalidOption = true;
-        while (invalidOption){                           // validating the inputs
+        while (invalidOption){
             if(seasonOption!=1 && seasonOption!=2){
                 System.out.println(" Invalid Input!");
                 seasonOption = validatingIntegers(" Please select a season from the given list (Enter '1' or '2') : ");
@@ -216,9 +249,10 @@ public class ConsoleApplication {
                 invalidOption=false;
             }
         }
+
         String seasonPlayed = possibleSeason[seasonOption-1];
 
-        // type of match played 'Home' or 'Away'
+        // validating an asking the user to enter the type of match played, ("Home" or "Away")
         boolean validMatchEntered;
         String matchType;
 
@@ -237,13 +271,14 @@ public class ConsoleApplication {
         input = new Scanner(System.in);
         String confirmation = input.nextLine();
 
+        // This is to confirm if the user has entered correct details else the user is able to re enter from beginning
         if (confirmation.equalsIgnoreCase("y")) {
             System.out.println(" Please re-enter the details ");
             addPlayedMatch();
 
         }else{
-            String result = premierLeagueManager.addPlayedMatch(seasonPlayed, clubName_01, clubName_02, numberGoalScored_club_1,
-                    numberGoalScored_club_2, date, matchType);
+            String result = premierLeagueManager.addPlayedMatch(seasonPlayed, clubName_01, clubName_02,
+                    numberGoalScored_club_1, numberGoalScored_club_2, date, matchType);
             System.out.println(result);
 
         }
@@ -253,10 +288,12 @@ public class ConsoleApplication {
     public static String checkingForValidClub(String message) {
         // CHECKING FOR VALID CLUB ENTERED BY THE USER WHEN ADDING MATCH
 
+        // getting the user input
         Scanner input = new Scanner(System.in);
         System.out.print(message);
         String clubName = input.nextLine();
 
+        // validation to check if the entered club name is valid
         boolean invalidClubName = true;
         while (invalidClubName){
             for (FootballClub footballClub: PremierLeagueManager.premierLeagueFootballClubList) {
@@ -274,7 +311,7 @@ public class ConsoleApplication {
         return clubName;
     }
 
-    // VALIDATING THE SEASON
+    // VALIDATING THE SEASON ENTERED BY THE USER, IT HAS TO BE IN THE FORMAT 20XX-XX ONLY
     public static String validatingSeason() {
         String seasonPlayed = "";
         Scanner input = new Scanner(System.in);
@@ -295,7 +332,7 @@ public class ConsoleApplication {
     // THIS DEALS WITH DISPLAYING THE STATISTICS OF THE FOOTBALL CLUB
     public static void displayStatistics() {
 
-        // DISPLAYING THE STATISTICS OF A SELECTED CLUB BY THE USER ITSELF
+        // Gets the club name from the user to display the statistics
         Scanner input = new Scanner(System.in);
         System.out.print(" Enter the club name of which you need to display the statistics: ");
         String clubName = input.nextLine();
@@ -314,12 +351,14 @@ public class ConsoleApplication {
     public static void deleteCLub() {
 
         // DELETING A CLUB (BY ITS NAME) FROM THE LIST OF CLUBS IN THE PREMIER LEAGUE
+        // Gets the club name from the user to delete the club
         Scanner input = new Scanner(System.in);
         System.out.print(" Enter the name of the club you wish to remove from the premier league: ");
         String clubName = input.nextLine();
 
         String confirmation = "";
         boolean isValidClubName = false;
+
         // DISPLAY RESULT OF THE ITEM TO BE REMOVED
         for (int i = 0; i < PremierLeagueManager.premierLeagueFootballClubList.size(); i++) {
             if(PremierLeagueManager.premierLeagueFootballClubList.get(i).getName().equalsIgnoreCase(clubName)){
@@ -333,10 +372,14 @@ public class ConsoleApplication {
             }
         }
 
+        // if the club name entered by the user is valid only the next step for deletion is carried on
         if(isValidClubName){
+
+            //  ask for the confirmation from the user if he needs to delete the club or not
             if(confirmation.equalsIgnoreCase("y")){
 
-                // GETTING THE REMOVED CLUB RESULT (MAY BE NULL OR THE CLUB REMOVED)
+                // GETTING THE REMOVED CLUB RESULT (MAY BE NULL OR THE CLUB REMOVED),
+                // The Null won't be returned but it's for double validation
                 FootballClub removedClub = (FootballClub) premierLeagueManager.deleteCLub(clubName);
 
                 // THIS GIVES THE OUTPUT TO THE USER INDICATING IF THE ITEM WAS SUCCESSFULLY REMOVED OR NOT
@@ -362,8 +405,6 @@ public class ConsoleApplication {
 
     // THIS DEALS WITH CREATING THE FOOTBALL CLUB FOR THE LIST
     public static void creatingClub() {
-
-        // MAKE SURE THAT EACH CLUB NAMES ARE UNIQUE FROM EACH OTHER
         Scanner insert = new Scanner(System.in);
 
         // Asking user the type of football club
@@ -374,10 +415,10 @@ public class ConsoleApplication {
         System.out.println("| (Option 3) School Football club        |");
         System.out.println(" ---------------------------------------- ");
 
-        // getting the users input with validation to check if its an integer entered
         int userSelectOption;
         boolean notInRange = false;
 
+        // getting user input with validation places to check if correct option is entered and if its a number as well
         do{
             if(notInRange) System.out.println(" \n The entered option is not valid!\n " +
                     "Available options are (1, 2, 3)\n");
@@ -393,10 +434,11 @@ public class ConsoleApplication {
 
         insert = new Scanner(System.in);
 
-
         System.out.println("\n NOTE: ALL THE CLUB NAMES HAS TO BE UNIQUE" +
                 "\n PLEASE ENTER A CLUB NAME WHICH IS NOT FROM THE GIVEN LIST BELOW !");
 
+        // Displaying the list of club names which are currently available so that the user can enter a club name
+        // which is unique and not in the list
         if(PremierLeagueManager.premierLeagueFootballClubList.size()!=0){
             System.out.println(" --------------------------------");
             for (FootballClub footballClub: PremierLeagueManager.premierLeagueFootballClubList) {
@@ -408,12 +450,13 @@ public class ConsoleApplication {
         }
 
         // When a new footballClub is created all the stats are set to 0
-        // We ask for club name, location, coach name
+        // We ask for club name, location, coach name from the user as the inputs
         System.out.print(" Enter the club name: ");
         String clubName = insert.nextLine();
         clubName = clubName.substring(0, 1).toUpperCase() + clubName.toLowerCase().substring(1);
 
-        // Validation for club name
+        // Validation for club name, if there is a club name already present then we ask the user to enter another
+        // unique club name
         boolean invalidClubName = true;
         while (invalidClubName){
             if(PremierLeagueManager.premierLeagueFootballClubList.size()!=0){
@@ -443,13 +486,12 @@ public class ConsoleApplication {
         System.out.print(" Enter the location: ");
         String location = insert.nextLine();
 
-
         // validating the coach Name
         String coachName = validateString(" Enter the coach name: ");
         coachName = coachName.substring(0, 1).toUpperCase() + coachName.toLowerCase().substring(1);
 
-
         // this switch case is to create the appropriate club with the user selected option
+        // club may be a normal premier league football club, school or university football club
         String result;
         switch (userSelectOption){
             case 1:
@@ -479,7 +521,6 @@ public class ConsoleApplication {
                 throw new IllegalStateException("Unexpected value: " + userSelectOption);
 
         }
-
         System.out.println(result);     // display the result
 
     }
