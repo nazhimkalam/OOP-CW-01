@@ -1,5 +1,4 @@
 package controllers;
-
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -14,7 +13,7 @@ import java.util.Random;
 // Using the abstract class SportClub
 public class FootballClub extends SportClub{
 
-    // These are the private variables for Encapsulation
+    // variables used
     private String coachName;
     private int totalGoalsReceived;
     private int totalGoalsScored;
@@ -41,9 +40,11 @@ public class FootballClub extends SportClub{
         this.matchesPlayed = new ArrayList<>();
         this.playersList = new ArrayList<>();
 
-        autoGeneratePlayers();      // auto generating the players whenever you instantiate a club
+        // auto generating the players whenever you instantiate a club
+        autoGeneratePlayers();
     }
 
+    // this displays the details of the football club by overriding the toString method
     @Override
     public String toString() {
         return  super.toString() +
@@ -56,6 +57,7 @@ public class FootballClub extends SportClub{
     }
 
 
+    // These are the setters and getters for the private variables for encapsulation
     public String getCoachName() {
         return coachName;
     }
@@ -74,6 +76,14 @@ public class FootballClub extends SportClub{
 
     public int getTotalGoalsScored() {
         return totalGoalsScored;
+    }
+
+    public ArrayList<Player> getPlayersList() {
+        return playersList;
+    }
+
+    public void setPlayersList(ArrayList<Player> playersList) {
+        this.playersList = playersList;
     }
 
     public void setTotalGoalsScored(int totalGoalsScored) {
@@ -112,8 +122,10 @@ public class FootballClub extends SportClub{
         this.matchesPlayed = matchesPlayed;
     }
 
+    // This method returns an Arraylist with the main club statistics for the Premier League CLI table
     public ArrayList<Integer> getMainStatistics(){
 
+        // This is the content of the ArrayList in the order
         //  [matches played, wins, draws, defeats, goals scored, goals received, points, goal difference]
         //          0         1      2      3           4              5           6           7
 
@@ -130,7 +142,8 @@ public class FootballClub extends SportClub{
         return overallStatistics;
     }
 
-    // cloning the matches
+    // cloning the matches and club with its club statistics
+    // when needed to create copies of the match objects for season based filtering
     @Override
     protected Object clone() throws CloneNotSupportedException {
         FootballClub cloned = (FootballClub) super.clone();
@@ -139,6 +152,7 @@ public class FootballClub extends SportClub{
         return cloned;
     }
 
+    // returns the list of cloned matches for cloning purpose
     public static ArrayList<Match> cloneMatchList(ArrayList<Match> list) {
         ArrayList<Match>  cloneMatches = new ArrayList<>(list.size());
         for (Match match: list) {
@@ -150,6 +164,8 @@ public class FootballClub extends SportClub{
         }
         return cloneMatches;
     }
+
+    // returns a cloned copy of the club statistics
     public static ClubStats cloneClubStatistics(ClubStats clubStatistics) {
         ClubStats cloneClubStats = new ClubStats();
 
@@ -162,15 +178,7 @@ public class FootballClub extends SportClub{
         return cloneClubStats;
     }
 
-
-    public ArrayList<Player> getPlayersList() {
-        return playersList;
-    }
-
-    public void setPlayersList(ArrayList<Player> playersList) {
-        this.playersList = playersList;
-    }
-
+    // This method is used to generate players for each club, with 11 players each club
     public void autoGeneratePlayers(){
 
         String[] playerNames = {
@@ -201,6 +209,5 @@ public class FootballClub extends SportClub{
 
             playersList.add(player);
         }
-
     }
 }
