@@ -1,8 +1,9 @@
 * {
   font-family: Verdana, Geneva, Tahoma, sans-serif !important;
 }
+
 .matches {
-  margin-top: 80px;
+  padding-top: 80px;
 }
 .season:hover {
   cursor: pointer !important;
@@ -28,12 +29,12 @@
   border-bottom-right-radius: 100px;
 }
 
-.matches__titleContent h1:hover {
+/* .matches__titleContent h1:hover {
   transition: 0.3s ease-in-out;
   animation-fill-mode: forwards;
   border-right-width: 8px;
   transform: translateX(20px);
-}
+} */
 #dateEntered {
   transition: 0.2s ease-in-out !important;
   margin: 1px !important;
@@ -63,7 +64,7 @@
   border-color: #ea2d9d;
   margin: 0px 10px;
   border-width: 3px;
-  transform: scale(1.05);
+  transform: scale(1.03);
   color: #ea2d9d;
 }
 
@@ -94,21 +95,20 @@
   color: #36003c;
 }
 
-.matches__playedSoFar:hover {
+/* .matches__playedSoFar:hover {
   border-right-width: 8px;
   transition: 0.3s ease-in-out;
   animation-fill-mode: forwards;
   transform: translateX(20px);
-}
+} */
 .matches__list {
   height: 1000px;
   overflow: scroll;
   box-shadow: 5px 10px 18px #888888;
   margin-top: 30px;
 }
-.date__calender{
+.date__calender {
   box-shadow: 3px 7px 10px #888888;
-
 }
 .matches__matchCard {
   display: flex;
@@ -332,11 +332,10 @@
   -webkit-animation: cardColorChange 2s infinite; /* Chrome, Safari, Opera */
   animation: 2s infinite cardColorChange;
 }
-.matches__matchCard:hover > .matches__club1> div:first-child,
-.matches__matchCard:hover > .matches__club2> div:last-child
-{
- transition: 1s ease-in-out;
- transform: scale(1.1);
+.matches__matchCard:hover > .matches__club1 > div:first-child,
+.matches__matchCard:hover > .matches__club2 > div:last-child {
+  transition: 1s ease-in-out;
+  transform: scale(1.1);
 }
 @keyframes cardColorChange {
   0% {
@@ -382,5 +381,48 @@
   100% {
     background-color: #ea2de148;
     transition: 1s ease-in-out;
+  }
+}
+
+.matches__header {
+  -webkit-animation: titleLeftMove 1.2s infinite; /* Chrome, Safari, Opera */
+  animation: 1.2s infinite titleLeftMove;
+}
+
+@keyframes titleLeftMove {
+  0% {
+    position: relative;
+    right: 0;
+    transition: 0.2s ease-in-out;
+  }
+
+  50% {
+    position: relative;
+    right: 15px;
+    transition: 0.2s ease-in-out;
+  }
+
+  100% {
+    position: relative;
+    right: 0;
+    transition: 0.2s ease-in-out;
+  }
+}
+
+.celebration__theme {
+  -webkit-animation: celebrationTheme 2s infinite; /* Chrome, Safari, Opera */
+  animation: 2s infinite celebrationTheme;
+}
+
+@keyframes celebrationTheme {
+  0% {
+    transition: 0.2s ease-in-out;
+  }
+  50% {
+    background-image: url(../../assets/celebration.gif);
+    transition: 1s ease-in-out;
+  }
+  100% {
+    transition: 0.2s ease-in-out;
   }
 }

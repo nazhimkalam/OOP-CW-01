@@ -16,6 +16,7 @@ export class MatchesComponent implements OnInit {
   public loadingContent: boolean;
   public audio: any;
   public disableSearchBtn: boolean;
+  public displayCelebration: string;
 
   constructor(private _footballService: FootballInteractionService) {
     this.currentSeason = '2020-21';
@@ -23,11 +24,10 @@ export class MatchesComponent implements OnInit {
     this.matches = [];
     this.loadingContent = true;
     this.disableSearchBtn = true;
-
+    this.displayCelebration = 'noCelebration';
   }
 
   ngOnInit(): void {
-    
     // we have to set the seasons here when the user loads this page
     this._footballService
       .getSeasons()
@@ -70,7 +70,6 @@ export class MatchesComponent implements OnInit {
     this.audio.play();
     this.disableSearchBtn = true;
 
-
     this.loadingContent = true;
     this._footballService
       .getMatchesByDate(this.selectedDate, this.currentSeason)
@@ -91,6 +90,7 @@ export class MatchesComponent implements OnInit {
   // Generate match
   generateMatch() {
     this.selectedDate = '';
+    this.displayCelebration = 'celebration__theme';
     this.audio = new Audio();
     this.audio.src = '../../assets/matchPlayed.mp3';
     this.audio.load();
@@ -106,6 +106,11 @@ export class MatchesComponent implements OnInit {
       });
 
     this.generateClubLogo();
+
+    // Setting a delay
+    setTimeout(() => {
+      this.displayCelebration = 'noCelebration';
+    }, 1200);
   }
 
   // generate random clubLogo

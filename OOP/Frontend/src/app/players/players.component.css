@@ -21,12 +21,12 @@
   border-bottom-right-radius: 100px;
 }
 
-.players__heading h1:hover {
+/* .players__heading h1:hover {
   transition: 0.3s ease-in-out;
   border-right-width: 8px;
   animation-fill-mode: forwards;
   transform: translateX(20px);
-}
+} */
 .players__list img {
   object-fit: fill;
   height: 200px;
@@ -78,9 +78,8 @@
   transition: 0.5s ease-in-out;
 }
 .card:hover img {
-  transform: scale(1.05);
+  transform: scale(1.06);
 }
-
 /* Animation Part */
 .players {
   -webkit-animation: fadein 1s; /* Safari, Chrome and Opera > 12.1 */
@@ -149,10 +148,8 @@
   }
 }
 
-
-
 /* Change the ball rotation every second */
-.players__heading img  {
+.players__heading img {
   -webkit-animation: ballRotate 2s infinite; /* Chrome, Safari, Opera */
   animation: 2s infinite ballRotate;
 }
@@ -203,3 +200,27 @@
   }
 }
 
+.players__heading h1 {
+  -webkit-animation: titleLeftMove 1.2s infinite; /* Chrome, Safari, Opera */
+  animation: 1.2s infinite titleLeftMove;
+}
+
+@keyframes titleLeftMove {
+  0% {
+    position: relative;
+    right: 0;
+    transition: 0.2s ease-in-out;
+  }
+
+  50% {
+    position: relative;
+    right: 15px;
+    transition: 0.2s ease-in-out;
+  }
+
+  100% {
+    position: relative;
+    right: 0;
+    transition: 0.2s ease-in-out;
+  }
+}

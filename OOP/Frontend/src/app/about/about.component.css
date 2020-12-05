@@ -25,12 +25,12 @@
   transition: 1s ease-in-out;
 }
 
-.about__heading:hover {
+/* .about__heading:hover {
   transition: 0.3s ease-in-out;
   animation-fill-mode: forwards;
   transform: translateX(20px);
   border-right-width: 8px;
-}
+} */
 
 .about__description {
   margin-top: 60px;
@@ -112,5 +112,31 @@
   to {
     opacity: 1;
     transform: scale(1);
+  }
+}
+
+
+.about__heading {
+  -webkit-animation: titleLeftMove 1.2s infinite; /* Chrome, Safari, Opera */
+  animation: 1.2s infinite titleLeftMove;
+}
+
+@keyframes titleLeftMove {
+  0% {
+    position: relative;
+    right: 0;
+    transition: 0.2s ease-in-out;
+  }
+
+  50% {
+    position: relative;
+    right: 15px;
+    transition: 0.2s ease-in-out;
+  }
+
+  100% {
+    position: relative;
+    right: 0;
+    transition: 0.2s ease-in-out;
   }
 }
