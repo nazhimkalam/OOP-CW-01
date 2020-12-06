@@ -4,11 +4,12 @@ import org.junit.Before;
 import org.junit.Test;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.util.ArrayList;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
-// MAKE SURE THAT THE TXT FILE IS EMPTY (which is inside the backend model folder) BEFORE RUNNING THIS TESTS
 
+// MAKE SURE THAT THE TXT FILE IS EMPTY (which is inside the backend model folder) BEFORE RUNNING THIS TESTS
 public class PremierLeagueTester
 {
     // variable used
@@ -37,7 +38,7 @@ public class PremierLeagueTester
         assertEquals(" Sorry there is no room for a new club, the maximum number of club limit has been reached!",result);
 
         // CLEARING THE CONTENT OF THE obj FOR OTHER TESTINGS
-        PremierLeagueManager.premierLeagueFootballClubList = new java.util.ArrayList<>();
+        PremierLeagueManager.setPremierLeagueFootballClubList(new ArrayList<>());
     }
 
     @Test
@@ -47,7 +48,7 @@ public class PremierLeagueTester
         obj.createClub("Juventus","Spain","Nazhim",null, "normal");
 
         // getting the details of the added football club
-        FootballClub addedClub = PremierLeagueManager.premierLeagueFootballClubList.get(0);
+        FootballClub addedClub = PremierLeagueManager.getPremierLeagueFootballClubList().get(0);
 
         FootballClub removedFootballClub = (FootballClub) obj.deleteCLub("Juventus");
         assertEquals(addedClub, removedFootballClub);
@@ -57,7 +58,7 @@ public class PremierLeagueTester
         assertNull(removedFootballClub);
 
         // CLEARING THE CONTENT OF THE obj FOR OTHER TESTINGS
-        PremierLeagueManager.premierLeagueFootballClubList = new java.util.ArrayList<>();
+        PremierLeagueManager.setPremierLeagueFootballClubList(new ArrayList<>());
     }
 
     @Test
@@ -72,7 +73,7 @@ public class PremierLeagueTester
         assertEquals("\n Sorry, there is no club with the given name 'Fake Club'", result);
 
         // CLEARING THE CONTENT OF THE obj FOR OTHER TESTINGS
-        PremierLeagueManager.premierLeagueFootballClubList = new java.util.ArrayList<>();
+        PremierLeagueManager.setPremierLeagueFootballClubList(new ArrayList<>());
     }
 
 
@@ -146,7 +147,7 @@ public class PremierLeagueTester
         assertEquals("\n Sorry, 'juventus' has reached the maximum number of matches played!",result);
 
         // CLEARING THE CONTENT OF THE obj FOR OTHER TESTINGS
-        PremierLeagueManager.premierLeagueFootballClubList = new java.util.ArrayList<>();
+        PremierLeagueManager.setPremierLeagueFootballClubList(new ArrayList<>());
     }
 
     @Test

@@ -17,7 +17,6 @@ public class DateMatch implements Serializable {
     private int month;
     private int year;
 
-
     public DateMatch(){
         // default constructor
     }

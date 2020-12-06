@@ -10,8 +10,8 @@
 //public class GUITester {
 //
 //    // Variables used for testing
-//    PremierLeagueManager premierLeagueManager = (PremierLeagueManager) PremierLeagueManager.getInstance();
-//    HomeController homeController = new HomeController();
+//    private LeagueManager premierLeagueManager = PremierLeagueManager.getInstance();
+//    private HomeController homeController = new HomeController();
 //
 //    @Before
 //    public void addingDataToFile(){
@@ -73,7 +73,7 @@
 //
 //        }
 //        // testing
-//        assertEquals(PremierLeagueManager.premierLeagueFootballClubList.size(),seasonList.size());
+//        assertEquals(PremierLeagueManager.getPremierLeagueFootballClubList().size(),seasonList.size());
 //
 //    }
 //
@@ -84,7 +84,7 @@
 //
 //        // getting the sorted matches by points from
 //        ArrayList<FootballClub> sortClubsByPoints = homeController.sortClubsByPoints(PremierLeagueManager.
-//                premierLeagueFootballClubList);
+//                getPremierLeagueFootballClubList());
 //
 //        // Comparator to sort by points
 //        Comparator<FootballClub> comparatorPoints = (club1, club2) -> {
@@ -96,12 +96,12 @@
 //        };
 //
 //        // sort only if there are clubs present
-//        if (PremierLeagueManager.premierLeagueFootballClubList != null) {
-//            PremierLeagueManager.premierLeagueFootballClubList.sort(comparatorPoints);
+//        if (PremierLeagueManager.getPremierLeagueFootballClubList() != null) {
+//            PremierLeagueManager.getPremierLeagueFootballClubList().sort(comparatorPoints);
 //        }
 //
 //        // testing
-//        assertEquals(PremierLeagueManager.premierLeagueFootballClubList,sortClubsByPoints);
+//        assertEquals(PremierLeagueManager.getPremierLeagueFootballClubList(),sortClubsByPoints);
 //
 //    }
 //
@@ -111,7 +111,7 @@
 //
 //        // getting the sorted matches by wins from
 //        ArrayList<FootballClub> sortClubsByWins = homeController.sortClubsByWins(
-//                PremierLeagueManager.premierLeagueFootballClubList);
+//                PremierLeagueManager.getPremierLeagueFootballClubList());
 //
 //        // comparator to sort the clubs by descending order of wins
 //        Comparator<FootballClub> comparatorByWins = (club1, club2) -> {
@@ -123,12 +123,12 @@
 //        };
 //
 //        // check is the club list is not empty and then only sorts
-//        if (PremierLeagueManager.premierLeagueFootballClubList != null) {
-//            PremierLeagueManager.premierLeagueFootballClubList.sort(comparatorByWins);
+//        if (PremierLeagueManager.getPremierLeagueFootballClubList() != null) {
+//            PremierLeagueManager.getPremierLeagueFootballClubList().sort(comparatorByWins);
 //        }
 //
 //        // testing
-//        assertEquals(PremierLeagueManager.premierLeagueFootballClubList,sortClubsByWins);
+//        assertEquals(PremierLeagueManager.getPremierLeagueFootballClubList(),sortClubsByWins);
 //
 //    }
 //
@@ -136,7 +136,7 @@
 //    public void testSortingByGoals() {
 //        // testing sortClubsByGoals() method, which is used to sort the clubs in descending order of the goal scored
 //        ArrayList<FootballClub> sortClubsByGoals = homeController.sortClubsByGoals(
-//                PremierLeagueManager.premierLeagueFootballClubList);
+//                PremierLeagueManager.getPremierLeagueFootballClubList());
 //
 //        // This comparator is used to sort the clubs in descending order of goals
 //        Comparator<FootballClub> comparatorByGoals = (club1, club2) -> {
@@ -148,12 +148,12 @@
 //        };
 //
 //        // check is the club list is not empty and then only sorts
-//        if (PremierLeagueManager.premierLeagueFootballClubList != null) {
-//            PremierLeagueManager.premierLeagueFootballClubList.sort(comparatorByGoals);
+//        if (PremierLeagueManager.getPremierLeagueFootballClubList() != null) {
+//            PremierLeagueManager.getPremierLeagueFootballClubList().sort(comparatorByGoals);
 //        }
 //
 //        // testing
-//        assertEquals(PremierLeagueManager.premierLeagueFootballClubList,sortClubsByGoals);
+//        assertEquals(PremierLeagueManager.getPremierLeagueFootballClubList(),sortClubsByGoals);
 //    }
 //
 //    @Test
@@ -178,11 +178,11 @@
 //
 //        // getting the actual list of matches
 //        ArrayList<Match> actualMatches = homeController.
-//                getMatchesForSeason(PremierLeagueManager.premierLeagueFootballClubList);
+//                getMatchesForSeason(PremierLeagueManager.getPremierLeagueFootballClubList());
 //
 //        // getting the expected list of matches
 //        ArrayList<Match> expectedMatches = new ArrayList<>();
-//        for (FootballClub club: PremierLeagueManager.premierLeagueFootballClubList) {
+//        for (FootballClub club: PremierLeagueManager.getPremierLeagueFootballClubList()) {
 //            expectedMatches.addAll(club.getMatchesPlayed());
 //        }
 //
@@ -199,7 +199,7 @@
 //        try {
 //            // getting the actual list of clubs filtered with the matches for the given date
 //            actualClubsWithMatchesByDate = homeController.filterMatchesByDate(
-//                    PremierLeagueManager.premierLeagueFootballClubList, "2020-12-14"
+//                    PremierLeagueManager.getPremierLeagueFootballClubList(), "2020-12-14"
 //            );
 //
 //        } catch (CloneNotSupportedException e) {
@@ -220,7 +220,7 @@
 //        }
 //
 //        // setting the expected values
-//        for (FootballClub club: PremierLeagueManager.premierLeagueFootballClubList) {
+//        for (FootballClub club: PremierLeagueManager.getPremierLeagueFootballClubList()) {
 //            allExpectedMatchesByDate.addAll(club.getMatchesPlayed());
 //        }
 //

@@ -295,7 +295,7 @@ public class ConsoleApplication {
         // validation to check if the entered club name is valid
         boolean invalidClubName = true;
         while (invalidClubName){
-            for (FootballClub footballClub: PremierLeagueManager.premierLeagueFootballClubList) {
+            for (FootballClub footballClub: PremierLeagueManager.getPremierLeagueFootballClubList()) {
                 if (footballClub.getName().equalsIgnoreCase(clubName)) {
                     invalidClubName = false;
                     break;
@@ -359,10 +359,10 @@ public class ConsoleApplication {
         boolean isValidClubName = false;
 
         // DISPLAY RESULT OF THE ITEM TO BE REMOVED
-        for (int i = 0; i < PremierLeagueManager.premierLeagueFootballClubList.size(); i++) {
-            if(PremierLeagueManager.premierLeagueFootballClubList.get(i).getName().equalsIgnoreCase(clubName)){
+        for (int i = 0; i < PremierLeagueManager.getPremierLeagueFootballClubList().size(); i++) {
+            if(PremierLeagueManager.getPremierLeagueFootballClubList().get(i).getName().equalsIgnoreCase(clubName)){
                 System.out.println("\n These are some details of the club you wanted to be deleted \n");
-                System.out.println(PremierLeagueManager.premierLeagueFootballClubList.get(i));
+                System.out.println(PremierLeagueManager.getPremierLeagueFootballClubList().get(i));
                 isValidClubName = true;
 
                 // ASK FOR CONFIRMATION
@@ -438,9 +438,9 @@ public class ConsoleApplication {
 
         // Displaying the list of club names which are currently available so that the user can enter a club name
         // which is unique and not in the list
-        if(PremierLeagueManager.premierLeagueFootballClubList.size()!=0){
+        if(PremierLeagueManager.getPremierLeagueFootballClubList().size()!=0){
             System.out.println(" --------------------------------");
-            for (FootballClub footballClub: PremierLeagueManager.premierLeagueFootballClubList) {
+            for (FootballClub footballClub: PremierLeagueManager.getPremierLeagueFootballClubList()) {
                 System.out.println(" * " + footballClub.getName());
             }
             System.out.println(" --------------------------------");
@@ -458,8 +458,8 @@ public class ConsoleApplication {
         // unique club name
         boolean invalidClubName = true;
         while (invalidClubName){
-            if(PremierLeagueManager.premierLeagueFootballClubList.size()!=0){
-                for (FootballClub footballClub: PremierLeagueManager.premierLeagueFootballClubList) {
+            if(PremierLeagueManager.getPremierLeagueFootballClubList().size()!=0){
+                for (FootballClub footballClub: PremierLeagueManager.getPremierLeagueFootballClubList()) {
                     if(footballClub.getName().equalsIgnoreCase(clubName)){
                         invalidClubName = true;
                         break;
