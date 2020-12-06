@@ -278,6 +278,7 @@ public class PremierLeagueManager implements LeagueManager {
 
             for (FootballClub footballClub : seasonFilteredClubs) {
                 // we find the maximum length of the club names from the list of football clubs
+
                 if(footballClub.getName().length() > maxClubNameLength){
                     maxClubNameLength = footballClub.getName().length();
                 }

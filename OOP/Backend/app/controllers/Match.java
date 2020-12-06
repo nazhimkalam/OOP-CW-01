@@ -1,5 +1,4 @@
 package controllers;
-
 import java.io.Serializable;
 
 /*
@@ -11,6 +10,7 @@ import java.io.Serializable;
  */
 
 public class Match implements Serializable, Cloneable {
+
     // variables used
     private int goalScored;
     private int goalReceived;
@@ -20,7 +20,6 @@ public class Match implements Serializable, Cloneable {
     private String opponentClubName;
     private String matchType;
     private String participatedCLubName;
-
 
     // default constructor
     public Match(){
@@ -40,6 +39,7 @@ public class Match implements Serializable, Cloneable {
         this.participatedCLubName = participatedCLubName;
     }
 
+    // overriding the toString method in order to display the details of the match
     @Override
     public String toString() {
         return "\n Goal Scored = " + goalScored +
@@ -47,8 +47,10 @@ public class Match implements Serializable, Cloneable {
                 "\n Season = " + season +
                 "\n Date = " + date +
                 "\n Opponent Club Name = " + opponentClubName +
-                 matchStats.toString();
+                matchStats.toString();
     }
+
+    // SETTERS AND GETTERS FOR THE CLASS
 
     // gets the date
     public DateMatch getDate() {
@@ -120,10 +122,9 @@ public class Match implements Serializable, Cloneable {
         this.participatedCLubName = participatedCLubName;
     }
 
-    // overriding the clone method
+    // overriding the clone method, in order to enable cloning of the match when needed to
     @Override
     protected Object clone() throws CloneNotSupportedException {
         return super.clone();
     }
-
 }

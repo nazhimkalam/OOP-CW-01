@@ -1,5 +1,4 @@
 package controllers;
-
 import java.io.Serializable;
 
 /*
@@ -11,16 +10,20 @@ import java.io.Serializable;
  */
 
 public class ClubStats implements Serializable, Cloneable {
+
+    // These are the variables used
     private int totalMatchesPlayed;
     private int totalWins;
     private int totalDraws;
     private int totalDefeats;
     private int totalPointsScored;
 
+    // Default constructor
     public ClubStats() {
 
     }
 
+    // Parameter constructor
     public ClubStats(int totalMatchesPlayed, int totalWins, int totalDraws, int totalDefeats,
                      int totalPointsScored) {
         this.totalMatchesPlayed = totalMatchesPlayed;
@@ -30,6 +33,7 @@ public class ClubStats implements Serializable, Cloneable {
         this.totalPointsScored = totalPointsScored;
     }
 
+    // Getter and Setters for Encapsulation
     public int getTotalMatchesPlayed() {
         return totalMatchesPlayed;
     }
@@ -70,6 +74,7 @@ public class ClubStats implements Serializable, Cloneable {
         this.totalPointsScored = totalPointsScored;
     }
 
+    // Overriding the toString method to display the club statistics
     @Override
     public String toString() {
         return  "\n * Total Matches Played = " + totalMatchesPlayed + "\n * Total Number of Wins = " + totalWins +
@@ -77,7 +82,7 @@ public class ClubStats implements Serializable, Cloneable {
                 "\n * Total Points Scored = " + totalPointsScored + "\n";
     }
 
-    // overriding the clone method
+    // Overriding the clone method this is to clone the ClubStats when required (making another copy)
     @Override
     protected Object clone() throws CloneNotSupportedException {
         return super.clone();

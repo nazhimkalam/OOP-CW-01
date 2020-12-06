@@ -5,13 +5,24 @@ GET     /                                               controllers.HomeControll
 GET     /assets/*file                                   controllers.Assets.versioned(path="/public", file: Asset)
 
 # GET Requests routes
+
+# returns a list of all the seasons played so far
 GET  /seasons/all                                controllers.HomeController.allSeasons
+
+# retuens clubs sorted by points in a season
 GET  /records/sortPoints/:season                 controllers.HomeController.sortByPoints(season: String)
+
+# retruns clubs sorted by wins in a season
 GET  /records/sortWins/:season                   controllers.HomeController.sortByWins(season: String)
+
+# returns clubs sorted by goals in a season
 GET  /records/sortGoals/:season                  controllers.HomeController.sortByGoals(season: String)
 
+# returns matches by season seleted
 GET  /matches/season/:season                     controllers.HomeController.allMatches(season: String)
 
+# returns matches on a date of a season
 GET  /matches/season/:season/date/:date          controllers.HomeController.matchesByDate(date: String, season: String)
 
+# generates a match for a specific season
 GET  /matches/season/match/generate/:season      controllers.HomeController.generateMatch(season: String)

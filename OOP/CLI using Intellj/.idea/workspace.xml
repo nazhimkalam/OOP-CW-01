@@ -92,17 +92,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="PremierLeagueTester (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OOP-CourseWork" />
       <extension name="coverage">
@@ -271,6 +260,7 @@
       <workItem from="1607074249600" duration="4637000" />
       <workItem from="1607079620171" duration="641000" />
       <workItem from="1607171857685" duration="12698000" />
+      <workItem from="1607195263104" duration="1440000" />
     </task>
     <task id="LOCAL-00012" summary="commit">
       <created>1604851031613</created>
@@ -663,11 +653,11 @@
       <screen x="1920" y="0" width="1360" height="738" />
     </state>
     <state x="2330" y="115" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.1280.689/1920.0.1360.738@1920.0.1360.738" timestamp="1606757198593" />
-    <state x="2367" y="103" key="FileChooserDialogImpl" timestamp="1607076947945">
-      <screen x="1920" y="0" width="1360" height="738" />
+    <state x="421" y="96" key="FileChooserDialogImpl" timestamp="1607195345893">
+      <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state x="421" y="95" key="FileChooserDialogImpl/0.0.1280.680/1920.0.1360.728@0.0.1280.680" timestamp="1606110858726" />
-    <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.689/1920.0.1360.738@0.0.1280.689" timestamp="1606757931329" />
+    <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.689/1920.0.1360.738@0.0.1280.689" timestamp="1607195345893" />
     <state x="2367" y="103" key="FileChooserDialogImpl/0.0.1280.689/1920.0.1360.738@1920.0.1360.738" timestamp="1607076947945" />
     <state width="1237" height="526" key="GridCell.Tab.0.bottom" timestamp="1607190020140">
       <screen x="0" y="0" width="1280" height="689" />

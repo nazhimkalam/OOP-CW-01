@@ -1,9 +1,7 @@
 package controllers;
-
 import com.fasterxml.jackson.databind.JsonNode;
 import play.libs.Json;
 import play.mvc.*;
-
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Random;
@@ -11,16 +9,19 @@ import java.util.stream.Collectors;
 
 public class HomeController extends Controller {
 
+    // variables used
     private LeagueManager premierLeagueManager = PremierLeagueManager.getInstance();
     private ArrayList<FootballClub> guiSeasonFilteredClubs = null;
 
-
+    // this is the index method which runs for the endpoint http://localhost:9000/
     public Result index() {
         return ok(views.html.index.render());
     }
 
-    // sending all the season for the dropdown menu
+    // sending all the season for the dropdown menu, endpoint http://localhost:9000/seasons/all
     public Result allSeasons(){
+
+        // loading the data from the file
         PremierLeagueManager.loadingData();
 
         // sort the seasons using the comparator
@@ -31,11 +32,17 @@ public class HomeController extends Controller {
             return -1;
         };
 
+        // setting the seasons with distinct seasons only
         PremierLeagueManager.setAllSeasonAdded((ArrayList<String>)
                 PremierLeagueManager.getAllSeasonAdded().stream().distinct().collect(Collectors.toList()));
+
+        // sorting the seasons
         PremierLeagueManager.getAllSeasonAdded().sort(comparator);
 
+        // getting the seasons
         ArrayList<String> allSeasons = PremierLeagueManager.getAllSeasonAdded();
+
+        // converting into JSON format
         JsonNode allSeasonsJson = Json.toJson(allSeasons);
 
         return ok(allSeasonsJson);
@@ -44,28 +51,33 @@ public class HomeController extends Controller {
 
     // sending the sorted table data by points (descending order) by season
     public Result sortByPoints(String season){
+
+        // loading the data from the file
         PremierLeagueManager.loadingData();
 
         // filters the football clubs according to the season
         guiSeasonFilteredClubs = getGuiSeasonFilteredClubs(season);
 
         // sorting by points only in descending order
-        guiSeasonFilteredClubs = sortMatchesByPoints(guiSeasonFilteredClubs);
+        guiSeasonFilteredClubs = sortClubsByPoints(guiSeasonFilteredClubs);
 
+        // converting into json format
         JsonNode guiSeasonFilteredClubsJson = Json.toJson(guiSeasonFilteredClubs);
         return ok(guiSeasonFilteredClubsJson);
     }
 
     // This function is used to sort the matches of a football club in a season by descending order of points
-    public ArrayList<FootballClub> sortMatchesByPoints(ArrayList<FootballClub> guiSeasonFilteredClubs) {
+    public ArrayList<FootballClub> sortClubsByPoints(ArrayList<FootballClub> guiSeasonFilteredClubs) {
 
+        // comparator to sort the clubs by points
         Comparator<FootballClub> comparator = (club1, club2) -> {
             if(club1.getClubStatistics().getTotalPointsScored() < club2.getClubStatistics().getTotalPointsScored()){
                 return 1;
             }
-
             return -1;
         };
+
+        // sorting only if there are clubs to sort
         if (guiSeasonFilteredClubs != null) {
             guiSeasonFilteredClubs.sort(comparator);
         }
@@ -76,21 +88,24 @@ public class HomeController extends Controller {
     // sending the sorted table data by wins (descending order) by season
     public Result sortByWins(String season){
 
+        // loading the data from the file
         PremierLeagueManager.loadingData();
 
         // filters the football clubs according to the season
         guiSeasonFilteredClubs = getGuiSeasonFilteredClubs(season);
 
         // sorting by points only in descending order of wins
-        guiSeasonFilteredClubs = sortMatchesByWins(guiSeasonFilteredClubs);
+        guiSeasonFilteredClubs = sortClubsByWins(guiSeasonFilteredClubs);
 
+        // converting into JSON format
         JsonNode guiSeasonFilteredClubsJson = Json.toJson(guiSeasonFilteredClubs);
         return ok(guiSeasonFilteredClubsJson);
     }
 
     // sorting by points only in descending order of wins
-    public ArrayList<FootballClub> sortMatchesByWins(ArrayList<FootballClub> guiSeasonFilteredClubs) {
+    public ArrayList<FootballClub> sortClubsByWins(ArrayList<FootballClub> guiSeasonFilteredClubs) {
 
+        // comparator to sort the clubs in descending order of the their wins
         Comparator<FootballClub> comparator = (club1, club2) -> {
             if(club1.getClubStatistics().getTotalWins() < club2.getClubStatistics().getTotalWins()){
                 return 1;
@@ -98,6 +113,8 @@ public class HomeController extends Controller {
 
             return -1;
         };
+
+        // sorting only if there are clubs to sort
         if (guiSeasonFilteredClubs != null) {
             guiSeasonFilteredClubs.sort(comparator);
         }
@@ -107,20 +124,25 @@ public class HomeController extends Controller {
 
     // sending the sorted table data by goals (descending order) by season
     public Result sortByGoals(String season){
+
+        // loading the data from the file
         PremierLeagueManager.loadingData();
 
         // filters the football clubs according to the season
         guiSeasonFilteredClubs = getGuiSeasonFilteredClubs(season);
 
         // sorting by points only in descending order goal scored
-        guiSeasonFilteredClubs = sortMatchesByGoals(guiSeasonFilteredClubs);
+        guiSeasonFilteredClubs = sortClubsByGoals(guiSeasonFilteredClubs);
 
+        // converting the data into JSON format
         JsonNode guiSeasonFilteredClubsJson = Json.toJson(guiSeasonFilteredClubs);
         return ok(guiSeasonFilteredClubsJson);
     }
 
     // sorting by points only in descending order goal scored
-    public ArrayList<FootballClub> sortMatchesByGoals(ArrayList<FootballClub> guiSeasonFilteredClubs) {
+    public ArrayList<FootballClub> sortClubsByGoals(ArrayList<FootballClub> guiSeasonFilteredClubs) {
+
+        // comparator for sorting
         Comparator<FootballClub> comparator = (club1, club2) -> {
             if(club1.getTotalGoalsScored() < club2.getTotalGoalsScored()){
                 return 1;
@@ -128,6 +150,8 @@ public class HomeController extends Controller {
 
             return -1;
         };
+
+        // checks if clubs are present to sort
         if (guiSeasonFilteredClubs != null) {
             guiSeasonFilteredClubs.sort(comparator);
         }
@@ -138,9 +162,13 @@ public class HomeController extends Controller {
     // This function is to return the listOfClubs filtered by season
     public ArrayList<FootballClub> getGuiSeasonFilteredClubs(String season){
         try {
+            // get the clubs filtered by season
             guiSeasonFilteredClubs = PremierLeagueManager.seasonFilteredFootballCLubList(season);
+
         } catch (CloneNotSupportedException e) {
+            // Handles the exception
             e.printStackTrace();
+
         }
         return guiSeasonFilteredClubs;
     }
@@ -148,10 +176,16 @@ public class HomeController extends Controller {
 
     // sending all the matches data by season
     public Result allMatches(String season){
+        // loading the data from the file
         PremierLeagueManager.loadingData();
 
+        // getting the clubs with the filtered matches by season
         guiSeasonFilteredClubs = getGuiSeasonFilteredClubs(season);
+
+        // getting the matches filtered by season
         ArrayList<Match> matchesDisplayed = getMatchesForSeason(guiSeasonFilteredClubs);
+
+        // converting the data into JSON format
         JsonNode matchesDisplayedJson = Json.toJson(matchesDisplayed);
         return ok(matchesDisplayedJson);
 
@@ -159,24 +193,33 @@ public class HomeController extends Controller {
 
     // sending all the matches data for a specific date
     public Result matchesByDate(String date,String season){
+
+        // loading the data from the file
         PremierLeagueManager.loadingData();
 
+        // getting the clubs with the filtered matches by season
         guiSeasonFilteredClubs = getGuiSeasonFilteredClubs(season);
+
         ArrayList<FootballClub> filteredClubsByDateForSeason;
         ArrayList<Match> filteredMatchedOnDate = null;
+
         try {
-            // returns the clubs with the filtered matches
+            // returns the clubs with the filtered matches by date
             filteredClubsByDateForSeason = filterMatchesByDate(guiSeasonFilteredClubs, date);
 
-            // returns the matches form the filtered club
+            // returns the matches form the filtered club by date
             filteredMatchedOnDate = getMatchesForSeason(filteredClubsByDateForSeason);
 
         } catch (CloneNotSupportedException e) {
+            // Handles the exception
             e.printStackTrace();
+
         }
 
+        // converting into JSON format
         JsonNode filteredMatchedOnDateJson = Json.toJson(filteredMatchedOnDate);
         return ok(filteredMatchedOnDateJson);
+
     }
 
     // This will return an arraylist which will filter all the matches of the club by date
@@ -204,6 +247,7 @@ public class HomeController extends Controller {
                     int matchYear = club.getMatchesPlayed().get(index).getDate().getYear();
                     String matchDate = matchYear + "-" + matchMonth + "-" + matchDay;
 
+                    // checking if the data is not equal and then remove the match respectively
                     if(!dateEntered.trim().equalsIgnoreCase(matchDate.trim())){
                         club.getMatchesPlayed().remove(club.getMatchesPlayed().get(index));
                         numberOfMatchesPlayed--;
@@ -211,18 +255,19 @@ public class HomeController extends Controller {
                         index++;
                     }
                 }
-
             }
         }
-
         return filteredClubListByDate;
 
     }
 
     // generating a new match
     public Result generateMatch(String season){
+
+        // loading the data from the file
         PremierLeagueManager.loadingData();
 
+        // getting the clubs with the filtered matches by season
         guiSeasonFilteredClubs = getGuiSeasonFilteredClubs(season);
 
         Random random = new Random();
@@ -243,7 +288,7 @@ public class HomeController extends Controller {
         int numberGoalScored_club_2 = random.nextInt(7);
 
 
-        // setting the random date
+        // setting the random date and random season depending on the randomly selected year
         int[] possibleYears = new int[2];
 
         int seasonYear = Integer.parseInt(season.split("-")[0]);
@@ -264,16 +309,19 @@ public class HomeController extends Controller {
         premierLeagueManager.addPlayedMatch(season,selectedClub_O1.getName(), selectedClub_O2.getName(),
                 numberGoalScored_club_1, numberGoalScored_club_2, date, matchType);
 
-
         // step 04: call the save file method
         premierLeagueManager.saveDataIntoFile();
 
         // step 05: call the load file method
         PremierLeagueManager.loadingData();
 
+        // getting the clubs with the filtered matches by season
         guiSeasonFilteredClubs = getGuiSeasonFilteredClubs(season);
 
+        // getting the matches for a season
         ArrayList<Match> matchesDisplayed = getMatchesForSeason(guiSeasonFilteredClubs);
+
+        // converts the data into JSON format
         JsonNode matchesDisplayedJson = Json.toJson(matchesDisplayed);
 
         return ok(matchesDisplayedJson);
@@ -331,16 +379,12 @@ public class HomeController extends Controller {
                     }
                 }
             }
-
             // WE ADD THE NON DUPLICATED MATCHES INTO THIS LIST AND SEND IT TO THE VIEWS
             if (matchNotAvailable) {
                 matchesDisplayed.add(match);
             }
-
         }
 
         return matchesDisplayed;
-
     }
-
 }
