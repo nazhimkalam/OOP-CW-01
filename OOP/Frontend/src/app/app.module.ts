@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppComponent } from './app.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -17,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SponsorComponent } from './sponsor/sponsor.component'
 
 @NgModule({
+  // this is were the declaration of the modules go when you create a new component
   declarations: [
     AppComponent,
     WelcomeComponent,
@@ -29,6 +29,8 @@ import { SponsorComponent } from './sponsor/sponsor.component'
     ErrorComponent,
     SponsorComponent,
   ],
+
+  // importing angular modules
   imports: [BrowserModule, BrowserAnimationsModule, MatButtonModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],

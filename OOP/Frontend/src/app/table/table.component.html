@@ -1,15 +1,24 @@
 <div class="tablePage">
+  <!-- main table container -->
   <div class="container pTable">
+
+    <!-- table header container -->
     <div class="pTable__header__container">
       <h1 class="pTable__header">Table</h1>
       <img src="../../assets/trophy.png" alt="" height="150px" />
     </div>
 
+    <!-- table buttons container -->
     <div class="pTable__btnOptions mt-5 container">
+
+      <!-- current season -->
       <div class="pTable__selectedSeason">
         <p>Season {{ currentSeason }}</p>
       </div>
+      <!-- drop down buttons -->
       <div>
+
+        <!-- season dropdown -->
         <div class="btn-group season">
           <button
             class="btn btn-light btn-sm dropdown-toggle"
@@ -30,6 +39,7 @@
           </div>
         </div>
 
+        <!-- sorting dropdown -->
         <div class="btn-group sortBy">
           <button
             class="btn btn-light btn-sm dropdown-toggle"
@@ -46,13 +56,20 @@
             <div class="dropdown-item" (click)="sortByWins()">Wins</div>
           </div>
         </div>
+
       </div>
+
     </div>
+
+    <!-- main table structure and content section -->
     <div
       class="container mt-4 pTable__table table-wrapper-scroll-y my-custom-scrollbar"
       *ngIf = "!isLoading"
     >
+    <!-- table -->
       <table class="table">
+
+        <!-- table header -->
         <thead class="table__header">
           <tr>
             <th scope="col">Position</th>
@@ -67,6 +84,8 @@
             <th scope="col">Points</th>
           </tr>
         </thead>
+
+        <!-- table body -->
         <tbody>
           <tr *ngFor="let rowResult of resultsRecords; index as position">
             <td scope="row">{{ position + 1 }}</td>
@@ -81,11 +100,16 @@
             <td>{{ rowResult.clubStatistics.totalPointsScored }}</td>
           </tr>
         </tbody>
+
+      
       </table>
     </div>
 
+    <!-- loading gif for delay purpose -->
     <div class="container loading" *ngIf="isLoading">
       <img src="../../assets/loading.gif" alt="">
     </div>
+
   </div>
+  
 </div>

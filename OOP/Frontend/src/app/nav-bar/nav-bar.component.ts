@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./nav-bar.component.css'],
 })
 export class NavBarComponent implements OnInit {
-  public linkNames: string[] = ['about', 'table', 'matches', 'players'];
-  public activeLinks: string[] = [];
+  // variables 
+  public linkNames: string[];
+  public activeLinks: string[];
 
-  constructor() {}
+  // constructor
+  constructor() {
+    this.linkNames = ['about', 'table', 'matches', 'players'];
+    this.activeLinks = [];
+  }
 
   ngOnInit(): void {
     this.activeLinks[0] = 'active';

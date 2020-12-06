@@ -1,3 +1,4 @@
+// interface for the match played
 export interface MatchPlayed {
   goalScored: number;
   goalReceived: number;

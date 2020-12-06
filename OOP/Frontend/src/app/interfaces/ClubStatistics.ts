@@ -1,3 +1,4 @@
+// interface for the club statistics
 export interface ClubStatistics {
   totalMatchesPlayed: number;
   totalWins: number;

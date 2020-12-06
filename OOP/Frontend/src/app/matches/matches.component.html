@@ -1,13 +1,22 @@
+<!-- main container -->
 <div class={{displayCelebration}}>
+
+  <!-- main match container -->
   <div class="matches container">
+
+    <!-- match title container -->
     <div class="matches__titleContent">
       <h1 class="matches__header">Matches</h1>
       <img src="../../assets/ball.png" alt="" height="60px" />
     </div>
   
+    <!-- all matches title -->
     <p class="matches__playedSoFar">All Matches Played</p>
   
+    <!-- matches input data-->
     <div class="matches__inputs container">
+
+      <!-- getting date input from user -->
       <div class="matches__textField">
         <form class="form-inline">
           <div class="form-group mx-sm-3 mb-2">
@@ -31,12 +40,15 @@
         </form>
       </div>
   
+      <!-- display the selected current season -->
       <div class="matches__season">
         <p>Season</p>
         <p>{{ currentSeason }}</p>
       </div>
   
+      <!-- matches buttons -->
       <div class="matches__btn">
+
         <!-- drop down season -->
         <div class="btn-group season">
           <button
@@ -73,7 +85,11 @@
     <div class="matches__list container" *ngIf="!loadingContent">
       <!-- each match card -->
       <div class="matches__matchCard" *ngFor="let match of matches; index as i">
+
+        <!-- details for club one -->
         <div class="matches__club1">
+
+          <!-- club logo -->
           <div>
             <img
               src="../../assets/logo/{{ clubLogo[i] }}.png"
@@ -82,6 +98,8 @@
               alt=""
             />
           </div>
+
+          <!-- club details -->
           <div class="match__clubContent">
             <h1>{{ match.participatedCLubName }}</h1>
             <p class="match__date">
@@ -94,11 +112,15 @@
           </div>
         </div>
   
+        <!-- VS -->
         <div class="matches__versus">
           <p>VS</p>
         </div>
   
+        <!-- details of club two -->
         <div class="matches__club2">
+
+          <!-- club details -->
           <div class="match__clubContent">
             <h1>{{ match.opponentClubName }}</h1>
             <p class="match__date">
@@ -109,6 +131,8 @@
             <p class="match__type">{{ match.matchType }}</p>
             <p class="match__score">{{ match.goalReceived }}</p>
           </div>
+
+          <!-- club logo -->
           <div>
             <img
               src="../../assets/logo/{{ clubLogo[i + 2] }}.png"
@@ -120,9 +144,12 @@
         </div>
       </div>
     </div>
+
+    <!-- displaying the loading gif -->
     <div class="container loading" *ngIf="loadingContent">
       <img src="../../assets/loading.gif" alt="" />
     </div>
+    
   </div>
   <br />
   <br />

@@ -1,12 +1,16 @@
 <div class="welcome">
-  <!-- The video -->
+  <!-- The background video -->
   <video [muted]="true" autoplay playsinline loop id="myVideo">
     <source
       src="../../assets/Leo Messi - Dribbling Skills In Slow Motion_1.mp4"
       type="video/mp4"
     />
   </video>
+
+  <!-- main container -->
   <div class="welcome_mainContainer">
+
+    <!-- top section -->
     <div class="welcome__sectionTop">
       <img
         src="../../assets/premierLeagueWelcome.png"
@@ -20,6 +24,7 @@
       />
     </div>
 
+    <!-- bottom section -->
     <div class="welcome__sectionBottom">
       <div class="welcome__button">
         <button (click)="handleWelcome()" mat-raised-button routerLink="/about">
@@ -30,5 +35,7 @@
         <small>© PREMIER LEAGUE 2020</small>
       </div>
     </div>
+
   </div>
+  
 </div>

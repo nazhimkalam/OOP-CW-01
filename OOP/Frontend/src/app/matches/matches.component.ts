@@ -8,16 +8,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./matches.component.css'],
 })
 export class MatchesComponent implements OnInit {
-  public matches: MatchPlayed[]; // stores all the matches
-  public currentSeason: string; // this is a must
-  public seasons: string[]; // other seasons
-  public selectedDate: string; // useSelectedDate
-  public clubLogo: number[]; // contains a random number representing the club logo
+
+  // variables used
+  public matches: MatchPlayed[];
+  public currentSeason: string; 
+  public seasons: string[];
+  public selectedDate: string; 
+  public clubLogo: number[];
   public loadingContent: boolean;
   public audio: any;
   public disableSearchBtn: boolean;
   public displayCelebration: string;
 
+  // constructor for initialization
   constructor(private _footballService: FootballInteractionService) {
     this.currentSeason = '2020-21';
     this.selectedDate = '';
@@ -27,7 +30,9 @@ export class MatchesComponent implements OnInit {
     this.displayCelebration = 'noCelebration';
   }
 
+  // runs just after the constructor
   ngOnInit(): void {
+
     // we have to set the seasons here when the user loads this page
     this._footballService
       .getSeasons()
@@ -41,18 +46,21 @@ export class MatchesComponent implements OnInit {
         this.generateClubLogo();
         this.loadingContent = false;
       });
+
   }
 
+  // this method runs when the user selects a season
   handleClickedSeason(clickedSeason: string) {
+    // changes the variables accordingly when season changes
     this.selectedDate = '';
-    // get the new records by season clicked
     this.audio = new Audio();
     this.audio.src = '../../assets/matchPlayed.mp3';
     this.audio.load();
     this.audio.play();
-
     this.loadingContent = true;
     this.currentSeason = clickedSeason;
+
+    // get the new records by season clicked
     this._footballService
       .getMatchesBySeason(clickedSeason)
       .subscribe((data) => {
@@ -62,15 +70,17 @@ export class MatchesComponent implements OnInit {
       });
   }
 
-  // this is for the search btn
+  // this method runs when the user selects a date
   handleSearchSelectedDate() {
+    // changes the variables accordingly when season changes
     this.audio = new Audio();
     this.audio.src = '../../assets/matchPlayed.mp3';
     this.audio.load();
     this.audio.play();
     this.disableSearchBtn = true;
-
     this.loadingContent = true;
+
+    // using the service to get the matches by date
     this._footballService
       .getMatchesByDate(this.selectedDate, this.currentSeason)
       .subscribe((data) => {
@@ -87,16 +97,18 @@ export class MatchesComponent implements OnInit {
     this.selectedDate = date;
   }
 
-  // Generate match
+  // this method runs when the user clicks the generate button
   generateMatch() {
+    // changes the variables accordingly when season changes
     this.selectedDate = '';
     this.displayCelebration = 'celebration__theme';
     this.audio = new Audio();
     this.audio.src = '../../assets/matchPlayed.mp3';
     this.audio.load();
     this.audio.play();
-
     this.loadingContent = true;
+
+    // using the service to get all the matches with the generated match
     this._footballService
       .getGeneratedMatchesBySeason(this.currentSeason)
       .subscribe((data) => {
@@ -121,7 +133,6 @@ export class MatchesComponent implements OnInit {
       this.clubLogo.push(Math.floor(Math.random() * Math.floor(23)) + 1);
       this.clubLogo.push(Math.floor(Math.random() * Math.floor(23)) + 1);
     });
-    console.log(this.matches.length);
-    console.log(this.clubLogo);
+   
   }
 }
