@@ -14,7 +14,7 @@
       <!-- about link -->
       <li class="nav-item">
         <a
-          class="nav-link {{ activeLinks[0] }}"
+          class="nav-link {{ getActiveLinks()[0] }}"
           (click)="onHandleClick('about')"
           routerLink="/about"
           >ABOUT
@@ -24,7 +24,7 @@
       <!-- table link -->
       <li class="nav-item">
         <a
-          class="nav-link {{ activeLinks[1] }}"
+          class="nav-link {{ getActiveLinks()[1] }}"
           (click)="onHandleClick('table')"
           routerLink="/table"
           >TABLE</a
@@ -34,7 +34,7 @@
       <!-- matches link -->
       <li class="nav-item">
         <a
-          class="nav-link {{ activeLinks[2] }}"
+          class="nav-link {{ getActiveLinks()[2] }}"
           (click)="onHandleClick('matches')"
           routerLink="/matches"
           >MATCHES</a
@@ -44,7 +44,7 @@
       <!-- players link -->
       <li class="nav-item">
         <a
-          class="nav-link {{ activeLinks[3] }}"
+          class="nav-link {{ getActiveLinks()[3] }}"
           (click)="onHandleClick('players')"
           routerLink="/players"
           >PLAYERS</a

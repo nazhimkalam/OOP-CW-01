@@ -10,18 +10,18 @@ import { Component, OnInit } from '@angular/core';
 export class MatchesComponent implements OnInit {
 
   // variables used
-  public matches: MatchPlayed[];
-  public currentSeason: string; 
-  public seasons: string[];
-  public selectedDate: string; 
-  public clubLogo: number[];
-  public loadingContent: boolean;
-  public audio: any;
-  public disableSearchBtn: boolean;
-  public displayCelebration: string;
+  private matches: MatchPlayed[];
+  private currentSeason: string; 
+  private seasons: string[];
+  private selectedDate: string; 
+  private clubLogo: number[];
+  private loadingContent: boolean;
+  private audio: any;
+  private disableSearchBtn: boolean;
+  private displayCelebration: string;
 
   // constructor for initialization
-  constructor(private _footballService: FootballInteractionService) {
+  public constructor(private _footballService: FootballInteractionService) {
     this.currentSeason = '2020-21';
     this.selectedDate = '';
     this.matches = [];
@@ -31,7 +31,7 @@ export class MatchesComponent implements OnInit {
   }
 
   // runs just after the constructor
-  ngOnInit(): void {
+  public ngOnInit(): void {
 
     // we have to set the seasons here when the user loads this page
     this._footballService
@@ -50,7 +50,7 @@ export class MatchesComponent implements OnInit {
   }
 
   // this method runs when the user selects a season
-  handleClickedSeason(clickedSeason: string) {
+  public handleClickedSeason(clickedSeason: string) {
     // changes the variables accordingly when season changes
     this.selectedDate = '';
     this.audio = new Audio();
@@ -71,7 +71,7 @@ export class MatchesComponent implements OnInit {
   }
 
   // this method runs when the user selects a date
-  handleSearchSelectedDate() {
+  public handleSearchSelectedDate() {
     // changes the variables accordingly when season changes
     this.audio = new Audio();
     this.audio.src = '../../assets/matchPlayed.mp3';
@@ -92,13 +92,13 @@ export class MatchesComponent implements OnInit {
   }
 
   // setting the selected data by the user to the variable for searching
-  setSelectedDate(date: string) {
+  public setSelectedDate(date: string) {
     this.disableSearchBtn = false;
     this.selectedDate = date;
   }
 
   // this method runs when the user clicks the generate button
-  generateMatch() {
+  public generateMatch() {
     // changes the variables accordingly when season changes
     this.selectedDate = '';
     this.displayCelebration = 'celebration__theme';
@@ -126,7 +126,7 @@ export class MatchesComponent implements OnInit {
   }
 
   // generate random clubLogo
-  generateClubLogo() {
+  public generateClubLogo() {
     this.clubLogo = [];
     this.matches.forEach((match) => {
       this.clubLogo.push(Math.floor(Math.random() * Math.floor(23)) + 1);
@@ -135,4 +135,74 @@ export class MatchesComponent implements OnInit {
     });
    
   }
+
+
+    // setters and getters
+    public setMatches(data: MatchPlayed[]){
+      this.matches = data;
+    }
+  
+    public getMatches(){
+      return this.matches;
+    }
+  
+    public setCurrentSeason(data: string){
+      this.currentSeason = data;
+    }
+  
+    public getCurrentSeason(){
+      return this.currentSeason;
+    }
+  
+    public setSeason(data: string[]){
+      this.seasons = data;
+    }
+  
+    public getSeason(){
+      return this.seasons;
+    }
+  
+    public getSelectedDate(){
+      return this.selectedDate;
+    }
+  
+    public setClubLogo(data: number[]){
+      this.clubLogo = data;
+    }
+  
+    public getClubLogo(){
+      return this.clubLogo;
+    }
+  
+    public setLoadingContent(data: boolean){
+      this.loadingContent = data;
+    }
+  
+    public getLoadingContent(){
+      return this.loadingContent;
+    }
+  
+    public setAudio(data: string){
+      this.audio = data;
+    }
+  
+    public getAudio(){
+      return this.audio;
+    }
+  
+    public setDisableSearchButton(data: boolean){
+      this.disableSearchBtn = data;
+    }
+  
+    public getDisableSearchButton(){
+      return this.disableSearchBtn;
+    }
+  
+    public setDisplayCelebration(data: string){
+      this.displayCelebration = data;
+    }
+  
+    public getDisplayCelebration(){
+      return this.displayCelebration;
+    }
 }

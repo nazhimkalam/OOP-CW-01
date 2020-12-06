@@ -10,16 +10,16 @@ import { MatchPlayed } from '../interfaces/MatchPlayed';
 export class FootballInteractionService {
 
   // variables used
-  public allSeasonsURL: string;
-  public tablesRecordsSortByPoints: string;
-  public tablesRecordsSortByWins: string;
-  public tablesRecordsSortByGoals: string;
-  public matchesBySeason: string;
-  public matchesByDate: string;
-  public matchGeneration: string;
+  private allSeasonsURL: string;
+  private tablesRecordsSortByPoints: string;
+  private tablesRecordsSortByWins: string;
+  private tablesRecordsSortByGoals: string;
+  private matchesBySeason: string;
+  private matchesByDate: string;
+  private matchGeneration: string;
 
   // constructor
-  constructor(private http: HttpClient) {
+  public constructor(private http: HttpClient) {
     this.allSeasonsURL = 'http://localhost:9000/seasons/all';
     this.tablesRecordsSortByPoints =
       'http://localhost:9000/records/sortPoints/';
@@ -32,43 +32,43 @@ export class FootballInteractionService {
   }
 
   // get all the seasons
-  getSeasons(): Observable<string[]> {
+  public getSeasons(): Observable<string[]> {
     return this.http.get<string[]>(this.allSeasonsURL);
   }
 
   // get records sorted by points
-  getSortedByPoints(season: string): Observable<FootballClub[]> {
+  public getSortedByPoints(season: string): Observable<FootballClub[]> {
     return this.http.get<FootballClub[]>(
       this.tablesRecordsSortByPoints + season
     );
   }
 
   // get records sorted by wins
-  getSortedByWins(season: string): Observable<FootballClub[]> {
+  public getSortedByWins(season: string): Observable<FootballClub[]> {
     return this.http.get<FootballClub[]>(this.tablesRecordsSortByWins + season);
   }
 
   // get records sorted by goals
-  getSortedByGoals(season: string): Observable<FootballClub[]> {
+  public getSortedByGoals(season: string): Observable<FootballClub[]> {
     return this.http.get<FootballClub[]>(
       this.tablesRecordsSortByGoals + season
     );
   }
 
   // get matches for a season
-  getMatchesBySeason(season: string): Observable<MatchPlayed[]> {
+  public getMatchesBySeason(season: string): Observable<MatchPlayed[]> {
     return this.http.get<MatchPlayed[]>(this.matchesBySeason + season);
   }
 
   // get matches by date
-  getMatchesByDate(date: string, season: string): Observable<MatchPlayed[]> {
+  public getMatchesByDate(date: string, season: string): Observable<MatchPlayed[]> {
     return this.http.get<MatchPlayed[]>(
       this.matchesByDate + season + '/date/' + date
     );
   }
 
   // generate a match and get the result
-  getGeneratedMatchesBySeason(season: string): Observable<MatchPlayed[]> {
+  public getGeneratedMatchesBySeason(season: string): Observable<MatchPlayed[]> {
     return this.http.get<MatchPlayed[]>(this.matchGeneration + season);
   }
 }

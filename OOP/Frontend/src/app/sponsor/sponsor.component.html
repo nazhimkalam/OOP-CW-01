@@ -3,7 +3,7 @@
   <div class="sponsors__all">
 
     <!-- container for each sponsor -->
-    <div class="sponsors__each" *ngFor="let sponsor of sponsors">
+    <div class="sponsors__each" *ngFor="let sponsor of getSponsors()">
 
       <!-- image -->
       <img src="{{ sponsor.imageURL }}" alt="" />

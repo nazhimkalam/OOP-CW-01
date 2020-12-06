@@ -12,10 +12,19 @@ export class Sponsor {
 })
 export class SponsorComponent {
   // variable used
-  public sponsors: Sponsor[];
+  private sponsors: Sponsor[];
+
+  // setter and getter
+  public getSponsors(){
+    return this.sponsors;
+  }
+
+  public setSponsors(data: Sponsor[]){
+    this.sponsors = data;
+  }
 
   // constructor
-  constructor() {
+  public constructor() {
     // initializing the sponsor
     this.sponsors = [
       new Sponsor('../../assets/sponsorships/eaSports.png', 'Lead Partner'),

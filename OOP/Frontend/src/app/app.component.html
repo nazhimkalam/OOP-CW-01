@@ -1,11 +1,11 @@
 <!-- this is the nav bar -->
-<app-nav-bar *ngIf="visibleNavFooter"></app-nav-bar>
+<app-nav-bar *ngIf="getVisibleNavFooter()"></app-nav-bar>
 
 <!-- this is the router outlet for routing of the pages/ components -->
 <router-outlet></router-outlet>
 
 <!-- this is the sponsor bottom banner -->
-<app-sponsor *ngIf="visibleNavFooter"></app-sponsor>
+<app-sponsor *ngIf="getVisibleNavFooter()"></app-sponsor>
 
 <!-- this is the footer -->
-<app-footer *ngIf="visibleNavFooter"></app-footer>
+<app-footer *ngIf="getVisibleNavFooter()"></app-footer>

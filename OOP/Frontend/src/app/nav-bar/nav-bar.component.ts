@@ -7,21 +7,39 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavBarComponent implements OnInit {
   // variables 
-  public linkNames: string[];
-  public activeLinks: string[];
+  private linkNames: string[];
+  private activeLinks: string[];
+
+  // getters
+  public getLinkNames(){
+    return this.linkNames;
+  }
+
+  public getActiveLinks(){
+    return this.activeLinks;
+  }
+
+  // setters
+  public setLinkNames(data: string[]){
+    this.linkNames = data
+  }
+
+  public setActiveLinks(data: string[]){
+    this.activeLinks = data
+  }
 
   // constructor
-  constructor() {
+  public constructor() {
     this.linkNames = ['about', 'table', 'matches', 'players'];
     this.activeLinks = [];
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.activeLinks[0] = 'active';
   }
 
   // THIS IS TO MAKE THE ACTIVE LINKS VISIBLE IN THE NAV BAR
-  onHandleClick(linkName: string) {
+  public onHandleClick(linkName: string) {
     this.activeLinks = [];
     this.activeLinks[this.linkNames.indexOf(linkName)] = 'active';
   }

@@ -1,5 +1,5 @@
 <!-- main container -->
-<div class={{displayCelebration}}>
+<div class={{getDisplayCelebration()}}>
 
   <!-- main match container -->
   <div class="matches container">
@@ -26,14 +26,14 @@
               class="form-control date__calender"
               id="dateEntered"
               (change)="setSelectedDate($event.target.value)"
-              value="{{ selectedDate }}"
+              value="{{ getSelectedDate() }}"
             />
           </div>
           <button
             type="button"
             class="btn btn-sm mb-2 matches__textField__searchBtn"
             (click)="handleSearchSelectedDate()"
-            [disabled] = "disableSearchBtn"
+            [disabled] = "getDisableSearchButton()"
           >
             Search
           </button>
@@ -43,7 +43,7 @@
       <!-- display the selected current season -->
       <div class="matches__season">
         <p>Season</p>
-        <p>{{ currentSeason }}</p>
+        <p>{{ getCurrentSeason() }}</p>
       </div>
   
       <!-- matches buttons -->
@@ -63,7 +63,7 @@
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <a
               class="dropdown-item"
-              *ngFor="let season of seasons"
+              *ngFor="let season of getSeason()"
               (click)="handleClickedSeason(season)"
               >{{ season }}</a
             >
@@ -82,9 +82,9 @@
     </div>
   
     <!-- main card container -->
-    <div class="matches__list container" *ngIf="!loadingContent">
+    <div class="matches__list container" *ngIf="!getLoadingContent()">
       <!-- each match card -->
-      <div class="matches__matchCard" *ngFor="let match of matches; index as i">
+      <div class="matches__matchCard" *ngFor="let match of getMatches(); index as i">
 
         <!-- details for club one -->
         <div class="matches__club1">
@@ -92,7 +92,7 @@
           <!-- club logo -->
           <div>
             <img
-              src="../../assets/logo/{{ clubLogo[i] }}.png"
+              src="../../assets/logo/{{ getClubLogo()[i] }}.png"
               class="match__logo"
               height="75px"
               alt=""
@@ -135,7 +135,7 @@
           <!-- club logo -->
           <div>
             <img
-              src="../../assets/logo/{{ clubLogo[i + 2] }}.png"
+              src="../../assets/logo/{{ getClubLogo()[i + 2] }}.png"
               class="match__logo"
               height="75px"
               alt=""
@@ -146,10 +146,10 @@
     </div>
 
     <!-- displaying the loading gif -->
-    <div class="container loading" *ngIf="loadingContent">
+    <div class="container loading" *ngIf="getLoadingContent()">
       <img src="../../assets/loading.gif" alt="" />
     </div>
-    
+
   </div>
   <br />
   <br />

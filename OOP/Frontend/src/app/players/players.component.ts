@@ -18,10 +18,20 @@ export class Player {
 
 export class PlayersComponent {
   // variable used
-  public players: Player[];
+  private players: Player[];
+
+  // getter 
+  public getPlayers(){
+    return this.players;
+  }
+
+  // setter
+  public setPlayers(data: Player[]){
+    this.players = data;
+  }
 
   // constructor
-  constructor() {
+  public constructor() {
 
     // initialization of the players list
     this.players= [
