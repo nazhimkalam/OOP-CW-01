@@ -25,20 +25,25 @@ public class PremierLeagueTester
     @Test
     public void testCreatingClub(){
         // TESTING FOR CLUBS AS VALID UP TO 20 CLUBS
-        for (int i = 0; i < 20; i++) {
-            String result = obj.createClub("Juventus","Spain","Nazhim",null,
-                    "normal");
-            assertEquals(" Clubs Successfully added!",result);
-            System.out.println("Club number: " + i);
+        String[] clubType = {"normal","university","school"};
+        String[] schoolUniName = {null, "IIT", "RoyalInstitute"};
+
+        for (int index = 0; index < clubType.length; index++) {
+            for (int i = 0; i < 20; i++) {
+                String result = obj.createClub("Juventus","Spain","Nazhim",schoolUniName[index],
+                        clubType[index]);
+                assertEquals(" Clubs Successfully added!",result);
+                System.out.println("Club number: " + i);
+            }
+
+            // TESTING FOR AN INVALID CLUB WHEN ADDED MORE THAN 20
+            String expectedResult = obj.createClub("Juventus","Spain","Nazhim",schoolUniName[index],
+                    clubType[index]);
+            assertEquals(" Sorry there is no room for a new club, the maximum number of club limit has been reached!",expectedResult);
+
+            // CLEARING THE CONTENT OF THE obj FOR OTHER TESTINGS
+            PremierLeagueManager.setPremierLeagueFootballClubList(new ArrayList<>());
         }
-
-        // TESTING FOR AN INVALID CLUB WHEN ADDED MORE THAN 20
-        String result = obj.createClub("Juventus","Spain","Nazhim",null,
-                "normal");
-        assertEquals(" Sorry there is no room for a new club, the maximum number of club limit has been reached!",result);
-
-        // CLEARING THE CONTENT OF THE obj FOR OTHER TESTINGS
-        PremierLeagueManager.setPremierLeagueFootballClubList(new ArrayList<>());
     }
 
     @Test
@@ -48,14 +53,14 @@ public class PremierLeagueTester
         obj.createClub("Juventus","Spain","Nazhim",null, "normal");
 
         // getting the details of the added football club
-        FootballClub addedClub = PremierLeagueManager.getPremierLeagueFootballClubList().get(0);
+        FootballClub actualResult = PremierLeagueManager.getPremierLeagueFootballClubList().get(0);
 
-        FootballClub removedFootballClub = (FootballClub) obj.deleteCLub("Juventus");
-        assertEquals(addedClub, removedFootballClub);
+        FootballClub expectedResult = (FootballClub) obj.deleteCLub("Juventus");
+        assertEquals(actualResult, expectedResult);
 
         // TESTING WITH INVALID CLUB TO BE REMOVED
-        removedFootballClub = (FootballClub) obj.deleteCLub("Juventus");
-        assertNull(removedFootballClub);
+        expectedResult = (FootballClub) obj.deleteCLub("Real Madird");
+        assertNull(expectedResult);
 
         // CLEARING THE CONTENT OF THE obj FOR OTHER TESTINGS
         PremierLeagueManager.setPremierLeagueFootballClubList(new ArrayList<>());
@@ -65,12 +70,12 @@ public class PremierLeagueTester
     public void testDisplayingStats(){
         // TESTING THE DISPLAY STATS METHOD WITH A VALID CLUB NAME ENTERED
         obj.createClub("Juventus","Spain","Nazhim",null, "normal");
-        String result = obj.displayStats("Juventus");
-        assertEquals(" Result Displayed", result);
+        String expectedResult = obj.displayStats("Juventus");
+        assertEquals(" Result Displayed", expectedResult);
 
         // TESTING THE DISPLAY STATS METHOD WITH AN INVALID CLUB NAME ENTERED
-        result = obj.displayStats("Fake Club");
-        assertEquals("\n Sorry, there is no club with the given name 'Fake Club'", result);
+        expectedResult = obj.displayStats("Fake Club");
+        assertEquals("\n Sorry, there is no club with the given name 'Fake Club'", expectedResult);
 
         // CLEARING THE CONTENT OF THE obj FOR OTHER TESTINGS
         PremierLeagueManager.setPremierLeagueFootballClubList(new ArrayList<>());
@@ -78,54 +83,54 @@ public class PremierLeagueTester
 
 
     @Test
-    public void testAddMatch()
+    public void testAddPlayedMatch()
     {
         // Testing adding match into a club
         obj.createClub("barca","spain","nazhim",null,"normal");
         obj.createClub("juventus","japan","hashim",null,"normal");
         obj.createClub("realMadrid","australia","saman",null,"normal");
         DateMatch date = new DateMatch();
-        String result;
+        String expectedResult;
 
         // TESTING FOR A VALID MATCH ENTERED FOR A SEASON
-        result = obj.addPlayedMatch(
+        expectedResult = obj.addPlayedMatch(
                 "2020-21","realMadrid","juventus",1,2,
                 date,"away"
         );
-        assertEquals("\n Match Successfully added! \n", result);
+        assertEquals("\n Match Successfully added! \n", expectedResult);
 
         // TESTING FOR MULTIPLE VALID MATCHES ENTERED FOR A SEASON (UNTIL 38 PER CLUB)
         for (int i = 0; i < 37; i++) {
-            result = obj.addPlayedMatch(
+            expectedResult = obj.addPlayedMatch(
                     "2020-21","realMadrid","juventus",1,2,
                     date,"away"
             );
-            assertEquals("\n Match Successfully added! \n", result);
+            assertEquals("\n Match Successfully added! \n", expectedResult);
         }
 
         // TESTING FOR THE 39th MATCH FOR A CLUB FOR A SEASON
-        result = obj.addPlayedMatch(
+        expectedResult = obj.addPlayedMatch(
                 "2020-21","realMadrid","juventus",1,2,
                 date,"away"
         );
-        assertEquals("\n Sorry, both the clubs have reached the maximum number of matches played!", result);
+        assertEquals("\n Sorry, both the clubs have reached the maximum number of matches played!", expectedResult);
 
 
         // TESTING FOR A CLUB IN DIFFERENT SEASONS
         for (int i = 0; i < 38; i++) {
-            result = obj.addPlayedMatch(
+            expectedResult = obj.addPlayedMatch(
                     "2019-20","realMadrid","juventus",1,2,
                     date,"away"
             );
-            assertEquals("\n Match Successfully added! \n", result);
+            assertEquals("\n Match Successfully added! \n", expectedResult);
         }
 
         // TESTING FOR THE 39TH MATCH ADDED FOR THE CLUB WITH A DIFFERENT SEASON
-        result = obj.addPlayedMatch(
+        expectedResult = obj.addPlayedMatch(
                 "2019-20","realMadrid","juventus",1,2,
                 date,"away"
         );
-        assertEquals("\n Sorry, both the clubs have reached the maximum number of matches played!", result);
+        assertEquals("\n Sorry, both the clubs have reached the maximum number of matches played!", expectedResult);
 
         // TESTING FOR A NUMBER OF CLUBS INVOLVED
         obj.addPlayedMatch(
@@ -134,17 +139,17 @@ public class PremierLeagueTester
         );
 
         for (int i = 0; i < 37; i++) {
-            result = obj.addPlayedMatch(
+            expectedResult = obj.addPlayedMatch(
                     "2018-19","juventus","realMadrid",1,2,
                     date,"home"
             );
-            assertEquals("\n Match Successfully added! \n",result);
+            assertEquals("\n Match Successfully added! \n",expectedResult);
         }
-        result = obj.addPlayedMatch(
+        expectedResult = obj.addPlayedMatch(
                 "2018-19","realMadrid","juventus",1,2,
                 date,"home"
         );
-        assertEquals("\n Sorry, 'juventus' has reached the maximum number of matches played!",result);
+        assertEquals("\n Sorry, 'juventus' has reached the maximum number of matches played!",expectedResult);
 
         // CLEARING THE CONTENT OF THE obj FOR OTHER TESTINGS
         PremierLeagueManager.setPremierLeagueFootballClubList(new ArrayList<>());
@@ -153,8 +158,8 @@ public class PremierLeagueTester
     @Test
     public void testSavingDataIntoFile(){
         // Testing the saving the data into the file
-        String result = obj.saveDataIntoFile();
-        assertEquals("\n Saving the data . . .\n Successfully saved!", result);
+        String expectedResult = obj.saveDataIntoFile();
+        assertEquals("\n Saving the data . . .\n Successfully saved!", expectedResult);
 
     }
 
@@ -163,12 +168,12 @@ public class PremierLeagueTester
         // Testing the loading data from the file method
 
         // Assuming that the file path is correct and file contains data
-        String result = PremierLeagueManager.loadingData();
+        String expectedResult = PremierLeagueManager.loadingData();
 //        assertEquals("\n Successfully loaded all the data\n", result);
 
         // Assuming that the file contains no data to read
         assertEquals(" Exception when performing read/write operations to the file!" +
-                "\n No permission to read/write from or to the file", result);
+                "\n No permission to read/write from or to the file", expectedResult);
 
     }
 
@@ -199,7 +204,9 @@ public class PremierLeagueTester
            System.setIn(in);
            assertEquals(clubNames[i], ConsoleApplication.checkingForValidClub(input));
         }
-//        assertEquals("JuventusFake", ConsoleApplication.checkingForValidClub(input)); This throws error for invalid
+
+       // This throws error for invalid clubName as expected
+       // assertEquals("JuventusFake", ConsoleApplication.checkingForValidClub(input));
     }
 
     @Test
@@ -207,12 +214,13 @@ public class PremierLeagueTester
         // testing for the validation of integers entered
 
         for (int i = 0; i < 100; i++) {
-            int input = i;
-            InputStream in = new ByteArrayInputStream(String.valueOf(input).getBytes());
+            InputStream in = new ByteArrayInputStream(String.valueOf(i).getBytes());
             System.setIn(in);
             assertEquals(i, ConsoleApplication.validatingIntegers("Testing integers"));
         }
-//        assertEquals(14, ConsoleApplication.validatingIntegers("Testing integers")); Invalid number throws error
+
+        // Invalid number throws error for invalid integer as expected
+       //  assertEquals(14, ConsoleApplication.validatingIntegers("Testing integers"));
     }
 
     @Test
@@ -227,6 +235,12 @@ public class PremierLeagueTester
             System.setIn(in);
             assertEquals(seasons[i], ConsoleApplication.validatingSeason());
         }
+
+        // Invalid Season Format String Entered, this throws an error as expected
+//        String invalidSeason = "21-2020";
+//        InputStream in = new ByteArrayInputStream(invalidSeason.getBytes());
+//        System.setIn(in);
+//        assertEquals("21-2020", ConsoleApplication.validatingSeason());
     }
 
     @Test

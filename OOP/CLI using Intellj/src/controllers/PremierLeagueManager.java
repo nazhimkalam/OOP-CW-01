@@ -810,7 +810,7 @@ public class PremierLeagueManager implements LeagueManager {
         ObjectOutputStream objectOutputStream = null;
 
         try {
-            // saving the data into the fi;e
+            // saving the data into the file
             fileOutputStream = new FileOutputStream(file);
             objectOutputStream = new ObjectOutputStream(fileOutputStream);
             objectOutputStream.writeObject(premierLeagueFootballClubList);
