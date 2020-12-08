@@ -240,8 +240,8 @@ public class ConsoleApplication {
         possibleSeason[1] = (year) + "-" + (lastTwoDigitsOfTheYear+1);
 
         // Displaying the season options for the entered year of the match
-        for (int i = 0; i < possibleSeason.length; i++) {
-            System.out.println("  " + (i+1) + ". " + possibleSeason[i]);
+        for (int index = 0; index < possibleSeason.length; index++) {
+            System.out.println("  " + (index+1) + ". " + possibleSeason[index]);
         }
 
         // getting the season user input an validating it to check if an integer is entered
@@ -369,10 +369,10 @@ public class ConsoleApplication {
         boolean isValidClubName = false;
 
         // DISPLAY RESULT OF THE ITEM TO BE REMOVED
-        for (int i = 0; i < PremierLeagueManager.getPremierLeagueFootballClubList().size(); i++) {
-            if(PremierLeagueManager.getPremierLeagueFootballClubList().get(i).getName().equalsIgnoreCase(clubName)){
+        for (int index = 0; index < PremierLeagueManager.getPremierLeagueFootballClubList().size(); index++) {
+            if(PremierLeagueManager.getPremierLeagueFootballClubList().get(index).getName().equalsIgnoreCase(clubName)){
                 System.out.println("\n These are some details of the club you wanted to be deleted \n");
-                System.out.println(PremierLeagueManager.getPremierLeagueFootballClubList().get(i));
+                System.out.println(PremierLeagueManager.getPremierLeagueFootballClubList().get(index));
                 isValidClubName = true;
 
                 // ASK FOR CONFIRMATION

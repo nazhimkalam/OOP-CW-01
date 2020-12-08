@@ -29,11 +29,11 @@ public class PremierLeagueTester
         String[] schoolUniName = {null, "IIT", "RoyalInstitute"};
 
         for (int index = 0; index < clubType.length; index++) {
-            for (int i = 0; i < 20; i++) {
+            for (int num = 0; num < 20; num++) {
                 String result = obj.createClub("Juventus","Spain","Nazhim",schoolUniName[index],
                         clubType[index]);
                 assertEquals(" Clubs Successfully added!",result);
-                System.out.println("Club number: " + i);
+                System.out.println("Club number: " + num);
             }
 
             // TESTING FOR AN INVALID CLUB WHEN ADDED MORE THAN 20
@@ -100,7 +100,7 @@ public class PremierLeagueTester
         assertEquals("\n Match Successfully added! \n", expectedResult);
 
         // TESTING FOR MULTIPLE VALID MATCHES ENTERED FOR A SEASON (UNTIL 38 PER CLUB)
-        for (int i = 0; i < 37; i++) {
+        for (int index = 0; index < 37; index++) {
             expectedResult = obj.addPlayedMatch(
                     "2020-21","realMadrid","juventus",1,2,
                     date,"away"
@@ -117,7 +117,7 @@ public class PremierLeagueTester
 
 
         // TESTING FOR A CLUB IN DIFFERENT SEASONS
-        for (int i = 0; i < 38; i++) {
+        for (int index = 0; index < 38; index++) {
             expectedResult = obj.addPlayedMatch(
                     "2019-20","realMadrid","juventus",1,2,
                     date,"away"
@@ -138,7 +138,7 @@ public class PremierLeagueTester
                 date,"home"
         );
 
-        for (int i = 0; i < 37; i++) {
+        for (int index = 0; index < 37; index++) {
             expectedResult = obj.addPlayedMatch(
                     "2018-19","juventus","realMadrid",1,2,
                     date,"home"
@@ -198,11 +198,11 @@ public class PremierLeagueTester
                 "normal");
 
        String[] clubNames = {"Juventus", "Barca", "Titan Fc"};
-       for (int i = 0; i < 3; i++) {
-           String input = clubNames[i];
+       for (int index = 0; index < 3; index++) {
+           String input = clubNames[index];
            InputStream in = new ByteArrayInputStream(input.getBytes());
            System.setIn(in);
-           assertEquals(clubNames[i], ConsoleApplication.checkingForValidClub(input));
+           assertEquals(clubNames[index], ConsoleApplication.checkingForValidClub(input));
         }
 
        // This throws error for invalid clubName as expected
@@ -213,10 +213,10 @@ public class PremierLeagueTester
     public void testingValidatingIntegers(){
         // testing for the validation of integers entered
 
-        for (int i = 0; i < 100; i++) {
-            InputStream in = new ByteArrayInputStream(String.valueOf(i).getBytes());
+        for (int index = 0; index < 100; index++) {
+            InputStream in = new ByteArrayInputStream(String.valueOf(index).getBytes());
             System.setIn(in);
-            assertEquals(i, ConsoleApplication.validatingIntegers("Testing integers"));
+            assertEquals(index, ConsoleApplication.validatingIntegers("Testing integers"));
         }
 
         // Invalid number throws error for invalid integer as expected
@@ -229,11 +229,11 @@ public class PremierLeagueTester
         // When testing with invalid data the program throws exception which is common
 
         String[] seasons = {"2020-21", "2019-20", "2018-19", "2017-18", "2016-17"};
-        for (int i = 0; i < 5; i++) {
-            String input = seasons[i];
+        for (int index = 0; index < 5; index++) {
+            String input = seasons[index];
             InputStream in = new ByteArrayInputStream(input.getBytes());
             System.setIn(in);
-            assertEquals(seasons[i], ConsoleApplication.validatingSeason());
+            assertEquals(seasons[index], ConsoleApplication.validatingSeason());
         }
 
         // Invalid Season Format String Entered, this throws an error as expected
@@ -249,11 +249,11 @@ public class PremierLeagueTester
         // When testing with invalid data the program throws exception which is common
 
         String[] validStrings = {"Nazhim", "Kalam", "Mohammed", "Saman", "Lakshan"};
-        for (int i = 0; i < 5; i++) {
-            String input = validStrings[i];
+        for (int index = 0; index < 5; index++) {
+            String input = validStrings[index];
             InputStream in = new ByteArrayInputStream(input.getBytes());
             System.setIn(in);
-            assertEquals(validStrings[i], ConsoleApplication.validateString("Validating Strings"));
+            assertEquals(validStrings[index], ConsoleApplication.validateString("Validating Strings"));
         }
     }
 

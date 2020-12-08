@@ -192,9 +192,9 @@ public class PremierLeagueManager implements LeagueManager {
                 System.out.println("\n =============> PLAYERS - STATISTICS <=============\n");
 
                 // loops and displays the player details
-                for (int i = 0; i < footballClub.getPlayersList().size(); i++) {
-                    System.out.println(" <------------ Player " + ( i + 1 ) + " ---------------->\n");
-                    System.out.println(footballClub.getPlayersList().get(i));
+                for (int index = 0; index < footballClub.getPlayersList().size(); index++) {
+                    System.out.println(" <------------ Player " + ( index + 1 ) + " ---------------->\n");
+                    System.out.println(footballClub.getPlayersList().get(index));
                 }
 
                 // displays the total statistics together from all the seasons together
@@ -337,74 +337,74 @@ public class PremierLeagueManager implements LeagueManager {
         ArrayList<FootballClub> footballClubsListSeason = new ArrayList<>();
 
         // we add all the clubs, before adding the club remove the matches which aren't related
-        for (int i = 0; i < premierLeagueFootballClubList.size(); i++) {
-            footballClubsListSeason.add((FootballClub) premierLeagueFootballClubList.get(i).clone());
+        for (int index = 0; index < premierLeagueFootballClubList.size(); index++) {
+            footballClubsListSeason.add((FootballClub) premierLeagueFootballClubList.get(index).clone());
 
             int matchIndexLoop = 0;
-            while ( matchIndexLoop < footballClubsListSeason.get(i).getMatchesPlayed().size() ){
-                if(!footballClubsListSeason.get(i).getMatchesPlayed().get(matchIndexLoop).getSeason().equalsIgnoreCase(seasonPlayed)){
+            while ( matchIndexLoop < footballClubsListSeason.get(index).getMatchesPlayed().size() ){
+                if(!footballClubsListSeason.get(index).getMatchesPlayed().get(matchIndexLoop).getSeason().equalsIgnoreCase(seasonPlayed)){
 
                     // update the stats before removing the match
-                    int goalScored = footballClubsListSeason.get(i).getMatchesPlayed().get(matchIndexLoop).getGoalScored();
-                    int goalReceived = footballClubsListSeason.get(i).getMatchesPlayed().get(matchIndexLoop).getGoalReceived();
+                    int goalScored = footballClubsListSeason.get(index).getMatchesPlayed().get(matchIndexLoop).getGoalScored();
+                    int goalReceived = footballClubsListSeason.get(index).getMatchesPlayed().get(matchIndexLoop).getGoalReceived();
 
-                    footballClubsListSeason.get(i).setTotalGoalsDifference(             // updating total goal difference
-                            footballClubsListSeason.get(i).getTotalGoalsDifference() - (goalScored - goalReceived)
+                    footballClubsListSeason.get(index).setTotalGoalsDifference(             // updating total goal difference
+                            footballClubsListSeason.get(index).getTotalGoalsDifference() - (goalScored - goalReceived)
                     );
 
-                    footballClubsListSeason.get(i).setTotalGoalsScored(                 // updating total goal scored
-                            footballClubsListSeason.get(i).getTotalGoalsScored() -
-                                    footballClubsListSeason.get(i).getMatchesPlayed().get(matchIndexLoop).getGoalScored()
+                    footballClubsListSeason.get(index).setTotalGoalsScored(                 // updating total goal scored
+                            footballClubsListSeason.get(index).getTotalGoalsScored() -
+                                    footballClubsListSeason.get(index).getMatchesPlayed().get(matchIndexLoop).getGoalScored()
                     );
 
-                    footballClubsListSeason.get(i).setTotalGoalsReceived(               // updating total goal received
-                            footballClubsListSeason.get(i).getTotalGoalsReceived() -
-                                    footballClubsListSeason.get(i).getMatchesPlayed().get(matchIndexLoop).getGoalReceived()
+                    footballClubsListSeason.get(index).setTotalGoalsReceived(               // updating total goal received
+                            footballClubsListSeason.get(index).getTotalGoalsReceived() -
+                                    footballClubsListSeason.get(index).getMatchesPlayed().get(matchIndexLoop).getGoalReceived()
                     );
 
-                    footballClubsListSeason.get(i).setTotalYellowCards(                // updating total yellow cards
-                            footballClubsListSeason.get(i).getTotalYellowCards() -
-                                    footballClubsListSeason.get(i).getMatchesPlayed().get(matchIndexLoop)
+                    footballClubsListSeason.get(index).setTotalYellowCards(                // updating total yellow cards
+                            footballClubsListSeason.get(index).getTotalYellowCards() -
+                                    footballClubsListSeason.get(index).getMatchesPlayed().get(matchIndexLoop)
                                             .getMatchStats().getYellowCards()
                     );
 
-                    footballClubsListSeason.get(i).setTotalRedCards(                  // updating total red cards
-                            footballClubsListSeason.get(i).getTotalRedCards() -
-                                    footballClubsListSeason.get(i).getMatchesPlayed().get(matchIndexLoop)
+                    footballClubsListSeason.get(index).setTotalRedCards(                  // updating total red cards
+                            footballClubsListSeason.get(index).getTotalRedCards() -
+                                    footballClubsListSeason.get(index).getMatchesPlayed().get(matchIndexLoop)
                                             .getMatchStats().getRedCards()
                     );
 
-                    footballClubsListSeason.get(i).getClubStatistics().setTotalMatchesPlayed(  // update number of matches
-                            footballClubsListSeason.get(i).getClubStatistics().getTotalMatchesPlayed() - 1
+                    footballClubsListSeason.get(index).getClubStatistics().setTotalMatchesPlayed(  // update number of matches
+                            footballClubsListSeason.get(index).getClubStatistics().getTotalMatchesPlayed() - 1
                     );
 
                     if(goalScored > goalReceived){
                                                                             // update wins and points scored
-                        footballClubsListSeason.get(i).getClubStatistics().setTotalWins(
-                                footballClubsListSeason.get(i).getClubStatistics().getTotalWins() - 1
+                        footballClubsListSeason.get(index).getClubStatistics().setTotalWins(
+                                footballClubsListSeason.get(index).getClubStatistics().getTotalWins() - 1
                         );
 
-                        footballClubsListSeason.get(i).getClubStatistics().setTotalPointsScored(
-                                footballClubsListSeason.get(i).getClubStatistics().getTotalPointsScored() - 3
+                        footballClubsListSeason.get(index).getClubStatistics().setTotalPointsScored(
+                                footballClubsListSeason.get(index).getClubStatistics().getTotalPointsScored() - 3
                         );
                     }else if (goalReceived > goalScored){
                                                                             // update defeats
-                        footballClubsListSeason.get(i).getClubStatistics().setTotalDefeats(
-                                footballClubsListSeason.get(i).getClubStatistics().getTotalDefeats() - 1
+                        footballClubsListSeason.get(index).getClubStatistics().setTotalDefeats(
+                                footballClubsListSeason.get(index).getClubStatistics().getTotalDefeats() - 1
                         );
                     }else{
                                                                             // update draws and points scored
-                        footballClubsListSeason.get(i).getClubStatistics().setTotalDraws(
-                                footballClubsListSeason.get(i).getClubStatistics().getTotalDraws() - 1
+                        footballClubsListSeason.get(index).getClubStatistics().setTotalDraws(
+                                footballClubsListSeason.get(index).getClubStatistics().getTotalDraws() - 1
                         );
 
-                        footballClubsListSeason.get(i).getClubStatistics().setTotalPointsScored(
-                                footballClubsListSeason.get(i).getClubStatistics().getTotalPointsScored() - 1
+                        footballClubsListSeason.get(index).getClubStatistics().setTotalPointsScored(
+                                footballClubsListSeason.get(index).getClubStatistics().getTotalPointsScored() - 1
                         );
                     }
 
-                    footballClubsListSeason.get(i).getMatchesPlayed().remove(   // removing the match from the list
-                            footballClubsListSeason.get(i).getMatchesPlayed().get(matchIndexLoop)
+                    footballClubsListSeason.get(index).getMatchesPlayed().remove(   // removing the match from the list
+                            footballClubsListSeason.get(index).getMatchesPlayed().get(matchIndexLoop)
                     );
                 }else{
                     matchIndexLoop++; // incrementing the index to skip that match which should not be removed
@@ -447,19 +447,19 @@ public class PremierLeagueManager implements LeagueManager {
           StringBuilder LEFT_CLUB_COL_SPACE = new StringBuilder();
           StringBuilder RIGHT_CLUB_COL_SPACE = new StringBuilder();
 
-          for (int i = 0; i < 107+lengthOfClubNameTable; i++) {
+          for (int index = 0; index < 107+lengthOfClubNameTable; index++) {
               HORIZONTAL_DASHES.append("-");
           }
-          for (int i = 0; i < 39 + (lengthOfClubNameTable/2); i++) {
+          for (int index = 0; index < 39 + (lengthOfClubNameTable/2); index++) {
               PREMIER_LEAGUE_SPACE_TILE_LEFT.append(" ");
           }
-          for (int i = 0; i < 39 + (lengthOfClubNameTable - (lengthOfClubNameTable/2)); i++) {
+          for (int index = 0; index < 39 + (lengthOfClubNameTable - (lengthOfClubNameTable/2)); index++) {
               PREMIER_LEAGUE_SPACE_TILE_RIGHT.append(" ");
           }
-          for (int i = 0; i < leftClubColSpace; i++) {
+          for (int index = 0; index < leftClubColSpace; index++) {
               LEFT_CLUB_COL_SPACE.append(" ");
           }
-          for (int i = 0; i < rightClubColSpace; i++) {
+          for (int index = 0; index < rightClubColSpace; index++) {
               RIGHT_CLUB_COL_SPACE.append(" ");
           }
 
@@ -473,18 +473,18 @@ public class PremierLeagueManager implements LeagueManager {
           System.out.println(HORIZONTAL_DASHES);
 
           // display the content of the premierLeagueFootball List
-          for (int i = 0; i < seasonFilteredClubs.size(); i++) {
+          for (int index = 0; index < seasonFilteredClubs.size(); index++) {
               StringBuilder clubNameEndSpace = new StringBuilder();
 
-              for (int j = 0; j < 3; j++) {
+              for (int innerIndex = 0; innerIndex < 3; innerIndex++) {
                   clubNameEndSpace.append(" ");
               }
 
               // changing the width of the club name for each row
-              if(seasonFilteredClubs.get(i).getName().length() != lengthOfClubNameTable){
+              if(seasonFilteredClubs.get(index).getName().length() != lengthOfClubNameTable){
                   // the length of the name will anyways be less than lengthOfClubNameTable
-                  int difference = lengthOfClubNameTable - seasonFilteredClubs.get(i).getName().length();
-                  for (int j = 0; j < difference; j++) {
+                  int difference = lengthOfClubNameTable - seasonFilteredClubs.get(index).getName().length();
+                  for (int innerIndex = 0; innerIndex < difference; innerIndex++) {
                       clubNameEndSpace.append(" ");
                   }
               }
@@ -495,37 +495,37 @@ public class PremierLeagueManager implements LeagueManager {
               *  goal difference]
               */
               ArrayList<String> organisedResultList = new ArrayList<>();
-              if(i<9){
-                  organisedResultList.add("0"+(i+1));
+              if(index<9){
+                  organisedResultList.add("0"+(index+1));
               }else{
-                  organisedResultList.add(String.valueOf(i+1));
+                  organisedResultList.add(String.valueOf(index+1));
               }
 
               // getting the stats into an arraylist to organise it
-              for (int j = 0; j < seasonFilteredClubs.get(i).getMainStatistics().size(); j++) {
+              for (int innerIndex = 0; innerIndex < seasonFilteredClubs.get(index).getMainStatistics().size(); innerIndex++) {
 
-                  if(j==7){  // working with the goal difference
-                      if(seasonFilteredClubs.get(i).getMainStatistics().get(j)>-1){
-                          if(seasonFilteredClubs.get(i).getMainStatistics().get(j)<10) {
-                              organisedResultList.add("+0"+seasonFilteredClubs.get(i).getMainStatistics().get(j));
+                  if(innerIndex==7){  // working with the goal difference
+                      if(seasonFilteredClubs.get(index).getMainStatistics().get(innerIndex)>-1){
+                          if(seasonFilteredClubs.get(index).getMainStatistics().get(innerIndex)<10) {
+                              organisedResultList.add("+0"+seasonFilteredClubs.get(index).getMainStatistics().get(innerIndex));
                           }else{
-                              organisedResultList.add("+"+seasonFilteredClubs.get(i).getMainStatistics().get(j));
+                              organisedResultList.add("+"+seasonFilteredClubs.get(index).getMainStatistics().get(innerIndex));
                           }
                       }else{
-                          if(seasonFilteredClubs.get(i).getMainStatistics().get(j)>-10) {
-                              organisedResultList.add("-0"+Math.abs(seasonFilteredClubs.get(i)
-                                      .getMainStatistics().get(j)));
+                          if(seasonFilteredClubs.get(index).getMainStatistics().get(innerIndex)>-10) {
+                              organisedResultList.add("-0"+Math.abs(seasonFilteredClubs.get(index)
+                                      .getMainStatistics().get(innerIndex)));
                           }else{
-                              organisedResultList.add(String.valueOf(seasonFilteredClubs.get(i)
-                                      .getMainStatistics().get(j)));
+                              organisedResultList.add(String.valueOf(seasonFilteredClubs.get(index)
+                                      .getMainStatistics().get(innerIndex)));
                           }
                       }
                   }else{
-                      if(seasonFilteredClubs.get(i).getMainStatistics().get(j)<10){
-                          organisedResultList.add("0"+seasonFilteredClubs.get(i).getMainStatistics().get(j));
+                      if(seasonFilteredClubs.get(index).getMainStatistics().get(innerIndex)<10){
+                          organisedResultList.add("0"+seasonFilteredClubs.get(index).getMainStatistics().get(innerIndex));
                       }else{
-                          organisedResultList.add(String.valueOf(seasonFilteredClubs.get(i)
-                                  .getMainStatistics().get(j)));
+                          organisedResultList.add(String.valueOf(seasonFilteredClubs.get(index)
+                                  .getMainStatistics().get(innerIndex)));
                       }
                   }
               }
@@ -536,7 +536,7 @@ public class PremierLeagueManager implements LeagueManager {
               }
 
               // this is were the table is created
-              System.out.println("|    "+organisedResultList.get(0)+ "    |   "+ seasonFilteredClubs.get(i).getName()
+              System.out.println("|    "+organisedResultList.get(0)+ "    |   "+ seasonFilteredClubs.get(index).getName()
                       + clubNameEndSpace + "|   "+organisedResultList.get(1)+
                       "   | "+organisedResultList.get(2)+"  |  "+
                       organisedResultList.get(3)+"   |  "+
@@ -549,10 +549,10 @@ public class PremierLeagueManager implements LeagueManager {
 
       }else{
           // creating the empty table
-          for (int j = 0; j < 106; j++) {
+          for (int innerIndex = 0; innerIndex < 106; innerIndex++) {
               HORIZONTAL_DASHES.append("-");
           }
-          for (int j = 0; j < 38; j++) {
+          for (int innerIndex = 0; innerIndex < 38; innerIndex++) {
               PREMIER_LEAGUE_SPACE_TILE.append(" ");
           }
 
@@ -564,7 +564,7 @@ public class PremierLeagueManager implements LeagueManager {
           System.out.println(HORIZONTAL_DASHES);
 
           //  creating the empty rows
-          for (int i = 0; i < 10; i++) {
+          for (int index = 0; index < 10; index++) {
               System.out.println("|          |                      |        |     |       |      |           " +
                       "  |                 |        |");
           }
