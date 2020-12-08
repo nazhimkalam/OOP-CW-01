@@ -16,6 +16,8 @@ import java.util.Scanner;
 /*
  *   ASSUMPTIONS:
  *   --> ALL FOOTBALL CLUBS SHOULD HAVE UNIQUE NAMES
+ *   --> MOSTLY PREFERRED THAT MATCHES ARE PLAYING FOR 2020-21 AT FIRST BUT THERE IS NO ISSUE WITH STARTING WITH OTHER
+ *       SEASONS
  */
 
 public class ConsoleApplication {
@@ -123,6 +125,8 @@ public class ConsoleApplication {
 
             case 7:
                 // method to save the data
+                PremierLeagueManager.loadingData();
+
                 result = premierLeagueManager.saveDataIntoFile();
                 System.out.println(result);
 
@@ -133,23 +137,29 @@ public class ConsoleApplication {
                 // method to clear the data from the txt file
                 result = premierLeagueManager.clearDataFile();
                 System.out.println(result + "\n");
+                PremierLeagueManager.loadingData();
 
                 displayMenu();
                 break;
 
             case 9:
-                // this section is to ask user if they need to save the data before existing and continue to exit
+                // exiting section
                 Scanner input = new Scanner(System.in);
-                System.out.println("\n Do you want to save before exiting? ");
-                System.out.print(" Enter 'Y' or 'y' to save else enter any other key to exit: ");
+                System.out.println(" Sure that you want to exist? ");
+                System.out.print(" Enter 'y' to confirm or enter any other key to display menu: ");
+                String confirmation = input.nextLine();
 
-                String saveOrExit = input.nextLine();
-                if(saveOrExit.equals("y") || saveOrExit.equals("Y")){
-                    premierLeagueManager.saveDataIntoFile();       // saving
+                if(confirmation.equalsIgnoreCase("y")){
+                    // this section saves the data again and then exits
+                    // NOTE that the data is saved from the backend when generated the match and for CLI its always
+                    // saved after any execution so this message is just for a user satisfaction
+                    System.out.println(" Saving data . . .");
+                    System.out.println(" Exiting program . . .");   // quitting the program
+                    System.exit(200);
                 }
-
-                System.out.println(" Exiting program . . .");   // quitting the program
-                System.exit(200);
+                // else we continue to display the menu
+                displayMenu();
+                break;
 
             default:
                 // Re looping when the user has entered an invalid option

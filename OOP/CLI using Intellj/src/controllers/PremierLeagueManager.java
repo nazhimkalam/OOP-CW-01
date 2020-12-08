@@ -13,12 +13,13 @@ import java.util.stream.Collectors;
  * Java version 8 or higher required
  */
 
+
 public class PremierLeagueManager implements LeagueManager {
 
     //  variables used
     private static ArrayList<FootballClub> premierLeagueFootballClubList;
     private static boolean matchedAdded;
-    private static ArrayList<String> allSeasonAdded = new ArrayList<>();
+    private static ArrayList<String> allSeasonAdded;
     private static final int MAXIMUM_NUMBER_OF_CLUBS = 20;
     private static final int MAXIMUM_NUMBER_OF_MATCHES_PER_TEAM = 38;
 
@@ -39,6 +40,7 @@ public class PremierLeagueManager implements LeagueManager {
     // Constructor
     private PremierLeagueManager(){
         matchedAdded = false;
+        allSeasonAdded = new ArrayList<>();
         premierLeagueFootballClubList= new ArrayList<>();   // initializing the variable to run methods
         String result = loadingData();      // load the previously saved data from the file
         System.out.println(result);
@@ -75,12 +77,18 @@ public class PremierLeagueManager implements LeagueManager {
         FileInputStream fileInputStream = null;
         ObjectInputStream objectInputStream = null;
 
+        // Cleaning the loading variables before use (this is mainly done for clearing the file problem)
+        premierLeagueFootballClubList = new ArrayList<>();
+        matchedAdded = false;
+        allSeasonAdded = new ArrayList<>();
+
         // handling the exceptions and loading the data from the file
         try {
             fileInputStream = new FileInputStream(file);
             objectInputStream = new ObjectInputStream(fileInputStream);
 
             try {
+                // reading from the file
                 premierLeagueFootballClubList = (ArrayList<FootballClub>) objectInputStream.readObject();
                 matchedAdded = (boolean) objectInputStream.readObject();
                 allSeasonAdded = (ArrayList<String>) objectInputStream.readObject();
