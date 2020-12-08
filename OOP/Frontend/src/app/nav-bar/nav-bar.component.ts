@@ -1,3 +1,4 @@
+import { WelcomeInteractionService } from './../service/welcome-interaction.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -29,13 +30,20 @@ export class NavBarComponent implements OnInit {
   }
 
   // constructor
-  public constructor() {
+  public constructor(private _welcomeInteractionService: WelcomeInteractionService) {
     this.linkNames = ['about', 'table', 'matches', 'players'];
     this.activeLinks = [];
   }
 
+  // sets the active link
   public ngOnInit(): void {
     this.activeLinks[0] = 'active';
+  }
+
+  // handles the onClick of the logo
+  public onHandleLogoClick(){
+    // this again removes the nav and footer parts and display the welcome page
+    this._welcomeInteractionService.sendMessage(false);
   }
 
   // THIS IS TO MAKE THE ACTIVE LINKS VISIBLE IN THE NAV BAR
