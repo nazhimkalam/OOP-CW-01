@@ -10,22 +10,26 @@ import java.util.Objects;
  */
 
 public class DateMatch implements Serializable {
-    // this class is used to handle the day, month and year
     private static final long serialVersionUID = -741281696630909407L;
+    // this class is used to handle the date for the match played
+
+    // Variable used
     private int day;
     private int month;
     private int year;
 
     public DateMatch(){
-
+        // default constructor
     }
 
+    // Parameter constructor
     public DateMatch(int day, int month, int year) {
         this.day = day;
         this.month = month;
         this.year = year;
     }
 
+    // Getters and Setters
     public int getDay() {
         return day;
     }
@@ -50,6 +54,7 @@ public class DateMatch implements Serializable {
         this.year = year;
     }
 
+    // The toString method to display the date details
     @Override
     public String toString() {
         return  "\n * Day Played = " + day +

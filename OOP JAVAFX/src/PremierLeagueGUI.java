@@ -206,7 +206,7 @@ public class PremierLeagueGUI extends Application {
 
         PremierLeagueManager.displayLeagueTableGUI();
         final ArrayList<FootballClub>[] seasonBasedClubs = new ArrayList[1];
-        seasonBasedClubs[0] = PremierLeagueManager.seasonFilteredClubs;
+        seasonBasedClubs[0] = PremierLeagueManager.getPremierLeagueFootballClubList();
         sortByPointsClicked = true;
 
 
@@ -414,7 +414,7 @@ public class PremierLeagueGUI extends Application {
                     e.printStackTrace();
                 }
                 PremierLeagueManager.displayLeagueTableGUI();
-                seasonBasedClubs[0] = PremierLeagueManager.seasonFilteredClubs;
+                seasonBasedClubs[0] = PremierLeagueManager.getPremierLeagueFootballClubList();
                 creatingTheMatchesRows(seasonBasedClubs[0], matches);
 
 
@@ -446,7 +446,7 @@ public class PremierLeagueGUI extends Application {
             // before coming to this lets display the matches played for 2020-21
             matchPlayedComboBox.setOnAction(eventCombo -> {
                 PremierLeagueManager.displayLeagueTableGUI();
-                seasonBasedClubs[0] = PremierLeagueManager.seasonFilteredClubs;
+                seasonBasedClubs[0] = PremierLeagueManager.getPremierLeagueFootballClubList();
                 creatingTheMatchesRows(seasonBasedClubs[0], matches);
 
             });
@@ -513,7 +513,7 @@ public class PremierLeagueGUI extends Application {
     private void updatingTableContent(ObservableList<FootballClub> data, ArrayList<FootballClub> seasonBasedClub) {
         data.clear();
         PremierLeagueManager.displayLeagueTableGUI();
-        seasonBasedClub = PremierLeagueManager.seasonFilteredClubs;
+        seasonBasedClub = PremierLeagueManager.getPremierLeagueFootballClubList();
         int NewPosition = 1;
         for (FootballClub club : seasonBasedClub) {
             ClubStats clubStats = new ClubStats(club.getClubStatistics().getTotalMatchesPlayed(),

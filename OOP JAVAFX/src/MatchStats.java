@@ -10,7 +10,7 @@ import java.io.Serializable;
 
 public class MatchStats implements Serializable
 {
-    // [ yellow cards, red cards, shots, shots of target, off sides, fouls, corners, passes, pass accuracy, possession]
+    // These are the variables
     private int yellowCards;
     private int redCards;
     private int shots;
@@ -42,6 +42,7 @@ public class MatchStats implements Serializable
         this.possession = possession;
     }
 
+    // overriding the toString() to display the details of the statistics of the match
     @Override
     public String toString() {
         return
@@ -56,6 +57,8 @@ public class MatchStats implements Serializable
                 "\n Pass Accuracy = " + passAccuracy + "%" +
                 "\n Possession = " + possession + "%";
     }
+
+    // SETTERS AND GETTERS
 
     public int getYellowCards() {
         return yellowCards;
