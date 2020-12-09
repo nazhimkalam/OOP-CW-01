@@ -41,7 +41,8 @@ public class PremierLeagueManager implements LeagueManager {
         matchedAdded = false;
         allSeasonAdded = new ArrayList<>();
         premierLeagueFootballClubList= new ArrayList<>();   // initializing the variable to run methods
-        loadingData();      // load the previously saved data from the file
+        String result = loadingData();      // load the previously saved data from the file
+        System.out.println(result);
     }
 
     // This method is used for the Singleton Design Pattern
@@ -67,7 +68,7 @@ public class PremierLeagueManager implements LeagueManager {
     }
 
     // this method is for loading the data from the file
-    public static void loadingData() {
+    public static String loadingData() {
 
         // variables used
         File file = new File("objectDataFile.txt");
@@ -92,19 +93,19 @@ public class PremierLeagueManager implements LeagueManager {
 
             } catch (ClassNotFoundException e) {
                 // Handles exception
-                System.out.println(" ClassNotFoundException occurred Not able to find the class");
+                return " ClassNotFoundException occurred Not able to find the class";
             }
 
 
         }
         catch (FileNotFoundException fileNotFoundException){
             // Handles exception
-            System.out.println(" File not found exception occurred!");
+            return" File not found exception occurred!";
         }
         catch (IOException ioException) {
             // Handles exception
-            System.out.println( " Exception when performing read/write operations to the file!" +
-                    "\n No permission to read/write from or to the file");
+            return " Exception when performing read/write operations to the file!" +
+                    "\n No permission to read/write from or to the file";
 
         }
         finally {
@@ -118,11 +119,12 @@ public class PremierLeagueManager implements LeagueManager {
             }
             catch (IOException ioException) {
                 // Handles exception
-                System.out.println(" Exception when performing read/write operations to the file!" +
-                        "\n No permission to read/write from or to the file");
+                return " Exception when performing read/write operations to the file!" +
+                        "\n No permission to read/write from or to the file";
 
             }
         }
+        return "\n Successfully loaded all the data\n";
     }
 
     // Overriding the createClub method from the interface

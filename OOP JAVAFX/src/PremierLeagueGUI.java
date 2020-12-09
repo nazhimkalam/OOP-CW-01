@@ -137,7 +137,7 @@ public class PremierLeagueGUI extends Application {
     }
 
     // this is the GUI main program code
-    private void guiProgram(Stage primaryStage) {
+    public void guiProgram(Stage primaryStage) {
         // call the load method from the main class
         PremierLeagueManager.loadingData();
 
@@ -495,7 +495,7 @@ public class PremierLeagueGUI extends Application {
     }
 
     // when user close the program
-    private void closeProgram(Stage primaryStage) {
+    public void closeProgram(Stage primaryStage) {
         Alert confirmationBox = new Alert(Alert.AlertType.CONFIRMATION);         //creating the confirmation box
         confirmationBox.setTitle("Close program");                               //setting title for the confirmation box
         confirmationBox.setHeaderText("Are you sure you want to close ?");       //setting header for the confirmation box
@@ -510,7 +510,7 @@ public class PremierLeagueGUI extends Application {
     }
 
     // updating the table content
-    private void updatingTableContent(ObservableList<FootballClub> data, ArrayList<FootballClub> seasonBasedClub) {
+    public void updatingTableContent(ObservableList<FootballClub> data, ArrayList<FootballClub> seasonBasedClub) {
         data.clear();
         PremierLeagueManager.displayLeagueTableGUI();
         seasonBasedClub = PremierLeagueManager.getPremierLeagueFootballClubList();
@@ -529,7 +529,7 @@ public class PremierLeagueGUI extends Application {
     }
 
     // creating the rows
-    private void creatingTheMatchesRows(ArrayList<FootballClub> seasonBasedClub, ObservableList<HBox> matches) {
+    public void creatingTheMatchesRows(ArrayList<FootballClub> seasonBasedClub, ObservableList<HBox> matches) {
         matches.clear();
 
         // these both arrayList will be of the same size
@@ -676,7 +676,7 @@ public class PremierLeagueGUI extends Application {
     }
 
     // THIS DEALS WITH CREATING THE FOOTBALL CLUB FOR THE LIST
-    private static void creatingClub() {
+    public static void creatingClub() {
 
         // MAKE SURE THAT EACH CLUB NAMES ARE UNIQUE FROM EACH OTHER
         Scanner insert = new Scanner(System.in);
@@ -797,7 +797,7 @@ public class PremierLeagueGUI extends Application {
 
 
     // validate strings that should only have alphabets and return the result
-    private static String validateString(String message) {
+    public static String validateString(String message) {
         Scanner input = new Scanner(System.in);
         boolean validStringEntered;
         String userInput;
@@ -816,7 +816,7 @@ public class PremierLeagueGUI extends Application {
     }
 
     // THIS DEALS WITH DELETING THE FOOTBALL CLUB FROM THE LIST
-    private static void deleteCLub() {
+    public static void deleteCLub() {
 
         // DELETING A CLUB (BY ITS NAME) FROM THE LIST OF CLUBS IN THE PREMIER LEAGUE
         Scanner input = new Scanner(System.in);
@@ -866,7 +866,7 @@ public class PremierLeagueGUI extends Application {
     }
 
     // THIS DEALS WITH DISPLAYING THE STATISTICS OF THE FOOTBALL CLUB
-    private static void displayStatistics() {
+    public static void displayStatistics() {
 
         // DISPLAYING THE STATISTICS OF A SELECTED CLUB BY THE USER ITSELF
         Scanner input = new Scanner(System.in);
@@ -884,7 +884,7 @@ public class PremierLeagueGUI extends Application {
     }
 
     // validating the season
-    private String validatingSeason() {
+    public String validatingSeason() {
         String seasonPlayed = "";
         Scanner input = new Scanner(System.in);
         boolean validatingSeason;
@@ -901,7 +901,7 @@ public class PremierLeagueGUI extends Application {
         return seasonPlayed;
     }
 
-    private static void addPlayedMatch() {
+    public static void addPlayedMatch() {
          /* ADD A PLAYED MATCH WITH IT'S SCORE AND UPDATE THE STATISTICS AND LIST OF MATCHES FOR THE RESPECTIVE CLUBS
            PLAYED */
 
@@ -993,7 +993,7 @@ public class PremierLeagueGUI extends Application {
 
     }
 
-    private static String checkingForValidClub(String message) {
+    public static String checkingForValidClub(String message) {
         // CHECKING FOR VALID CLUB ENTERED BY THE USER WHEN ADDING MATCH
 
         Scanner input = new Scanner(System.in);

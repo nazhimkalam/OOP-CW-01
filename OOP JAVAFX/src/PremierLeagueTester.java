@@ -1,12 +1,14 @@
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
+import java.util.ArrayList;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
+// MAKE SURE THAT THE TXT FILE IS EMPTY (which is inside the backend model folder) BEFORE RUNNING THIS TESTS
 public class PremierLeagueTester
 {
+    // variable used
     LeagueManager obj;
 
     @Before
@@ -19,20 +21,25 @@ public class PremierLeagueTester
     @Test
     public void testCreatingClub(){
         // TESTING FOR CLUBS AS VALID UP TO 20 CLUBS
-        for (int i = 0; i < 20; i++) {
-            String result = obj.createClub("Juventus","Spain","Nazhim",null,
-                    "normal");
-            assertEquals(" Clubs Successfully added!",result);
-            System.out.println("Club number: " + i);
+        String[] clubType = {"normal","university","school"};
+        String[] schoolUniName = {null, "IIT", "RoyalInstitute"};
+
+        for (int index = 0; index < clubType.length; index++) {
+            for (int num = 0; num < 20; num++) {
+                String result = obj.createClub("Juventus", "Spain", "Nazhim", schoolUniName[index],
+                        clubType[index]);
+                assertEquals(" Clubs Successfully added!", result);
+                System.out.println("Club number: " + num);
+            }
+
+            // TESTING FOR AN INVALID CLUB WHEN ADDED MORE THAN 20
+            String expectedResult = obj.createClub("Juventus", "Spain", "Nazhim", schoolUniName[index],
+                    clubType[index]);
+            assertEquals(" Sorry there is no room for a new club, the maximum number of club limit has been reached!", expectedResult);
+
+            // CLEARING THE CONTENT OF THE obj FOR OTHER TESTINGS
+            PremierLeagueManager.setPremierLeagueFootballClubList(new ArrayList<>());
         }
-
-        // TESTING FOR AN INVALID CLUB WHEN ADDED MORE THAN 20
-        String result = obj.createClub("Juventus","Spain","Nazhim",null,
-                "normal");
-        assertEquals(" Sorry there is no room for a new club, the maximum number of club limit has been reached!",result);
-
-        // CLEARING THE CONTENT OF THE obj FOR OTHER TESTINGS
-        PremierLeagueManager.premierLeagueFootballClubList = new java.util.ArrayList<>();
     }
 
     @Test
@@ -42,32 +49,32 @@ public class PremierLeagueTester
         obj.createClub("Juventus","Spain","Nazhim",null, "normal");
 
         // getting the details of the added football club
-        FootballClub addedClub = PremierLeagueManager.premierLeagueFootballClubList.get(0);
+        FootballClub actualResult = PremierLeagueManager.getPremierLeagueFootballClubList().get(0);
 
-        FootballClub removedFootballClub = (FootballClub) obj.deleteCLub("Juventus");
-        assertEquals(addedClub, removedFootballClub);
+        FootballClub expectedResult = (FootballClub) obj.deleteCLub("Juventus");
+        assertEquals(actualResult, expectedResult);
 
         // TESTING WITH INVALID CLUB TO BE REMOVED
-        removedFootballClub = (FootballClub) obj.deleteCLub("Juventus");
-        assertNull(removedFootballClub);
+        expectedResult = (FootballClub) obj.deleteCLub("Real Madird");
+        assertNull(expectedResult);
 
         // CLEARING THE CONTENT OF THE obj FOR OTHER TESTINGS
-        PremierLeagueManager.premierLeagueFootballClubList = new java.util.ArrayList<>();
+        PremierLeagueManager.setPremierLeagueFootballClubList(new ArrayList<>());
     }
 
     @Test
     public void testDisplayingStats(){
         // TESTING THE DISPLAY STATS METHOD WITH A VALID CLUB NAME ENTERED
         obj.createClub("Juventus","Spain","Nazhim",null, "normal");
-        String result = obj.displayStats("Juventus");
-        assertEquals(" Result Displayed", result);
+        String expectedResult = obj.displayStats("Juventus");
+        assertEquals(" Result Displayed", expectedResult);
 
         // TESTING THE DISPLAY STATS METHOD WITH AN INVALID CLUB NAME ENTERED
-        result = obj.displayStats("Fake Club");
-        assertEquals("\n Sorry, there is no club with the given name 'Fake Club'", result);
+        expectedResult = obj.displayStats("Fake Club");
+        assertEquals("\n Sorry, there is no club with the given name 'Fake Club'", expectedResult);
 
         // CLEARING THE CONTENT OF THE obj FOR OTHER TESTINGS
-        PremierLeagueManager.premierLeagueFootballClubList = new java.util.ArrayList<>();
+        PremierLeagueManager.setPremierLeagueFootballClubList(new ArrayList<>());
     }
 
 
@@ -141,6 +148,38 @@ public class PremierLeagueTester
 
         // CLEARING THE CONTENT OF THE obj FOR OTHER TESTINGS
         PremierLeagueManager.premierLeagueFootballClubList = new java.util.ArrayList<>();
+    }
+
+    @Test
+    public void testSavingDataIntoFile(){
+        // Testing the saving the data into the file
+        String expectedResult = obj.saveDataIntoFile();
+        assertEquals("\n Saving the data . . .\n Successfully saved!", expectedResult);
+
+    }
+
+    @Test
+    public void testLoadingDataIntoFile(){
+        // Testing the loading data from the file method
+
+        // Assuming that the file path is correct and file contains data
+        String expectedResult = PremierLeagueManager.loadingData();
+//        assertEquals("\n Successfully loaded all the data\n", result);
+
+        // Assuming that the file contains no data to read
+        assertEquals(" Exception when performing read/write operations to the file!" +
+                "\n No permission to read/write from or to the file", expectedResult);
+
+    }
+
+    @Test
+    public void testClearingDataIntoFile(){
+        // Testing the clearing the data from the file method
+
+        // Assuming that the file path is correct
+        String result = obj.clearDataFile();
+        assertEquals("\n Clearing the contents of the file . . .\n Successfully cleared the file details!", result);
+
     }
 
     @After
