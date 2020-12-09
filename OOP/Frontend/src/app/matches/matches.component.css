@@ -175,14 +175,23 @@
   padding: 0 10px;
 }
 
-
-
-
-
-
-
-
-
+.noMatches__found{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 80px;
+  align-items: center;
+}
+.noMatches__found img{
+  object-fit: contain;
+  -webkit-animation: ballRotate 2s infinite; /* Chrome, Safari, Opera */
+  animation: 2s infinite ballRotate;
+  height: 200px;
+}
+.noMatches__found p{
+  padding-top: 40px;
+  font-size: 20px;
+}
 
 
 .dropdown-item {
@@ -190,6 +199,8 @@
 }
 .date__calender {
   cursor: pointer;
+  box-shadow: 1px 5px 8px #acacac;
+  border:2px black #888888;
 }
 
 .matches__season {

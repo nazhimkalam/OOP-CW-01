@@ -24,7 +24,8 @@
               type="text"
               class="form-control date__calender"
               id="dateEntered"
-              placeholder="YYYY-MM-DD"
+              size="10"
+              placeholder="yyyy-mm-dd"
               (change)="setSelectedDate($event.target.value)"
             />
             <p><small>Invalid date / format !</small></p>
@@ -148,6 +149,12 @@
     <!-- displaying the loading gif -->
     <div class="container loading" *ngIf="getLoadingContent()">
       <img src="../../assets/loading.gif" alt="" />
+    </div>
+
+    <!-- displaying when there are no matches to be displayed or when the matches list is empty -->
+    <div class="container noMatches__found" *ngIf="getNoMatchesAvailable()">
+      <img src="../../assets/ball.png" alt="">
+      <p>NO MATCHES FOUND</p>
     </div>
 
   </div>

@@ -18,11 +18,13 @@ export class MatchesComponent implements OnInit {
   private audio: any;
   private displayCelebration: string;
   private validationDate__visible: string;
+  private noMatchesAvailable: boolean;
 
   // constructor for initialization
   public constructor(private _footballService: FootballInteractionService) {
     this.currentSeason = '2020-21';
     this.selectedDate = '';
+    this.noMatchesAvailable = false;
     this.matches = [];
     this.loadingContent = true;
     this.displayCelebration = 'noCelebration';
@@ -43,6 +45,13 @@ export class MatchesComponent implements OnInit {
         this.matches = data;
         this.generateClubLogo();
         this.loadingContent = false;
+
+        // if the matches list is empty we display the div container for no matches
+        if (this.matches.length === 0) {
+          this.noMatchesAvailable = false;
+        } else {
+          this.noMatchesAvailable = true;
+        }
       });
   }
 
@@ -64,6 +73,13 @@ export class MatchesComponent implements OnInit {
         this.matches = data;
         this.generateClubLogo();
         this.loadingContent = false;
+
+        // if the matches list is empty we display the div container for no matches
+        if (this.matches.length === 0) {
+          this.noMatchesAvailable = false;
+        } else {
+          this.noMatchesAvailable = true;
+        }
       });
   }
 
@@ -84,9 +100,16 @@ export class MatchesComponent implements OnInit {
           this.matches = data;
           this.generateClubLogo();
           this.loadingContent = false;
+
+          // if the matches list is empty we display the div container for no matches
+          if (this.matches.length === 0) {
+            this.noMatchesAvailable = false;
+          } else {
+            this.noMatchesAvailable = true;
+          }
         });
       this.generateClubLogo();
-    }else{
+    } else {
       this.validationDate__visible = 'validationDate__visible';
     }
   }
@@ -100,11 +123,9 @@ export class MatchesComponent implements OnInit {
     if (date === '') {
       this.validationDate__visible = 'validationDate__invisible';
       this.selectedDate = null;
-
     } else if (date.match(dateReg) === null) {
       this.validationDate__visible = 'validationDate__visible';
       this.selectedDate = null;
-
     } else {
       this.validationDate__visible = 'validationDate__invisible';
       this.selectedDate = date;
@@ -129,6 +150,13 @@ export class MatchesComponent implements OnInit {
         this.matches = data;
         this.generateClubLogo();
         this.loadingContent = false;
+
+        // if the matches list is empty we display the div container for no matches
+        if (this.matches.length === 0) {
+          this.noMatchesAvailable = false;
+        } else {
+          this.noMatchesAvailable = true;
+        }
       });
 
     this.generateClubLogo();
@@ -200,6 +228,14 @@ export class MatchesComponent implements OnInit {
 
   public getAudio() {
     return this.audio;
+  }
+
+  public getNoMatchesAvailable() {
+    return this.noMatchesAvailable;
+  }
+
+  public setNoMatchesAvailable(data: boolean) {
+    this.noMatchesAvailable = data;
   }
 
   public setDisplayCelebration(data: string) {
