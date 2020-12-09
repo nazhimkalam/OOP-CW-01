@@ -8,17 +8,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./matches.component.css'],
 })
 export class MatchesComponent implements OnInit {
-
   // variables used
   private matches: MatchPlayed[];
-  private currentSeason: string; 
+  private currentSeason: string;
   private seasons: string[];
-  private selectedDate: string; 
+  private selectedDate: string;
   private clubLogo: number[];
   private loadingContent: boolean;
   private audio: any;
-  private disableSearchBtn: boolean;
   private displayCelebration: string;
+  private validationDate__visible: string;
 
   // constructor for initialization
   public constructor(private _footballService: FootballInteractionService) {
@@ -26,13 +25,12 @@ export class MatchesComponent implements OnInit {
     this.selectedDate = '';
     this.matches = [];
     this.loadingContent = true;
-    this.disableSearchBtn = true;
     this.displayCelebration = 'noCelebration';
+    this.validationDate__visible = 'validationDate__invisible';
   }
 
   // runs just after the constructor
   public ngOnInit(): void {
-
     // we have to set the seasons here when the user loads this page
     this._footballService
       .getSeasons()
@@ -46,7 +44,6 @@ export class MatchesComponent implements OnInit {
         this.generateClubLogo();
         this.loadingContent = false;
       });
-
   }
 
   // this method runs when the user selects a season
@@ -72,29 +69,46 @@ export class MatchesComponent implements OnInit {
 
   // this method runs when the user selects a date
   public handleSearchSelectedDate() {
-    // changes the variables accordingly when season changes
-    this.audio = new Audio();
-    this.audio.src = '../../assets/matchPlayed.mp3';
-    this.audio.load();
-    this.audio.play();
-    this.disableSearchBtn = true;
-    this.loadingContent = true;
+    if (this.selectedDate !== '' && this.selectedDate !== null) {
+      // changes the variables accordingly when season changes
+      this.audio = new Audio();
+      this.audio.src = '../../assets/matchPlayed.mp3';
+      this.audio.load();
+      this.audio.play();
+      this.loadingContent = true;
 
-    // using the service to get the matches by date
-    this._footballService
-      .getMatchesByDate(this.selectedDate, this.currentSeason)
-      .subscribe((data) => {
-        this.matches = data;
-        this.generateClubLogo();
-        this.loadingContent = false;
-      });
-    this.generateClubLogo();
+      // using the service to get the matches by date
+      this._footballService
+        .getMatchesByDate(this.selectedDate, this.currentSeason)
+        .subscribe((data) => {
+          this.matches = data;
+          this.generateClubLogo();
+          this.loadingContent = false;
+        });
+      this.generateClubLogo();
+    }else{
+      this.validationDate__visible = 'validationDate__visible';
+    }
   }
 
   // setting the selected data by the user to the variable for searching
   public setSelectedDate(date: string) {
-    this.disableSearchBtn = false;
-    this.selectedDate = date;
+    // validating the date
+    var dateReg = /^\d{4}[-]\d{2}[-]\d{2}$/;
+
+    console.log(date.match(dateReg));
+    if (date === '') {
+      this.validationDate__visible = 'validationDate__invisible';
+      this.selectedDate = null;
+
+    } else if (date.match(dateReg) === null) {
+      this.validationDate__visible = 'validationDate__visible';
+      this.selectedDate = null;
+
+    } else {
+      this.validationDate__visible = 'validationDate__invisible';
+      this.selectedDate = date;
+    }
   }
 
   // this method runs when the user clicks the generate button
@@ -133,76 +147,74 @@ export class MatchesComponent implements OnInit {
       this.clubLogo.push(Math.floor(Math.random() * Math.floor(23)) + 1);
       this.clubLogo.push(Math.floor(Math.random() * Math.floor(23)) + 1);
     });
-   
   }
 
+  // setters and getters
+  public setMatches(data: MatchPlayed[]) {
+    this.matches = data;
+  }
 
-    // setters and getters
-    public setMatches(data: MatchPlayed[]){
-      this.matches = data;
-    }
-  
-    public getMatches(){
-      return this.matches;
-    }
-  
-    public setCurrentSeason(data: string){
-      this.currentSeason = data;
-    }
-  
-    public getCurrentSeason(){
-      return this.currentSeason;
-    }
-  
-    public setSeason(data: string[]){
-      this.seasons = data;
-    }
-  
-    public getSeason(){
-      return this.seasons;
-    }
-  
-    public getSelectedDate(){
-      return this.selectedDate;
-    }
-  
-    public setClubLogo(data: number[]){
-      this.clubLogo = data;
-    }
-  
-    public getClubLogo(){
-      return this.clubLogo;
-    }
-  
-    public setLoadingContent(data: boolean){
-      this.loadingContent = data;
-    }
-  
-    public getLoadingContent(){
-      return this.loadingContent;
-    }
-  
-    public setAudio(data: string){
-      this.audio = data;
-    }
-  
-    public getAudio(){
-      return this.audio;
-    }
-  
-    public setDisableSearchButton(data: boolean){
-      this.disableSearchBtn = data;
-    }
-  
-    public getDisableSearchButton(){
-      return this.disableSearchBtn;
-    }
-  
-    public setDisplayCelebration(data: string){
-      this.displayCelebration = data;
-    }
-  
-    public getDisplayCelebration(){
-      return this.displayCelebration;
-    }
+  public getMatches() {
+    return this.matches;
+  }
+
+  public setCurrentSeason(data: string) {
+    this.currentSeason = data;
+  }
+
+  public getCurrentSeason() {
+    return this.currentSeason;
+  }
+
+  public setSeason(data: string[]) {
+    this.seasons = data;
+  }
+
+  public getSeason() {
+    return this.seasons;
+  }
+
+  public getSelectedDate() {
+    return this.selectedDate;
+  }
+
+  public setClubLogo(data: number[]) {
+    this.clubLogo = data;
+  }
+
+  public getClubLogo() {
+    return this.clubLogo;
+  }
+
+  public setLoadingContent(data: boolean) {
+    this.loadingContent = data;
+  }
+
+  public getLoadingContent() {
+    return this.loadingContent;
+  }
+
+  public setAudio(data: string) {
+    this.audio = data;
+  }
+
+  public getAudio() {
+    return this.audio;
+  }
+
+  public setDisplayCelebration(data: string) {
+    this.displayCelebration = data;
+  }
+
+  public getDisplayCelebration() {
+    return this.displayCelebration;
+  }
+
+  public setValidationDate__visible(data: string) {
+    this.validationDate__visible = data;
+  }
+
+  public getValidationDate__visible() {
+    return this.validationDate__visible;
+  }
 }

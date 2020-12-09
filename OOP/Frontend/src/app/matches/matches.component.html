@@ -19,21 +19,21 @@
       <!-- getting date input from user -->
       <div class="matches__textField">
         <form class="form-inline">
-          <div class="form-group mx-sm-3 mb-2">
-            <label for="dateEntered" class="sr-only">Date</label>
+          <div class="form-group mx-sm-3 mb-2 date__group {{getValidationDate__visible()}}">
             <input
-              type="date"
+              type="text"
               class="form-control date__calender"
               id="dateEntered"
+              placeholder="YYYY-MM-DD"
               (change)="setSelectedDate($event.target.value)"
-              value="{{ getSelectedDate() }}"
             />
+            <p><small>Invalid date / format !</small></p>
           </div>
+
           <button
             type="button"
             class="btn btn-sm mb-2 matches__textField__searchBtn"
             (click)="handleSearchSelectedDate()"
-            [disabled] = "getDisableSearchButton()"
           >
             Search
           </button>
