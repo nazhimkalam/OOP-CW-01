@@ -27,6 +27,7 @@
               size="10"
               placeholder="yyyy-mm-dd"
               (change)="setSelectedDate($event.target.value)"
+              value="{{ getSelectedDate() }}"
             />
             <p><small>Invalid date / format !</small></p>
           </div>
@@ -35,8 +36,17 @@
             type="button"
             class="btn btn-sm mb-2 matches__textField__searchBtn"
             (click)="handleSearchSelectedDate()"
+            *ngIf="getDisplaySearchButton()"
           >
             Search
+          </button>
+          <button
+            type="button"
+            class="btn btn-sm mb-2 matches__textField__searchBtn"
+            (click)="handleReset()"
+            *ngIf="!getDisplaySearchButton()"
+          >
+            Reset
           </button>
         </form>
       </div>
@@ -83,7 +93,7 @@
     </div>
   
     <!-- main card container -->
-    <div class="matches__list container" *ngIf="!getLoadingContent()">
+    <div class="matches__list container" *ngIf="!getLoadingContent() && !getNoMatchesAvailable()">
       <!-- each match card -->
       <div class="matches__matchCard" *ngFor="let match of getMatches(); index as i">
 

@@ -78,7 +78,20 @@
       <recent name="C:\Users\Nazhim\Documents\GitHub\w1761265_OOP_GUI--FX--_AND_CLI\OOP-CourseWork-LTS CLI\src" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.PremierLeagueTester">
+  <component name="RunManager" selected="Application.ConsoleApplication">
+    <configuration name="ConsoleApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="controllers.ConsoleApplication" />
+      <module name="OOP-CourseWork" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="controllers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="PremierLeagueTester" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OOP-CourseWork" />
       <extension name="coverage">
@@ -90,22 +103,6 @@
       <option name="PACKAGE_NAME" value="controllers" />
       <option name="MAIN_CLASS_NAME" value="controllers.PremierLeagueTester" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PremierLeagueTester.testDeletingClub" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="OOP-CourseWork" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="controllers.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="controllers" />
-      <option name="MAIN_CLASS_NAME" value="controllers.PremierLeagueTester" />
-      <option name="METHOD_NAME" value="testDeletingClub" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -160,11 +157,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.ConsoleApplication" />
         <item itemvalue="JUnit.PremierLeagueTester" />
         <item itemvalue="JUnit.PremierLeagueTester.testingValidateString" />
         <item itemvalue="JUnit.PremierLeagueTester.testingValidatingSeason" />
         <item itemvalue="JUnit.PremierLeagueTester.testDisplayingStats" />
-        <item itemvalue="JUnit.PremierLeagueTester.testDeletingClub" />
       </list>
     </recent_temporary>
   </component>
@@ -272,6 +269,8 @@
       <workItem from="1607436679348" duration="120000" />
       <workItem from="1607448495616" duration="3638000" />
       <workItem from="1607454271973" duration="1281000" />
+      <workItem from="1607571255022" duration="554000" />
+      <workItem from="1607575084295" duration="94000" />
     </task>
     <task id="LOCAL-00012" summary="commit">
       <created>1604851031613</created>
@@ -670,33 +669,33 @@
     <state x="421" y="95" key="FileChooserDialogImpl/0.0.1280.680/1920.0.1360.728@0.0.1280.680" timestamp="1606110858726" />
     <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.689/1920.0.1360.738@0.0.1280.689" timestamp="1607195345893" />
     <state x="2367" y="103" key="FileChooserDialogImpl/0.0.1280.689/1920.0.1360.738@1920.0.1360.738" timestamp="1607076947945" />
-    <state width="1237" height="2" key="GridCell.Tab.0.bottom" timestamp="1607452151064">
+    <state width="1237" height="531" key="GridCell.Tab.0.bottom" timestamp="1607575271842">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state width="1237" height="523" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.0.1360.728@0.0.1280.680" timestamp="1606123190261" />
     <state width="1237" height="517" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1606037862037" />
-    <state width="1237" height="2" key="GridCell.Tab.0.bottom/0.0.1280.689/1920.0.1360.738@0.0.1280.689" timestamp="1607452151064" />
+    <state width="1237" height="531" key="GridCell.Tab.0.bottom/0.0.1280.689/1920.0.1360.738@0.0.1280.689" timestamp="1607575271842" />
     <state width="1317" height="11" key="GridCell.Tab.0.bottom/0.0.1280.689/1920.0.1360.738@1920.0.1360.738" timestamp="1607076823239" />
-    <state width="1237" height="2" key="GridCell.Tab.0.center" timestamp="1607452151064">
+    <state width="1237" height="531" key="GridCell.Tab.0.center" timestamp="1607575271842">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state width="1237" height="523" key="GridCell.Tab.0.center/0.0.1280.680/1920.0.1360.728@0.0.1280.680" timestamp="1606123190261" />
     <state width="1237" height="517" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1606037862035" />
-    <state width="1237" height="2" key="GridCell.Tab.0.center/0.0.1280.689/1920.0.1360.738@0.0.1280.689" timestamp="1607452151064" />
+    <state width="1237" height="531" key="GridCell.Tab.0.center/0.0.1280.689/1920.0.1360.738@0.0.1280.689" timestamp="1607575271842" />
     <state width="1317" height="11" key="GridCell.Tab.0.center/0.0.1280.689/1920.0.1360.738@1920.0.1360.738" timestamp="1607076823239" />
-    <state width="1237" height="2" key="GridCell.Tab.0.left" timestamp="1607452151064">
+    <state width="1237" height="531" key="GridCell.Tab.0.left" timestamp="1607575271841">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state width="1237" height="523" key="GridCell.Tab.0.left/0.0.1280.680/1920.0.1360.728@0.0.1280.680" timestamp="1606123190260" />
     <state width="1237" height="517" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1606037862035" />
-    <state width="1237" height="2" key="GridCell.Tab.0.left/0.0.1280.689/1920.0.1360.738@0.0.1280.689" timestamp="1607452151064" />
+    <state width="1237" height="531" key="GridCell.Tab.0.left/0.0.1280.689/1920.0.1360.738@0.0.1280.689" timestamp="1607575271841" />
     <state width="1317" height="11" key="GridCell.Tab.0.left/0.0.1280.689/1920.0.1360.738@1920.0.1360.738" timestamp="1607076823239" />
-    <state width="1237" height="2" key="GridCell.Tab.0.right" timestamp="1607452151064">
+    <state width="1237" height="531" key="GridCell.Tab.0.right" timestamp="1607575271842">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state width="1237" height="523" key="GridCell.Tab.0.right/0.0.1280.680/1920.0.1360.728@0.0.1280.680" timestamp="1606123190261" />
     <state width="1237" height="517" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1606037862037" />
-    <state width="1237" height="2" key="GridCell.Tab.0.right/0.0.1280.689/1920.0.1360.738@0.0.1280.689" timestamp="1607452151064" />
+    <state width="1237" height="531" key="GridCell.Tab.0.right/0.0.1280.689/1920.0.1360.738@0.0.1280.689" timestamp="1607575271842" />
     <state width="1317" height="11" key="GridCell.Tab.0.right/0.0.1280.689/1920.0.1360.738@1920.0.1360.738" timestamp="1607076823239" />
     <state width="1237" height="7" key="GridCell.Tab.1.bottom" timestamp="1606840135501">
       <screen x="0" y="0" width="1280" height="689" />

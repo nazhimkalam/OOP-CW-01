@@ -19,6 +19,7 @@ export class MatchesComponent implements OnInit {
   private displayCelebration: string;
   private validationDate__visible: string;
   private noMatchesAvailable: boolean;
+  private displaySearchButton: boolean;
 
   // constructor for initialization
   public constructor(private _footballService: FootballInteractionService) {
@@ -29,6 +30,7 @@ export class MatchesComponent implements OnInit {
     this.loadingContent = true;
     this.displayCelebration = 'noCelebration';
     this.validationDate__visible = 'validationDate__invisible';
+    this.displaySearchButton = true;
   }
 
   // runs just after the constructor
@@ -45,12 +47,14 @@ export class MatchesComponent implements OnInit {
         this.matches = data;
         this.generateClubLogo();
         this.loadingContent = false;
+        this.validationDate__visible = 'validationDate__invisible';
+        this.displaySearchButton = true;
 
         // if the matches list is empty we display the div container for no matches
         if (this.matches.length === 0) {
-          this.noMatchesAvailable = false;
-        } else {
           this.noMatchesAvailable = true;
+        } else {
+          this.noMatchesAvailable = false;
         }
       });
   }
@@ -73,12 +77,14 @@ export class MatchesComponent implements OnInit {
         this.matches = data;
         this.generateClubLogo();
         this.loadingContent = false;
+        this.validationDate__visible = 'validationDate__invisible';
+        this.displaySearchButton = true;
 
         // if the matches list is empty we display the div container for no matches
         if (this.matches.length === 0) {
-          this.noMatchesAvailable = false;
-        } else {
           this.noMatchesAvailable = true;
+        } else {
+          this.noMatchesAvailable = false;
         }
       });
   }
@@ -92,6 +98,7 @@ export class MatchesComponent implements OnInit {
       this.audio.load();
       this.audio.play();
       this.loadingContent = true;
+      this.displaySearchButton = false;
 
       // using the service to get the matches by date
       this._footballService
@@ -100,12 +107,13 @@ export class MatchesComponent implements OnInit {
           this.matches = data;
           this.generateClubLogo();
           this.loadingContent = false;
+          this.validationDate__visible = 'validationDate__invisible';
 
           // if the matches list is empty we display the div container for no matches
           if (this.matches.length === 0) {
-            this.noMatchesAvailable = false;
-          } else {
             this.noMatchesAvailable = true;
+          } else {
+            this.noMatchesAvailable = false;
           }
         });
       this.generateClubLogo();
@@ -132,6 +140,28 @@ export class MatchesComponent implements OnInit {
     }
   }
 
+  // The reset button reloads the data for the current season selected
+  public handleReset(){
+    this._footballService
+      .getMatchesBySeason(this.getCurrentSeason())
+      .subscribe((data) => {
+        this.matches = data;
+        this.generateClubLogo();
+        this.loadingContent = false;
+        this.validationDate__visible = 'validationDate__invisible';
+        this.displaySearchButton = true;
+
+        // if the matches list is empty we display the div container for no matches
+        if (this.matches.length === 0) {
+          this.noMatchesAvailable = true;
+        } else {
+          this.noMatchesAvailable = false;
+        }
+      });
+  }
+
+
+
   // this method runs when the user clicks the generate button
   public generateMatch() {
     // changes the variables accordingly when season changes
@@ -150,12 +180,14 @@ export class MatchesComponent implements OnInit {
         this.matches = data;
         this.generateClubLogo();
         this.loadingContent = false;
+        this.validationDate__visible = 'validationDate__invisible';
+        this.displaySearchButton = true;
 
         // if the matches list is empty we display the div container for no matches
         if (this.matches.length === 0) {
-          this.noMatchesAvailable = false;
-        } else {
           this.noMatchesAvailable = true;
+        } else {
+          this.noMatchesAvailable = false;
         }
       });
 
@@ -238,6 +270,15 @@ export class MatchesComponent implements OnInit {
     this.noMatchesAvailable = data;
   }
 
+  public getDisplaySearchButton() {
+    return this.displaySearchButton;
+  }
+
+  public setDisplaySearchButton(data: boolean) {
+    this.displaySearchButton = data;
+  }
+
+  
   public setDisplayCelebration(data: string) {
     this.displayCelebration = data;
   }

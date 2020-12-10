@@ -378,60 +378,59 @@
 }
 /* Adding animation for the matches cards */
 .matches__matchCard:hover {
-  -webkit-animation: cardColorChange 2s infinite; /* Chrome, Safari, Opera */
-  animation: 2s infinite cardColorChange;
+  background-color: #fff;
 }
 .matches__matchCard:hover > .matches__club1 > div:first-child,
 .matches__matchCard:hover > .matches__club2 > div:last-child {
   transition: 1s ease-in-out;
   transform: scale(1.1);
 }
-@keyframes cardColorChange {
+/* @keyframes cardColorChange {
   0% {
-    background-color: #ea2d9e27;
+    background-color: #ffffff27;
     transition: 1s ease-in-out;
   }
   10% {
-    background-color: #ea2d9e1e;
+    background-color: #ffffff1e;
     transition: 1s ease-in-out;
   }
   20% {
-    background-color: #ea2d9e36;
+    background-color: #ffffff36;
     transition: 1s ease-in-out;
   }
   30% {
-    background-color: #ea2d9e3f;
+    background-color: #ffffff3f;
     transition: 1s ease-in-out;
   }
   40% {
-    background-color: #ea2d9e56;
+    background-color: #ffffff56;
     transition: 1s ease-in-out;
   }
   50% {
-    background-color: #ea2d9e59;
+    background-color: #ffffff59;
     transition: 1s ease-in-out;
   }
   60% {
-    background-color: #ea2dcb62;
+    background-color: #ffffff62;
     transition: 1s ease-in-out;
   }
   70% {
-    background-color: #ea2dd16e;
+    background-color: #ffffff6e;
     transition: 1s ease-in-out;
   }
   80% {
-    background-color: #ea2de160;
+    background-color: #ffffff60;
     transition: 1s ease-in-out;
   }
   90% {
-    background-color: #ea2dc163;
+    background-color: #ffffff63;
     transition: 1s ease-in-out;
   }
   100% {
-    background-color: #ea2de148;
+    background-color: #ffffff48;
     transition: 1s ease-in-out;
   }
-}
+} */
 
 .matches__header {
   -webkit-animation: titleLeftMove 1.2s infinite; /* Chrome, Safari, Opera */
