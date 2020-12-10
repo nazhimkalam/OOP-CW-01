@@ -108,13 +108,13 @@ export class PlayersComponent {
         'Leicester City'
       ),
       new Player(
-        'Thiago Alcantara',
+        'Thiago',
         'https://images.daznservices.com/di/library/GOAL/6d/87/thiago-alcantara-liverpool-chelsea-2020-21_1qrow2nikwn801n4e45i90t4zo.jpg?t=-1309077228&quality=100',
         'Midfielder',
         'Liverpool'
       ),
       new Player(
-        'Mason Greenwood',
+        'Mason',
         'https://images.daznservices.com/di/library/GOAL/95/5a/mason-greenwood-manchester-united-2019-20_b32uzxtuu6pp10ksaoue0tvhv.jpg?t=1664782883&quality=100',
         'Forward',
         'Man United'
@@ -150,7 +150,7 @@ export class PlayersComponent {
         'West Ham'
       ),
       new Player(
-        'Kepa Arrizabalaga',
+        'Kepa',
         'https://sportsalert.org/wp-content/uploads/2020/09/_chelsea-boss-frank-lampard-says-kepa-arrizabalaga-needs-his-support-after-latest-mistake.jpg',
         'Goalkeeper',
         'Chelsea'

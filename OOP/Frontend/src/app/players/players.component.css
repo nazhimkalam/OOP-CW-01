@@ -80,6 +80,17 @@
 .card:hover img {
   transform: scale(1.06);
 }
+.cardDescription__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.cardDescription__container img {
+  object-fit: contain;
+  height: 50px;
+  -webkit-filter: invert(1);
+  filter: invert(1);
+}
 /* Animation Part */
 .players {
   -webkit-animation: fadein 1s; /* Safari, Chrome and Opera > 12.1 */
