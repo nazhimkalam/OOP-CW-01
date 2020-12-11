@@ -1,13 +1,20 @@
 .error__page {
   display: flex;
-  background-color: #fff;
-  align-items: center;
   justify-content: center;
-  height: 80vh;
+  flex-direction: column;
+  height: 100vh;
+  align-items: center;
 }
 
 .error__page img{
     height: 300px;
+    position: relative;
+    left: 40px;
+    object-fit: contain;
+}
+.error__page p{
+  font-size: 50px;
+  font-weight: 600;
 }
 /* Animation Part */
 

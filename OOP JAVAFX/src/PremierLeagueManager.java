@@ -986,6 +986,7 @@ public class PremierLeagueManager implements LeagueManager {
 
         int randomClub_02 = random.nextInt(seasonFilteredClubs.size());
 
+        // This is to make sure that the same club is not selected again for the match
         while (randomClub_02==randomClub_01){
             randomClub_02 = random.nextInt(seasonFilteredClubs.size());
         }
@@ -1010,10 +1011,23 @@ public class PremierLeagueManager implements LeagueManager {
         possibleYears[0] = seasonYear;
         possibleYears[1] = seasonYear + 1;
 
-
+        // making sure that the months are in given range for the year select for the season
+        // premier league happens every year from August to next May
         int day = random.nextInt(30)+1;
-        int month = random.nextInt(12)+1;
-        int year = possibleYears[random.nextInt(2)];
+        int randomYearIndexSelected = random.nextInt(2);
+        int year = possibleYears[randomYearIndexSelected];
+        int month;
+
+        // if randomYearIndexSelected = 0, then the months have to be in the range from 8 to 12 else 1 to 5
+        if(randomYearIndexSelected==0){
+            // 8 to 12
+            month = random.nextInt(5) + 8;
+
+        }else{
+            // 1 to 5
+            month = random.nextInt(5) + 1;
+
+        }
 
         DateMatch date = new DateMatch(day, month, year);
         String[] matchTypes = new String[]{"Home", "Away"};
