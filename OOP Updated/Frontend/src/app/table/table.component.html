@@ -1,0 +1,115 @@
+<div class="tablePage">
+  <!-- main table container -->
+  <div class="container pTable">
+
+    <!-- table header container -->
+    <div class="pTable__header__container">
+      <h1 class="pTable__header">Table</h1>
+      <img src="../../assets/trophy.png" alt="" height="150px" />
+    </div>
+
+    <!-- table buttons container -->
+    <div class="pTable__btnOptions mt-5 container">
+
+      <!-- current season -->
+      <div class="pTable__selectedSeason">
+        <p>Season {{ getCurrentSeason() }}</p>
+      </div>
+      <!-- drop down buttons -->
+      <div>
+
+        <!-- season dropdown -->
+        <div class="btn-group season">
+          <button
+            class="btn btn-light btn-sm dropdown-toggle"
+            type="button"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            Season
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a
+              class="dropdown-item"
+              *ngFor="let season of getSeasons()"
+              (click)="handleClickedSeason(season)"
+              >{{ season }}</a
+            >
+          </div>
+        </div>
+
+        <!-- sorting dropdown -->
+        <div class="btn-group sortBy">
+          <button
+            class="btn btn-light btn-sm dropdown-toggle"
+            type="button"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            Sort By
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <div class="dropdown-item" (click)="sortByPoints()">Points</div>
+            <div class="dropdown-item" (click)="sortByGoals()">Goals</div>
+            <div class="dropdown-item" (click)="sortByWins()">Wins</div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- main table structure and content section -->
+    <div
+      class="container mt-4 pTable__table table-wrapper-scroll-y my-custom-scrollbar"
+      *ngIf = "!getIsLoading()"
+    >
+    <!-- table -->
+      <table class="table">
+
+        <!-- table header -->
+        <thead class="table__header">
+          <tr>
+            <th scope="col">Position</th>
+            <th scope="col">Club</th>
+            <th scope="col">Played</th>
+            <th scope="col">Won</th>
+            <th scope="col">Drawn</th>
+            <th scope="col">Lost</th>
+            <th scope="col">GF</th>
+            <th scope="col">GA</th>
+            <th scope="col">GD</th>
+            <th scope="col">Points</th>
+          </tr>
+        </thead>
+
+        <!-- table body -->
+        <tbody>
+          <tr *ngFor="let rowResult of getResultsRecords(); index as position">
+            <td scope="row">{{ position + 1 }}</td>
+            <td>{{ rowResult.name }}</td>
+            <td>{{ rowResult.clubStatistics.totalMatchesPlayed }}</td>
+            <td>{{ rowResult.clubStatistics.totalWins }}</td>
+            <td>{{ rowResult.clubStatistics.totalDraws }}</td>
+            <td>{{ rowResult.clubStatistics.totalDefeats }}</td>
+            <td>{{ rowResult.totalGoalsScored }}</td>
+            <td>{{ rowResult.totalGoalsReceived }}</td>
+            <td>{{ rowResult.totalGoalsDifference }}</td>
+            <td>{{ rowResult.clubStatistics.totalPointsScored }}</td>
+          </tr>
+        </tbody>
+
+      
+      </table>
+    </div>
+
+    <!-- loading gif for delay purpose -->
+    <div class="container loading" *ngIf="getIsLoading()">
+      <img src="../../assets/loading.gif" alt="">
+    </div>
+
+  </div>
+  
+</div>

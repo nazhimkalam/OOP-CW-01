@@ -1,0 +1,213 @@
+<!-- main container -->
+<div class="{{ getDisplayCelebration() }}">
+  <!-- Pop up modal if there are null matches generated due to clubs less than 2 present -->
+  <div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title">{{ getMatchGenerateHeaderMessage() }}</h2>
+          <button
+            type="button"
+            class="close"
+            (click)="handleCloseModal()"
+            data-dismiss="modal"
+          >
+            &times;
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>{{ getMatchGenerateBodyMessage() }}</p>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-default closeBtn"
+            data-dismiss="modal"
+            (click)="handleCloseModal()"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- main match container -->
+  <div class="matches container">
+    <!-- match title container -->
+    <div class="matches__titleContent">
+      <h1 class="matches__header">Matches</h1>
+      <img src="../../assets/ball.png" alt="" height="60px" />
+    </div>
+
+    <!-- all matches title -->
+    <p class="matches__playedSoFar">All Matches Played</p>
+
+    <!-- matches input data-->
+    <div class="matches__inputs container">
+      <!-- getting date input from user -->
+      <div class="matches__textField">
+        <form class="form-inline">
+          <div
+            class="form-group mx-sm-3 mb-2 date__group {{
+              getValidationDate__visible()
+            }}"
+          >
+            <input
+              type="text"
+              class="form-control date__calender"
+              id="dateEntered"
+              size="10"
+              placeholder="yyyy-mm-dd"
+              (change)="setSelectedDate($event.target.value)"
+              value="{{ getSelectedDate() }}"
+            />
+            <p><small>Invalid date / format !</small></p>
+          </div>
+
+          <button
+            type="button"
+            class="btn btn-sm mb-2 matches__textField__searchBtn"
+            (click)="handleSearchSelectedDate()"
+            *ngIf="getDisplaySearchButton()"
+          >
+            Search
+          </button>
+          <button
+            type="button"
+            class="btn btn-sm mb-2 matches__textField__searchBtn"
+            (click)="handleReset()"
+            *ngIf="!getDisplaySearchButton()"
+          >
+            Reset
+          </button>
+        </form>
+      </div>
+
+      <!-- display the selected current season -->
+      <div class="matches__season">
+        <p>Season</p>
+        <p>{{ getCurrentSeason() }}</p>
+      </div>
+
+      <!-- matches buttons -->
+      <div class="matches__btn">
+        <!-- drop down season -->
+        <div class="btn-group season">
+          <button
+            class="btn btn-light btn-sm dropdown-toggle"
+            type="button"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            Season
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a
+              class="dropdown-item"
+              *ngFor="let season of getSeason()"
+              (click)="handleClickedSeason(season)"
+              >{{ season }}</a
+            >
+          </div>
+        </div>
+
+        <!-- generate match btn -->
+        <button
+          type="button"
+          class="btn btn-primary btn-sm"
+          (click)="generateMatch()"
+          data-toggle="modal"
+          data-target="#myModal"
+          data-backdrop="static"
+          data-keyboard="false"
+        >
+          Generate Match
+        </button>
+      </div>
+    </div>
+
+    <!-- main card container -->
+    <div
+      class="matches__list container"
+      *ngIf="!getLoadingContent() && !getNoMatchesAvailable()"
+    >
+      <!-- each match card -->
+      <div
+        class="matches__matchCard"
+        *ngFor="let match of getMatches(); index as i"
+      >
+        <!-- details for club one -->
+        <div class="matches__club1">
+          <!-- club logo -->
+          <div>
+            <img
+              src="../../assets/logo/{{ getClubLogo()[i] }}.png"
+              class="match__logo"
+              height="75px"
+              alt=""
+            />
+          </div>
+
+          <!-- club details -->
+          <div class="match__clubContent">
+            <h1>{{ match.participatedCLubName }}</h1>
+            <p class="match__date">
+              {{ match.date["day"] }}/{{ match.date["month"] }}/{{
+                match.date["year"]
+              }}
+            </p>
+            <p class="match__type">{{ match.matchType }}</p>
+            <p class="match__score">{{ match.goalScored }}</p>
+          </div>
+        </div>
+
+        <!-- VS -->
+        <div class="matches__versus">
+          <p>VS</p>
+        </div>
+
+        <!-- details of club two -->
+        <div class="matches__club2">
+          <!-- club details -->
+          <div class="match__clubContent">
+            <h1>{{ match.opponentClubName }}</h1>
+            <p class="match__date">
+              {{ match.date["day"] }}/{{ match.date["month"] }}/{{
+                match.date["year"]
+              }}
+            </p>
+            <p class="match__type">{{ match.matchType }}</p>
+            <p class="match__score">{{ match.goalReceived }}</p>
+          </div>
+
+          <!-- club logo -->
+          <div>
+            <img
+              src="../../assets/logo/{{ getClubLogo()[i + 2] }}.png"
+              class="match__logo"
+              height="75px"
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- displaying the loading gif -->
+    <div class="container loading" *ngIf="getLoadingContent()">
+      <img src="../../assets/loading.gif" alt="" />
+    </div>
+
+    <!-- displaying when there are no matches to be displayed or when the matches list is empty -->
+    <div class="container noMatches__found" *ngIf="getNoMatchesAvailable()">
+      <img src="../../assets/ball.png" alt="" />
+      <p>NO MATCHES FOUND</p>
+    </div>
+  </div>
+  <br />
+  <br />
+  <br />
+</div>
