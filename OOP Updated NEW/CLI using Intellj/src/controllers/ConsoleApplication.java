@@ -473,8 +473,7 @@ public class ConsoleApplication {
 
         // When a new footballClub is created all the stats are set to 0
         // We ask for club name, location, coach name from the user as the inputs
-        System.out.print(" Enter the club name: ");
-        String clubName = insert.nextLine();
+        String clubName = validateString(" Enter the club name: ");
         clubName = clubName.substring(0, 1).toUpperCase() + clubName.toLowerCase().substring(1);
 
         // Validation for club name, if there is a club name already present then we ask the user to enter another
@@ -496,8 +495,7 @@ public class ConsoleApplication {
 
             if(invalidClubName){
                 System.out.println(" There is already a team with the name '" + clubName + "', please enter another name\n");
-                System.out.print(" Enter the club name: ");
-                clubName = insert.nextLine();
+                clubName = validateString(" Enter the club name: ");
                 clubName = clubName.substring(0, 1).toUpperCase() + clubName.toLowerCase().substring(1);
 
             }
