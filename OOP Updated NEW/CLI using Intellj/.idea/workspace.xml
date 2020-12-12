@@ -19,7 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4ffd9da0-df3c-4a45-8b09-2b7528f01daf" name="Default Changelist" comment="" />
+    <list default="true" id="4ffd9da0-df3c-4a45-8b09-2b7528f01daf" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../OOP CW Diagrams/Test Cases.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../../OOP CW Diagrams/Test Cases.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../OOP CW Diagrams/~WRL0367.tmp" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -277,7 +280,7 @@
       <workItem from="1607712735709" duration="197000" />
       <workItem from="1607754960796" duration="261000" />
       <workItem from="1607762507070" duration="4254000" />
-      <workItem from="1607772604402" duration="1633000" />
+      <workItem from="1607772604402" duration="3317000" />
     </task>
     <task id="LOCAL-00012" summary="commit">
       <created>1604851031613</created>
