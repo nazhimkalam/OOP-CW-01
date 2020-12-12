@@ -35,11 +35,26 @@
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
+  border-radius: 5px;
+  background-color: #ffebf77a;
   box-shadow: 5px 10px 18px #888888;
   margin-top: 90px;
   padding-bottom: 50px;
 }
-
+.players__listHeading {
+  margin-top: 30px;
+  font-size: 20px;
+  font-weight: 600;
+  border: 3px solid #ea2d9d;
+  width: fit-content;
+  padding: 10px;
+  transition: 0.3s ease-in-out;
+  border-left: transparent;
+  padding-right: 30px;
+  border-top-right-radius: 100px;
+  border-bottom-right-radius: 100px;
+  color: #36003c;
+}
 .players__list > div {
   transition: 0.3s ease-in-out;
   border: 1px solid var(--colour-right);
@@ -48,7 +63,7 @@
 .players__list > div:hover {
   transform: scale(1.3);
   z-index: 1;
-  border: 2px #ea2d9d solid;
+  border: 3px #EAFF04 solid;
   transition: 0.3s ease-in-out;
 }
 .card-body {
@@ -160,9 +175,13 @@
 }
 
 /* Change the ball rotation every second */
+.players__list > div:hover .player__tatoo{
+  -webkit-animation: ballRotate 2s infinite linear; /* Chrome, Safari, Opera */
+  animation: 2s infinite ballRotate linear; 
+}
 .players__heading img {
-  -webkit-animation: ballRotate 2s infinite; /* Chrome, Safari, Opera */
-  animation: 2s infinite ballRotate;
+  -webkit-animation: ballRotate 2s infinite linear; /* Chrome, Safari, Opera */
+  animation: 2s infinite ballRotate linear;
 }
 @keyframes ballRotate {
   0% {
@@ -212,8 +231,8 @@
 }
 
 .players__heading h1 {
-  -webkit-animation: titleLeftMove 1.2s infinite; /* Chrome, Safari, Opera */
-  animation: 1.2s infinite titleLeftMove;
+  -webkit-animation: titleLeftMove 1.2s infinite linear; /* Chrome, Safari, Opera */
+  animation: 1.2s infinite titleLeftMove linear;
 }
 
 @keyframes titleLeftMove {

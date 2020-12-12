@@ -117,8 +117,8 @@
 
 
 .about__heading {
-  -webkit-animation: titleLeftMove 1.2s infinite; /* Chrome, Safari, Opera */
-  animation: 1.2s infinite titleLeftMove;
+  -webkit-animation: titleLeftMove 1.2s infinite linear; /* Chrome, Safari, Opera */
+  animation: 1.2s infinite titleLeftMove linear;
 }
 
 @keyframes titleLeftMove {

@@ -33,8 +33,8 @@
   align-items: center;
   border-radius: 5px;
   justify-content: space-between;
-  -webkit-animation: bgColorFade 2s infinite; /* Chrome, Safari, Opera */
-  animation: 2s infinite bgColorFade;
+  -webkit-animation: bgColorFade 2.5s infinite; /* Chrome, Safari, Opera */
+  animation: 2.5s infinite bgColorFade;
 }
 .welcome {
   height: 100vh;
@@ -193,6 +193,10 @@
   50% {
     background-color: rgba(255, 255, 255, 0.95);
     transition: 2s ease-in-out;
+    border-top: 10px #963cff solid;
+    border-bottom:10px #963cff solid;
+    border-left:10px #ff2882 solid;
+    border-right:10px #ff2882 solid;
   }
 
   100% {

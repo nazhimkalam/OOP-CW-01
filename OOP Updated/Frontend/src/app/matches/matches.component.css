@@ -129,6 +129,8 @@
   overflow: scroll;
   box-shadow: 5px 10px 18px #888888;
   margin-top: 30px;
+  border-radius: 5px;
+  background-color: #ffebf7b7;
 }
 .matches__matchCard {
   display: flex;
@@ -318,8 +320,8 @@
 
 /* Change the ball rotation every second */
 .matches__titleContent img {
-  -webkit-animation: ballRotate 2s infinite; /* Chrome, Safari, Opera */
-  animation: 2s infinite ballRotate;
+  -webkit-animation: ballRotate 2s infinite linear; /* Chrome, Safari, Opera */
+  animation: 2s infinite ballRotate linear;
 }
 @keyframes ballRotate {
   0% {
@@ -383,7 +385,7 @@
 }
 /* Adding animation for the matches cards */
 .matches__matchCard:hover {
-  background-color: #fff;
+  background-color: #EAFF04;
 }
 .matches__matchCard:hover > .matches__club1 > div:first-child,
 .matches__matchCard:hover > .matches__club2 > div:last-child {
@@ -438,8 +440,8 @@
 } */
 
 .matches__header {
-  -webkit-animation: titleLeftMove 1.2s infinite; /* Chrome, Safari, Opera */
-  animation: 1.2s infinite titleLeftMove;
+  -webkit-animation: titleLeftMove 1.2s infinite linear; /* Chrome, Safari, Opera */
+  animation: 1.2s infinite titleLeftMove linear;
 }
 
 @keyframes titleLeftMove {

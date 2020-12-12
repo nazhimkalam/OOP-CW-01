@@ -3,8 +3,9 @@
 }
 .sponsors {
   margin-top: 50px;
-  height: 220px;
-  border-top: 5px #d4007f solid;
+  height: 190px;
+  /* border-top: 5px #d4007f solid; */
+  background: linear-gradient(to left, #ff2882, #963cff);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,6 +22,7 @@
 }
 .sponsors__each {
   display: flex;
+  background-color: #fff;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;

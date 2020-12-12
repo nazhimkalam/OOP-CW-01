@@ -7,10 +7,12 @@
     <img src="../../assets/ball.png" alt="ball" height="60" />
   </div>
 
+  <p class="players__listHeading">List of all players</p>
+
   <!-- players list -->
   <div class="container players__list">
     <!-- each player card -->
-    <div class="card" style="width: 16rem" *ngFor="let player of getPlayers()">
+    <div class="card" style="width: 16.3rem" *ngFor="let player of getPlayers()">
       <!-- player image -->
       <img
         class="card-img-top"
@@ -25,7 +27,7 @@
             <p class="card-text">{{ player.position }}</p>
             <p class="card-text">{{ player.teamName }}</p>
           </div>
-          <img src="../../assets/logoTatoo.png" alt="">
+          <img src="../../assets/ball.png" class="player__tatoo" alt="">
         </div>
         
       </div>

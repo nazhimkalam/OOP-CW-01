@@ -64,6 +64,7 @@ th:hover {
 td {
   text-align: center;
   height: 60px;
+  background-color: #fff;
   vertical-align: middle;
   font-size: 15px;
 }
@@ -223,8 +224,8 @@ table {
 
 
 .pTable__header {
-  -webkit-animation: titleLeftMove 1.2s infinite; /* Chrome, Safari, Opera */
-  animation: 1.2s infinite titleLeftMove;
+  -webkit-animation: titleLeftMove 1.2s infinite linear; /* Chrome, Safari, Opera */
+  animation: 1.2s infinite titleLeftMove linear;
 }
 
 @keyframes titleLeftMove {

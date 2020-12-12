@@ -228,7 +228,7 @@ export class MatchesComponent implements OnInit {
     // Setting a delay
     setTimeout(() => {
       this.displayCelebration = 'noCelebration';
-    }, 1200);
+    }, 1500);
   }
 
   // generate random clubLogo
