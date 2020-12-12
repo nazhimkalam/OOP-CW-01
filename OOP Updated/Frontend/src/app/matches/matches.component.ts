@@ -22,6 +22,7 @@ export class MatchesComponent implements OnInit {
   private displaySearchButton: boolean;
   private matchGenerateHeaderMessage: string;
   private matchGenerateBodyMessage: string;
+  private headerModalColor: string;
 
   // constructor for initialization
   public constructor(private _footballService: FootballInteractionService) {
@@ -203,8 +204,10 @@ export class MatchesComponent implements OnInit {
         // if the data = null then we change the content of the model
         if(data === null){
           this.matchGenerateHeaderMessage = "Error!"
+          this.headerModalColor = "#FF0134"
           this.matchGenerateBodyMessage = "Cannot generate match, at least two clubs should be present to generate a match";
         }else{
+          this.headerModalColor = "#2DBF64"
           this.matchGenerateHeaderMessage = "Congratulations!";
           this.matchGenerateBodyMessage = "Match Successfully generated.";
         }
@@ -333,5 +336,13 @@ export class MatchesComponent implements OnInit {
 
   public getValidationDate__visible() {
     return this.validationDate__visible;
+  }
+
+  public getHeaderModalColor(){
+    return this.headerModalColor;
+  }
+
+  public setHeaderModalColor(data: string){
+    this.headerModalColor = data;
   }
 }

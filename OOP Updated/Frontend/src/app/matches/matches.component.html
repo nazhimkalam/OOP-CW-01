@@ -6,7 +6,7 @@
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
-          <h2 class="modal-title">{{ getMatchGenerateHeaderMessage() }}</h2>
+          <h1 class="modal-title" [ngStyle]="{color: getHeaderModalColor()}">{{ getMatchGenerateHeaderMessage() }}</h1>
           <button
             type="button"
             class="close"
