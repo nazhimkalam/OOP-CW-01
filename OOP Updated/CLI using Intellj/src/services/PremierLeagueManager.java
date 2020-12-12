@@ -75,7 +75,7 @@ public class PremierLeagueManager implements LeagueManager {
     public static String loadingData() {
 
         // variables used
-        File file = new File("../Backend/public/storage/objectDataFile.txt");   // text file path
+        File file = new File("../Backend/public/resources/objectDataFile.txt");   // text file path
         FileInputStream fileInputStream = null;
         ObjectInputStream objectInputStream = null;
 
@@ -807,7 +807,7 @@ public class PremierLeagueManager implements LeagueManager {
         * This is because Serializable interface gives the permission to save the objects
         */
 
-        File file = new File("../Backend/public/storage/objectDataFile.txt");  // getting the path to save the data
+        File file = new File("../Backend/public/resources/objectDataFile.txt");  // getting the path to save the data
         FileOutputStream fileOutputStream = null;
         ObjectOutputStream objectOutputStream = null;
 
@@ -867,7 +867,7 @@ public class PremierLeagueManager implements LeagueManager {
 
         FileWriter file = null;
         try {
-            file = new FileWriter("../Backend/public/storage/objectDataFile.txt");
+            file = new FileWriter("../Backend/public/resources/objectDataFile.txt");
             // clearing the content of the file by overriding with an empty string
             file.write("");
 
