@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: '', component: WelcomeComponent },  // this is the default route http://localhost:9000/
   { path: 'welcome', component: WelcomeComponent },
   { path: 'about', component: AboutComponent },
-  { path: 'table', component: TableComponent },
+  { path: 'tables', component: TableComponent },
   { path: 'matches', component: MatchesComponent },
   { path: 'players', component: PlayersComponent },
   { path: '**', component: ErrorComponent },  // this is the route when an error is occurred
