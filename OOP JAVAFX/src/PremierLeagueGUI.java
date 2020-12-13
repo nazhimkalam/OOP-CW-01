@@ -73,33 +73,63 @@ public class PremierLeagueGUI extends Application {
         switch (userSelectOption)
         {
             case 1:
-                creatingClub();                 // THIS IS WERE I TAKE ALL THE USER INPUTS
+                PremierLeagueManager.loadingData();
+
+                // method to get user inputs for creating the club
+                creatingClub();
+
+                premierLeagueManager.saveDataIntoFile();
                 displayMenu(primaryStage);
                 break;
 
             case 2:
-                deleteCLub();                   // THIS IS WERE I TAKE ALL THE USER INPUTS
+                PremierLeagueManager.loadingData();
+
+                // method to get user inputs for deleting a club
+                deleteCLub();
+
+                premierLeagueManager.saveDataIntoFile();
                 displayMenu(primaryStage);
                 break;
 
             case 3:
-                displayStatistics();            // THIS IS WERE I TAKE ALL THE USER INPUTS
+                PremierLeagueManager.loadingData();
+
+                // method to get user inputs for displaying the club details
+                displayStatistics();
+
+                premierLeagueManager.saveDataIntoFile();
                 displayMenu(primaryStage);
                 break;
 
             case 4:
-                String seasonPlayed = validatingSeason();        // DISPLAYING THE PREMIER LEAGUE TABLE
+                PremierLeagueManager.loadingData();
+
+                // gets the season entered by the user which is validated
+                String seasonPlayed = validatingSeason();
+
+                // method to display the CLI premier League table
                 premierLeagueManager.displayLeagueTable(seasonPlayed);
+
+                premierLeagueManager.saveDataIntoFile();
                 displayMenu(primaryStage);
                 break;
 
             case 5:
-                addPlayedMatch();              // THIS IS WERE I TAKE ALL THE USER INPUTS
+                PremierLeagueManager.loadingData();
+
+                // method to get user inputs to add match played
+                addPlayedMatch();
+
+                premierLeagueManager.saveDataIntoFile();
                 displayMenu(primaryStage);
                 break;
 
             case 6:
-                result = premierLeagueManager.saveDataIntoFile();       // saving the data into a file
+                // method to save the data
+                PremierLeagueManager.loadingData();
+
+                result = premierLeagueManager.saveDataIntoFile();
                 System.out.println(result);
 
                 displayMenu(primaryStage);
@@ -112,6 +142,7 @@ public class PremierLeagueGUI extends Application {
                 displayMenu(primaryStage);
                 break;
             case 8:
+                // Displaying the GUI
                 guiProgram(primaryStage);
                 break;
             case 9:
@@ -905,90 +936,131 @@ public class PremierLeagueGUI extends Application {
          /* ADD A PLAYED MATCH WITH IT'S SCORE AND UPDATE THE STATISTICS AND LIST OF MATCHES FOR THE RESPECTIVE CLUBS
            PLAYED */
 
-        Scanner input = new Scanner(System.in);
-        System.out.println("\n Enter details of the played match");
+        // we have to check if there is at least 2 clubs or more present to add a match else we can't add a match
+        if(PremierLeagueManager.getPremierLeagueFootballClubList().size() > 1){
+            // If there is more than 1 club then only we proceed
+            Scanner input = new Scanner(System.in);
+            System.out.println("\n Enter details of the played match");
 
-        // Checking if it is a valid club else throwing up and error and asking user to re-enter
-        String clubName_01 = checkingForValidClub(" Enter club 1 name: ");
+            // "checkingForValidClub()" checks if it is a valid club else throwing up and error and asking user to re-enter
+            String clubName_01 = checkingForValidClub(" Enter club 1 name: ");
+            clubName_01 = clubName_01.substring(0, 1).toUpperCase() + clubName_01.toLowerCase().substring(1);
 
-        // validation for the scores
-        int numberGoalScored_club_1 = validatingIntegers(" Enter the number of goal scored: ");
+            // validating the scores to make sure its an integer entered
+            int numberGoalScored_club_1 = validatingIntegers(" Enter the number of goal scored: ");
 
-        // Checking if it is a valid club else throwing up and error and asking user to re-enter
-        String clubName_02 = checkingForValidClub(" Enter club 2 name: ");
+            // "checkingForValidClub()" checks if it is a valid club else throwing up and error and asking user to re-enter
+            String clubName_02 = checkingForValidClub(" Enter club 2 name: ");
+            clubName_02 = clubName_02.substring(0, 1).toUpperCase() + clubName_02.toLowerCase().substring(1);
 
-        // Checking if the user has entered duplicated club names
-        while(clubName_01.equalsIgnoreCase(clubName_02)){
-            System.out.println("\n Please enter a different club name ");
-            clubName_02 = checkingForValidClub(" Enter club 2 name: ");
-        }
+            // Checking if the user has entered the same club name again for the next team name
+            while(clubName_01.equalsIgnoreCase(clubName_02)){
+                System.out.println("\n There should be two different clubs to play a match and you have entered the same " +
+                        "club twice!");
+                System.out.println(" Please enter a different club name! ");
+                clubName_02 = checkingForValidClub(" Enter club 2 name: ");
+                clubName_02 = clubName_02.substring(0, 1).toUpperCase() + clubName_02.toLowerCase().substring(1);
 
-        // validation for the scores and some stats
-        int numberGoalScored_club_2 = validatingIntegers(" Enter the number of goal scored: ");
-
-
-        // getting the date of the match played as the input from the user
-        int day = validatingIntegers(" Enter the day (only integers are accepted): ");
-        int month = validatingIntegers(" Enter the month (only integers are accepted): ");
-        int year = validatingIntegers(" Enter the year (only integers are accepted): ");
-        DateMatch date = new DateMatch(day, month, year);
-
-
-        // we are displaying the season options possible for the match played for the given date
-        String[] possibleSeason = new String[2];
-        System.out.println(" These are the possible seasons for the match played from the given date");
-
-        int lastTwoDigitsOfTheYear = Integer.parseInt(String.valueOf(year).substring(2));
-
-        possibleSeason[0] = (year-1) + "-" + (lastTwoDigitsOfTheYear);
-        possibleSeason[1] = (year) + "-" + (lastTwoDigitsOfTheYear+1);
-
-        for (int i = 0; i < possibleSeason.length; i++) {
-            System.out.println("  " + (i+1) + ". " + possibleSeason[i]);
-        }
-
-        int seasonOption = validatingIntegers(" Please select a season from the given list (Enter '1' or '2') : ");
-
-
-        boolean invalidOption = true;
-        while (invalidOption){                           // validating the inputs
-            if(seasonOption!=1 && seasonOption!=2){
-                System.out.println(" Invalid Input!");
-                seasonOption = validatingIntegers(" Please select a season from the given list (Enter '1' or '2') : ");
-            }else{
-                invalidOption=false;
             }
-        }
-        String seasonPlayed = possibleSeason[seasonOption-1];
 
-        // type of match played 'Home' or 'Away'
-        boolean validMatchEntered;
-        String matchType;
+            // validating the scores to make sure its an integer entered
+            int numberGoalScored_club_2 = validatingIntegers(" Enter the number of goal scored: ");
 
-        do{
-            System.out.print(" Enter the type of match played (Home or Away): ");
-            matchType = input.nextLine();
-            validMatchEntered = matchType.equalsIgnoreCase("home") || matchType.equalsIgnoreCase("away");
-            if(!validMatchEntered)
-                System.out.println("Invalid match input!");
+            // getting the date of the match played as the input from the user and validating if its a integer or not
+            int day = validatingIntegers(" Enter the day (only integers are accepted): ");
 
-        }while (!validMatchEntered);
+            // validating the day entered which has to be in between 1 and 31
+            while(day<1 || day>31){
+                System.out.println(" Invalid day entered, day entered should be with in the range of (1 to 31)! \n");
+                day = validatingIntegers(" Enter the day (only integers are accepted): ");
+            }
+
+            //  getting the month of the match played as the input from the user and validating if its a integer or not
+            int month = validatingIntegers(" Enter the month (only integers are accepted): ");
+
+            // validating the month entered which has to be in between 1 and 12
+            while(month<1 || month>12){
+                System.out.println(" Invalid month entered, month entered should be with in the range of (1 to 12)! \n");
+                month = validatingIntegers(" Enter the month (only integers are accepted): ");
+            }
+
+            //  getting the year of the match played as the input from the user and validating if its a integer or not
+            int year = validatingIntegers(" Enter the year (only integers are accepted): ");
+
+            // validating the year entered
+            while(year<1000 || year>3000){
+                // Assuming that the minimum year is 1000 and maximum year is 3000
+                System.out.println(" Invalid year entered, year entered should be with in the range of (1000 to 3000)! \n");
+                year = validatingIntegers(" Enter the year (only integers are accepted): ");
+            }
+
+            // creating the date object for the match played
+            DateMatch date = new DateMatch(day, month, year);
+
+            // we are displaying the season options possible for the match played for the given date
+            String[] possibleSeason = new String[2];
+            System.out.println(" These are the possible seasons for the match played from the given date");
+
+            int lastTwoDigitsOfTheYear = Integer.parseInt(String.valueOf(year).substring(2));
+
+            possibleSeason[0] = (year-1) + "-" + (lastTwoDigitsOfTheYear);
+            possibleSeason[1] = (year) + "-" + (lastTwoDigitsOfTheYear+1);
+
+            // Displaying the season options for the entered year of the match
+            for (int index = 0; index < possibleSeason.length; index++) {
+                System.out.println("  " + (index+1) + ". " + possibleSeason[index]);
+            }
+
+            // getting the season user input an validating it to check if an integer is entered
+            int seasonOption = validatingIntegers(" Please select a season from the given list (Enter '1' or '2') : ");
+
+            // This is to validate if the user has entered a correct season option, (only enter 1 or 2 else we ask user
+            // to re-enter)
+            boolean invalidOption = true;
+            while (invalidOption){
+                if(seasonOption!=1 && seasonOption!=2){
+                    System.out.println("\n Invalid Input, please only enter either '1' or '2' as the season option!");
+                    seasonOption = validatingIntegers(" Please select a season from the given list (Enter '1' or '2') : ");
+                }else{
+                    invalidOption=false;
+                }
+            }
+
+            String seasonPlayed = possibleSeason[seasonOption-1];
+
+            // validating an asking the user to enter the type of match played, ("Home" or "Away")
+            boolean validMatchEntered;
+            String matchType;
+
+            do{
+                System.out.print(" Enter the type of match played (Home or Away): ");
+                matchType = input.nextLine();
+                validMatchEntered = matchType.equalsIgnoreCase("home") || matchType.equalsIgnoreCase("away");
+                if(!validMatchEntered)
+                    System.out.println("\n Invalid match input, please only enter either 'HOME' or 'AWAY' as the match type!");
+
+            }while (!validMatchEntered);
 
 
-        System.out.print(" Are you sure that the details entered are correct, if you need to re-enter," +
-                " enter 'Y' or 'y'" + " else enter any key to continue: ");
-        input = new Scanner(System.in);
-        String confirmation = input.nextLine();
+            System.out.print(" Are you sure that the details entered are correct, if you need to re-enter," +
+                    " enter 'Y' or 'y'" + " else enter any key to continue: ");
+            input = new Scanner(System.in);
+            String confirmation = input.nextLine();
 
-        if (confirmation.equalsIgnoreCase("y")) {
-            System.out.println(" Please re-enter the details ");
-            addPlayedMatch();
+            // This is to confirm if the user has entered correct details else the user is able to re enter from beginning
+            if (confirmation.equalsIgnoreCase("y")) {
+                System.out.println(" Please re-enter the details ");
+                addPlayedMatch();
 
+            }else{
+                String result = premierLeagueManager.addPlayedMatch(seasonPlayed, clubName_01, clubName_02,
+                        numberGoalScored_club_1, numberGoalScored_club_2, date, matchType);
+                System.out.println(result);
+
+            }
         }else{
-            String result = premierLeagueManager.addPlayedMatch(seasonPlayed, clubName_01, clubName_02, numberGoalScored_club_1,
-                    numberGoalScored_club_2, date, matchType);
-            System.out.println(result);
-
+            // We display a message to the user
+            System.out.println(" Sorry there is only 1 club present currently, so a match can't be played!");
         }
 
     }

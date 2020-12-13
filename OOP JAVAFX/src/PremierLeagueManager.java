@@ -1055,6 +1055,11 @@ public class PremierLeagueManager implements LeagueManager {
             throws CloneNotSupportedException {
         ArrayList<FootballClub> filteredClubListByDate = new ArrayList<>();
 
+        // removing unwanted zeros from date and month
+        String[] splitDate = dateEntered.split("/");
+        dateEntered = Integer.parseInt(splitDate[0]) + "/" + Integer.parseInt(splitDate[1]) + "/"
+                + Integer.parseInt(splitDate[2]);
+
         // we are cloning or creating a copy of the arraylist which has to be filtered
         for (FootballClub footballClub : seasonBasedClub) {
             filteredClubListByDate.add((FootballClub) footballClub.clone());
@@ -1062,8 +1067,6 @@ public class PremierLeagueManager implements LeagueManager {
 
         // check and split the date entered by the user
         if(!dateEntered.isEmpty()){
-
-
             // looping through the clubs checking for matches without the match with the given date and removing them
             for (FootballClub club: filteredClubListByDate) {
                 int numberOfMatchesPlayed = club.getMatchesPlayed().size();

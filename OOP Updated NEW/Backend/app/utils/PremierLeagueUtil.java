@@ -248,7 +248,13 @@ public class PremierLeagueUtil {
     public static ArrayList<FootballClub> filterMatchesByDate(ArrayList<FootballClub> seasonBasedClub,
                                                               String dateEntered)
             throws CloneNotSupportedException {
+
         ArrayList<FootballClub> filteredClubListByDate = new ArrayList<>();
+
+        // removing unwanted zeros from date and month
+        String[] splitDate = dateEntered.split("-");
+        dateEntered = Integer.parseInt(splitDate[0]) + "-" + Integer.parseInt(splitDate[1]) + "-"
+                + Integer.parseInt(splitDate[2]);
 
         // we are cloning or creating a copy of the arraylist which has to be filtered
         for (FootballClub footballClub : seasonBasedClub) {
