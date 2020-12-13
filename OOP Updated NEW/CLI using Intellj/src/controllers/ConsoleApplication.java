@@ -199,7 +199,7 @@ public class ConsoleApplication {
 
             // Checking if the user has entered the same club name again for the next team name
             while(clubName_01.equalsIgnoreCase(clubName_02)){
-                System.out.println("\n There should be two different clubs to play a match and you have entered the same" +
+                System.out.println("\n There should be two different clubs to play a match and you have entered the same " +
                         "club twice!");
                 System.out.println(" Please enter a different club name! ");
                 clubName_02 = checkingForValidClub(" Enter club 2 name: ");
@@ -263,7 +263,7 @@ public class ConsoleApplication {
             boolean invalidOption = true;
             while (invalidOption){
                 if(seasonOption!=1 && seasonOption!=2){
-                    System.out.println(" Invalid Input, please only enter either '1' or '2' as the season option!");
+                    System.out.println("\n Invalid Input, please only enter either '1' or '2' as the season option!");
                     seasonOption = validatingIntegers(" Please select a season from the given list (Enter '1' or '2') : ");
                 }else{
                     invalidOption=false;
@@ -281,7 +281,7 @@ public class ConsoleApplication {
                 matchType = input.nextLine();
                 validMatchEntered = matchType.equalsIgnoreCase("home") || matchType.equalsIgnoreCase("away");
                 if(!validMatchEntered)
-                    System.out.println("Invalid match input, please only enter either 'HOME' or 'AWAY' as the match type !");
+                    System.out.println("\n Invalid match input, please only enter either 'HOME' or 'AWAY' as the match type!");
 
             }while (!validMatchEntered);
 
@@ -554,7 +554,7 @@ public class ConsoleApplication {
             validStringEntered = false;
             System.out.print(message);
             userInput = input.nextLine();
-            if((userInput != null)&&userInput.matches("^[a-z A-Z]*$"))
+            if((userInput != null) && userInput.matches("^[a-z A-Z]*$") && (!userInput.equals("")))
                 validStringEntered = true;
             else
                 System.out.println("\n Given input is not in proper format, only include alphabets please! ");
