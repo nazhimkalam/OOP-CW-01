@@ -279,6 +279,7 @@ public class ConsoleApplication {
             do{
                 System.out.print(" Enter the type of match played (Home or Away): ");
                 matchType = input.nextLine();
+                matchType = matchType.substring(0, 1).toUpperCase() + matchType.toLowerCase().substring(1);
                 validMatchEntered = matchType.equalsIgnoreCase("home") || matchType.equalsIgnoreCase("away");
                 if(!validMatchEntered)
                     System.out.println("\n Invalid match input, please only enter either 'HOME' or 'AWAY' as the match type!");

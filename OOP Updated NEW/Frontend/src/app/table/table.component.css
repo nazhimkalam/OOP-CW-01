@@ -38,7 +38,15 @@
 
 .my-custom-scrollbar {
   position: relative;
-  height: 550px;
+   -webkit-box-shadow: 2px 2px 3px 4px #ccc;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  -moz-box-shadow:    2px 2px 3px 4px #ccc;  /* Firefox 3.5 - 3.6 */
+  box-shadow:         2px 2px 3px 4px #ccc;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+  height: 430px;
+  border: 1px rgba(126, 126, 126, 0.555) solid;
+  
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
   overflow: auto;
 }
 .table-wrapper-scroll-y {
@@ -69,9 +77,11 @@ td {
   font-size: 15px;
 }
 
+
 table {
-  border-left: 1px solid #ea2d9d;
-  border-right: 1px solid #ea2d9d;
+  -webkit-box-shadow: 3px 3px 5px 6px #ccc;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  -moz-box-shadow:    3px 3px 5px 6px #ccc;  /* Firefox 3.5 - 3.6 */
+  box-shadow:         3px 3px 5px 6px #ccc;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
 }
 
 .season button,
@@ -105,7 +115,6 @@ table {
 .dropdown-item:active {
   background-color: #ea2d9d !important;
 }
-
 
 .pTable__header__container {
   display: flex;
@@ -200,9 +209,8 @@ table {
   }
 }
 
-
 /* Change the ball rotation every second */
-.pTable__header__container img  {
+.pTable__header__container img {
   -webkit-animation: trophyZoom 2s infinite; /* Chrome, Safari, Opera */
   animation: 2s infinite trophyZoom;
 }
@@ -220,8 +228,6 @@ table {
     transition: 0.5s ease-in-out;
   }
 }
-
-
 
 .pTable__header {
   -webkit-animation: titleLeftMove 1.2s infinite linear; /* Chrome, Safari, Opera */
@@ -245,5 +251,27 @@ table {
     position: relative;
     right: 0;
     transition: 0.2s ease-in-out;
+  }
+}
+
+
+tr:not(:first-child) {
+  opacity: 0.5;
+  height: 90px;
+  animation-name: slideDown;
+  animation-duration: 1.5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  
+}
+@keyframes slideDown {
+  from {
+    opacity: 0.5;
+    transform: translateY(-70px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0px);
   }
 }

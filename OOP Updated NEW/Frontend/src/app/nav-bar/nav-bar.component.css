@@ -26,7 +26,8 @@
   transition: 0.1s ease-in-out;
 }
 .active{
-  border: 2px #ff0099 solid;
+  border: 2px #ff48b6c2 solid;
   border-radius: 3px;
-  background-color: #ff0099;
+  /* font-weight: 600; */
+  /* background-color: #eb008dc2; */
 }

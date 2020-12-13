@@ -13,10 +13,10 @@
   align-items: center;
   justify-content: space-between;
 }
-.closeBtn{
+.closeBtn {
   color: #ea2d9d;
 }
-#myModal{
+#myModal {
   z-index: 1000000000000;
 }
 .matches__titleContent h1 {
@@ -37,24 +37,23 @@
   border-right-width: 8px;
   transform: translateX(20px);
 } */
-.validationDate__visible{
+.validationDate__visible {
   position: relative;
   top: 18px;
 }
-.validationDate__invisible p{
+.validationDate__invisible p {
   display: none;
 }
-.validationDate__visible p{
+.validationDate__visible p {
   width: 100%;
   -webkit-animation: invalidAnimation 1s infinite; /* Chrome, Safari, Opera */
   animation: 1s infinite invalidAnimation;
 }
-.validationDate__visible p small{
- 
+.validationDate__visible p small {
   color: red;
   font-weight: 600;
 }
-.date__group{
+.date__group {
   display: flex;
   flex-direction: column;
 }
@@ -182,24 +181,23 @@
   padding: 0 10px;
 }
 
-.noMatches__found{
+.noMatches__found {
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding-top: 80px;
   align-items: center;
 }
-.noMatches__found img{
+.noMatches__found img {
   object-fit: contain;
   -webkit-animation: ballRotate 2s infinite; /* Chrome, Safari, Opera */
   animation: 2s infinite ballRotate;
   height: 200px;
 }
-.noMatches__found p{
+.noMatches__found p {
   padding-top: 40px;
   font-size: 20px;
 }
-
 
 .dropdown-item {
   cursor: pointer !important;
@@ -207,7 +205,7 @@
 .date__calender {
   cursor: pointer;
   box-shadow: 1px 5px 8px #acacac;
-  border:2px black #888888;
+  border: 2px black #888888;
 }
 
 .matches__season {
@@ -369,28 +367,35 @@
     transition: 1s ease-in-out;
   }
 }
-@keyframes invalidAnimation{
-  0%{
+@keyframes invalidAnimation {
+  0% {
     transform: scale(0.95);
     transition: 0.3s ease-in-out;
   }
-  50%{
+  50% {
     transform: scale(1);
     transition: 0.3s ease-in-out;
   }
-  100%{
+  100% {
     transform: scale(0.95);
     transition: 0.3s ease-in-out;
   }
 }
 /* Adding animation for the matches cards */
 .matches__matchCard:hover {
-  background-color: #EAFF04;
+  background-color: #eaff04;
 }
 .matches__matchCard:hover > .matches__club1 > div:first-child,
 .matches__matchCard:hover > .matches__club2 > div:last-child {
   transition: 1s ease-in-out;
   transform: scale(1.1);
+}
+.matches__versus p {
+  transition: 0.5s ease-in-out;
+}
+.matches__matchCard:hover > .matches__versus p {
+  font-size: 35px;
+  transition: 0.5s ease-in-out;
 }
 /* @keyframes cardColorChange {
   0% {
