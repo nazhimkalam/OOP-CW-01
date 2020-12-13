@@ -53,7 +53,7 @@ public class ConsoleApplication {
         "|________________________________________________________________________________________________|\n");
 
         // get user selected option
-        int userSelectOption = validatingIntegers(" Enter your option (please enter only integers): ");
+        int userSelectOption = validatingIntegers(" Enter an option (please enter only integers): ");
         String result;
 
         // Fires the appropriate method depending on the user selected option
@@ -199,7 +199,9 @@ public class ConsoleApplication {
 
             // Checking if the user has entered the same club name again for the next team name
             while(clubName_01.equalsIgnoreCase(clubName_02)){
-                System.out.println("\n Please enter a different club name ");
+                System.out.println("\n There should be two different clubs to play a match and you have entered the same" +
+                        "club twice!");
+                System.out.println(" Please enter a different club name! ");
                 clubName_02 = checkingForValidClub(" Enter club 2 name: ");
                 clubName_02 = clubName_02.substring(0, 1).toUpperCase() + clubName_02.toLowerCase().substring(1);
 
@@ -213,7 +215,7 @@ public class ConsoleApplication {
 
             // validating the day entered which has to be in between 1 and 31
             while(day<1 || day>31){
-                System.out.println(" Invalid day entered! \n");
+                System.out.println(" Invalid day entered, day entered should be with in the range of (1 to 31)! \n");
                 day = validatingIntegers(" Enter the day (only integers are accepted): ");
             }
 
@@ -222,7 +224,7 @@ public class ConsoleApplication {
 
             // validating the month entered which has to be in between 1 and 12
             while(month<1 || month>12){
-                System.out.println(" Invalid month entered! \n");
+                System.out.println(" Invalid month entered, month entered should be with in the range of (1 to 12)! \n");
                 month = validatingIntegers(" Enter the month (only integers are accepted): ");
             }
 
@@ -231,7 +233,8 @@ public class ConsoleApplication {
 
             // validating the year entered
             while(year<1000 || year>3000){
-                System.out.println(" Invalid year entered! \n");
+                // Assuming that the minimum year is 1000 and maximum year is 3000
+                System.out.println(" Invalid year entered, year entered should be with in the range of (1000 to 3000)! \n");
                 year = validatingIntegers(" Enter the year (only integers are accepted): ");
             }
 
@@ -260,7 +263,7 @@ public class ConsoleApplication {
             boolean invalidOption = true;
             while (invalidOption){
                 if(seasonOption!=1 && seasonOption!=2){
-                    System.out.println(" Invalid Input!");
+                    System.out.println(" Invalid Input, please only enter either '1' or '2' as the season option!");
                     seasonOption = validatingIntegers(" Please select a season from the given list (Enter '1' or '2') : ");
                 }else{
                     invalidOption=false;
@@ -278,7 +281,7 @@ public class ConsoleApplication {
                 matchType = input.nextLine();
                 validMatchEntered = matchType.equalsIgnoreCase("home") || matchType.equalsIgnoreCase("away");
                 if(!validMatchEntered)
-                    System.out.println("Invalid match input!");
+                    System.out.println("Invalid match input, please only enter either 'HOME' or 'AWAY' as the match type !");
 
             }while (!validMatchEntered);
 
@@ -303,8 +306,6 @@ public class ConsoleApplication {
             // We display a message to the user
             System.out.println(" Sorry there is only 1 club present currently, so a match can't be played!");
         }
-
-
     }
 
     public static String checkingForValidClub(String message) {
@@ -345,7 +346,7 @@ public class ConsoleApplication {
             if(seasonPlayed.matches("\\d{4}-\\d{2}"))
                 validatingSeason = true;
             else
-                System.out.println("\n Given input is not in proper format! ");
+                System.out.println("\n Given input is not in proper format, use this format please (0000-00) with integers only! ");
         }while (!validatingSeason);
 
         return seasonPlayed;
@@ -421,8 +422,6 @@ public class ConsoleApplication {
             System.out.println("\n Sorry, there is no club with the given name '" + clubName + "'");
 
         }
-
-
     }
 
     // THIS DEALS WITH CREATING THE FOOTBALL CLUB FOR THE LIST
@@ -447,7 +446,7 @@ public class ConsoleApplication {
             System.out.print(" Enter your option number (integers only accepted): ");
             while(!insert.hasNextInt()){
                 String input = insert.next();
-                System.out.println("\n '" + input + "' is an Invalid input!");
+                System.out.println("\n '" + input + "' is an Invalid Integer, please enter only Integers!");
                 System.out.print(" Enter your option number (integers only accepted): ");
             }
             userSelectOption = insert.nextInt();
@@ -500,7 +499,6 @@ public class ConsoleApplication {
 
             }
         }
-
 
         // location can have numbers also so no need validation even it can have symbols such as '/'
         System.out.print(" Enter the location: ");
@@ -559,7 +557,7 @@ public class ConsoleApplication {
             if((userInput != null)&&userInput.matches("^[a-z A-Z]*$"))
                 validStringEntered = true;
             else
-                System.out.println("\n Given input is not in proper format! ");
+                System.out.println("\n Given input is not in proper format, only include alphabets please! ");
         }while (!validStringEntered);
 
         return userInput;
@@ -570,7 +568,7 @@ public class ConsoleApplication {
         Scanner input = new Scanner(System.in);
         System.out.print(message);
         while (!input.hasNextInt()) {
-            System.out.println("\n Invalid input!");
+            System.out.println("\n Invalid input, please enter a valid integer!");
             System.out.print(message);
             input.next();
         }
