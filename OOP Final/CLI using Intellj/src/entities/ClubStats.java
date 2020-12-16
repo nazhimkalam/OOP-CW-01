@@ -26,11 +26,13 @@ public class ClubStats implements Serializable, Cloneable {
     // Parameter constructor
     public ClubStats(int totalMatchesPlayed, int totalWins, int totalDraws, int totalDefeats,
                      int totalPointsScored) {
+
         this.totalMatchesPlayed = totalMatchesPlayed;
         this.totalWins = totalWins;
         this.totalDraws = totalDraws;
         this.totalDefeats = totalDefeats;
         this.totalPointsScored = totalPointsScored;
+
     }
 
     // Getter and Setters for Encapsulation

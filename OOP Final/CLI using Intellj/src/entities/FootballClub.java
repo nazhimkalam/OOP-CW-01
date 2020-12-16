@@ -30,6 +30,7 @@ public class FootballClub extends SportClub{
 
     // Argument Constructor
     public FootballClub(String name, String location, String coachName) {
+
         super(name, location, new ClubStats());
         this.coachName = coachName;
         this.totalGoalsReceived = 0;
@@ -42,6 +43,7 @@ public class FootballClub extends SportClub{
 
         // auto generating the players whenever you instantiate a club
         autoGeneratePlayers();
+
     }
 
     // this displays the details of the football club by overriding the toString method

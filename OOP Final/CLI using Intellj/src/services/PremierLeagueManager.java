@@ -49,6 +49,7 @@ public class PremierLeagueManager implements LeagueManager {
 
     // Constructor
     private PremierLeagueManager(){
+
         // initializing the variables
         matchedAdded = false;
         allSeasonAdded = new ArrayList<>();
@@ -57,11 +58,13 @@ public class PremierLeagueManager implements LeagueManager {
         // load the previously saved data from the file
         String result = loadingData();
         System.out.println(result);
+
     }
 
 
     // This method is used for the Singleton Design Pattern, inorder to get the single instance of the class
     public static LeagueManager getInstance(){
+
         // Double checked locking (due to the double If condition)
 
         if(manager==null){
@@ -84,6 +87,7 @@ public class PremierLeagueManager implements LeagueManager {
 
     // this method is for loading the data from the file
     public static String loadingData() {
+
         // Serializing means converting a state into a byte stream
 
         // text file path
@@ -135,8 +139,10 @@ public class PremierLeagueManager implements LeagueManager {
 
         }
         finally {
+
             // closing the file once all the data is loaded
             try{
+
                 // making sure that it is not null, to be closed
                 if (fileInputStream != null) {
                     fileInputStream.close();
@@ -146,8 +152,10 @@ public class PremierLeagueManager implements LeagueManager {
                 if (objectInputStream != null) {
                     objectInputStream.close();
                 }
+
             }
             catch (IOException ioException) {
+
                 // Handles exception
                 return " Exception when performing read/write operations to the file!" +
                         "\n No permission to read/write from or to the file";
@@ -168,6 +176,7 @@ public class PremierLeagueManager implements LeagueManager {
 
         // this is to create the appropriate instance depending on the user input
         switch (clubType) {
+
             case "normal":
                 club = new FootballClub(clubName, location, coachName);
                 break;
@@ -179,6 +188,7 @@ public class PremierLeagueManager implements LeagueManager {
             case "school":
                 club = new SchoolFootballClub(clubName, location, coachName, universitySchoolName);
                 break;
+
         }
 
         // Checking if the maximum number of clubs created limit has been reached to add the club or not
@@ -202,6 +212,7 @@ public class PremierLeagueManager implements LeagueManager {
 
         // This loop searches for the club and deletes it from the list
         for (int index = 0; index < premierLeagueFootballClubList.size(); index++) {
+
             if(premierLeagueFootballClubList.get(index).getName().equalsIgnoreCase(clubName)){
 
                 // if the club name is present it is removed
@@ -235,6 +246,7 @@ public class PremierLeagueManager implements LeagueManager {
                 for (int index = 0; index < footballClub.getPlayersList().size(); index++) {
                     System.out.println(" <------------ Player " + ( index + 1 ) + " ---------------->\n");
                     System.out.println(footballClub.getPlayersList().get(index));
+
                 }
 
                 // displays the total statistics together from all the seasons together
@@ -243,8 +255,10 @@ public class PremierLeagueManager implements LeagueManager {
 
                 // sorting the seasons in ascending
                 Comparator<String> comparator = (season1, season2) -> {
+
                     if(Integer.parseInt(season1.split("-")[0]) > Integer.parseInt(season2.split("-")[0])){
                         return 1;
+
                     }
                     return -1;
                 };
@@ -256,6 +270,7 @@ public class PremierLeagueManager implements LeagueManager {
 
                 // Display the total stats by the clubs played in season wise
                 for (String season : allSeasonAdded) {
+
                     System.out.println("\n =============> FOR SEASON (" + season + ") <=============\n");
                     ArrayList<FootballClub> seasonFilteredClubs = null;
                     try {
@@ -268,13 +283,16 @@ public class PremierLeagueManager implements LeagueManager {
 
                     }
                     if (seasonFilteredClubs != null) {
+
                         for (FootballClub club: seasonFilteredClubs){
+
                             if(club.getName().equalsIgnoreCase(clubName)) {
                                 // we search for the club with the name user have given and display the result
                                 System.out.println(club);
 
                             }
                         }
+
                     }
                 }
 
@@ -288,6 +306,7 @@ public class PremierLeagueManager implements LeagueManager {
                     System.out.println(" =============>  FROM  ALL  SEASONS  <=============\n");
                     System.out.println(" => Statistics of all the matches played by '"+ clubName + "' so far! <=");
                     for (Match match:footballClub.getMatchesPlayed()) {
+
                         String matchResult = "\n <===============> Match "+ (++number) +" <================>\n "
                                 + "* Opponent team name: '" + match.getOpponentClubName() + "'" + match.getDate()
                                 + "\n * Season: " + match.getSeason() + "\n\n * Match Type: '" + match.getMatchType() + "'"
@@ -316,6 +335,7 @@ public class PremierLeagueManager implements LeagueManager {
         // checking if the given club name is valid or not and return the appropriate message
         if(!clubNameAvailable){
             return "\n Sorry, there is no club with the given name '" + clubName + "'";
+
         }
         return " Result Displayed";
 
@@ -365,18 +385,25 @@ public class PremierLeagueManager implements LeagueManager {
             // here we are using an anonymous class to create the comparator.
             // Sorting the points and goals in descending order for the football clubs
             Comparator<FootballClub> comparator = (club1, club2) -> {
+
                 if(club1.getClubStatistics().getTotalPointsScored() == (club2.getClubStatistics()
                         .getTotalPointsScored())){
+
                     if(club1.getTotalGoalsScored() < club2.getTotalGoalsScored()){
                         return 1;
+
                     }
+
                 }else{
+
                     if(club1.getClubStatistics().getTotalPointsScored() < club2.getClubStatistics()
                             .getTotalPointsScored()){
                         return 1;
+
                     }
                 }
                 return -1;
+
             };
 
             // sorting the list with a new arrayList
@@ -491,6 +518,7 @@ public class PremierLeagueManager implements LeagueManager {
                     footballClubsListSeason.get(index).getMatchesPlayed().remove(
                             footballClubsListSeason.get(index).getMatchesPlayed().get(matchIndexLoop)
                     );
+
                 }else{
                     // incrementing the index to skip that match which should not be removed
                     matchIndexLoop++;
@@ -501,12 +529,15 @@ public class PremierLeagueManager implements LeagueManager {
 
         // setting the position value to "00" if all the clubs didnt play for the given season
         for (FootballClub footballClub: footballClubsListSeason) {
+
             if(footballClub.getClubStatistics().getTotalMatchesPlayed() != 0){
                 // then we can give positions to all the clubs
                 matchedAdded = true;
                 break;
+
             }else{
                 matchedAdded = false;
+
             }
         }
 
@@ -515,6 +546,7 @@ public class PremierLeagueManager implements LeagueManager {
 
     // Display the premier league table in a well structured format
     private void structuredTable(int lengthOfClubNameTable, ArrayList<FootballClub> seasonFilteredClubs) {
+
         /*
         *  We take the length of the largest club name, then use this to create the main table width
         */
@@ -538,15 +570,19 @@ public class PremierLeagueManager implements LeagueManager {
           for (int index = 0; index < 107+lengthOfClubNameTable; index++) {
               HORIZONTAL_DASHES.append("-");
           }
+
           for (int index = 0; index < 39 + (lengthOfClubNameTable/2); index++) {
               PREMIER_LEAGUE_SPACE_TILE_LEFT.append(" ");
           }
+
           for (int index = 0; index < 39 + (lengthOfClubNameTable - (lengthOfClubNameTable/2)); index++) {
               PREMIER_LEAGUE_SPACE_TILE_RIGHT.append(" ");
           }
+
           for (int index = 0; index < leftClubColSpace; index++) {
               LEFT_CLUB_COL_SPACE.append(" ");
           }
+
           for (int index = 0; index < rightClubColSpace; index++) {
               RIGHT_CLUB_COL_SPACE.append(" ");
           }
@@ -562,6 +598,7 @@ public class PremierLeagueManager implements LeagueManager {
 
           // display the content of the premierLeagueFootball List
           for (int index = 0; index < seasonFilteredClubs.size(); index++) {
+
               StringBuilder clubNameEndSpace = new StringBuilder();
 
               for (int innerIndex = 0; innerIndex < 3; innerIndex++) {
@@ -638,6 +675,7 @@ public class PremierLeagueManager implements LeagueManager {
               // if not matches are added then fixed positions cannot be given for any club until they play a match
               if(!matchedAdded){
                   organisedResultList.set(0, "00");
+
               }
 
               // this is were the table is created
@@ -654,10 +692,12 @@ public class PremierLeagueManager implements LeagueManager {
           }
 
       }else{
+
           // creating the empty table
           for (int innerIndex = 0; innerIndex < 106; innerIndex++) {
               HORIZONTAL_DASHES.append("-");
           }
+
           for (int innerIndex = 0; innerIndex < 38; innerIndex++) {
               PREMIER_LEAGUE_SPACE_TILE.append(" ");
           }
@@ -675,6 +715,7 @@ public class PremierLeagueManager implements LeagueManager {
               System.out.println("|          |                      |        |     |       |      |           " +
                       "  |                 |        |");
           }
+
       }
         System.out.println("\n\n");
     }
@@ -698,8 +739,10 @@ public class PremierLeagueManager implements LeagueManager {
 
             if(club.getName().equalsIgnoreCase(clubName_01)){
                 club1 = club;
+
             }else if(club.getName().equalsIgnoreCase(clubName_02)){
                 club2 = club;
+
             }
 
         }
@@ -713,6 +756,7 @@ public class PremierLeagueManager implements LeagueManager {
                 if(match.getSeason().equals(seasonPlayed)){
                     matchCounter++;
                     club1ReachedMaximumMatches = matchCounter >= MAXIMUM_NUMBER_OF_MATCHES_PER_TEAM;
+
                 }
 
             }
@@ -724,6 +768,7 @@ public class PremierLeagueManager implements LeagueManager {
                 if(match.getSeason().equals(seasonPlayed)){
                     matchCounter++;
                     club2ReachedMaximumMatches = matchCounter >= MAXIMUM_NUMBER_OF_MATCHES_PER_TEAM;
+
                 }
 
             }
@@ -743,6 +788,7 @@ public class PremierLeagueManager implements LeagueManager {
             for (FootballClub footballClub : premierLeagueFootballClubList) {
                 if(footballClub.getName().equalsIgnoreCase(clubName_01)) club01=true;
                 if(footballClub.getName().equalsIgnoreCase(clubName_02)) club02=true;
+
             }
 
             // Checking if the entered club names are valid to further proceed
@@ -808,6 +854,7 @@ public class PremierLeagueManager implements LeagueManager {
                 // Number of matches has to get incremented to both the clubs and the session
                 footballClub.getClubStatistics().setTotalMatchesPlayed(footballClub
                         .getClubStatistics().getTotalMatchesPlayed() + 1);
+
             }
 
             // calculate & update the goal received and goal scored for each club played
@@ -852,6 +899,7 @@ public class PremierLeagueManager implements LeagueManager {
                 }
 
             }
+
         }else if(numberGoalScored_club_1 > numberGoalScored_club_2){
             updatingWinsDefeats(clubName_02, clubName_01);
 
@@ -874,10 +922,12 @@ public class PremierLeagueManager implements LeagueManager {
 
             // we have added the matched played by each club to their respective list of matches
             if(footballClub.getName().equalsIgnoreCase(clubName_01)){
+
                 addPlayedMatchToClub(clubName_02, clubName_01, numberGoalScored_club_2, numberGoalScored_club_1, date,
                         seasonPlayed, footballClub, matchType);
 
             }else if(footballClub.getName().equalsIgnoreCase(clubName_02)){
+
                 addPlayedMatchToClub(clubName_01, clubName_02, numberGoalScored_club_1, numberGoalScored_club_2, date,
                         seasonPlayed, footballClub, matchType);
 

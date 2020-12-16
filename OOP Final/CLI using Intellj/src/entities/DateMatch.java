@@ -23,9 +23,11 @@ public class DateMatch implements Serializable {
 
     // Parameter constructor
     public DateMatch(int day, int month, int year) {
+
         this.day = day;
         this.month = month;
         this.year = year;
+
     }
 
     // Getters and Setters

@@ -26,11 +26,13 @@ public class Player implements Serializable
     // Argument Constructor
     public Player(String name, String preferredFoot, double shootingAccuracy,
                   int goalScoredPerMatch, int passesPerMatch) {
+
         this.name = name;
         this.preferredFoot = preferredFoot;
         this.shootingAccuracy = shootingAccuracy;
         this.goalScoredPerMatch = goalScoredPerMatch;
         this.passesPerMatch = passesPerMatch;
+
     }
 
     // GETTERS and SETTERS used

@@ -31,6 +31,7 @@ public class MatchStats implements Serializable
     // Args constructor
     public MatchStats(int yellowCards, int redCards, int shots, int shotsOfTarget, int offSides, int fouls,
                       int corners, int passes, double passAccuracy, double possession) {
+
         this.yellowCards = yellowCards;
         this.redCards = redCards;
         this.shots = shots;
@@ -41,6 +42,7 @@ public class MatchStats implements Serializable
         this.passes = passes;
         this.passAccuracy = passAccuracy;
         this.possession = possession;
+
     }
 
     // overriding the toString() to display the details of the statistics of the match

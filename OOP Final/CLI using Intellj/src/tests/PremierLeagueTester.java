@@ -24,6 +24,7 @@ public class PremierLeagueTester
 
     @Before
     public void beforeTesting(){
+
         // RUNS BEFORE TESTING
         System.out.println("testing started . . . ");
         obj = PremierLeagueManager.getInstance();
@@ -31,22 +32,28 @@ public class PremierLeagueTester
 
     @Test
     public void testCreatingClub(){
+
         // TESTING FOR CLUBS AS VALID UP TO 20 CLUBS
         String[] clubType = {"normal","university","school"};
         String[] schoolUniName = {null, "IIT", "RoyalInstitute"};
 
         for (int index = 0; index < clubType.length; index++) {
+
             for (int num = 0; num < 20; num++) {
-                String result = obj.createClub("Juventus","Spain","Nazhim",schoolUniName[index],
+
+                String result = obj.createClub("Juventus","Spain","Nazhim",
+                        schoolUniName[index],
                         clubType[index]);
                 assertEquals(" Clubs Successfully added!",result);
                 System.out.println("Club number: " + num);
             }
 
             // TESTING FOR AN INVALID CLUB WHEN ADDED MORE THAN 20
-            String expectedResult = obj.createClub("Juventus","Spain","Nazhim",schoolUniName[index],
+            String expectedResult = obj.createClub("Juventus","Spain","Nazhim",
+                    schoolUniName[index],
                     clubType[index]);
-            assertEquals(" Sorry there is no room for a new club, the maximum number of club limit has been reached!",expectedResult);
+            assertEquals(" Sorry there is no room for a new club, the maximum number of club limit " +
+                    "has been reached!",expectedResult);
 
             // CLEARING THE CONTENT OF THE obj FOR OTHER TESTINGS
             PremierLeagueManager.setPremierLeagueFootballClubList(new ArrayList<>());
@@ -55,6 +62,7 @@ public class PremierLeagueTester
 
     @Test
     public void testDeletingClub(){
+
         // TESTING WITH VALID CLUB TO BE REMOVED
         // adding a club so that it can be deleted
         obj.createClub("Juventus","Spain","Nazhim",null, "normal");
@@ -75,6 +83,7 @@ public class PremierLeagueTester
 
     @Test
     public void testDisplayingStats(){
+
         // TESTING THE DISPLAY STATS METHOD WITH A VALID CLUB NAME ENTERED
         obj.createClub("Juventus","Spain","Nazhim",null, "normal");
         String expectedResult = obj.displayStats("Juventus");
@@ -101,7 +110,8 @@ public class PremierLeagueTester
 
         // TESTING FOR A VALID MATCH ENTERED FOR A SEASON
         expectedResult = obj.addPlayedMatch(
-                "2020-21","realMadrid","juventus",1,2,
+                "2020-21","realMadrid","juventus",1,
+                2,
                 date,"away"
         );
         assertEquals("\n Match Successfully added! \n", expectedResult);
@@ -109,7 +119,8 @@ public class PremierLeagueTester
         // TESTING FOR MULTIPLE VALID MATCHES ENTERED FOR A SEASON (UNTIL 38 PER CLUB)
         for (int index = 0; index < 37; index++) {
             expectedResult = obj.addPlayedMatch(
-                    "2020-21","realMadrid","juventus",1,2,
+                    "2020-21","realMadrid","juventus",1,
+                    2,
                     date,"away"
             );
             assertEquals("\n Match Successfully added! \n", expectedResult);
@@ -117,16 +128,19 @@ public class PremierLeagueTester
 
         // TESTING FOR THE 39th MATCH FOR A CLUB FOR A SEASON
         expectedResult = obj.addPlayedMatch(
-                "2020-21","realMadrid","juventus",1,2,
+                "2020-21","realMadrid","juventus",1,
+                2,
                 date,"away"
         );
-        assertEquals("\n Sorry, both the clubs have reached the maximum number of matches played!", expectedResult);
+        assertEquals("\n Sorry, both the clubs have reached the maximum number of matches played!",
+                expectedResult);
 
 
         // TESTING FOR A CLUB IN DIFFERENT SEASONS
         for (int index = 0; index < 38; index++) {
             expectedResult = obj.addPlayedMatch(
-                    "2019-20","realMadrid","juventus",1,2,
+                    "2019-20","realMadrid","juventus",1,
+                    2,
                     date,"away"
             );
             assertEquals("\n Match Successfully added! \n", expectedResult);
@@ -134,29 +148,35 @@ public class PremierLeagueTester
 
         // TESTING FOR THE 39TH MATCH ADDED FOR THE CLUB WITH A DIFFERENT SEASON
         expectedResult = obj.addPlayedMatch(
-                "2019-20","realMadrid","juventus",1,2,
+                "2019-20","realMadrid","juventus",1,
+                2,
                 date,"away"
         );
-        assertEquals("\n Sorry, both the clubs have reached the maximum number of matches played!", expectedResult);
+        assertEquals("\n Sorry, both the clubs have reached the maximum number of matches played!",
+                expectedResult);
 
         // TESTING FOR A NUMBER OF CLUBS INVOLVED
         obj.addPlayedMatch(
-                "2018-19","barca","juventus",1,2,
+                "2018-19","barca","juventus",1,
+                2,
                 date,"home"
         );
 
         for (int index = 0; index < 37; index++) {
             expectedResult = obj.addPlayedMatch(
-                    "2018-19","juventus","realMadrid",1,2,
+                    "2018-19","juventus","realMadrid",1,
+                    2,
                     date,"home"
             );
             assertEquals("\n Match Successfully added! \n",expectedResult);
         }
         expectedResult = obj.addPlayedMatch(
-                "2018-19","realMadrid","juventus",1,2,
+                "2018-19","realMadrid","juventus",1,
+                2,
                 date,"home"
         );
-        assertEquals("\n Sorry, 'juventus' has reached the maximum number of matches played!",expectedResult);
+        assertEquals("\n Sorry, 'juventus' has reached the maximum number of matches played!",
+                expectedResult);
 
         // CLEARING THE CONTENT OF THE obj FOR OTHER TESTINGS
         PremierLeagueManager.setPremierLeagueFootballClubList(new ArrayList<>());
@@ -189,7 +209,8 @@ public class PremierLeagueTester
 
         // Assuming that the file path is correct
         String result = obj.clearDataFile();
-        assertEquals("\n Clearing the contents of the file . . .\n Successfully cleared the file details!", result);
+        assertEquals("\n Clearing the contents of the file . . .\n Successfully cleared the file details!",
+                result);
 
     }
 
@@ -205,6 +226,7 @@ public class PremierLeagueTester
 
        String[] clubNames = {"Juventus", "Barca", "Titan Fc"};
        for (int index = 0; index < 3; index++) {
+
            String input = clubNames[index];
            InputStream in = new ByteArrayInputStream(input.getBytes());
            System.setIn(in);

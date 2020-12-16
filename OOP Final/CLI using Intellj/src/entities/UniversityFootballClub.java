@@ -21,8 +21,10 @@ public class UniversityFootballClub extends FootballClub {
 
     // Argument Constructor
     public UniversityFootballClub(String name, String location, String coachName, String universityName) {
+
         super(name, location, coachName);
         this.universityName = universityName;
+
     }
 
     // GETTERS AND SETTERS FOR THE CLASS
