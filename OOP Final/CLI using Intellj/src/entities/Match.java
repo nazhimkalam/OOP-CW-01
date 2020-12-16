@@ -51,7 +51,6 @@ public class Match implements Serializable, Cloneable {
     }
 
     // SETTERS AND GETTERS FOR THE CLASS
-
     // gets the date
     public DateMatch getDate() {
         return date;

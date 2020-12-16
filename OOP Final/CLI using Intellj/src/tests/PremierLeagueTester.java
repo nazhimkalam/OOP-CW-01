@@ -1,5 +1,5 @@
 package tests;
-import controllers.ConsoleApplication;
+import console.ConsoleApplication;
 import entities.DateMatch;
 import entities.FootballClub;
 import entities.LeagueManager;
@@ -179,8 +179,7 @@ public class PremierLeagueTester
 //        assertEquals("\n Successfully loaded all the data\n", result);
 
         // Assuming that the file contains no data to read
-        assertEquals(" Exception when performing read/write operations to the file!" +
-                "\n No permission to read/write from or to the file", expectedResult);
+        assertEquals("\n Successfully loaded all the data\n", expectedResult);
 
     }
 

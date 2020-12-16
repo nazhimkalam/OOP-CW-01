@@ -181,6 +181,7 @@ public class FootballClub extends SportClub{
     // This method is used to generate players for each club, with 11 players each club
     public void autoGeneratePlayers(){
 
+        // these are the list of player names
         String[] playerNames = {
                 "Lionel Messi",
                 "Diego Maradona",
@@ -195,18 +196,21 @@ public class FootballClub extends SportClub{
                 "Ronaldo Nazario"
         };
 
+        // some simple stats of the play which is randomly choosen
         String[] foot = {"Left", "Right"};
 
         // adding 11 players to the list
-        for (int i = 0; i < 11; i++) {
+        for (int index = 0; index < 11; index++) {
             Random random = new Random();
 
-            Player player = new Player(playerNames[i],
+            // we create a player and add some random statistics to the player
+            Player player = new Player(playerNames[index],
                     foot[random.nextInt(2)],
                     Math.round(random.nextDouble()*1000)/10.0,
                     random.nextInt(10)+1,
                     random.nextInt(50)+1);
 
+            // once a player is created we then add it to the playerList
             playersList.add(player);
         }
     }
