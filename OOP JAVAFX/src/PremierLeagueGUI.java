@@ -69,6 +69,11 @@ public class PremierLeagueGUI extends Application {
         // getting the users input
         int userSelectOption = validatingIntegers(" Enter your option (please enter only integers): ");
         String result;
+
+//        sortByGoalsClicked = false;
+//        sortByWinsClicked = false;
+//        sortByPointsClicked = true;
+
         // directing the users option to appropriate methods
         switch (userSelectOption)
         {
@@ -281,12 +286,14 @@ public class PremierLeagueGUI extends Application {
         });
 
         sortByGoalsBTN.setOnAction(event -> {
+//            System.out.println("sort by goals clicked!");
             sortByGoalsClicked = true;
             sortByWinsClicked = false;
             updatingTableContent(data, seasonBasedClubs[0]);
         });
 
         sortByWinsBTN.setOnAction(event -> {
+//            System.out.println("sort by wins clicked!");
             sortByWinsClicked = true;
             sortByGoalsClicked = false;
             updatingTableContent(data, seasonBasedClubs[0]);
@@ -445,7 +452,7 @@ public class PremierLeagueGUI extends Application {
                     e.printStackTrace();
                 }
                 PremierLeagueManager.displayLeagueTableGUI();
-                seasonBasedClubs[0] = PremierLeagueManager.getPremierLeagueFootballClubList();
+                seasonBasedClubs[0] = PremierLeagueManager.getSeasonFilteredClubs();
                 creatingTheMatchesRows(seasonBasedClubs[0], matches);
 
 
@@ -454,10 +461,9 @@ public class PremierLeagueGUI extends Application {
             // searching matches by date
             searchByDateBTN.setOnAction(searchEvent -> {
                 // filter the matches and display by date
-                ArrayList<FootballClub> footballClubsWithFilteredMatchByDate =
-                        seasonBasedClubs[0];  // seasonBasedClubs[0] to prevent the null safety problem
+                ArrayList<FootballClub> footballClubsWithFilteredMatchByDate = new ArrayList<>();
                 try {
-                    footballClubsWithFilteredMatchByDate = PremierLeagueManager.filterMatchesByDate(seasonBasedClubs[0],
+                    footballClubsWithFilteredMatchByDate = PremierLeagueManager.filterMatchesByDate(PremierLeagueManager.getSeasonFilteredClubs(),
                             enteredDatedTxt.getText());
                 } catch (CloneNotSupportedException e) {
                     e.printStackTrace();
@@ -478,13 +484,11 @@ public class PremierLeagueGUI extends Application {
             matchPlayedComboBox.setOnAction(eventCombo -> {
                 PremierLeagueManager.displayLeagueTableGUI();
                 seasonBasedClubs[0] = PremierLeagueManager.getPremierLeagueFootballClubList();
-                creatingTheMatchesRows(seasonBasedClubs[0], matches);
+                creatingTheMatchesRows(PremierLeagueManager.getSeasonFilteredClubs(), matches);
 
             });
 
-            creatingTheMatchesRows(seasonBasedClubs[0], matches);
-
-
+            creatingTheMatchesRows(PremierLeagueManager.getSeasonFilteredClubs(), matches);
 
             ListView<HBox> listView = new ListView<>(matches);
             listView.setId("listViewMatches");
@@ -544,7 +548,7 @@ public class PremierLeagueGUI extends Application {
     public void updatingTableContent(ObservableList<FootballClub> data, ArrayList<FootballClub> seasonBasedClub) {
         data.clear();
         PremierLeagueManager.displayLeagueTableGUI();
-        seasonBasedClub = PremierLeagueManager.getPremierLeagueFootballClubList();
+        seasonBasedClub = PremierLeagueManager.getSeasonFilteredClubs();
         int NewPosition = 1;
         for (FootballClub club : seasonBasedClub) {
             ClubStats clubStats = new ClubStats(club.getClubStatistics().getTotalMatchesPlayed(),
@@ -1060,7 +1064,7 @@ public class PremierLeagueGUI extends Application {
             }
         }else{
             // We display a message to the user
-            System.out.println(" Sorry there is only 1 club present currently, so a match can't be played!");
+            System.out.println(" Sorry there should be at least 2 clubs present to play a match!");
         }
 
     }
@@ -1095,3 +1099,5 @@ public class PremierLeagueGUI extends Application {
         launch(args);
     }
 }
+
+

@@ -22,13 +22,20 @@ public class PremierLeagueManager implements LeagueManager {
     private final int MAXIMUM_NUMBER_OF_CLUBS = 20;
     private static final int MAXIMUM_NUMBER_OF_MATCHES_PER_TEAM = 38;
 
-    // Setters and Getters for the premierLeagueFootballClubList
+    // Setters and Getters
     public static ArrayList<FootballClub> getPremierLeagueFootballClubList() {
         return premierLeagueFootballClubList;
     }
 
     public static void setPremierLeagueFootballClubList(ArrayList<FootballClub> premierLeagueFootballClubList) {
         PremierLeagueManager.premierLeagueFootballClubList = premierLeagueFootballClubList;
+    }
+    public static ArrayList<FootballClub> getSeasonFilteredClubs() {
+        return seasonFilteredClubs;
+    }
+
+    public static void setSeasonFilteredClubs(ArrayList<FootballClub> seasonFilteredClubs) {
+        PremierLeagueManager.seasonFilteredClubs = seasonFilteredClubs;
     }
 
     // We are using the Singleton design pattern because we only need one instance of PremierLeagueManager and not many
