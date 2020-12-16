@@ -21,8 +21,10 @@ public class SchoolFootballClub extends FootballClub {
 
     // Argument Constructor
     public SchoolFootballClub(String name, String location,  String coachName, String schoolName) {
+
         super(name, location, coachName);
         this.schoolName = schoolName;
+
     }
 
     // GETTERS AND SETTERS FOR THE CLASS
@@ -37,7 +39,9 @@ public class SchoolFootballClub extends FootballClub {
     // overriding the toString() method to display the details of the school
     @Override
     public String toString() {
+
         return  super.toString() + " * School Name = '" + schoolName + "' ";
+
     }
 
 }

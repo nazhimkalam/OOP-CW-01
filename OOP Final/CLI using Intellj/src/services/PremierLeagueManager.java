@@ -34,6 +34,14 @@ public class PremierLeagueManager implements LeagueManager {
         PremierLeagueManager.premierLeagueFootballClubList = premierLeagueFootballClubList;
     }
 
+    public static ArrayList<String> getAllSeasonAdded() {
+        return allSeasonAdded;
+    }
+
+    public static void setAllSeasonAdded(ArrayList<String> allSeasonAdded) {
+        PremierLeagueManager.allSeasonAdded = allSeasonAdded;
+    }
+
     // We are using the Singleton design pattern because we only need one instance of PremierLeagueManager and not many
     // used for the singleton design pattern, this is set to "null" for lazy initialization, so we only created the
     // instance when required only," ---> non lazy way LeagueManager manager = new PremierLeagueManager(); "
@@ -320,7 +328,8 @@ public class PremierLeagueManager implements LeagueManager {
         // This method is used to display the Premier League Table in the CLI
 
         // we add all the football clubs with all the necessary matches related to the season and other removed.
-        ArrayList<FootballClub> seasonFilteredClubs = null;
+        ArrayList<FootballClub> seasonFilteredClubs = new ArrayList<>();
+
         try {
             // Gets the filtered football clubs by season entered
             seasonFilteredClubs = seasonFilteredFootballCLubList(seasonPlayed);
@@ -456,10 +465,10 @@ public class PremierLeagueManager implements LeagueManager {
                                 footballClubsListSeason.get(index).getClubStatistics().getTotalWins() - 1
                         );
 
-                        // updating the total points scored
                         footballClubsListSeason.get(index).getClubStatistics().setTotalPointsScored(
                                 footballClubsListSeason.get(index).getClubStatistics().getTotalPointsScored() - 3
                         );
+
                     }else if (goalReceived > goalScored){
                         // update defeats
                         footballClubsListSeason.get(index).getClubStatistics().setTotalDefeats(
@@ -473,7 +482,6 @@ public class PremierLeagueManager implements LeagueManager {
                                 footballClubsListSeason.get(index).getClubStatistics().getTotalDraws() - 1
                         );
 
-                        // updating the total points scored
                         footballClubsListSeason.get(index).getClubStatistics().setTotalPointsScored(
                                 footballClubsListSeason.get(index).getClubStatistics().getTotalPointsScored() - 1
                         );
@@ -562,11 +570,13 @@ public class PremierLeagueManager implements LeagueManager {
 
               // changing the width of the club name for each row
               if(seasonFilteredClubs.get(index).getName().length() != lengthOfClubNameTable){
+
                   // the length of the name will anyways be less than lengthOfClubNameTable
                   int difference = lengthOfClubNameTable - seasonFilteredClubs.get(index).getName().length();
                   for (int innerIndex = 0; innerIndex < difference; innerIndex++) {
                       clubNameEndSpace.append(" ");
                   }
+
               }
 
               /*
@@ -699,19 +709,23 @@ public class PremierLeagueManager implements LeagueManager {
 
             // we are checking if the club will reach the maximum limit of matches played per club for (club1)
             for (Match match: club1.getMatchesPlayed()) {
+
                 if(match.getSeason().equals(seasonPlayed)){
                     matchCounter++;
                     club1ReachedMaximumMatches = matchCounter >= MAXIMUM_NUMBER_OF_MATCHES_PER_TEAM;
                 }
+
             }
 
             matchCounter = 0;
             // we are checking if the club will reach the maximum limit of matches played per club for (club2)
             for (Match match: club2.getMatchesPlayed()) {
+
                 if(match.getSeason().equals(seasonPlayed)){
                     matchCounter++;
                     club2ReachedMaximumMatches = matchCounter >= MAXIMUM_NUMBER_OF_MATCHES_PER_TEAM;
                 }
+
             }
         }
 
@@ -848,9 +862,11 @@ public class PremierLeagueManager implements LeagueManager {
 
         // calculate & update the current score and goal difference for the clubs
         for (FootballClub footballClub: premierLeagueFootballClubList) {
+
             int totalScore = footballClub.getClubStatistics().getTotalWins() * 3 + footballClub.getClubStatistics()
                     .getTotalDraws();
             footballClub.getClubStatistics().setTotalPointsScored(totalScore);
+
         }
 
         // creating the Match object and adding for both the clubs played with their own scores
@@ -1018,6 +1034,7 @@ public class PremierLeagueManager implements LeagueManager {
         FileWriter file = null;
         try {
             file = new FileWriter("../Backend/public/resources/objectDataFile.txt");
+
             // clearing the content of the file by overriding with an empty string
             file.write("");
 
@@ -1047,10 +1064,12 @@ public class PremierLeagueManager implements LeagueManager {
                 }
             }
             catch (IOException e) {
+                // Handles the exception
                 return " Exception when performing read/write operations to the file!" +
                         "\n No permission to read/write from or to the file";
             }
         }
+
         // returns a success message if everything goes well
         return "\n Clearing the contents of the file . . .\n Successfully cleared the file details!";
 

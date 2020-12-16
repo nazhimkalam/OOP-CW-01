@@ -30,6 +30,7 @@ public class FootballClub extends SportClub{
 
     // Argument Constructor
     public FootballClub(String name, String location, String coachName) {
+
         super(name, location, new ClubStats());
         this.coachName = coachName;
         this.totalGoalsReceived = 0;
@@ -42,11 +43,13 @@ public class FootballClub extends SportClub{
 
         // auto generating the players whenever you instantiate a club
         autoGeneratePlayers();
+
     }
 
     // this displays the details of the football club by overriding the toString method
     @Override
     public String toString() {
+
         return  super.toString() +
                 "\n * Coach Name = '" + coachName + "'" +
                 "\n * Total Goals Received = " + totalGoalsReceived +
@@ -54,6 +57,7 @@ public class FootballClub extends SportClub{
                 "\n * Total Goal Difference = " + totalGoalsDifference +
                 "\n * Total Yellow Cards = " + totalYellowCards +
                 "\n * Total Red Cards = " + totalRedCards + "\n\n";
+
     }
 
 
@@ -146,33 +150,42 @@ public class FootballClub extends SportClub{
     // when needed to create copies of the match objects for season based filtering
     @Override
     public Object clone() throws CloneNotSupportedException {
+
         FootballClub cloned = (FootballClub) super.clone();
         cloned.setMatchesPlayed(FootballClub.cloneMatchList(this.matchesPlayed));
         cloned.setClubStatistics(FootballClub.cloneClubStatistics(this.clubStatistics));
         return cloned;
+
     }
 
     // returns the list of cloned matches for cloning purpose
     public static ArrayList<Match> cloneMatchList(ArrayList<Match> list) {
+
         ArrayList<Match>  cloneMatches = new ArrayList<>(list.size());
+
         for (Match match: list) {
+
             try {
                 cloneMatches.add((Match) match.clone());
             } catch (CloneNotSupportedException e) {
                 e.printStackTrace();
             }
+
         }
         return cloneMatches;
     }
 
     // returns a cloned copy of the club statistics
     public static ClubStats cloneClubStatistics(ClubStats clubStatistics) {
+
         ClubStats cloneClubStats = new ClubStats();
 
         try {
             cloneClubStats = (ClubStats) clubStatistics.clone();
+
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
+
         }
 
         return cloneClubStats;
@@ -181,6 +194,7 @@ public class FootballClub extends SportClub{
     // This method is used to generate players for each club, with 11 players each club
     public void autoGeneratePlayers(){
 
+        // these are the list of player names
         String[] playerNames = {
                 "Lionel Messi",
                 "Diego Maradona",
@@ -195,10 +209,12 @@ public class FootballClub extends SportClub{
                 "Ronaldo Nazario"
         };
 
+        // some simple stats of the play which is randomly chosen
         String[] foot = {"Left", "Right"};
 
         // adding 11 players to the list
         for (int i = 0; i < 11; i++) {
+
             Random random = new Random();
 
             Player player = new Player(playerNames[i],
@@ -207,7 +223,9 @@ public class FootballClub extends SportClub{
                     random.nextInt(10)+1,
                     random.nextInt(50)+1);
 
+            // once a player is created we then add it to the playerList
             playersList.add(player);
+
         }
     }
 }

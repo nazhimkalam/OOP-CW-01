@@ -22,6 +22,7 @@ public class PremierLeagueController extends Controller {
 
     // sending all the season for the dropdown menu
     public Result allSeasons(){
+
         // this is the logger for debugging purposes
         logger.debug("In PremierLeagueController.allSeasons()");
 
@@ -32,10 +33,12 @@ public class PremierLeagueController extends Controller {
         JsonNode allSeasonsJson = Json.toJson(allSeasons);
         logger.debug("In PremierLeagueController.allSeasons(), result is {}",allSeasonsJson.toString());
         return ok(allSeasonsJson);
+
     }
 
     // sending the sorted table data by points (descending order) by season
     public Result sortByPoints(String season){
+
         // this is the logger for debugging purposes
         logger.debug("In PremierLeagueController.sortByPoints()");
 
@@ -46,10 +49,12 @@ public class PremierLeagueController extends Controller {
         JsonNode guiSortedByPointsClubs = Json.toJson(guiSeasonFilteredClubs);
         logger.debug("In PremierLeagueController.sortByPoints(), result is {}",guiSortedByPointsClubs.toString());
         return ok(guiSortedByPointsClubs);
+
     }
 
     // sending the sorted table data by wins (descending order) by season
     public Result sortByWins(String season){
+
         // this is the logger for debugging purposes
         logger.debug("In PremierLeagueController.sortByWins()");
 
@@ -60,10 +65,12 @@ public class PremierLeagueController extends Controller {
         JsonNode guiSortedByWinsClubs = Json.toJson(guiSeasonFilteredClubs);
         logger.debug("In PremierLeagueController.sortByWins(), result is {}",guiSortedByWinsClubs.toString());
         return ok(guiSortedByWinsClubs);
+
     }
 
     // sending the sorted table data by goals (descending order) by season
     public Result sortByGoals(String season){
+
         // this is the logger for debugging purposes
         logger.debug("In PremierLeagueController.sortByGoals()");
 
@@ -74,10 +81,12 @@ public class PremierLeagueController extends Controller {
         JsonNode guiSortByGoalsClubs = Json.toJson(guiSeasonFilteredClubs);
         logger.debug("In PremierLeagueController.sortByGoals(), result is {}",guiSortByGoalsClubs.toString());
         return ok(guiSortByGoalsClubs);
+
     }
 
     // sending all the matches data by season
     public Result allMatches(String season){
+
         // this is the logger for debugging purposes
         logger.debug("In PremierLeagueController.allMatches()");
 
@@ -88,10 +97,12 @@ public class PremierLeagueController extends Controller {
         JsonNode allMatchesJson = Json.toJson(matchesDisplayed);
         logger.debug("In PremierLeagueController.allMatches(), result is {}",allMatchesJson.toString());
         return ok(allMatchesJson);
+
     }
 
     // sending all the matches data for a specific date
     public Result matchesByDate(String date,String season){
+
         // this is the logger for debugging purposes
         logger.debug("In PremierLeagueController.matchesByDate()");
 
@@ -102,10 +113,12 @@ public class PremierLeagueController extends Controller {
         JsonNode matchesByDateJson = Json.toJson(filteredMatchedOnDate);
         logger.debug("In PremierLeagueController.matchesByDate(), result is {}",matchesByDateJson.toString());
         return ok(matchesByDateJson);
+
     }
 
     // generating a new match
     public Result generateMatch(String season){
+
         // this is the logger for debugging purposes
         logger.debug("In PremierLeagueController.generateMatch()");
 
@@ -116,6 +129,7 @@ public class PremierLeagueController extends Controller {
         JsonNode generatedWithAllMatches = Json.toJson(matchesDisplayed);
         logger.debug("In PremierLeagueController.generateMatch(), result is {}",generatedWithAllMatches.toString());
         return ok(generatedWithAllMatches);
+
     }
 
 }

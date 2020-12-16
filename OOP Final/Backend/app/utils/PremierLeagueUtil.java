@@ -16,15 +16,18 @@ public class PremierLeagueUtil {
     private static ArrayList<FootballClub> guiSeasonFilteredClubs;
 
     public static ArrayList<String> allSeasons(){
+
         // loading the data from the file
         PremierLeagueManagerService.loadingData();
 
         // sort the seasons using the comparator
         Comparator<String> comparator = (season1, season2) -> {
+
             if(Integer.parseInt(season1.split("-")[0]) > Integer.parseInt(season2.split("-")[0])){
                 return 1;
             }
             return -1;
+
         };
 
         // setting the seasons with distinct seasons only
@@ -39,6 +42,7 @@ public class PremierLeagueUtil {
     }
 
     public static ArrayList<FootballClub> sortByPoints(String season){
+
         // loading the data from the file
         PremierLeagueManagerService.loadingData();
 
@@ -53,6 +57,7 @@ public class PremierLeagueUtil {
 
     // This function is to return the listOfClubs filtered by season
     public static ArrayList<FootballClub> getGuiSeasonFilteredClubs(String season){
+
         try {
             // get the clubs filtered by season
             guiSeasonFilteredClubs = PremierLeagueManagerService.seasonFilteredFootballCLubList(season);
@@ -63,6 +68,7 @@ public class PremierLeagueUtil {
 
         }
         return guiSeasonFilteredClubs;
+
     }
 
     // This function is used to sort the matches of a football club in a season by descending order of points
@@ -70,8 +76,10 @@ public class PremierLeagueUtil {
 
         // comparator to sort the clubs by points
         Comparator<FootballClub> comparator = (club1, club2) -> {
+
             if(club1.getClubStatistics().getTotalPointsScored() < club2.getClubStatistics().getTotalPointsScored()){
                 return 1;
+
             }
             return -1;
         };
@@ -79,12 +87,15 @@ public class PremierLeagueUtil {
         // sorting only if there are clubs to sort
         if (guiSeasonFilteredClubs != null) {
             guiSeasonFilteredClubs.sort(comparator);
+
         }
 
         return guiSeasonFilteredClubs;
+
     }
 
     public static ArrayList<FootballClub> sortByWins(String season){
+
         // loading the data from the file
         PremierLeagueManagerService.loadingData();
 
@@ -99,8 +110,10 @@ public class PremierLeagueUtil {
 
     // sorting by points only in descending order of wins
     public static ArrayList<FootballClub> sortClubsByWins(ArrayList<FootballClub> guiSeasonFilteredClubs) {
+
         // comparator to sort the clubs in descending order of the their wins
         Comparator<FootballClub> comparator = (club1, club2) -> {
+
             if(club1.getClubStatistics().getTotalWins() < club2.getClubStatistics().getTotalWins()){
                 return 1;
             }
@@ -111,12 +124,14 @@ public class PremierLeagueUtil {
         // sorting only if there are clubs to sort
         if (guiSeasonFilteredClubs != null) {
             guiSeasonFilteredClubs.sort(comparator);
+
         }
 
         return guiSeasonFilteredClubs;
     }
 
     public static ArrayList<FootballClub> sortByGoals(String season){
+
         // loading the data from the file
         PremierLeagueManagerService.loadingData();
 
@@ -131,8 +146,10 @@ public class PremierLeagueUtil {
 
     // sorting by points only in descending order goal scored
     public static ArrayList<FootballClub> sortClubsByGoals(ArrayList<FootballClub> guiSeasonFilteredClubs) {
+
         // comparator for sorting
         Comparator<FootballClub> comparator = (club1, club2) -> {
+
             if(club1.getTotalGoalsScored() < club2.getTotalGoalsScored()){
                 return 1;
             }
@@ -143,11 +160,13 @@ public class PremierLeagueUtil {
         // checks if clubs are present to sort
         if (guiSeasonFilteredClubs != null) {
             guiSeasonFilteredClubs.sort(comparator);
+
         }
         return guiSeasonFilteredClubs;
     }
 
     public static ArrayList<Match> allMatches(String season){
+
         // loading the data from the file
         PremierLeagueManagerService.loadingData();
 
@@ -171,10 +190,12 @@ public class PremierLeagueUtil {
         // adding all the matches played for that season inside the allMatches list
         for (FootballClub footballClub: seasonBasedClub) {
             allMatches.addAll(footballClub.getMatchesPlayed());
+
         }
 
         // sort the matches in ascending order of the date
         Comparator<Match> sortByDate = (match1, match2) -> {
+
             if(match1.getDate().getYear() == match2.getDate().getYear()){
                 if (match1.getDate().getMonth() == match2.getDate().getMonth()) {
                     if (match1.getDate().getDay() > match2.getDate().getDay()) {
@@ -289,13 +310,15 @@ public class PremierLeagueUtil {
     }
 
     public static ArrayList<Match> generateMatch(String season){
+
         // creating an instance of the premier league manager service
         LeagueManager premierLeagueManagerService = PremierLeagueManagerService.getInstance();
         int numberOfClubsPresent = PremierLeagueManagerService.getPremierLeagueFootballClubList().size();
+
         // This condition is to make sure that there is at least 2 clubs to play a match
         if(numberOfClubsPresent > 1){
-            // there 2 or more clubs present so we can generate a match
 
+            // there 2 or more clubs present so we can generate a match
             // loading the data from the file
             PremierLeagueManagerService.loadingData();
 

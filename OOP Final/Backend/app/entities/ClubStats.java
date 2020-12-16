@@ -26,11 +26,13 @@ public class ClubStats implements Serializable, Cloneable {
     // Parameter constructor
     public ClubStats(int totalMatchesPlayed, int totalWins, int totalDraws, int totalDefeats,
                      int totalPointsScored) {
+
         this.totalMatchesPlayed = totalMatchesPlayed;
         this.totalWins = totalWins;
         this.totalDraws = totalDraws;
         this.totalDefeats = totalDefeats;
         this.totalPointsScored = totalPointsScored;
+
     }
 
     // Getter and Setters for Encapsulation
@@ -77,14 +79,18 @@ public class ClubStats implements Serializable, Cloneable {
     // Overriding the toString method to display the club statistics
     @Override
     public String toString() {
+
         return  "\n * Total Matches Played = " + totalMatchesPlayed + "\n * Total Number of Wins = " + totalWins +
                 "\n * Total Number of Draws = " + totalDraws + "\n * Total Number of Defeats = " + totalDefeats +
                 "\n * Total Points Scored = " + totalPointsScored + "\n";
+
     }
 
     // Overriding the clone method this is to clone the ClubStats when required (making another copy)
     @Override
     protected Object clone() throws CloneNotSupportedException {
+
         return super.clone();
+
     }
 }

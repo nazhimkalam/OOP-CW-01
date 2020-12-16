@@ -196,7 +196,7 @@ public class FootballClub extends SportClub{
                 "Ronaldo Nazario"
         };
 
-        // some simple stats of the play which is randomly choosen
+        // some simple stats of the play which is randomly chosen
         String[] foot = {"Left", "Right"};
 
         // adding 11 players to the list

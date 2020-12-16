@@ -93,19 +93,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="PremierLeagueTester" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OOP-CourseWork" />
       <extension name="coverage">
@@ -299,6 +286,7 @@
       <workItem from="1608122331011" duration="188000" />
       <workItem from="1608122550163" duration="534000" />
       <workItem from="1608123099249" duration="10897000" />
+      <workItem from="1608142039406" duration="3905000" />
     </task>
     <task id="LOCAL-00012" summary="commit">
       <created>1604851031613</created>
@@ -681,12 +669,13 @@
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state x="50" y="148" width="1095" height="504" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.1280.689/1920.0.1360.738@0.0.1280.689" timestamp="1608123089199" />
-    <state x="446" y="24" key="#com.intellij.ide.util.MemberChooser" timestamp="1607278359061">
-      <screen x="0" y="0" width="1280" height="689" />
+    <state x="2394" y="26" key="#com.intellij.ide.util.MemberChooser" timestamp="1608144415338">
+      <screen x="1920" y="0" width="1360" height="738" />
     </state>
     <state x="446" y="24" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680/1920.0.1360.728@0.0.1280.680" timestamp="1605961662785" />
     <state x="446" y="24" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1605323702472" />
     <state x="446" y="24" key="#com.intellij.ide.util.MemberChooser/0.0.1280.689/1920.0.1360.738@0.0.1280.689" timestamp="1607278359061" />
+    <state x="2394" y="26" key="#com.intellij.ide.util.MemberChooser/0.0.1280.689/1920.0.1360.738@1920.0.1360.738" timestamp="1608144415338" />
     <state x="2330" y="115" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog" timestamp="1606757198593">
       <screen x="1920" y="0" width="1360" height="738" />
     </state>

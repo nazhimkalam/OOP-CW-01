@@ -29,6 +29,7 @@ public class Match implements Serializable, Cloneable {
     // Argument Constructor
     public Match(int goalScored, int goalReceived, MatchStats matchStats, DateMatch date,
                  String opponentClubName,String season, String matchType, String participatedCLubName) {
+
         this.goalScored = goalScored;
         this.goalReceived = goalReceived;
         this.date = date;
@@ -37,17 +38,20 @@ public class Match implements Serializable, Cloneable {
         this.season = season;
         this.matchType = matchType;
         this.participatedCLubName = participatedCLubName;
+
     }
 
     // overriding the toString method in order to display the details of the match
     @Override
     public String toString() {
+
         return "\n Goal Scored = " + goalScored +
                 "\n Goal Received = " + goalReceived +
                 "\n Season = " + season +
                 "\n Date = " + date +
                 "\n Opponent Club Name = " + opponentClubName +
                 matchStats.toString();
+
     }
 
     // SETTERS AND GETTERS FOR THE CLASS
@@ -125,6 +129,8 @@ public class Match implements Serializable, Cloneable {
     // overriding the clone method, in order to enable cloning of the match when needed to
     @Override
     protected Object clone() throws CloneNotSupportedException {
+
         return super.clone();
+
     }
 }

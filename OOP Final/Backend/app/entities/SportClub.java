@@ -24,9 +24,11 @@ public abstract class SportClub implements Serializable, Cloneable{
 
     // Argument Constructor
     public SportClub(String name, String location, ClubStats clubStatistics) {
+
         this.name = name;
         this.location = location;
         this.clubStatistics = clubStatistics;
+
     }
 
     // GETTERS AND SETTERS FOR THE CLASS
@@ -57,7 +59,9 @@ public abstract class SportClub implements Serializable, Cloneable{
     // overriding the toString() method to display the details of the club
     @Override
     public String toString() {
+
         return  " * Club Name = '" + name + "'\n * Club Location = '" + location + "'" + clubStatistics.toString();
+
     }
 
 }
