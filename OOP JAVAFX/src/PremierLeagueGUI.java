@@ -1101,3 +1101,9 @@ public class PremierLeagueGUI extends Application {
 }
 
 
+// References used
+// http://tutorials.jenkov.com/javafx/tableview.html
+// https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/ScrollPane.html#:~:text=The%20ScrollPane%20allows%20the%20application,layoutBounds%20of%20the%20contained%20node.
+// https://docs.oracle.com/javafx/2/ui_controls/combo-box.htm
+// https://www.tutorialspoint.com/javafx/layout_panes_hbox.htm
+// https://www.tutorialspoint.com/javafx/layout_panes_vbox.htm
