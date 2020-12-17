@@ -21,12 +21,6 @@
   border-bottom-right-radius: 100px;
 }
 
-/* .players__heading h1:hover {
-  transition: 0.3s ease-in-out;
-  border-right-width: 8px;
-  animation-fill-mode: forwards;
-  transform: translateX(20px);
-} */
 .players__list img {
   object-fit: fill;
   height: 200px;

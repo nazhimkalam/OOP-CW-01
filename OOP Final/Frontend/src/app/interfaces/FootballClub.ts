@@ -3,6 +3,8 @@ import { ClubStatistics } from './ClubStatistics';
 
 // interface for the football club
 export interface FootballClub {
+
+  // variables 
   name: string;
   location: string;
   clubStatistics: ClubStatistics;
@@ -15,4 +17,5 @@ export interface FootballClub {
   matchesPlayed: MatchPlayed[];
   playersList: object[];
   mainStatistics: number[];
+
 }

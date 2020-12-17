@@ -5,8 +5,14 @@
     <div class="modal-dialog">
       <!-- Modal content-->
       <div class="modal-content">
+        <!-- Modal header -->
         <div class="modal-header">
-          <h1 class="modal-title" [ngStyle]="{color: getHeaderModalColor()}">{{ getMatchGenerateHeaderMessage() }}</h1>
+          <!-- modal title -->
+          <h1 class="modal-title" [ngStyle]="{ color: getHeaderModalColor() }">
+            {{ getMatchGenerateHeaderMessage() }}
+          </h1>
+
+          <!-- modal close button -->
           <button
             type="button"
             class="close"
@@ -16,10 +22,15 @@
             &times;
           </button>
         </div>
+
+        <!-- Modal message -->
         <div class="modal-body">
           <p>{{ getMatchGenerateBodyMessage() }}</p>
         </div>
+
+        <!-- Modal Footer -->
         <div class="modal-footer">
+          <!-- Modal close button -->
           <button
             type="button"
             class="btn btn-default closeBtn"
@@ -37,7 +48,10 @@
   <div class="matches container">
     <!-- match title container -->
     <div class="matches__titleContent">
+      <!-- match header -->
       <h1 class="matches__header">Matches</h1>
+
+      <!-- match header image -->
       <img src="../../assets/ball.png" alt="" height="60px" />
     </div>
 
@@ -54,6 +68,7 @@
               getValidationDate__visible()
             }}"
           >
+            <!-- date input text field for the user to enter the date -->
             <input
               type="text"
               class="form-control date__calender"
@@ -63,9 +78,12 @@
               (change)="setSelectedDate($event.target.value)"
               value="{{ getSelectedDate() }}"
             />
+
+            <!-- validation message -->
             <p><small>Invalid date / format !</small></p>
           </div>
 
+          <!-- search button -->
           <button
             type="button"
             class="btn btn-sm mb-2 matches__textField__searchBtn"
@@ -74,6 +92,8 @@
           >
             Search
           </button>
+
+          <!-- reset button -->
           <button
             type="button"
             class="btn btn-sm mb-2 matches__textField__searchBtn"
@@ -95,6 +115,7 @@
       <div class="matches__btn">
         <!-- drop down season -->
         <div class="btn-group season">
+          <!-- dropdown button -->
           <button
             class="btn btn-light btn-sm dropdown-toggle"
             type="button"
@@ -104,6 +125,8 @@
           >
             Season
           </button>
+
+          <!-- each drop down seasons -->
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <a
               class="dropdown-item"
@@ -153,13 +176,20 @@
 
           <!-- club details -->
           <div class="match__clubContent">
+            <!-- the participated match club name -->
             <h1>{{ match.participatedCLubName }}</h1>
+
+            <!-- date of the match played -->
             <p class="match__date">
               {{ match.date["day"] }}/{{ match.date["month"] }}/{{
                 match.date["year"]
               }}
             </p>
+
+            <!-- match type -->
             <p class="match__type">{{ match.matchType }}</p>
+
+            <!-- match goal scored -->
             <p class="match__score">{{ match.goalScored }}</p>
           </div>
         </div>
@@ -173,13 +203,20 @@
         <div class="matches__club2">
           <!-- club details -->
           <div class="match__clubContent">
+            <!-- opponent club name -->
             <h1>{{ match.opponentClubName }}</h1>
+
+            <!-- date of the match played -->
             <p class="match__date">
               {{ match.date["day"] }}/{{ match.date["month"] }}/{{
                 match.date["year"]
               }}
             </p>
+
+            <!-- match type -->
             <p class="match__type">{{ match.matchType }}</p>
+
+            <!-- match goals received -->
             <p class="match__score">{{ match.goalReceived }}</p>
           </div>
 
@@ -203,7 +240,10 @@
 
     <!-- displaying when there are no matches to be displayed or when the matches list is empty -->
     <div class="container noMatches__found" *ngIf="getNoMatchesAvailable()">
+      <!-- ball image -->
       <img src="../../assets/ball.png" alt="" />
+
+      <!-- message -->
       <p>NO MATCHES FOUND</p>
     </div>
   </div>

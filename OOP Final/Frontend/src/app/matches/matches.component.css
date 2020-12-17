@@ -36,14 +36,6 @@
     border-bottom-right-radius: 100px;
 }
 
-
-/* .matches__titleContent h1:hover {
-  transition: 0.3s ease-in-out;
-  animation-fill-mode: forwards;
-  border-right-width: 8px;
-  transform: translateX(20px);
-} */
-
 .validationDate__visible {
     position: relative;
     top: 18px;
@@ -133,14 +125,6 @@
     border-bottom-right-radius: 100px;
     color: #36003c;
 }
-
-
-/* .matches__playedSoFar:hover {
-  border-right-width: 8px;
-  transition: 0.3s ease-in-out;
-  animation-fill-mode: forwards;
-  transform: translateX(20px);
-} */
 
 .matches__list {
     height: 1000px;

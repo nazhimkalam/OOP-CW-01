@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./matches.component.css'],
 })
 export class MatchesComponent implements OnInit {
+  
   // variables used
   private matches: MatchPlayed[];
   private currentSeason: string;

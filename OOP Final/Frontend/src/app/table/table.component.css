@@ -28,14 +28,6 @@
   border-bottom-right-radius: 100px;
   color: #36003c;
 }
-/* .pTable__header:hover,
-.pTable__selectedSeason p:hover {
-  transition: 0.3s ease-in-out;
-  border-right-width: 8px;
-  animation-fill-mode: forwards;
-  transform: translateX(20px);
-} */
-
 .my-custom-scrollbar {
   position: relative;
    -webkit-box-shadow: 2px 2px 3px 4px #ccc;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */

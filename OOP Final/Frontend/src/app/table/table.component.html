@@ -1,25 +1,26 @@
 <div class="tablePage">
   <!-- main table container -->
   <div class="container pTable">
-
     <!-- table header container -->
     <div class="pTable__header__container">
+      <!-- table header -->
       <h1 class="pTable__header">Tables</h1>
+
+      <!-- image -->
       <img src="../../assets/trophy.png" alt="" height="150px" />
     </div>
 
     <!-- table buttons container -->
     <div class="pTable__btnOptions mt-5 container">
-
       <!-- current season -->
       <div class="pTable__selectedSeason">
         <p>Season {{ getCurrentSeason() }}</p>
       </div>
       <!-- drop down buttons -->
       <div>
-
         <!-- season dropdown -->
         <div class="btn-group season">
+          <!-- drop down button -->
           <button
             class="btn btn-light btn-sm dropdown-toggle"
             type="button"
@@ -29,6 +30,8 @@
           >
             Season
           </button>
+
+          <!-- drop down menu list -->
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <a
               class="dropdown-item"
@@ -41,6 +44,7 @@
 
         <!-- sorting dropdown -->
         <div class="btn-group sortBy">
+          <!-- sort by button -->
           <button
             class="btn btn-light btn-sm dropdown-toggle"
             type="button"
@@ -50,25 +54,28 @@
           >
             Sort By
           </button>
+
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <!-- sort by points -->
             <div class="dropdown-item" (click)="sortByPoints()">Points</div>
+
+            <!-- sort by goals -->
             <div class="dropdown-item" (click)="sortByGoals()">Goals</div>
+
+            <!-- sort by wins -->
             <div class="dropdown-item" (click)="sortByWins()">Wins</div>
           </div>
         </div>
-
       </div>
-
     </div>
 
     <!-- main table structure and content section -->
     <div
       class="container mt-4 pTable__table table-wrapper-scroll-y my-custom-scrollbar"
-      *ngIf = "!getIsLoading()"
+      *ngIf="!getIsLoading()"
     >
-    <!-- table -->
+      <!-- table -->
       <table class="table">
-
         <!-- table header -->
         <thead class="table__header">
           <tr>
@@ -100,16 +107,12 @@
             <td>{{ rowResult.clubStatistics.totalPointsScored }}</td>
           </tr>
         </tbody>
-
-      
       </table>
     </div>
 
     <!-- loading gif for delay purpose -->
     <div class="container loading" *ngIf="getIsLoading()">
-      <img src="../../assets/loading.gif" alt="">
+      <img src="../../assets/loading.gif" alt="" />
     </div>
-
   </div>
-  
 </div>

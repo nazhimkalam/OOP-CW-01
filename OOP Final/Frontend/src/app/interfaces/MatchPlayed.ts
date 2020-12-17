@@ -1,5 +1,7 @@
 // interface for the match played
 export interface MatchPlayed {
+
+  // variables 
   goalScored: number;
   goalReceived: number;
   season: string;
@@ -8,4 +10,5 @@ export interface MatchPlayed {
   opponentClubName: string;
   matchType: string;
   participatedCLubName: string;
+
 }

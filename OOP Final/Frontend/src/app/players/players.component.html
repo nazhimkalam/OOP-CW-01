@@ -1,18 +1,25 @@
 <!-- main player container -->
 <div class="players container">
-
   <!-- heading -->
   <div class="players__heading">
+    <!-- header text -->
     <h1>Players</h1>
+
+    <!-- header image -->
     <img src="../../assets/ball.png" alt="ball" height="60" />
   </div>
 
+  <!-- message -->
   <p class="players__listHeading">List of all players</p>
 
   <!-- players list -->
   <div class="container players__list">
     <!-- each player card -->
-    <div class="card" style="width: 16.3rem" *ngFor="let player of getPlayers()">
+    <div
+      class="card"
+      style="width: 16.3rem"
+      *ngFor="let player of getPlayers()"
+    >
       <!-- player image -->
       <img
         class="card-img-top"
@@ -21,15 +28,20 @@
       />
       <!-- player description -->
       <div class="card-body">
+        <!-- player name -->
         <h1 class="card-text">{{ player.name }}</h1>
         <div class="cardDescription__container">
           <div>
+            <!-- player position -->
             <p class="card-text">{{ player.position }}</p>
+
+            <!-- player team name -->
             <p class="card-text">{{ player.teamName }}</p>
           </div>
-          <img src="../../assets/ball.png" class="player__tatoo" alt="">
+
+          <!-- ball image -->
+          <img src="../../assets/ball.png" class="player__tatoo" alt="" />
         </div>
-        
       </div>
     </div>
   </div>
