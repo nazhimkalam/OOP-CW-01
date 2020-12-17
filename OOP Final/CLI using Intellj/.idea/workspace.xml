@@ -93,6 +93,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="PremierLeagueTester" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OOP-CourseWork" />
       <extension name="coverage">
@@ -287,7 +298,7 @@
       <workItem from="1608122550163" duration="534000" />
       <workItem from="1608123099249" duration="10897000" />
       <workItem from="1608142039406" duration="4963000" />
-      <workItem from="1608182395249" duration="668000" />
+      <workItem from="1608182395249" duration="6403000" />
     </task>
     <task id="LOCAL-00012" summary="commit">
       <created>1604851031613</created>

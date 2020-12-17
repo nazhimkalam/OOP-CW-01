@@ -13,7 +13,7 @@ public class PremierLeagueController extends Controller {
 
     // variables used
     private ArrayList<FootballClub> guiSeasonFilteredClubs = new ArrayList<>();
-    private static final Logger logger = LoggerFactory.getLogger("premierLeagueController");
+    private static Logger logger = LoggerFactory.getLogger("premierLeagueController");
 
     // This is the index URL
     public Result index(){

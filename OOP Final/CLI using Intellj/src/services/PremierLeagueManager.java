@@ -25,23 +25,6 @@ public class PremierLeagueManager implements LeagueManager {
     private static final int MAXIMUM_NUMBER_OF_CLUBS = 20;
     private static final int MAXIMUM_NUMBER_OF_MATCHES_PER_TEAM = 38;
 
-    // Setters and Getters for the premierLeagueFootballClubList
-    public static ArrayList<FootballClub> getPremierLeagueFootballClubList() {
-        return premierLeagueFootballClubList;
-    }
-
-    public static void setPremierLeagueFootballClubList(ArrayList<FootballClub> premierLeagueFootballClubList) {
-        PremierLeagueManager.premierLeagueFootballClubList = premierLeagueFootballClubList;
-    }
-
-    public static ArrayList<String> getAllSeasonAdded() {
-        return allSeasonAdded;
-    }
-
-    public static void setAllSeasonAdded(ArrayList<String> allSeasonAdded) {
-        PremierLeagueManager.allSeasonAdded = allSeasonAdded;
-    }
-
     // We are using the Singleton design pattern because we only need one instance of PremierLeagueManager and not many
     // used for the singleton design pattern, this is set to "null" for lazy initialization, so we only created the
     // instance when required only," ---> non lazy way LeagueManager manager = new PremierLeagueManager(); "
@@ -420,7 +403,7 @@ public class PremierLeagueManager implements LeagueManager {
     }
 
     // This method returns a list of football clubs filtered by season with updated stats for that season only.
-    private ArrayList<FootballClub> seasonFilteredFootballCLubList(String seasonPlayed)
+    public ArrayList<FootballClub> seasonFilteredFootballCLubList(String seasonPlayed)
             throws CloneNotSupportedException {
 
         // creating a new Football arraylist to collect football clubs for a particular season
@@ -545,7 +528,7 @@ public class PremierLeagueManager implements LeagueManager {
     }
 
     // Display the premier league table in a well structured format
-    private void structuredTable(int lengthOfClubNameTable, ArrayList<FootballClub> seasonFilteredClubs) {
+    public void structuredTable(int lengthOfClubNameTable, ArrayList<FootballClub> seasonFilteredClubs) {
 
         /*
         *  We take the length of the largest club name, then use this to create the main table width
@@ -836,7 +819,7 @@ public class PremierLeagueManager implements LeagueManager {
     }
 
     // This method is used to calculate the statistics
-    private void calculatingStatistics(String clubName_01, String clubName_02, int numberGoalScored_club_1,
+    public void calculatingStatistics(String clubName_01, String clubName_02, int numberGoalScored_club_1,
                                        int numberGoalScored_club_2, DateMatch date, String seasonPlayed,
                                        String matchType) {
         /*
@@ -936,7 +919,7 @@ public class PremierLeagueManager implements LeagueManager {
     }
 
     // This method is used to add the played match to the club
-    private void addPlayedMatchToClub(String clubName_01, String clubName_02, int numberGoalScored_club_1,
+    public void addPlayedMatchToClub(String clubName_01, String clubName_02, int numberGoalScored_club_1,
                                       int numberGoalScored_club_2, DateMatch date, String seasonPlayed,
                                       FootballClub footballClub, String matchType) {
 
@@ -953,7 +936,7 @@ public class PremierLeagueManager implements LeagueManager {
     }
 
     // This method is used to get the match statistics which are randomly generated
-    private MatchStats getStatsOfMatch(FootballClub footballClub) {
+    public MatchStats getStatsOfMatch(FootballClub footballClub) {
         Random random = new Random();
 
         // variables with the random data set to be used for the match statistics
@@ -978,7 +961,7 @@ public class PremierLeagueManager implements LeagueManager {
     }
 
     // updates the wins and defeats of the played club matches
-    private void updatingWinsDefeats(String clubName_01, String clubName_02) {
+    public void updatingWinsDefeats(String clubName_01, String clubName_02) {
 
         for (FootballClub footballClub : premierLeagueFootballClubList) {
 
@@ -1123,5 +1106,22 @@ public class PremierLeagueManager implements LeagueManager {
         // returns a success message if everything goes well
         return "\n Clearing the contents of the file . . .\n Successfully cleared the file details!";
 
+    }
+
+    // Setters and Getters
+    public static ArrayList<FootballClub> getPremierLeagueFootballClubList() {
+        return premierLeagueFootballClubList;
+    }
+
+    public static void setPremierLeagueFootballClubList(ArrayList<FootballClub> premierLeagueFootballClubList) {
+        PremierLeagueManager.premierLeagueFootballClubList = premierLeagueFootballClubList;
+    }
+
+    public static ArrayList<String> getAllSeasonAdded() {
+        return allSeasonAdded;
+    }
+
+    public static void setAllSeasonAdded(ArrayList<String> allSeasonAdded) {
+        PremierLeagueManager.allSeasonAdded = allSeasonAdded;
     }
 }
