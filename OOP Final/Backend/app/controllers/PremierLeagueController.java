@@ -133,3 +133,8 @@ public class PremierLeagueController extends Controller {
     }
 
 }
+
+// References used
+// https://www.playframework.com/documentation/2.8.x/Home
+// https://www.playframework.com/documentation/2.8.x/JavaJsonActions
+// https://github.com/dilum1995/IIT-PlayFramework-Session
