@@ -8,7 +8,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./matches.component.css'],
 })
 export class MatchesComponent implements OnInit {
-  
   // variables used
   private matches: MatchPlayed[];
   private currentSeason: string;
@@ -24,6 +23,7 @@ export class MatchesComponent implements OnInit {
   private matchGenerateHeaderMessage: string;
   private matchGenerateBodyMessage: string;
   private headerModalColor: string;
+  private tempTotalMatches: number;
 
   // constructor for initialization
   public constructor(private _footballService: FootballInteractionService) {
@@ -35,6 +35,7 @@ export class MatchesComponent implements OnInit {
     this.displayCelebration = 'noCelebration';
     this.validationDate__visible = 'validationDate__invisible';
     this.displaySearchButton = true;
+    this.tempTotalMatches = 0;
   }
 
   // runs just after the constructor
@@ -48,7 +49,10 @@ export class MatchesComponent implements OnInit {
     this._footballService
       .getMatchesBySeason(this.currentSeason)
       .subscribe((data) => {
+        // the temTotalMatches stores the total number of matches currently for checking
+        // purpose when generating match(match limit)
         this.matches = data;
+        this.tempTotalMatches = this.matches.length;
         this.generateClubLogo();
         this.loadingContent = false;
         this.validationDate__visible = 'validationDate__invisible';
@@ -78,7 +82,10 @@ export class MatchesComponent implements OnInit {
     this._footballService
       .getMatchesBySeason(clickedSeason)
       .subscribe((data) => {
+        // the temTotalMatches stores the total number of matches currently for checking
+        // purpose when generating match(match limit)
         this.matches = data;
+        this.tempTotalMatches = this.matches.length;
         this.generateClubLogo();
         this.loadingContent = false;
         this.validationDate__visible = 'validationDate__invisible';
@@ -145,9 +152,9 @@ export class MatchesComponent implements OnInit {
   }
 
   // The reset button reloads the data for the current season selected
-  public handleReset(){
-    this.selectedDate = "";
-    
+  public handleReset() {
+    this.selectedDate = '';
+
     this._footballService
       .getMatchesBySeason(this.getCurrentSeason())
       .subscribe((data) => {
@@ -166,12 +173,15 @@ export class MatchesComponent implements OnInit {
       });
   }
 
-  // When the user closed the modal we again load the matches 
-  public handleCloseModal(){
+  // When the user closed the modal we again load the matches
+  public handleCloseModal() {
     this._footballService
       .getMatchesBySeason(this.getCurrentSeason())
       .subscribe((data) => {
+        // the temTotalMatches stores the total number of matches currently for checking
+        // purpose when generating match(match limit)
         this.matches = data;
+        this.tempTotalMatches = this.matches.length;
         this.generateClubLogo();
         this.loadingContent = false;
         this.validationDate__visible = 'validationDate__invisible';
@@ -190,7 +200,6 @@ export class MatchesComponent implements OnInit {
   public generateMatch() {
     // changes the variables accordingly when season changes
     this.selectedDate = '';
-    this.displayCelebration = 'celebration__theme';
     this.audio = new Audio();
     this.audio.src = '../../assets/matchPlayed.mp3';
     this.audio.load();
@@ -201,19 +210,30 @@ export class MatchesComponent implements OnInit {
     this._footballService
       .getGeneratedMatchesBySeason(this.currentSeason)
       .subscribe((data) => {
+        // the temTotalMatches stores the total number of matches currently for checking
+        // purpose when generating match(match limit)
+        this.matches = data;
+        this.matchGenerateHeaderMessage = 'Error!';
+        this.headerModalColor = '#FF0134';
 
         // if the data = null then we change the content of the model
-        if(data === null){
-          this.matchGenerateHeaderMessage = "Error!"
-          this.headerModalColor = "#FF0134"
-          this.matchGenerateBodyMessage = "Cannot generate match, at least two clubs should be present to generate a match";
-        }else{
-          this.headerModalColor = "#2DBF64"
-          this.matchGenerateHeaderMessage = "Congratulations!";
-          this.matchGenerateBodyMessage = "Match Successfully generated.";
+        if (data === null) {
+          this.displayCelebration = 'error__theme';
+          this.matchGenerateBodyMessage =
+            'Cannot generate match, at least two clubs should be present to generate a match';
+        
+          } else if (this.matches.length === this.tempTotalMatches) {
+          this.displayCelebration = 'error__theme';
+          this.matchGenerateBodyMessage = "Cannot generate match, this is due to the random club selected has already reached it's maximum number of matches played, please re-generate to select another random club";
+        
+        } else {
+          this.displayCelebration = 'celebration__theme';
+          this.headerModalColor = '#2DBF64';
+          this.matchGenerateHeaderMessage = 'Congratulations!';
+          this.matchGenerateBodyMessage = 'Match Successfully generated.';
+
         }
 
-        this.matches = data;
         this.generateClubLogo();
         this.loadingContent = false;
         this.validationDate__visible = 'validationDate__invisible';
@@ -225,6 +245,9 @@ export class MatchesComponent implements OnInit {
         } else {
           this.noMatchesAvailable = false;
         }
+
+        // In this case the tempTotalMatches has to be updated after the above code is executed
+        this.tempTotalMatches = this.matches.length;
       });
 
     this.generateClubLogo();
@@ -270,11 +293,11 @@ export class MatchesComponent implements OnInit {
     return this.seasons;
   }
 
-  public getMatchGenerateHeaderMessage(){
+  public getMatchGenerateHeaderMessage() {
     return this.matchGenerateHeaderMessage;
   }
 
-  public getMatchGenerateBodyMessage(){
+  public getMatchGenerateBodyMessage() {
     return this.matchGenerateBodyMessage;
   }
 
@@ -322,7 +345,6 @@ export class MatchesComponent implements OnInit {
     this.displaySearchButton = data;
   }
 
-  
   public setDisplayCelebration(data: string) {
     this.displayCelebration = data;
   }
@@ -339,11 +361,19 @@ export class MatchesComponent implements OnInit {
     return this.validationDate__visible;
   }
 
-  public getHeaderModalColor(){
+  public getHeaderModalColor() {
     return this.headerModalColor;
   }
 
-  public setHeaderModalColor(data: string){
+  public setHeaderModalColor(data: string) {
     this.headerModalColor = data;
+  }
+
+  public getTempTotalMatches() {
+    return this.tempTotalMatches;
+  }
+
+  public setTempTotalMatches(data: number) {
+    this.tempTotalMatches = data;
   }
 }

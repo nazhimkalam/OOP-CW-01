@@ -19,9 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4ffd9da0-df3c-4a45-8b09-2b7528f01daf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../OOP JAVAFX/src/PremierLeagueGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../OOP JAVAFX/src/PremierLeagueGUI.java" afterDir="false" />
-    </list>
+    <list default="true" id="4ffd9da0-df3c-4a45-8b09-2b7528f01daf" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -292,6 +290,7 @@
       <workItem from="1608276798407" duration="216000" />
       <workItem from="1608277469549" duration="126000" />
       <workItem from="1608281902511" duration="97000" />
+      <workItem from="1608288122877" duration="91000" />
     </task>
     <task id="LOCAL-00012" summary="commit">
       <created>1604851031613</created>
