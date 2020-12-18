@@ -23,7 +23,7 @@ public class PremierLeagueManager implements LeagueManager {
     private static boolean matchedAdded;
     private static ArrayList<String> allSeasonAdded;
     private static final int MAXIMUM_NUMBER_OF_CLUBS = 20;
-    private static final int MAXIMUM_NUMBER_OF_MATCHES_PER_TEAM = 38;
+    private static int maximumNumberOfMatchesPerClub;
 
     // We are using the Singleton design pattern because we only need one instance of PremierLeagueManager and not many
     // used for the singleton design pattern, this is set to "null" for lazy initialization, so we only created the
@@ -37,6 +37,7 @@ public class PremierLeagueManager implements LeagueManager {
         matchedAdded = false;
         allSeasonAdded = new ArrayList<>();
         premierLeagueFootballClubList= new ArrayList<>();
+        maximumNumberOfMatchesPerClub = 0;
 
         // load the previously saved data from the file
         String result = loadingData();
@@ -86,6 +87,7 @@ public class PremierLeagueManager implements LeagueManager {
         premierLeagueFootballClubList = new ArrayList<>();
         matchedAdded = false;
         allSeasonAdded = new ArrayList<>();
+        maximumNumberOfMatchesPerClub = 0;
 
         // handling the exceptions and loading the data from the file
         try {
@@ -103,6 +105,7 @@ public class PremierLeagueManager implements LeagueManager {
                 premierLeagueFootballClubList = (ArrayList<FootballClub>) objectInputStream.readObject();
                 matchedAdded = (boolean) objectInputStream.readObject();
                 allSeasonAdded = (ArrayList<String>) objectInputStream.readObject();
+                maximumNumberOfMatchesPerClub = (int) objectInputStream.readObject();
 
             } catch (ClassNotFoundException e) {
                 // Handles exception
@@ -179,6 +182,9 @@ public class PremierLeagueManager implements LeagueManager {
         {
             // adding the club if the maximum limit is not reached
             premierLeagueFootballClubList.add(club);
+
+            // updating the number of matches that can be played by a club
+            maximumNumberOfMatchesPerClub = (2 * premierLeagueFootballClubList.size()) - 2;
 
             // returns a success message to the user
             return " Clubs Successfully added!";
@@ -738,7 +744,7 @@ public class PremierLeagueManager implements LeagueManager {
 
                 if(match.getSeason().equals(seasonPlayed)){
                     matchCounter++;
-                    club1ReachedMaximumMatches = matchCounter >= MAXIMUM_NUMBER_OF_MATCHES_PER_TEAM;
+                    club1ReachedMaximumMatches = matchCounter >= maximumNumberOfMatchesPerClub;
 
                 }
 
@@ -750,7 +756,7 @@ public class PremierLeagueManager implements LeagueManager {
 
                 if(match.getSeason().equals(seasonPlayed)){
                     matchCounter++;
-                    club2ReachedMaximumMatches = matchCounter >= MAXIMUM_NUMBER_OF_MATCHES_PER_TEAM;
+                    club2ReachedMaximumMatches = matchCounter >= maximumNumberOfMatchesPerClub;
 
                 }
 
@@ -1006,10 +1012,11 @@ public class PremierLeagueManager implements LeagueManager {
             fileOutputStream = new FileOutputStream(file);
             objectOutputStream = new ObjectOutputStream(fileOutputStream);
 
-            // writing the objects into the file
+            // writing the data into the file
             objectOutputStream.writeObject(premierLeagueFootballClubList);
             objectOutputStream.writeObject(matchedAdded);
             objectOutputStream.writeObject(allSeasonAdded);
+            objectOutputStream.writeObject(maximumNumberOfMatchesPerClub);
 
         }
         catch (FileNotFoundException fileNotFoundException) {
@@ -1123,5 +1130,13 @@ public class PremierLeagueManager implements LeagueManager {
 
     public static void setAllSeasonAdded(ArrayList<String> allSeasonAdded) {
         PremierLeagueManager.allSeasonAdded = allSeasonAdded;
+    }
+
+    public static int getMaximumNumberOfMatchesPerClub() {
+        return maximumNumberOfMatchesPerClub;
+    }
+
+    public static void setMaximumNumberOfMatchesPerClub(int maximumNumberOfMatchesPerClub) {
+        PremierLeagueManager.maximumNumberOfMatchesPerClub = maximumNumberOfMatchesPerClub;
     }
 }

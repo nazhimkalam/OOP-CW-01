@@ -20,14 +20,14 @@ import static org.junit.Assert.assertNull;
 public class PremierLeagueTester
 {
     // variable used
-    private LeagueManager obj;
+    private LeagueManager premierLeagueManager;
 
     @Before
     public void beforeTesting(){
 
         // RUNS BEFORE TESTING
         System.out.println("testing started . . . ");
-        obj = PremierLeagueManager.getInstance();
+        premierLeagueManager = PremierLeagueManager.getInstance();
     }
 
     @Test
@@ -41,7 +41,7 @@ public class PremierLeagueTester
 
             for (int num = 0; num < 20; num++) {
 
-                String result = obj.createClub("Juventus","Spain","Nazhim",
+                String result = premierLeagueManager.createClub("Juventus","Spain","Nazhim",
                         schoolUniName[index],
                         clubType[index]);
                 assertEquals(" Clubs Successfully added!",result);
@@ -49,7 +49,7 @@ public class PremierLeagueTester
             }
 
             // TESTING FOR AN INVALID CLUB WHEN ADDED MORE THAN 20
-            String expectedResult = obj.createClub("Juventus","Spain","Nazhim",
+            String expectedResult = premierLeagueManager.createClub("Juventus","Spain","Nazhim",
                     schoolUniName[index],
                     clubType[index]);
             assertEquals(" Sorry there is no room for a new club, the maximum number of club limit " +
@@ -65,16 +65,17 @@ public class PremierLeagueTester
 
         // TESTING WITH VALID CLUB TO BE REMOVED
         // adding a club so that it can be deleted
-        obj.createClub("Juventus","Spain","Nazhim",null, "normal");
+        premierLeagueManager.createClub("Juventus","Spain","Nazhim",null,
+                "normal");
 
         // getting the details of the added football club
         FootballClub actualResult = PremierLeagueManager.getPremierLeagueFootballClubList().get(0);
 
-        FootballClub expectedResult = (FootballClub) obj.deleteCLub("Juventus");
+        FootballClub expectedResult = (FootballClub) premierLeagueManager.deleteCLub("Juventus");
         assertEquals(actualResult, expectedResult);
 
         // TESTING WITH INVALID CLUB TO BE REMOVED
-        expectedResult = (FootballClub) obj.deleteCLub("Real Madird");
+        expectedResult = (FootballClub) premierLeagueManager.deleteCLub("Real Madird");
         assertNull(expectedResult);
 
         // CLEARING THE CONTENT OF THE obj FOR OTHER TESTINGS
@@ -85,12 +86,13 @@ public class PremierLeagueTester
     public void testDisplayingStats(){
 
         // TESTING THE DISPLAY STATS METHOD WITH A VALID CLUB NAME ENTERED
-        obj.createClub("Juventus","Spain","Nazhim",null, "normal");
-        String expectedResult = obj.displayStats("Juventus");
+        premierLeagueManager.createClub("Juventus","Spain","Nazhim",null,
+                "normal");
+        String expectedResult = premierLeagueManager.displayStats("Juventus");
         assertEquals(" Result Displayed", expectedResult);
 
         // TESTING THE DISPLAY STATS METHOD WITH AN INVALID CLUB NAME ENTERED
-        expectedResult = obj.displayStats("Fake Club");
+        expectedResult = premierLeagueManager.displayStats("Fake Club");
         assertEquals("\n Sorry, there is no club with the given name 'Fake Club'", expectedResult);
 
         // CLEARING THE CONTENT OF THE obj FOR OTHER TESTINGS
@@ -102,23 +104,26 @@ public class PremierLeagueTester
     public void testAddPlayedMatch()
     {
         // Testing adding match into a club
-        obj.createClub("barca","spain","nazhim",null,"normal");
-        obj.createClub("juventus","japan","hashim",null,"normal");
-        obj.createClub("realMadrid","australia","saman",null,"normal");
+        premierLeagueManager.createClub("barca","spain","nazhim",null,
+                "normal");
+        premierLeagueManager.createClub("juventus","japan","hashim",null,
+                "normal");
+        premierLeagueManager.createClub("realMadrid","australia","saman",null,
+                "normal");
         DateMatch date = new DateMatch();
         String expectedResult;
 
         // TESTING FOR A VALID MATCH ENTERED FOR A SEASON
-        expectedResult = obj.addPlayedMatch(
+        expectedResult = premierLeagueManager.addPlayedMatch(
                 "2020-21","realMadrid","juventus",1,
                 2,
                 date,"away"
         );
         assertEquals("\n Match Successfully added! \n", expectedResult);
 
-        // TESTING FOR MULTIPLE VALID MATCHES ENTERED FOR A SEASON (UNTIL 38 PER CLUB)
-        for (int index = 0; index < 37; index++) {
-            expectedResult = obj.addPlayedMatch(
+        // TESTING FOR MULTIPLE VALID MATCHES ENTERED FOR A SEASON (UNTIL MAXIMUM NUMBER OF MATCHES PER CLUB REACHED)
+        for (int index = 0; index < PremierLeagueManager.getMaximumNumberOfMatchesPerClub()-1; index++) {
+            expectedResult = premierLeagueManager.addPlayedMatch(
                     "2020-21","realMadrid","juventus",1,
                     2,
                     date,"away"
@@ -127,7 +132,7 @@ public class PremierLeagueTester
         }
 
         // TESTING FOR THE 39th MATCH FOR A CLUB FOR A SEASON
-        expectedResult = obj.addPlayedMatch(
+        expectedResult = premierLeagueManager.addPlayedMatch(
                 "2020-21","realMadrid","juventus",1,
                 2,
                 date,"away"
@@ -137,8 +142,8 @@ public class PremierLeagueTester
 
 
         // TESTING FOR A CLUB IN DIFFERENT SEASONS
-        for (int index = 0; index < 38; index++) {
-            expectedResult = obj.addPlayedMatch(
+        for (int index = 0; index < PremierLeagueManager.getMaximumNumberOfMatchesPerClub(); index++) {
+            expectedResult = premierLeagueManager.addPlayedMatch(
                     "2019-20","realMadrid","juventus",1,
                     2,
                     date,"away"
@@ -147,7 +152,7 @@ public class PremierLeagueTester
         }
 
         // TESTING FOR THE 39TH MATCH ADDED FOR THE CLUB WITH A DIFFERENT SEASON
-        expectedResult = obj.addPlayedMatch(
+        expectedResult = premierLeagueManager.addPlayedMatch(
                 "2019-20","realMadrid","juventus",1,
                 2,
                 date,"away"
@@ -156,21 +161,21 @@ public class PremierLeagueTester
                 expectedResult);
 
         // TESTING FOR A NUMBER OF CLUBS INVOLVED
-        obj.addPlayedMatch(
+        premierLeagueManager.addPlayedMatch(
                 "2018-19","barca","juventus",1,
                 2,
                 date,"home"
         );
 
-        for (int index = 0; index < 37; index++) {
-            expectedResult = obj.addPlayedMatch(
+        for (int index = 0; index < PremierLeagueManager.getMaximumNumberOfMatchesPerClub()-1; index++) {
+            expectedResult = premierLeagueManager.addPlayedMatch(
                     "2018-19","juventus","realMadrid",1,
                     2,
                     date,"home"
             );
             assertEquals("\n Match Successfully added! \n",expectedResult);
         }
-        expectedResult = obj.addPlayedMatch(
+        expectedResult = premierLeagueManager.addPlayedMatch(
                 "2018-19","realMadrid","juventus",1,
                 2,
                 date,"home"
@@ -185,7 +190,7 @@ public class PremierLeagueTester
     @Test
     public void testSavingDataIntoFile(){
         // Testing the saving the data into the file
-        String expectedResult = obj.saveDataIntoFile();
+        String expectedResult = premierLeagueManager.saveDataIntoFile();
         assertEquals("\n Saving the data . . .\n Successfully saved!", expectedResult);
 
     }
@@ -196,10 +201,11 @@ public class PremierLeagueTester
 
         // Assuming that the file path is correct and file contains data
         String expectedResult = PremierLeagueManager.loadingData();
-//        assertEquals("\n Successfully loaded all the data\n", result);
+//        assertEquals("\n Successfully loaded all the data\n", expectedResult);
 
         // Assuming that the file contains no data to read
-        assertEquals("\n Successfully loaded all the data\n", expectedResult);
+        assertEquals(" Exception when performing read/write operations to the file!" +
+                "\n No permission to read/write from or to the file", expectedResult);
 
     }
 
@@ -208,7 +214,7 @@ public class PremierLeagueTester
         // Testing the clearing the data from the file method
 
         // Assuming that the file path is correct
-        String result = obj.clearDataFile();
+        String result = premierLeagueManager.clearDataFile();
         assertEquals("\n Clearing the contents of the file . . .\n Successfully cleared the file details!",
                 result);
 
@@ -217,11 +223,11 @@ public class PremierLeagueTester
     @Test
     public void testingCheckingForValidClub(){
        // testing for checking valid club method
-       obj.createClub("Juventus","Spain","Nazhim",null,
+        premierLeagueManager.createClub("Juventus","Spain","Nazhim",null,
                 "normal");
-       obj.createClub("Barca","Spain","Hashim",null,
+        premierLeagueManager.createClub("Barca","Spain","Hashim",null,
                 "normal");
-       obj.createClub("Titan Fc","Spain","Kalam",null,
+        premierLeagueManager.createClub("Titan Fc","Spain","Kalam",null,
                 "normal");
 
        String[] clubNames = {"Juventus", "Barca", "Titan Fc"};
