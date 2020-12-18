@@ -1,0 +1,54 @@
+<div class="welcome">
+  <!-- The background video -->
+  <video [muted]="true" autoplay playsinline loop id="myVideo">
+    <!-- video source -->
+    <source
+      src="../../assets/Leo Messi - Dribbling Skills In Slow Motion_1.mp4"
+      type="video/mp4"
+    />
+  </video>
+
+  <!-- main container -->
+  <div class="welcome_mainContainer">
+    <!-- top section -->
+    <div class="welcome__sectionTop">
+      <!-- logo 1 -->
+      <img
+        src="../../assets/premierLeagueWelcome.png"
+        alt="headingLogo"
+        height="300vh"
+      />
+
+      <!-- logo 2 -->
+      <img
+        src="../../assets/welcomeFireBall.png"
+        height="120vh"
+        alt="fireballLogo"
+      />
+    </div>
+
+    <!-- bottom section -->
+    <div class="welcome__sectionBottom">
+      <!-- welcome & continue button -->
+      <div class="welcome__button">
+        <button (click)="handleWelcome()" mat-raised-button routerLink="/about">
+          <span>CONTINUE</span>
+        </button>
+      </div>
+
+      <!-- copyright laws -->
+      <div class="welcome__copyrightLaws">
+        <small>© PREMIER LEAGUE 2020</small>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- References -->
+<!-- https://www.premierleague.com/ -->
+<!-- https://en.wikipedia.org/wiki/Premier_League -->
+<!-- https://www.premierleague.com/tables -->
+<!-- https://www.premierleague.com/players -->
+<!-- https://getbootstrap.com/docs/4.0/getting-started/introduction/ -->
+<!-- https://angular.io/ -->

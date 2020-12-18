@@ -1,0 +1,36 @@
+* {
+    font-family: Verdana, Geneva, Tahoma, sans-serif !important;
+    z-index: 9999;
+}
+
+.navigation__bar {
+    display: flex;
+    justify-content: space-between;
+    background-image: linear-gradient(to right, #36003c, #d4007f);
+    position: sticky;
+    top: 0;
+}
+
+.navigation__barLogo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 210px;
+}
+
+.nav-item {
+    transition: 0.1s ease-in-out;
+    margin: 0 10px;
+}
+
+.nav-item:hover {
+    transform: scale(1.1);
+    transition: 0.1s ease-in-out;
+}
+
+.active {
+    border: 2px #ff48b6c2 solid;
+    border-radius: 3px;
+    /* font-weight: 600; */
+    /* background-color: #eb008dc2; */
+}

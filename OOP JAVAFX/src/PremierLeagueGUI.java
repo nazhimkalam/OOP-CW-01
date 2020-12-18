@@ -70,10 +70,6 @@ public class PremierLeagueGUI extends Application {
         int userSelectOption = validatingIntegers(" Enter your option (please enter only integers): ");
         String result;
 
-//        sortByGoalsClicked = false;
-//        sortByWinsClicked = false;
-//        sortByPointsClicked = true;
-
         // directing the users option to appropriate methods
         switch (userSelectOption)
         {
