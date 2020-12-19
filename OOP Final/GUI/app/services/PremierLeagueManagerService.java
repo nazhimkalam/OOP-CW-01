@@ -140,16 +140,6 @@ public class PremierLeagueManagerService implements LeagueManager {
         // System.out.println( "\n Successfully loaded all the data\n");
     }
 
-    // getter for allSeasonsAdded list
-    public static ArrayList<String> getAllSeasonAdded() {
-        return allSeasonAdded;
-    }
-
-    // setter for allSeasonsAdded list
-    public static void setAllSeasonAdded(ArrayList<String> allSeasonAdded) {
-        PremierLeagueManagerService.allSeasonAdded = allSeasonAdded;
-    }
-
     // Overriding the createClub method from the interface
     @Override
     public String createClub(String clubName, String location, String coachName, String universitySchoolName,
@@ -200,6 +190,12 @@ public class PremierLeagueManagerService implements LeagueManager {
                 // if the club name is present it is removed
                 return premierLeagueFootballClubList.remove(index);
             }
+        }
+
+        // we also update the number of matches played by the club
+        // If there are less than 2 clubs present then we set the maximum number of matches played to 0
+        if(premierLeagueFootballClubList.size() < 2){
+            maximumNumberOfMatchesPerClub = 0;
         }
 
         // returns null if there is not club present with the given name
@@ -493,7 +489,7 @@ public class PremierLeagueManagerService implements LeagueManager {
             }
         }
 
-        // setting th position value to "00" if all the clubs didnt play for the given season
+        // setting the position value to "00" if all the clubs didnt play for the given season
         for (FootballClub footballClub: footballClubsListSeason) {
             if(footballClub.getClubStatistics().getTotalMatchesPlayed() != 0){
                 // then we can give positions to all the clubs
@@ -1116,5 +1112,12 @@ public class PremierLeagueManagerService implements LeagueManager {
 
     public static void setMaximumNumberOfMatchesPerClub(int maximumNumberOfMatchesPerClub) {
         PremierLeagueManagerService.maximumNumberOfMatchesPerClub = maximumNumberOfMatchesPerClub;
+    }
+    public static ArrayList<String> getAllSeasonAdded() {
+        return allSeasonAdded;
+    }
+
+    public static void setAllSeasonAdded(ArrayList<String> allSeasonAdded) {
+        PremierLeagueManagerService.allSeasonAdded = allSeasonAdded;
     }
 }

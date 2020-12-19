@@ -416,7 +416,7 @@ public class PremierLeagueManager implements LeagueManager {
     }
 
     // This method returns a list of football clubs filtered by season with updated stats for that season only.
-    public ArrayList<FootballClub> seasonFilteredFootballCLubList(String seasonPlayed)
+    public static ArrayList<FootballClub> seasonFilteredFootballCLubList(String seasonPlayed)
             throws CloneNotSupportedException {
 
         // creating a new Football arraylist to collect football clubs for a particular season
