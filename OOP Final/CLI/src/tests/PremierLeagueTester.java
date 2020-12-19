@@ -71,11 +71,11 @@ public class PremierLeagueTester
         // getting the details of the added football club
         FootballClub actualResult = PremierLeagueManager.getPremierLeagueFootballClubList().get(0);
 
-        FootballClub expectedResult = (FootballClub) premierLeagueManager.deleteCLub("Juventus");
+        FootballClub expectedResult = (FootballClub) premierLeagueManager.deleteClub("Juventus");
         assertEquals(actualResult, expectedResult);
 
         // TESTING WITH INVALID CLUB TO BE REMOVED
-        expectedResult = (FootballClub) premierLeagueManager.deleteCLub("Real Madird");
+        expectedResult = (FootballClub) premierLeagueManager.deleteClub("Real Madird");
         assertNull(expectedResult);
 
         // CLEARING THE CONTENT OF THE obj FOR OTHER TESTINGS
@@ -103,6 +103,7 @@ public class PremierLeagueTester
     @Test
     public void testAddPlayedMatch()
     {
+        // SINCE THERE ARE 3 CLUBS HERE THEN 1 CLUBS PLAYS 4 MATCHES
         // Testing adding match into a club
         premierLeagueManager.createClub("barca","spain","nazhim",null,
                 "normal");
@@ -110,77 +111,102 @@ public class PremierLeagueTester
                 "normal");
         premierLeagueManager.createClub("realMadrid","australia","saman",null,
                 "normal");
+
         DateMatch date = new DateMatch();
         String expectedResult;
+        String[] seasons = {"2020-21", "2019-20","2018-19"};
 
-        // TESTING FOR A VALID MATCH ENTERED FOR A SEASON
+        for(String season: seasons){
+            // TESTING FOR A VALID MATCH ENTERED FOR A SEASON of match type "Away"
+            // REAL MADRID VS JUVENTUS "away" $$$$$$$
+            expectedResult = premierLeagueManager.addPlayedMatch(
+                    season,"realMadrid","juventus",1,
+                    2,
+                    date,"away"
+            );
+            assertEquals("\n Match Successfully added! \n", expectedResult);
+
+            // TESTING FOR A VALID MATCH ENTERED FOR A SEASON of match type "Home"
+            // REAL MADRID VS JUVENTUS "home" $$$$$$$
+            expectedResult = premierLeagueManager.addPlayedMatch(
+                    season,"realMadrid","juventus",1,
+                    2,
+                    date,"home"
+            );
+            assertEquals("\n Match Successfully added! \n", expectedResult);
+
+            // TESTING FOR A DUPLICATE MATCH ADDED FOR THE SAME "season", "teams" and "match type"
+            // REAL MADRID VS JUVENTUS "away"
+            expectedResult = premierLeagueManager.addPlayedMatch(
+                    season,"realMadrid","juventus",1,
+                    2,
+                    date,"away"
+            );
+            assertEquals("\n Sorry can't add match, because it's already played for the given teams, season and" +
+                    " match type! \n", expectedResult);
+
+            // TESTING FOR A DUPLICATE MATCH ADDED FOR THE SAME "season", "teams" and "match type"
+            // REAL MADRID VS JUVENTUS "home"
+            expectedResult = premierLeagueManager.addPlayedMatch(
+                    season,"realMadrid","juventus",1,
+                    2,
+                    date,"home"
+            );
+            assertEquals("\n Sorry can't add match, because it's already played for the given teams, season and" +
+                    " match type! \n", expectedResult);
+
+
+            // TESTING FOR MULTIPLE VALID MATCHES ENTERED FOR A SEASON (UNTIL MAXIMUM NUMBER OF MATCHES PER CLUB REACHED)
+            // Real Madrid and juventus has 2 more matches to play inf order to reach the max number of matches played
+            // Barca VS Juventus "away" $$$$$$$
+            expectedResult = premierLeagueManager.addPlayedMatch(
+                    season,"barca","juventus",1,
+                    2,
+                    date,"away"
+            );
+            assertEquals("\n Match Successfully added! \n", expectedResult);
+
+            // Barca VS Juventus "home" $$$$$$$
+            expectedResult = premierLeagueManager.addPlayedMatch(
+                    season,"barca","juventus",1,
+                    2,
+                    date,"home"
+            );
+            assertEquals("\n Match Successfully added! \n", expectedResult);
+
+            // TESTING FOR ADDING A MATCH WHICH EXCEEDS THE LIMIT for "Juventus"
+            expectedResult = premierLeagueManager.addPlayedMatch(
+                    season,"barca","juventus",1,
+                    2,
+                    date,"away"
+            );
+            assertEquals("\n Sorry, 'juventus' has reached the maximum number of matches played!",
+                    expectedResult);
+        }
+
+        // Barca VS Real Madrid "away" $$$$$
         expectedResult = premierLeagueManager.addPlayedMatch(
-                "2020-21","realMadrid","juventus",1,
+                "2020-21","barca","realMadrid",1,
                 2,
                 date,"away"
         );
         assertEquals("\n Match Successfully added! \n", expectedResult);
 
-        // TESTING FOR MULTIPLE VALID MATCHES ENTERED FOR A SEASON (UNTIL MAXIMUM NUMBER OF MATCHES PER CLUB REACHED)
-        for (int index = 0; index < PremierLeagueManager.getMaximumNumberOfMatchesPerClub()-1; index++) {
-            expectedResult = premierLeagueManager.addPlayedMatch(
-                    "2020-21","realMadrid","juventus",1,
-                    2,
-                    date,"away"
-            );
-            assertEquals("\n Match Successfully added! \n", expectedResult);
-        }
-
-        // TESTING FOR THE 39th MATCH FOR A CLUB FOR A SEASON
+        // Barca VS Real Madrid "home" $$$$$
         expectedResult = premierLeagueManager.addPlayedMatch(
-                "2020-21","realMadrid","juventus",1,
+                "2020-21","barca","realMadrid",1,
+                2,
+                date,"home"
+        );
+        assertEquals("\n Match Successfully added! \n", expectedResult);
+
+        // TESTING FOR ADDING A MATCH WHICH EXCEEDS THE LIMIT for "barca"
+        expectedResult = premierLeagueManager.addPlayedMatch(
+                "2020-21","barca","juventus",1,
                 2,
                 date,"away"
         );
         assertEquals("\n Sorry, both the clubs have reached the maximum number of matches played!",
-                expectedResult);
-
-
-        // TESTING FOR A CLUB IN DIFFERENT SEASONS
-        for (int index = 0; index < PremierLeagueManager.getMaximumNumberOfMatchesPerClub(); index++) {
-            expectedResult = premierLeagueManager.addPlayedMatch(
-                    "2019-20","realMadrid","juventus",1,
-                    2,
-                    date,"away"
-            );
-            assertEquals("\n Match Successfully added! \n", expectedResult);
-        }
-
-        // TESTING FOR THE 39TH MATCH ADDED FOR THE CLUB WITH A DIFFERENT SEASON
-        expectedResult = premierLeagueManager.addPlayedMatch(
-                "2019-20","realMadrid","juventus",1,
-                2,
-                date,"away"
-        );
-        assertEquals("\n Sorry, both the clubs have reached the maximum number of matches played!",
-                expectedResult);
-
-        // TESTING FOR A NUMBER OF CLUBS INVOLVED
-        premierLeagueManager.addPlayedMatch(
-                "2018-19","barca","juventus",1,
-                2,
-                date,"home"
-        );
-
-        for (int index = 0; index < PremierLeagueManager.getMaximumNumberOfMatchesPerClub()-1; index++) {
-            expectedResult = premierLeagueManager.addPlayedMatch(
-                    "2018-19","juventus","realMadrid",1,
-                    2,
-                    date,"home"
-            );
-            assertEquals("\n Match Successfully added! \n",expectedResult);
-        }
-        expectedResult = premierLeagueManager.addPlayedMatch(
-                "2018-19","realMadrid","juventus",1,
-                2,
-                date,"home"
-        );
-        assertEquals("\n Sorry, 'juventus' has reached the maximum number of matches played!",
                 expectedResult);
 
         // CLEARING THE CONTENT OF THE obj FOR OTHER TESTINGS

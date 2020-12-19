@@ -486,7 +486,7 @@ public class ConsoleApplication {
 
                 // GETTING THE REMOVED CLUB RESULT (MAY BE NULL OR THE CLUB REMOVED),
                 // The Null won't be returned but it's for double validation
-                FootballClub removedClub = (FootballClub) premierLeagueManager.deleteCLub(clubName);
+                FootballClub removedClub = (FootballClub) premierLeagueManager.deleteClub(clubName);
 
                 // THIS GIVES THE OUTPUT TO THE USER INDICATING IF THE ITEM WAS SUCCESSFULLY REMOVED OR NOT
                 if(removedClub != null){

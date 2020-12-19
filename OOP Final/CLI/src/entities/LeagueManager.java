@@ -14,7 +14,7 @@ public interface LeagueManager {
      String createClub(String clubName, String location, String coachName, String universitySchoolName,String clubType);
 
     // abstract method for deleting a club
-     SportClub deleteCLub(String clubName);
+     SportClub deleteClub(String clubName);
 
     // abstract method for displaying the statistics
      String displayStats(String clubName);

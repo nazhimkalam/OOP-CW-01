@@ -1,6 +1,6 @@
+import { Component, OnInit } from '@angular/core';
 import { MatchPlayed } from './../interfaces/MatchPlayed';
 import { FootballInteractionService } from './../service/football-interaction.service';
-import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-matches',
@@ -224,7 +224,7 @@ export class MatchesComponent implements OnInit {
         
           } else if (this.matches.length === this.tempTotalMatches) {
           this.displayCelebration = 'error__theme';
-          this.matchGenerateBodyMessage = "Cannot generate match, this is due to the random club selected has already reached it's maximum number of matches played, please re-generate to select another random club";
+          this.matchGenerateBodyMessage = "Cannot generate match, this is due to the random club or match type selected has already reached it's maximum matches played, please re-generate to generate another random match";
         
         } else {
           this.displayCelebration = 'celebration__theme';

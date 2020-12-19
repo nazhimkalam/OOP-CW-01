@@ -75,7 +75,7 @@ public class PremierLeagueManager implements LeagueManager {
         // Serializing means converting a state into a byte stream
 
         // text file path
-        File file = new File("../GUI/public/resources/objectDataFile.txt");
+        File file = new File("../GUI/public/resources/dataStorage.txt");
 
         // used to read the byte stream data from a source which in this case is a txt file
         FileInputStream fileInputStream = null;
@@ -197,7 +197,7 @@ public class PremierLeagueManager implements LeagueManager {
 
     // Overriding the deleteCLub method from the interface
     @Override
-    public FootballClub deleteCLub(String clubName) {
+    public FootballClub deleteClub(String clubName) {
 
         // This loop searches for the club and deletes it from the list
         for (int index = 0; index < premierLeagueFootballClubList.size(); index++) {
@@ -206,7 +206,14 @@ public class PremierLeagueManager implements LeagueManager {
 
                 // if the club name is present it is removed
                 return premierLeagueFootballClubList.remove(index);
+
             }
+        }
+
+        // we also update the number of matches played by the club
+        // If there are less than 2 clubs present then we set the maximum number of matches played to 0
+        if(premierLeagueFootballClubList.size() < 2){
+            maximumNumberOfMatchesPerClub = 0;
         }
 
         // returns null if there is not club present with the given name
@@ -766,9 +773,6 @@ public class PremierLeagueManager implements LeagueManager {
         // If both of the clubs didn't the max number to matches limit only we then add the match
         if( !club2ReachedMaximumMatches && !club1ReachedMaximumMatches){
 
-            // Adding the played season
-            allSeasonAdded.add(seasonPlayed);
-
             // check if the enter clubs are valid and display msg
             boolean club01 = false;
             boolean club02 = false;
@@ -783,10 +787,41 @@ public class PremierLeagueManager implements LeagueManager {
             // Checking if the entered club names are valid to further proceed
             if(club01 && club02){
 
-                // valid club names so calculating the statistics and add them
-                calculatingStatistics(clubName_01, clubName_02, numberGoalScored_club_1, numberGoalScored_club_2,
-                        dateOfMatch,seasonPlayed, matchType);
-                return "\n Match Successfully added! \n";
+                // Checking if the match has already being played for opponent club depending on the match type
+                // 1 club can play 1 'Home' and 1 'Away' match with 1 opponent club
+                boolean allGoodToProceed = true;
+                for (FootballClub club: premierLeagueFootballClubList){
+                    if( club.getName().equalsIgnoreCase(clubName_01) ){
+                        for (Match match: club.getMatchesPlayed()){
+                            if(match.getSeason().equalsIgnoreCase(seasonPlayed) &&
+                                    match.getOpponentClubName().equalsIgnoreCase(clubName_02)){
+                                if(match.getMatchType().equalsIgnoreCase(matchType)){
+                                    // You can further proceed to add the match because,
+                                    // the match has been already played
+                                    allGoodToProceed = false;
+
+                                }
+                            }
+                        }
+                    }
+                }
+
+                if(allGoodToProceed){
+                    // THIS SECTION MEANS EVERYTHING IS GOOD TO GO
+                    // Adding the played season
+                    allSeasonAdded.add(seasonPlayed);
+
+                    // valid club names so calculating the statistics and add them
+                    calculatingStatistics(clubName_01, clubName_02, numberGoalScored_club_1, numberGoalScored_club_2,
+                            dateOfMatch,seasonPlayed, matchType);
+                    return "\n Match Successfully added! \n";
+
+                }else{
+                    // This says the user that you cant play a match which has been already played!
+                    return "\n Sorry can't add match, because it's already played for the given teams, season and" +
+                            " match type! \n";
+
+                }
 
             }else{
 
@@ -996,7 +1031,7 @@ public class PremierLeagueManager implements LeagueManager {
         // Serializing means converting a state into a byte stream
 
         // getting the path to save the data
-        File file = new File("../GUI/public/resources/objectDataFile.txt");
+        File file = new File("../GUI/public/resources/dataStorage.txt");
 
         // This is an out stream which is used to write data into a file
         FileOutputStream fileOutputStream = null;
@@ -1073,7 +1108,7 @@ public class PremierLeagueManager implements LeagueManager {
         // you are setting
         FileWriter file = null;
         try {
-            file = new FileWriter("../GUI/public/resources/objectDataFile.txt");
+            file = new FileWriter("../GUI/public/resources/dataStorage.txt");
 
             // clearing the content of the file by overriding with an empty string
             file.write("");
