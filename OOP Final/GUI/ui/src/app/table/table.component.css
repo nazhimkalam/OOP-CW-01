@@ -28,53 +28,66 @@
   border-bottom-right-radius: 100px;
   color: #36003c;
 }
-.my-custom-scrollbar {
-  position: relative;
-   -webkit-box-shadow: 2px 2px 3px 4px #ccc;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
-  -moz-box-shadow:    2px 2px 3px 4px #ccc;  /* Firefox 3.5 - 3.6 */
-  box-shadow:         2px 2px 3px 4px #ccc;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
-  height: 430px;
-  border: 1px rgba(126, 126, 126, 0.555) solid;
-  
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  overflow: auto;
-}
-.table-wrapper-scroll-y {
-  display: block;
-}
-
-th {
-  background: #36003c;
-  border-top: 5px solid #ea2d9d;
-  position: sticky;
-  font-size: 16px;
-  color: white;
-  top: -12px; /* Don't forget this, required for the stickiness */
-  transition: 0.1s ease-in-out;
-  text-align: center;
-}
-
-th:hover {
-  background: #ea2d9d;
-  transition: 0.1s ease-in-out;
-}
-
-td {
-  text-align: center;
-  height: 60px;
-  background-color: #fff;
-  vertical-align: middle;
-  font-size: 15px;
-}
 
 
+
+/* $$$$$$$$$$$$$$$$$$$$$$$$$$$$ T A B L E   C S S  $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ */
+.pTable__table{
+  display: flex;
+  margin-top: 50px !important;
+  margin-bottom: 100px !important;
+  border: 1px lightgray solid;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 0px;
+  box-shadow: 5px 10px 18px #888888;
+}
 table {
-  -webkit-box-shadow: 3px 3px 5px 6px #ccc;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
-  -moz-box-shadow:    3px 3px 5px 6px #ccc;  /* Firefox 3.5 - 3.6 */
-  box-shadow:         3px 3px 5px 6px #ccc;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+	border-collapse: collapse;
+	width: 1000px;
+	table-layout: auto;
 }
+td,th {
+	padding: 10px;
+  min-width: 100px;
+  word-wrap: break-word !important;
+  border-right: 1px solid #fff;
+  text-align: center;
+}
+th:nth-child(2){
+  width: 100%;
+}
+td:hover,th:hover{
+  cursor: pointer;
+}
+tbody > tr:hover{
+  background-color: #fff;
+}
+thead tr {
+	background: #36003c;
+	color: white;
+	display: block;
+	position: relative;
+}
+thead tr > th:hover{
+  background: #ea2d9d;
+}
+tbody {
+	display: block;
+	height: 350px;
+	width: 100%;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+tbody tr:nth-child(even) {
+	background: #f9cdff;
+}
+tbody tr:nth-child(even):hover {
+	background: #f6b0ff;
+}
+/* $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ */
+
+
 
 .season button,
 .sortBy button {
@@ -95,10 +108,7 @@ table {
   transform: scale(1.05);
   color: #ea2d9d;
 }
-.pTable__table {
-  padding-top: 10px;
-  margin-bottom: 100px;
-}
+
 .pTable__btnOptions {
   display: flex;
   align-items: center;
@@ -249,7 +259,7 @@ table {
 
 tr:not(:first-child) {
   opacity: 0.5;
-  height: 90px;
+  /* height: 90px; */
   animation-name: slideDown;
   animation-duration: 1.5s;
   animation-iteration-count: 1;

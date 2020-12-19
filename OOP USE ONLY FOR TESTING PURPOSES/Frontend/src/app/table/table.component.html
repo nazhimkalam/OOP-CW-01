@@ -71,7 +71,7 @@
 
     <!-- main table structure and content section -->
     <div
-      class="container mt-4 pTable__table table-wrapper-scroll-y my-custom-scrollbar"
+      class="container mt-4 pTable__table"
       *ngIf="!getIsLoading()"
     >
       <!-- table -->
@@ -109,7 +109,7 @@
 
           <!-- This is to add dummy rows if there are less clubs available for the table  -->
           <tr *ngFor="let row of getNumberOfDummyRows()">
-            <td *ngFor="let x of [].constructor(10)">-</td>
+            <td *ngFor="let x of [].constructor(10)">Nazhim Kalam</td>
           </tr>
         </tbody>
       </table>

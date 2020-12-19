@@ -13,7 +13,8 @@ import { FooterComponent } from './footer/footer.component';
 import { ErrorComponent } from './error/error.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
-import { SponsorComponent } from './sponsor/sponsor.component'
+import { SponsorComponent } from './sponsor/sponsor.component';
+import { NewTableComponent } from './new-table/new-table.component'
 
 @NgModule({
   // this is were the declaration of the modules go when you create a new component
@@ -28,6 +29,7 @@ import { SponsorComponent } from './sponsor/sponsor.component'
     FooterComponent,
     ErrorComponent,
     SponsorComponent,
+    NewTableComponent,
   ],
 
   // importing angular modules

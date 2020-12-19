@@ -1,3 +1,4 @@
+import { NewTableComponent } from './new-table/new-table.component';
 import { ErrorComponent } from './error/error.component';
 import { PlayersComponent } from './players/players.component';
 import { MatchesComponent } from './matches/matches.component';
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: '', component: WelcomeComponent },  // this is the default route http://localhost:9000/
   { path: 'welcome', component: WelcomeComponent },
   { path: 'about', component: AboutComponent },
+  // { path: 'tables', component: NewTableComponent },
   { path: 'tables', component: TableComponent },
   { path: 'matches', component: MatchesComponent },
   { path: 'players', component: PlayersComponent },

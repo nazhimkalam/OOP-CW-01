@@ -1,6 +1,6 @@
+import { Component, OnInit } from '@angular/core';
 import { FootballClub } from './../interfaces/FootballClub';
 import { FootballInteractionService } from './../service/football-interaction.service';
-import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-table',
@@ -33,7 +33,7 @@ export class TableComponent implements OnInit {
         this.resultsRecords = data;
         this.isLoading = false;
         this.numberOfDummyRows = [];
-        for (let index = 0; index < 4 - this.resultsRecords.length; index++) {
+        for (let index = 0; index < 7 - this.resultsRecords.length; index++) {
           this.numberOfDummyRows.push(' ');
         }
       });

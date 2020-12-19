@@ -33,7 +33,7 @@ export class TableComponent implements OnInit {
         this.resultsRecords = data;
         this.isLoading = false;
         this.numberOfDummyRows = [];
-        for (let index = 0; index < 4 - this.resultsRecords.length; index++) {
+        for (let index = 0; index < 8 - this.resultsRecords.length; index++) {
           this.numberOfDummyRows.push(' ');
         }
       });
