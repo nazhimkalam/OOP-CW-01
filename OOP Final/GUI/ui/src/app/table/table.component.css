@@ -58,6 +58,9 @@ th:nth-child(2){
 td:hover,th:hover{
   cursor: pointer;
 }
+.pts__data{
+  font-weight: 600;
+}
 tbody > tr:hover{
   background-color: #fff;
 }
