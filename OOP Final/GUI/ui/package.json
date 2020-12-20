@@ -5,7 +5,7 @@
     "ng": "ng",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "start": "ng serve --open --proxy-config src/proxy.conf.js --host 0.0.0.0",
+    "start": "ng serve --proxy-config src/proxy.conf.js --host 0.0.0.0",
     "test": "ng test --watch",
     "test:ci": "ng test --watch=false --browsers ChromeHeadless",
     "test:coverage": "ng test --watch=true --code-coverage=true",
