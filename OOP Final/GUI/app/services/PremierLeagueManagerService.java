@@ -1,6 +1,10 @@
 package services;
 import entities.*;
+
+import java.awt.*;
 import java.io.*;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -185,19 +189,20 @@ public class PremierLeagueManagerService implements LeagueManager {
 
         // This loop searches for the club and deletes it from the list
         for (int index = 0; index < premierLeagueFootballClubList.size(); index++) {
+
             if(premierLeagueFootballClubList.get(index).getName().equalsIgnoreCase(clubName)){
+
+                // we also update the number of matches played by the club
+                // If there are less than 2 clubs present then we set the maximum number of matches played to 0
+                if((premierLeagueFootballClubList.size()-1) < 2){
+                    maximumNumberOfMatchesPerClub = 0;
+                }
 
                 // if the club name is present it is removed
                 return premierLeagueFootballClubList.remove(index);
+
             }
         }
-
-        // we also update the number of matches played by the club
-        // If there are less than 2 clubs present then we set the maximum number of matches played to 0
-        if(premierLeagueFootballClubList.size() < 2){
-            maximumNumberOfMatchesPerClub = 0;
-        }
-
         // returns null if there is not club present with the given name
         return null;
 
@@ -1095,6 +1100,22 @@ public class PremierLeagueManagerService implements LeagueManager {
         // returns a success message if everything goes well
         return "\n Clearing the contents of the file . . .\n Successfully cleared the file details!";
 
+    }
+
+    // Overriding the displayGUI() method to display the GUI
+    @Override
+    public String displayGUI(){
+
+        // used to open the external browser with the URL "http://localhost:4200" to open the GUI
+        Desktop desktop = Desktop.getDesktop();
+        try {
+            desktop.browse(new URI(("http://localhost:4200")));
+            return " Opening the GUI at localhost: 4200\n";
+
+        } catch (IOException | URISyntaxException ioException) {
+            // Handling caught exception
+            return "Error when opening the browser! ";
+        }
     }
 
     // Setters and Getters

@@ -26,6 +26,9 @@ public interface LeagueManager {
     String addPlayedMatch(String seasonPlayed, String clubName_01, String clubName_02,int numberGoalScored_club_1,
                           int numberGoalScored_club_2, DateMatch dateOfMatch, String matchType);
 
+    // abstract method for displaying the GUI
+    String displayGUI();
+
     // abstract method for saving the data into a file
     String saveDataIntoFile();
 

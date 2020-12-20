@@ -1,6 +1,11 @@
 package services;
+
 import entities.*;
+
+import java.awt.*;
 import java.io.*;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Random;
@@ -204,21 +209,36 @@ public class PremierLeagueManager implements LeagueManager {
 
             if(premierLeagueFootballClubList.get(index).getName().equalsIgnoreCase(clubName)){
 
+                // we also update the number of matches played by the club
+                // If there are less than 2 clubs present then we set the maximum number of matches played to 0
+                if((premierLeagueFootballClubList.size()-1) < 2){
+                    maximumNumberOfMatchesPerClub = 0;
+                }
+
                 // if the club name is present it is removed
                 return premierLeagueFootballClubList.remove(index);
 
             }
         }
-
-        // we also update the number of matches played by the club
-        // If there are less than 2 clubs present then we set the maximum number of matches played to 0
-        if(premierLeagueFootballClubList.size() < 2){
-            maximumNumberOfMatchesPerClub = 0;
-        }
-
         // returns null if there is not club present with the given name
         return null;
 
+    }
+
+    // Overriding the displayGUI() method to display the GUI
+    @Override
+    public String displayGUI(){
+
+        // used to open the external browser with the URL "http://localhost:4200" to open the GUI
+        Desktop desktop = Desktop.getDesktop();
+        try {
+            desktop.browse(new URI(("http://localhost:4200")));
+            return " Opening the GUI at localhost: 4200\n";
+
+        } catch (IOException | URISyntaxException ioException) {
+            // Handling caught exception
+            return "Error when opening the browser! ";
+        }
     }
 
     // Overriding the displayStats method from the interface

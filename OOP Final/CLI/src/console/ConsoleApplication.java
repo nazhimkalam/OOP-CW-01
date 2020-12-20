@@ -4,10 +4,6 @@ import entities.FootballClub;
 import entities.LeagueManager;
 import services.PremierLeagueManager;
 
-import java.awt.*;
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.Scanner;
 
 /*
@@ -132,19 +128,12 @@ public class ConsoleApplication {
                 break;
 
             case 6:
-                // used to open the external browser with the URL "http://localhost:4200" to open the GUI
-                Desktop desktop = Desktop.getDesktop();
-                try {
-                    desktop.browse(new URI(("http://localhost:4200")));
-                    System.out.println(" Opening the GUI at localhost: 4200\n");
-                    displayMenu();
+                // Displaying the Angular GUI
+                result = premierLeagueManager.displayGUI();
+                System.out.println(result);
 
-                } catch (IOException | URISyntaxException ioException) {
-                    // Handling caught exception
-                    System.out.println("Error when opening the browser! ");
-                    ioException.printStackTrace();
-
-                }
+                // calling the displayMenu() method
+                displayMenu();
                 break;
 
             case 7:
