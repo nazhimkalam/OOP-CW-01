@@ -55,7 +55,7 @@
   margin-top: 30px;
 }
 .players__list > div:hover {
-  transform: scale(1.3);
+  transform: scale(1.2);
   z-index: 1;
   border: 3px #EAFF04 solid;
   transition: 0.3s ease-in-out;
