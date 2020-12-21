@@ -3,6 +3,7 @@ import console.ConsoleApplication;
 import entities.DateMatch;
 import entities.FootballClub;
 import entities.LeagueManager;
+
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -227,7 +228,7 @@ public class PremierLeagueTester
 
         // Assuming that the file path is correct and file contains data
         String expectedResult = PremierLeagueManager.loadingData();
-//        assertEquals("\n Successfully loaded all the data\n", expectedResult);
+        // assertEquals("\n Successfully loaded all the data\n", expectedResult);
 
         // Assuming that the file contains no data to read
         assertEquals(" Exception when performing read/write operations to the file!" +
@@ -297,10 +298,10 @@ public class PremierLeagueTester
         }
 
         // Invalid Season Format String Entered, this throws an error as expected
-//        String invalidSeason = "21-2020";
-//        InputStream in = new ByteArrayInputStream(invalidSeason.getBytes());
-//        System.setIn(in);
-//        assertEquals("21-2020", ConsoleApplication.validatingSeason());
+        // String invalidSeason = "21-2020";
+        // InputStream in = new ByteArrayInputStream(invalidSeason.getBytes());
+        // System.setIn(in);
+        // assertEquals("21-2020", ConsoleApplication.validatingSeason());
     }
 
     @Test

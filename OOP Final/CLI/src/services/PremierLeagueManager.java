@@ -1,7 +1,5 @@
 package services;
-
 import entities.*;
-
 import java.awt.*;
 import java.io.*;
 import java.net.URI;
@@ -238,6 +236,7 @@ public class PremierLeagueManager implements LeagueManager {
         } catch (IOException | URISyntaxException ioException) {
             // Handling caught exception
             return "Error when opening the browser! ";
+
         }
     }
 
