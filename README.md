@@ -1,4 +1,5 @@
-# Object Oriented Programming Coursework [![license](https://img.shields.io/github/license/DAVFoundation/captain-n3m0.svg?style=flat-square)](https://github.com/DAVFoundation/captain-n3m0/blob/master/LICENSE)
+[![license](https://img.shields.io/github/license/DAVFoundation/captain-n3m0.svg?style=flat-square)](https://github.com/DAVFoundation/captain-n3m0/blob/master/LICENSE)
+# Object Oriented Programming Coursework 
 ## Console Application, Angular Frontend & Play framework Backend Project  👨‍💻
 
 ## In order to run the GUI make sure you complete the following steps:
