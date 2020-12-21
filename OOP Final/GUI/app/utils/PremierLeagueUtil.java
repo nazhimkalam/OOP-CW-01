@@ -4,7 +4,7 @@ import entities.DateMatch;
 import entities.FootballClub;
 import entities.Match;
 import entities.LeagueManager;
-import services.PremierLeagueManagerService;
+import services.PremierLeagueManager;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -18,7 +18,7 @@ public class PremierLeagueUtil {
     public static ArrayList<String> allSeasons(){
 
         // loading the data from the file
-        PremierLeagueManagerService.loadingData();
+        PremierLeagueManager.loadingData();
 
         // sort the seasons using the comparator
         Comparator<String> comparator = (season1, season2) -> {
@@ -31,20 +31,20 @@ public class PremierLeagueUtil {
         };
 
         // setting the seasons with distinct seasons only
-        PremierLeagueManagerService.setAllSeasonAdded((ArrayList<String>)
-                PremierLeagueManagerService.getAllSeasonAdded().stream().distinct().collect(Collectors.toList()));
+        PremierLeagueManager.setAllSeasonAdded((ArrayList<String>)
+                PremierLeagueManager.getAllSeasonAdded().stream().distinct().collect(Collectors.toList()));
 
         // sorting the seasons
-        PremierLeagueManagerService.getAllSeasonAdded().sort(comparator);
+        PremierLeagueManager.getAllSeasonAdded().sort(comparator);
 
         // getting the seasons and return them
-        return PremierLeagueManagerService.getAllSeasonAdded();
+        return PremierLeagueManager.getAllSeasonAdded();
     }
 
     public static ArrayList<FootballClub> sortByPoints(String season){
 
         // loading the data from the file
-        PremierLeagueManagerService.loadingData();
+        PremierLeagueManager.loadingData();
 
         // filters the football clubs according to the season
         guiSeasonFilteredClubs = getGuiSeasonFilteredClubs(season);
@@ -60,7 +60,7 @@ public class PremierLeagueUtil {
 
         try {
             // get the clubs filtered by season
-            guiSeasonFilteredClubs = PremierLeagueManagerService.seasonFilteredFootballCLubList(season);
+            guiSeasonFilteredClubs = PremierLeagueManager.seasonFilteredFootballCLubList(season);
 
         } catch (CloneNotSupportedException e) {
             // Handles the exception
@@ -97,7 +97,7 @@ public class PremierLeagueUtil {
     public static ArrayList<FootballClub> sortByWins(String season){
 
         // loading the data from the file
-        PremierLeagueManagerService.loadingData();
+        PremierLeagueManager.loadingData();
 
         // filters the football clubs according to the season
         guiSeasonFilteredClubs = getGuiSeasonFilteredClubs(season);
@@ -133,7 +133,7 @@ public class PremierLeagueUtil {
     public static ArrayList<FootballClub> sortByGoals(String season){
 
         // loading the data from the file
-        PremierLeagueManagerService.loadingData();
+        PremierLeagueManager.loadingData();
 
         // filters the football clubs according to the season
         guiSeasonFilteredClubs = getGuiSeasonFilteredClubs(season);
@@ -168,7 +168,7 @@ public class PremierLeagueUtil {
     public static ArrayList<Match> allMatches(String season){
 
         // loading the data from the file
-        PremierLeagueManagerService.loadingData();
+        PremierLeagueManager.loadingData();
 
         // getting the clubs with the filtered matches by season
         guiSeasonFilteredClubs = getGuiSeasonFilteredClubs(season);
@@ -242,7 +242,7 @@ public class PremierLeagueUtil {
     public static ArrayList<Match> matchesByDate(String date, String season){
 
         // loading the data from the file
-        PremierLeagueManagerService.loadingData();
+        PremierLeagueManager.loadingData();
 
         // getting the clubs with the filtered matches by season
         guiSeasonFilteredClubs = getGuiSeasonFilteredClubs(season);
@@ -312,15 +312,15 @@ public class PremierLeagueUtil {
     public static ArrayList<Match> generateMatch(String season){
 
         // creating an instance of the premier league manager service
-        LeagueManager premierLeagueManagerService = PremierLeagueManagerService.getInstance();
-        int numberOfClubsPresent = PremierLeagueManagerService.getPremierLeagueFootballClubList().size();
+        LeagueManager premierLeagueManagerService = PremierLeagueManager.getInstance();
+        int numberOfClubsPresent = PremierLeagueManager.getPremierLeagueFootballClubList().size();
 
         // This condition is to make sure that there is at least 2 clubs to play a match
         if(numberOfClubsPresent > 1){
 
             // there 2 or more clubs present so we can generate a match
             // loading the data from the file
-            PremierLeagueManagerService.loadingData();
+            PremierLeagueManager.loadingData();
 
             // getting the clubs with the filtered matches by season
             guiSeasonFilteredClubs = getGuiSeasonFilteredClubs(season);
@@ -380,7 +380,7 @@ public class PremierLeagueUtil {
             premierLeagueManagerService.saveDataIntoFile();
 
             // step 05: call the load file method
-            PremierLeagueManagerService.loadingData();
+            PremierLeagueManager.loadingData();
 
             // getting the clubs with the filtered matches by season
             guiSeasonFilteredClubs = getGuiSeasonFilteredClubs(season);

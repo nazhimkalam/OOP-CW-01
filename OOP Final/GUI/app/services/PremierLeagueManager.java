@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
  * Java version 8 or higher required
  */
 
-public class PremierLeagueManagerService implements LeagueManager {
+public class PremierLeagueManager implements LeagueManager {
     // Following the Singleton design pattern, this is because we need to only create a single instance of the
     // PremierLeagueManager class
 
@@ -33,7 +33,7 @@ public class PremierLeagueManagerService implements LeagueManager {
     private static LeagueManager manager = null;
 
     // Constructor
-    private PremierLeagueManagerService(){
+    private PremierLeagueManager(){
         // initializing the variables
         matchedAdded = false;
         allSeasonAdded = new ArrayList<>();
@@ -52,14 +52,14 @@ public class PremierLeagueManagerService implements LeagueManager {
             // This is to check if an instance of the manager has already been created or not (For the first time
             // when the instance needed to be created), before adding the synchronized lock
 
-            synchronized (PremierLeagueManagerService.class){
+            synchronized (PremierLeagueManager.class){
                 // makes sure Thread Safe, if 2 instance are to be created at the same time
 
                 if(manager==null){
                     // This is for ensuring and checking if another created instance when created it checks with this
                     // null and only return the reference of the first instance than creating another one.
 
-                    manager = new PremierLeagueManagerService();
+                    manager = new PremierLeagueManager();
                 }
             }
         }
@@ -1124,7 +1124,7 @@ public class PremierLeagueManagerService implements LeagueManager {
     }
 
     public static void setPremierLeagueFootballClubList(ArrayList<FootballClub> premierLeagueFootballClubList) {
-        PremierLeagueManagerService.premierLeagueFootballClubList = premierLeagueFootballClubList;
+        PremierLeagueManager.premierLeagueFootballClubList = premierLeagueFootballClubList;
     }
 
     public static int getMaximumNumberOfMatchesPerClub() {
@@ -1132,13 +1132,13 @@ public class PremierLeagueManagerService implements LeagueManager {
     }
 
     public static void setMaximumNumberOfMatchesPerClub(int maximumNumberOfMatchesPerClub) {
-        PremierLeagueManagerService.maximumNumberOfMatchesPerClub = maximumNumberOfMatchesPerClub;
+        PremierLeagueManager.maximumNumberOfMatchesPerClub = maximumNumberOfMatchesPerClub;
     }
     public static ArrayList<String> getAllSeasonAdded() {
         return allSeasonAdded;
     }
 
     public static void setAllSeasonAdded(ArrayList<String> allSeasonAdded) {
-        PremierLeagueManagerService.allSeasonAdded = allSeasonAdded;
+        PremierLeagueManager.allSeasonAdded = allSeasonAdded;
     }
 }

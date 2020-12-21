@@ -1,4 +1,5 @@
-# OOP CLI, Angular Frontend & Play framework Backend Project 👨‍💻
+# Object Oriented Programming Coursework [![license](https://img.shields.io/github/license/DAVFoundation/captain-n3m0.svg?style=flat-square)](https://github.com/DAVFoundation/captain-n3m0/blob/master/LICENSE)
+## Console Application, Angular Frontend & Play framework Backend Project  👨‍💻
 
 ## In order to run the GUI make sure you complete the following steps:
 ### 1. Open the frontend project folder and open the terminal in that directory and run
