@@ -19,7 +19,12 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4ffd9da0-df3c-4a45-8b09-2b7528f01daf" name="Default Changelist" comment="" />
+    <list default="true" id="4ffd9da0-df3c-4a45-8b09-2b7528f01daf" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../OOP CW Diagrams/Class Diagram.mdj" beforeDir="false" afterPath="$PROJECT_DIR$/../../OOP CW Diagrams/Class Diagram.mdj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Report/CLI_JunitTestCases.JPG" beforeDir="false" afterPath="$PROJECT_DIR$/../../Report/CLI_JunitTestCases.JPG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Report/GUI_JUnit_test.JPG" beforeDir="false" afterPath="$PROJECT_DIR$/../../Report/GUI_JUnit_test.JPG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Report/w1761265.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../../Report/w1761265.docx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -67,7 +72,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../GUI" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -308,6 +313,7 @@
       <workItem from="1608546401935" duration="253000" />
       <workItem from="1608548690631" duration="9000" />
       <workItem from="1608550911773" duration="758000" />
+      <workItem from="1608565927553" duration="2676000" />
     </task>
     <task id="LOCAL-00012" summary="commit">
       <created>1604851031613</created>
