@@ -3,12 +3,12 @@
 ## Console Application, Angular Frontend & Play framework Backend Project  👨‍💻
 
 ## REQUIREMENTS ⭕
-### - Java Version 8 or above installed
-### sbt installed
-### scala pulgin installed in your editor
-### npm installed
-### Angular CLI installed
-### Latest current active version on Node.js installed
+#### - Java Version 8 or above installed
+### - sbt installed
+### - scala pulgin installed in your editor
+### - npm installed
+### - Angular CLI installed
+### - Latest current active version on Node.js installed
 
 
 ## RUNNING THE PROGRAM ⭕
