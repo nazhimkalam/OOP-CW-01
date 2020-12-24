@@ -31,9 +31,7 @@
 
 **The GUI will be displayed with a welcome page!**
 
-## DEMO OF THE GUI ⭕
 
-
-
-	
- 
+## Click the below image to view the DEMO of the GUI ⭕
+Click to play
+[![Watch the demo video](https://resources.premierleague.com/premierleague/photo/2020/03/13/da17ebe6-76c5-4baf-ab1e-4d0f494338ef/Statement_Graphic_PL_Pink.png)](https://drive.google.com/file/d/1AbyR44PZ9EOTZA3OBrbzDKusAHjwHRhd/view?usp=sharing)
