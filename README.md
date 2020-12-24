@@ -29,9 +29,11 @@
 ####  Step 05: Once everything is set and running, open your web browser(recommend google chrome) and direct to the following URL
 	localhost:4200
 
+**The GUI will be displayed with a welcome page!**
+
 ## DEMO OF THE GUI ⭕
 
-**The GUI will be displayed with a welcome page!**
+
 
 	
  
