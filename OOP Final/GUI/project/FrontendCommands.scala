@@ -8,3 +8,5 @@ object FrontendCommands {
   val serve: String = "npm run start"
   val build: String = "npm run build:prod"
 }
+
+// References:- Dilums Lecture 03 one running backend and frontend using a single command "sbt run"

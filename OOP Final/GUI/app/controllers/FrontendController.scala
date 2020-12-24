@@ -22,3 +22,5 @@ class FrontendController @Inject()(assets: Assets, errorHandler: HttpErrorHandle
     if (resource.contains(".")) assets.at(resource) else index
   }
 }
+
+// References:- Dilums Lecture 03 one running backend and frontend using a single command "sbt run"
