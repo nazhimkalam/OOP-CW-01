@@ -2,7 +2,16 @@
 # Object Oriented Programming Coursework 
 ## Console Application, Angular Frontend & Play framework Backend Project  👨‍💻
 
+## REQUIREMENTS ⭕
+### Java Version 8 or above installed
+### sbt installed
+### scala pulgin installed in your editor
+### npm installed
+### Angular CLI installed
+### Latest current active version on Node.js installed
 
+
+## RUNNING THE PROGRAM ⭕
 ## 1. Using 'javac' you can complie the the java console application code and run using the terminal/cmd
  
 ## 2. In order to run the GUI make sure you complete the following steps:
