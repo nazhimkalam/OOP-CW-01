@@ -10,7 +10,7 @@
 
         sbt run
 
-4. Run the following code so that the necessary java files get **compiled**
+4. Go into the CLI folder and run the following code so that the necessary java files get **compiled**
     
         javac -d . *.java
 
