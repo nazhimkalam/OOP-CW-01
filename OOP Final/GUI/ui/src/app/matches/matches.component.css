@@ -140,7 +140,7 @@
     align-items: center;
     justify-content: space-between;
     background-image: linear-gradient(to right, #ffffff98, #ffffff9a);
-    border-right: 0px #36003c solid;
+    border-right: 0px #973CFE solid;
     border-left: 0px #ea2d9d solid;
     transition: 0.5s ease-in-out;
     padding: 18px;
@@ -151,7 +151,7 @@
     transition: 0.5s ease-in-out;
     transform: scale(1.03);
     border-left: 7px #ea2d9d solid;
-    border-right: 7px #36003c solid;
+    border-right: 7px #973CFE solid;
     padding: 10px;
   }
   
