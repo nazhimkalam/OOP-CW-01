@@ -199,9 +199,9 @@
   
   .noMatches__found img {
     object-fit: contain;
-    -webkit-animation: ballRotate 2s infinite;
+    -webkit-animation: ballRotate 2s infinite linear;
     /* Chrome, Safari, Opera */
-    animation: 2s infinite ballRotate;
+    animation: 2s infinite ballRotate linear;
     height: 200px;
   }
   
