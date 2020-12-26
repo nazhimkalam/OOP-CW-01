@@ -1,3 +1,4 @@
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
@@ -14,7 +15,8 @@ import { ErrorComponent } from './error/error.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { SponsorComponent } from './sponsor/sponsor.component';
-import { NewTableComponent } from './new-table/new-table.component'
+import { NewTableComponent } from './new-table/new-table.component';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   // this is were the declaration of the modules go when you create a new component
@@ -33,7 +35,15 @@ import { NewTableComponent } from './new-table/new-table.component'
   ],
 
   // importing angular modules
-  imports: [BrowserModule, BrowserAnimationsModule, MatButtonModule, AppRoutingModule, HttpClientModule],
+  imports: [
+    MatIconModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    AppRoutingModule,
+    HttpClientModule,
+  ],
+  exports: [MatIconModule],
   providers: [],
   bootstrap: [AppComponent],
 })
