@@ -414,7 +414,7 @@
   /* Adding animation for the matches cards */
   
   .matches__matchCard:hover {
-    background-color: #eaff04;
+    background-color: #eaff00;
   }
   
   .matches__matchCard:hover > .matches__club1 > div:first-child,

@@ -10,7 +10,21 @@
   padding-top: 20px;
   padding-bottom: 10px;
   color: white;
-  background-image: linear-gradient(to right, #36003c, #d4007f);
+  background-image: linear-gradient(
+    to right,
+    #36003c,
+    #3e0044,
+    #46004c,
+    #4e0055,
+    #56005d,
+    #630064,
+    #70006b,
+    #7e0071,
+    #940076,
+    #a9007a,
+    #bf007d,
+    #d4007f
+  );
 }
 p {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
