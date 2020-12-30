@@ -1,0 +1,250 @@
+* {
+  font-family: Verdana, Geneva, Tahoma, sans-serif !important;
+}
+.players {
+  margin-top: 80px;
+}
+.players__heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.players__heading h1 {
+  font-size: 50px !important;
+  border: 3px solid #ea2d9d;
+  width: fit-content;
+  padding: 20px;
+  transition: 0.3s ease-in-out;
+  border-left: transparent;
+  padding-right: 30px;
+  border-top-right-radius: 100px;
+  border-bottom-right-radius: 100px;
+}
+
+.players__list img {
+  object-fit: fill;
+  height: 200px;
+}
+.players__list {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  border-radius: 5px;
+  background-color: #ffebf77a;
+  box-shadow: 5px 10px 18px #888888;
+  margin-top: 90px;
+  padding-bottom: 50px;
+}
+.players__listHeading {
+  margin-top: 30px;
+  font-size: 20px;
+  font-weight: 600;
+  border: 3px solid #ea2d9d;
+  width: fit-content;
+  padding: 10px;
+  transition: 0.3s ease-in-out;
+  border-left: transparent;
+  padding-right: 30px;
+  border-top-right-radius: 100px;
+  border-bottom-right-radius: 100px;
+  color: #36003c;
+}
+.players__list > div {
+  transition: 0.3s ease-in-out;
+  border: 1px solid var(--colour-right);
+  margin-top: 30px;
+}
+.players__list > div:hover {
+  transform: scale(1.2);
+  z-index: 1;
+  border: 3px #EAFF04 solid;
+  transition: 0.3s ease-in-out;
+}
+.card-body {
+  background-image: linear-gradient(var(--colour-right), var(--colour-left));
+  color: white;
+  height: 100%;
+}
+.card-body:hover {
+  animation-name: example;
+  animation-duration: 1s;
+}
+@keyframes example {
+  from {
+    background-image: linear-gradient(var(--colour-right), var(--colour-left));
+  }
+  to {
+    background-image: linear-gradient(var(--colour-left), var(--colour-right));
+  }
+}
+.card {
+  /* now a container for the image */
+  display: inline-block; /* shrink wrap to image */
+  overflow: hidden; /* hide the excess */
+}
+.card img {
+  display: block; /* no whitespace */
+  transition: 0.5s ease-in-out;
+}
+.card:hover img {
+  transform: scale(1.06);
+}
+.cardDescription__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.cardDescription__container img {
+  object-fit: contain;
+  height: 50px;
+  -webkit-filter: invert(1);
+  filter: invert(1);
+}
+/* Animation Part */
+.players {
+  -webkit-animation: fadein 1s; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadein 1s; /* Firefox < 16 */
+  -ms-animation: fadein 1s; /* Internet Explorer */
+  -o-animation: fadein 1s; /* Opera < 12.1 */
+  animation: fadein 1s;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+    transform: scale(1.1);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Firefox < 16 */
+@-moz-keyframes fadein {
+  from {
+    opacity: 0;
+    transform: scale(1.1);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+  from {
+    opacity: 0;
+    transform: scale(1.1);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Internet Explorer */
+@-ms-keyframes fadein {
+  from {
+    opacity: 0;
+    transform: scale(1.1);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Opera < 12.1 */
+@-o-keyframes fadein {
+  from {
+    opacity: 0;
+    transform: scale(1.1);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Change the ball rotation every second */
+.players__list > div:hover .player__tatoo{
+  -webkit-animation: ballRotate 2s infinite linear; /* Chrome, Safari, Opera */
+  animation: 2s infinite ballRotate linear; 
+}
+.players__heading img {
+  -webkit-animation: ballRotate 2s infinite linear; /* Chrome, Safari, Opera */
+  animation: 2s infinite ballRotate linear;
+}
+@keyframes ballRotate {
+  0% {
+    transform: rotate(0deg);
+    transition: 1s ease-in-out;
+  }
+  10% {
+    transform: rotate(36deg);
+    transition: 1s ease-in-out;
+  }
+  20% {
+    transform: rotate(72deg);
+    transition: 1s ease-in-out;
+  }
+  30% {
+    transform: rotate(108deg);
+    transition: 1s ease-in-out;
+  }
+  40% {
+    transform: rotate(144deg);
+    transition: 1s ease-in-out;
+  }
+  50% {
+    transform: rotate(180deg);
+    transition: 1s ease-in-out;
+  }
+  60% {
+    transform: rotate(216deg);
+    transition: 1s ease-in-out;
+  }
+  70% {
+    transform: rotate(252deg);
+    transition: 1s ease-in-out;
+  }
+  80% {
+    transform: rotate(288deg);
+    transition: 1s ease-in-out;
+  }
+  90% {
+    transform: rotate(324deg);
+    transition: 1s ease-in-out;
+  }
+  100% {
+    transform: rotate(360deg);
+    transition: 1s ease-in-out;
+  }
+}
+
+.players__heading h1 {
+  -webkit-animation: titleLeftMove 1.2s infinite linear; /* Chrome, Safari, Opera */
+  animation: 1.2s infinite titleLeftMove linear;
+}
+
+@keyframes titleLeftMove {
+  0% {
+    position: relative;
+    right: 0;
+    transition: 0.2s ease-in-out;
+  }
+
+  50% {
+    position: relative;
+    right: 15px;
+    transition: 0.2s ease-in-out;
+  }
+
+  100% {
+    position: relative;
+    right: 0;
+    transition: 0.2s ease-in-out;
+  }
+}

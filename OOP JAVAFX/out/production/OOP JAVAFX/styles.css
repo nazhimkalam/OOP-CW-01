@@ -1,0 +1,247 @@
+#mainTitle, #mainTitleMatches {
+    -fx-font-size:23px;
+    -fx-text-alignment: center center;
+    -fx-text-fill: white;
+    -fx-font-family: Arial;
+    -fx-border-width: 3px;
+    -fx-border-color: white;
+    -fx-padding: 10px 40px!important;
+    -fx-border-radius: 999px;
+    -fx-font-weight: bolder;
+}
+#seasonLabel{
+    -fx-font-size:14px;
+    -fx-text-alignment: center;
+    -fx-font-family: Verdana;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+.label{
+    -fx-font-family: Verdana;
+
+}
+.combo-box .list-cell
+{
+    -fx-background: #baf4ff;
+    -fx-background-color: #baf4ff;
+    -fx-text-fill: -fx-text-base-color;
+    -fx-padding: 8 10;
+    -fx-cell-size:2em;
+}
+
+.combo-box-popup .list-view
+{
+    -fx-background-color: #e5f9ff, #e5f9ff;
+    -fx-background-insets: 0, 1;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 8, 0.0 , 0 , 0 );
+}
+
+.combo-box-popup .list-view .list-cell
+{
+    -fx-padding: 4 0 4 5;
+
+    /* No alternate highlighting */
+    -fx-background-color: white;
+}
+
+.combo-box-popup .list-view .list-cell:filled:selected, .combo-box-popup .list-view .list-cell:filled:selected:hover
+{
+    -fx-background: -fx-accent;
+    -fx-background-color: -fx-selection-bar;
+    -fx-text-fill: -fx-selection-bar-text;
+}
+
+.combo-box-popup .list-view .list-cell:filled:hover
+{
+    -fx-background-color: white;
+    -fx-text-fill: -fx-text-inner-color;
+}
+
+.combo-box-base
+{
+    /*-fx-background-color: white, white, white, white;*/
+    -fx-background-radius: 5, 5, 4, 3;
+    -fx-background-insets: 0 0 -1 0, 0, 1, 2;
+    -fx-padding: 0;
+}
+
+.combo-box-base:hover
+{
+    -fx-color: -fx-hover-base;
+}
+
+.combo-box-base:showing
+{
+    -fx-color: -fx-pressed-base;
+}
+
+.combo-box-base:focused {
+    -fx-background-color: -fx-focus-color, -fx-outer-border, -fx-inner-border, -fx-body-color;
+    -fx-background-radius: 6.4, 4, 5, 3;
+    -fx-background-insets: -1.4, 0, 1, 2;
+}
+
+.combo-box-base:disabled {
+    -fx-opacity: .4;
+}
+
+.button{
+    -fx-padding: 8 10;
+    -fx-border-width: 2px;
+    -fx-border-color: #60afec;
+    -fx-background-color: #baf4ff;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-font-weight: bold;
+}
+.button:hover{
+    -fx-background-color: #72eef3;
+}
+.text-field{
+    -fx-padding: 9px;
+}
+
+.table-view .arrow {
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+    -fx-shape: " ";
+}
+
+.table-view *.scroll-bar:horizontal *.increment-button,
+.table-view *.scroll-bar:horizontal *.decrement-button {
+    -fx-background-color: null;
+    -fx-background-radius: 0;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+
+.table-view *.scroll-bar:horizontal *.increment-arrow,
+.table-view *.scroll-bar:horizontal *.decrement-arrow {
+    -fx-background-color: null;
+    -fx-background-radius: 0;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+    -fx-shape: null;
+}
+
+.table-row-cell {
+    -fx-cell-size: 40px;
+}
+#my-table .table-column {
+    -fx-alignment: CENTER;
+}
+.table-view .column-header-background{
+    -fx-background-color: linear-gradient(to bottom, rgba(255, 255, 255, 0.27), #4d9fff);
+    -fx-background-radius: 7px 7px 0px 0px;
+    -fx-background-insets: 0 11px 0 0;
+    -fx-padding: 0 0 5px 0;
+}
+
+#premierLeague-pane{
+    -fx-background-image: url("bk1.jpg");
+    -fx-background-repeat: stretch;
+    -fx-background-position: center center;
+    -fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0);
+}
+#matchesPlayedPane{
+    -fx-background-image: url("bk2.jpg");
+    -fx-background-repeat: stretch;
+    -fx-background-position: center center;
+    -fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0);
+}
+
+#hboxMatches{
+    -fx-alignment: CENTER CENTER;
+}
+
+#vboxClubOne,#versus, #vboxClubTwo{
+    -fx-alignment: CENTER CENTER;
+    /*-fx-border-width: 1px;*/
+    /*-fx-border-color: blue;*/
+
+}
+#clubNameOneLBL, #clubNameTwoLBL{
+    -fx-font-weight: bold;
+    -fx-font-size: 18px;
+}
+
+#goalScoredByClubOneLBL, #goalScoredByClubTwoLBL{
+    -fx-font-size: 23px;
+}
+
+#versusLBL{
+    -fx-font-size: 35px;
+    -fx-alignment: CENTER CENTER;
+    /*-fx-border-width: 1px;*/
+    /*-fx-border-color: red;*/
+}
+
+
+
+
+
+/*.root{*/
+/*    -fx-background-color: #262626;*/
+/*}*/
+
+/*.table-view{*/
+/*    -fx-background-color: transparent;*/
+/*}*/
+
+/*.table-view:focused{*/
+/*    -fx-background-color: transparent;*/
+/*}*/
+
+/*!* Spaltenköpfe*/
+/*    Struktur column-header-background -> column-header *!*/
+
+/*.table-view .column-header-background{*/
+/*    -fx-background-color: linear-gradient(#131313 0%, #424141 100%);*/
+/*}*/
+
+/*.table-view .column-header-background .label{*/
+/*    -fx-background-color: transparent;*/
+/*    -fx-text-fill: white;*/
+/*}*/
+
+/*.table-view .column-header {*/
+/*    -fx-background-color: transparent;*/
+/*}*/
+
+.table-view .table-cell{
+    -fx-font-size: 15px;
+}
+
+/*.table-row-cell{*/
+/*    -fx-background-color: -fx-table-cell-border-color, #616161;*/
+/*    -fx-background-insets: 0, 0 0 1 0;*/
+/*    -fx-padding: 0.0em; !* 0 *!*/
+/*}*/
+
+/*.table-row-cell:odd{*/
+/*    -fx-background-color: -fx-table-cell-border-color, #424242;*/
+/*    -fx-background-insets: 0, 0 0 1 0;*/
+/*    -fx-padding: 0.0em; !* 0 *!*/
+/*}*/
+
+/*.table-row-cell:selected {*/
+/*    -fx-background-color: #005797;*/
+/*    -fx-background-insets: 0;*/
+/*    -fx-background-radius: 1;*/
+/*}*/
+
+/*.table-view > .virtual-flow > .scroll-bar:vertical,*/
+/*.table-view > .virtual-flow > .scroll-bar:vertical > .track,*/
+/*.table-view > .virtual-flow > .scroll-bar:vertical > .track-background,*/
+/*.table-view > .virtual-flow > .scroll-bar:horizontal,*/
+/*.table-view > .virtual-flow > .scroll-bar:horizontal > .track,*/
+/*.table-view > .virtual-flow > .scroll-bar:horizontal > .track-background {*/
+/*    -fx-background-color: transparent;*/
+/*}*/
+
+
+
+/*.table-view > .virtual-flow > .scroll-bar > .increment-button,*/
+/*.table-view > .virtual-flow > .scroll-bar > .decrement-button {*/
+/*    -fx-opacity: 0;*/
+/*}**/
