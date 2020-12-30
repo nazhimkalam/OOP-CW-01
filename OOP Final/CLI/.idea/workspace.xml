@@ -19,12 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4ffd9da0-df3c-4a45-8b09-2b7528f01daf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../OOP CW Diagrams/Class Diagram.mdj" beforeDir="false" afterPath="$PROJECT_DIR$/../../OOP CW Diagrams/Class Diagram.mdj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Report/CLI_JunitTestCases.JPG" beforeDir="false" afterPath="$PROJECT_DIR$/../../Report/CLI_JunitTestCases.JPG" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Report/GUI_JUnit_test.JPG" beforeDir="false" afterPath="$PROJECT_DIR$/../../Report/GUI_JUnit_test.JPG" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Report/w1761265.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../../Report/w1761265.docx" afterDir="false" />
-    </list>
+    <list default="true" id="4ffd9da0-df3c-4a45-8b09-2b7528f01daf" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -84,7 +79,7 @@
       <recent name="C:\Users\Nazhim\Documents\GitHub\w1761265_OOP_GUI--FX--_AND_CLI\OOP-CourseWork-LTS CLI\src" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ConsoleApplication (1)">
+  <component name="RunManager" selected="JUnit.PremierLeagueTester">
     <configuration name="ConsoleApplication (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="console.ConsoleApplication" />
       <module name="OOP-CourseWork" />
@@ -145,7 +140,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PremierLeagueTester.testDeletingClub" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PremierLeagueTester.testLoadingDataIntoFile" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OOP-CourseWork" />
       <extension name="coverage">
         <pattern>
@@ -155,7 +150,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="tests" />
       <option name="MAIN_CLASS_NAME" value="tests.PremierLeagueTester" />
-      <option name="METHOD_NAME" value="testDeletingClub" />
+      <option name="METHOD_NAME" value="testLoadingDataIntoFile" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -163,11 +158,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ConsoleApplication (1)" />
         <item itemvalue="JUnit.PremierLeagueTester" />
         <item itemvalue="JUnit.PremierLeagueTester.testAddPlayedMatch" />
-        <item itemvalue="JUnit.PremierLeagueTester.testDeletingClub" />
         <item itemvalue="JUnit.PremierLeagueTester.testCreatingClub" />
+        <item itemvalue="JUnit.PremierLeagueTester.testLoadingDataIntoFile" />
+        <item itemvalue="Application.ConsoleApplication (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -315,6 +310,10 @@
       <workItem from="1608550911773" duration="758000" />
       <workItem from="1608565927553" duration="2676000" />
       <workItem from="1608615768047" duration="150000" />
+      <workItem from="1609305188936" duration="4535000" />
+      <workItem from="1609313325998" duration="1206000" />
+      <workItem from="1609315336471" duration="589000" />
+      <workItem from="1609316023974" duration="21000" />
     </task>
     <task id="LOCAL-00012" summary="commit">
       <created>1604851031613</created>
@@ -693,10 +692,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="121" y="0" key="#Project_Structure/0.0.1280.680/1920.0.1360.728@0.0.1280.680" timestamp="1604775493432" />
-    <state x="50" y="148" width="1095" height="504" maximized="true" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1608373193136">
+    <state x="50" y="148" width="1095" height="504" maximized="true" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1609314478274">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state x="50" y="148" width="1095" height="504" maximized="true" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.1280.689/1920.0.1360.738@0.0.1280.689" timestamp="1608373193136" />
+    <state x="50" y="148" width="1095" height="504" maximized="true" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.1280.689/1920.0.1360.738@0.0.1280.689" timestamp="1609314478274" />
     <state x="446" y="24" key="#com.intellij.ide.util.MemberChooser" timestamp="1608315406962">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
@@ -715,34 +714,34 @@
     <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.689/1920.0.1360.738@0.0.1280.689" timestamp="1608440827842" />
     <state x="2367" y="103" key="FileChooserDialogImpl/0.0.1280.689/1920.0.1360.738@1920.0.1360.738" timestamp="1607076947945" />
     <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.689@0.0.1280.689" timestamp="1608366330208" />
-    <state width="1317" height="577" key="GridCell.Tab.0.bottom" timestamp="1608491372532">
+    <state width="1317" height="580" key="GridCell.Tab.0.bottom" timestamp="1609315924376">
       <screen x="1920" y="0" width="1360" height="738" />
     </state>
     <state width="1237" height="523" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.0.1360.728@0.0.1280.680" timestamp="1606123190261" />
     <state width="1237" height="517" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1606037862037" />
-    <state width="1237" height="532" key="GridCell.Tab.0.bottom/0.0.1280.689/1920.0.1360.738@0.0.1280.689" timestamp="1608483163301" />
-    <state width="1317" height="577" key="GridCell.Tab.0.bottom/0.0.1280.689/1920.0.1360.738@1920.0.1360.738" timestamp="1608491372532" />
-    <state width="1317" height="577" key="GridCell.Tab.0.center" timestamp="1608491372532">
+    <state width="1237" height="532" key="GridCell.Tab.0.bottom/0.0.1280.689/1920.0.1360.738@0.0.1280.689" timestamp="1609314533396" />
+    <state width="1317" height="580" key="GridCell.Tab.0.bottom/0.0.1280.689/1920.0.1360.738@1920.0.1360.738" timestamp="1609315924376" />
+    <state width="1317" height="580" key="GridCell.Tab.0.center" timestamp="1609315924375">
       <screen x="1920" y="0" width="1360" height="738" />
     </state>
     <state width="1237" height="523" key="GridCell.Tab.0.center/0.0.1280.680/1920.0.1360.728@0.0.1280.680" timestamp="1606123190261" />
     <state width="1237" height="517" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1606037862035" />
-    <state width="1237" height="532" key="GridCell.Tab.0.center/0.0.1280.689/1920.0.1360.738@0.0.1280.689" timestamp="1608483163301" />
-    <state width="1317" height="577" key="GridCell.Tab.0.center/0.0.1280.689/1920.0.1360.738@1920.0.1360.738" timestamp="1608491372532" />
-    <state width="1317" height="577" key="GridCell.Tab.0.left" timestamp="1608491372531">
+    <state width="1237" height="532" key="GridCell.Tab.0.center/0.0.1280.689/1920.0.1360.738@0.0.1280.689" timestamp="1609314533396" />
+    <state width="1317" height="580" key="GridCell.Tab.0.center/0.0.1280.689/1920.0.1360.738@1920.0.1360.738" timestamp="1609315924375" />
+    <state width="1317" height="580" key="GridCell.Tab.0.left" timestamp="1609315924375">
       <screen x="1920" y="0" width="1360" height="738" />
     </state>
     <state width="1237" height="523" key="GridCell.Tab.0.left/0.0.1280.680/1920.0.1360.728@0.0.1280.680" timestamp="1606123190260" />
     <state width="1237" height="517" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1606037862035" />
-    <state width="1237" height="532" key="GridCell.Tab.0.left/0.0.1280.689/1920.0.1360.738@0.0.1280.689" timestamp="1608483163301" />
-    <state width="1317" height="577" key="GridCell.Tab.0.left/0.0.1280.689/1920.0.1360.738@1920.0.1360.738" timestamp="1608491372531" />
-    <state width="1317" height="577" key="GridCell.Tab.0.right" timestamp="1608491372532">
+    <state width="1237" height="532" key="GridCell.Tab.0.left/0.0.1280.689/1920.0.1360.738@0.0.1280.689" timestamp="1609314533396" />
+    <state width="1317" height="580" key="GridCell.Tab.0.left/0.0.1280.689/1920.0.1360.738@1920.0.1360.738" timestamp="1609315924375" />
+    <state width="1317" height="580" key="GridCell.Tab.0.right" timestamp="1609315924375">
       <screen x="1920" y="0" width="1360" height="738" />
     </state>
     <state width="1237" height="523" key="GridCell.Tab.0.right/0.0.1280.680/1920.0.1360.728@0.0.1280.680" timestamp="1606123190261" />
     <state width="1237" height="517" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1606037862037" />
-    <state width="1237" height="532" key="GridCell.Tab.0.right/0.0.1280.689/1920.0.1360.738@0.0.1280.689" timestamp="1608483163301" />
-    <state width="1317" height="577" key="GridCell.Tab.0.right/0.0.1280.689/1920.0.1360.738@1920.0.1360.738" timestamp="1608491372532" />
+    <state width="1237" height="532" key="GridCell.Tab.0.right/0.0.1280.689/1920.0.1360.738@0.0.1280.689" timestamp="1609314533396" />
+    <state width="1317" height="580" key="GridCell.Tab.0.right/0.0.1280.689/1920.0.1360.738@1920.0.1360.738" timestamp="1609315924375" />
     <state width="1237" height="7" key="GridCell.Tab.1.bottom" timestamp="1608373199422">
       <screen x="0" y="0" width="1280" height="689" />
     </state>

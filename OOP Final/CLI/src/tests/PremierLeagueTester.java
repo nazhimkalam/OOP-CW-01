@@ -1,9 +1,9 @@
 package tests;
+
 import console.ConsoleApplication;
 import entities.DateMatch;
 import entities.FootballClub;
 import entities.LeagueManager;
-
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -13,11 +13,12 @@ import services.PremierLeagueManager;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 
-// MAKE SURE THAT THE TXT FILE IS EMPTY (which is inside the backend model folder) BEFORE RUNNING THIS TESTS
+// MAKE SURE THAT THE TXT FILE IS EMPTY (which is inside the GUI directory) BEFORE RUNNING THIS TESTS (if any error occurs)
 public class PremierLeagueTester
 {
     // variable used
@@ -29,10 +30,23 @@ public class PremierLeagueTester
         // RUNS BEFORE TESTING
         System.out.println("testing started . . . ");
         premierLeagueManager = PremierLeagueManager.getInstance();
+
+        // Emptying the text file before running the tests
+        premierLeagueManager.clearDataFile();
+
+        // Performing a thread sleep
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     @Test
     public void testCreatingClub(){
+
+        // making sure that the file is cleared again to get started off
+        premierLeagueManager.clearDataFile();
 
         // TESTING FOR CLUBS AS VALID UP TO 20 CLUBS
         String[] clubType = {"normal","university","school"};
@@ -42,7 +56,7 @@ public class PremierLeagueTester
 
             for (int num = 0; num < 20; num++) {
 
-                String result = premierLeagueManager.createClub("Juventus","Spain","Nazhim",
+                String result = premierLeagueManager.createClub("Everton","Spain","Nazhim",
                         schoolUniName[index],
                         clubType[index]);
                 assertEquals(" Clubs Successfully added!",result);
@@ -50,7 +64,7 @@ public class PremierLeagueTester
             }
 
             // TESTING FOR AN INVALID CLUB WHEN ADDED MORE THAN 20
-            String expectedResult = premierLeagueManager.createClub("Juventus","Spain","Nazhim",
+            String expectedResult = premierLeagueManager.createClub("Everton","Spain","Nazhim",
                     schoolUniName[index],
                     clubType[index]);
             assertEquals(" Sorry there is no room for a new club, the maximum number of club limit " +
@@ -58,6 +72,13 @@ public class PremierLeagueTester
 
             // CLEARING THE CONTENT OF THE obj FOR OTHER TESTINGS
             PremierLeagueManager.setPremierLeagueFootballClubList(new ArrayList<>());
+        }
+
+        // Performing a thread sleep
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 
@@ -81,6 +102,13 @@ public class PremierLeagueTester
 
         // CLEARING THE CONTENT OF THE obj FOR OTHER TESTINGS
         PremierLeagueManager.setPremierLeagueFootballClubList(new ArrayList<>());
+
+        // Performing a thread sleep
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     @Test
@@ -98,12 +126,21 @@ public class PremierLeagueTester
 
         // CLEARING THE CONTENT OF THE obj FOR OTHER TESTINGS
         PremierLeagueManager.setPremierLeagueFootballClubList(new ArrayList<>());
+
+
+        // Performing a thread sleep
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
 
     @Test
     public void testAddPlayedMatch()
     {
+
         // SINCE THERE ARE 3 CLUBS HERE THEN 1 CLUBS PLAYS 4 MATCHES
         // Testing adding match into a club
         premierLeagueManager.createClub("barca","spain","nazhim",null,
@@ -212,6 +249,13 @@ public class PremierLeagueTester
 
         // CLEARING THE CONTENT OF THE obj FOR OTHER TESTINGS
         PremierLeagueManager.setPremierLeagueFootballClubList(new ArrayList<>());
+
+        // Performing a thread sleep
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     @Test
@@ -220,19 +264,50 @@ public class PremierLeagueTester
         String expectedResult = premierLeagueManager.saveDataIntoFile();
         assertEquals("\n Saving the data . . .\n Successfully saved!", expectedResult);
 
+        // making sure that the file is cleared for other tests
+        premierLeagueManager.clearDataFile();
+
+        // Performing a thread sleep
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
     }
 
     @Test
     public void testLoadingDataIntoFile(){
         // Testing the loading data from the file method
 
-        // Assuming that the file path is correct and file contains data
-        String expectedResult = PremierLeagueManager.loadingData();
-        // assertEquals("\n Successfully loaded all the data\n", expectedResult);
+        // ASSUMING THAT THERE IS NO DATA IN THE FILE WHEN LOADING
 
-        // Assuming that the file contains no data to read
+        // we are emptying the file before loading the data
+        premierLeagueManager.clearDataFile();
+        String expectedResult = PremierLeagueManager.loadingData();
+
+        // testing the output
         assertEquals(" Exception when performing read/write operations to the file!" +
                 "\n No permission to read/write from or to the file", expectedResult);
+
+        // ASSUMING THAT THERE IS DATA IN THE FILE WHEN LOADING
+
+        // saving some data before loading performance
+        premierLeagueManager.createClub("Juventus","Spain","Nazhim","IIT",
+                "normal");
+        premierLeagueManager.saveDataIntoFile();
+
+        expectedResult = PremierLeagueManager.loadingData();
+
+        // testing the output
+        assertEquals("\n Successfully loaded all the data\n", expectedResult);
+
+        // Performing a thread sleep
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -244,6 +319,13 @@ public class PremierLeagueTester
         String result = premierLeagueManager.clearDataFile();
         assertEquals("\n Clearing the contents of the file . . .\n Successfully cleared the file details!",
                 result);
+
+        // Performing a thread sleep
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -325,6 +407,8 @@ public class PremierLeagueTester
     }
 }
 
+// If a test fails when you run all the test codes together this is due to using the same resource problem which in this
+// case is using the same txt file for most of the tests
 
 // References used
 // https://www.youtube.com/playlist?list=PLqq-6Pq4lTTa4ad5JISViSb2FVG8Vwa4o
