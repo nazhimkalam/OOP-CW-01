@@ -267,6 +267,9 @@ public class PremierLeagueTester
         // making sure that the file is cleared for other tests
         premierLeagueManager.clearDataFile();
 
+        // CLEARING THE CONTENT OF THE obj FOR OTHER TESTINGS
+        PremierLeagueManager.setPremierLeagueFootballClubList(new ArrayList<>());
+
         // Performing a thread sleep
         try {
             Thread.sleep(100);
@@ -302,6 +305,9 @@ public class PremierLeagueTester
         // testing the output
         assertEquals("\n Successfully loaded all the data\n", expectedResult);
 
+        // CLEARING THE CONTENT OF THE obj FOR OTHER TESTINGS
+        PremierLeagueManager.setPremierLeagueFootballClubList(new ArrayList<>());
+
         // Performing a thread sleep
         try {
             Thread.sleep(100);
@@ -319,6 +325,9 @@ public class PremierLeagueTester
         String result = premierLeagueManager.clearDataFile();
         assertEquals("\n Clearing the contents of the file . . .\n Successfully cleared the file details!",
                 result);
+
+        // CLEARING THE CONTENT OF THE obj FOR OTHER TESTINGS
+        PremierLeagueManager.setPremierLeagueFootballClubList(new ArrayList<>());
 
         // Performing a thread sleep
         try {
