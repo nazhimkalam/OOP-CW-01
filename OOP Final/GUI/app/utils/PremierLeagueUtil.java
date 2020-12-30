@@ -77,9 +77,21 @@ public class PremierLeagueUtil {
         // comparator to sort the clubs by points
         Comparator<FootballClub> comparator = (club1, club2) -> {
 
-            if(club1.getClubStatistics().getTotalPointsScored() < club2.getClubStatistics().getTotalPointsScored()){
-                return 1;
+            if(club1.getClubStatistics().getTotalPointsScored() == (club2.getClubStatistics()
+                    .getTotalPointsScored())){
 
+                if(club1.getTotalGoalsScored() < club2.getTotalGoalsScored()){
+                    return 1;
+
+                }
+
+            }else{
+
+                if(club1.getClubStatistics().getTotalPointsScored() < club2.getClubStatistics()
+                        .getTotalPointsScored()){
+                    return 1;
+
+                }
             }
             return -1;
         };

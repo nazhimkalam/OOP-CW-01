@@ -67,7 +67,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../GUI" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -317,6 +317,7 @@
       <workItem from="1609318455840" duration="3982000" />
       <workItem from="1609322457833" duration="80000" />
       <workItem from="1609328197900" duration="11000" />
+      <workItem from="1609331720313" duration="292000" />
     </task>
     <task id="LOCAL-00012" summary="commit">
       <created>1604851031613</created>
@@ -710,11 +711,11 @@
       <screen x="1920" y="0" width="1360" height="738" />
     </state>
     <state x="2330" y="115" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.1280.689/1920.0.1360.738@1920.0.1360.738" timestamp="1606757198593" />
-    <state x="421" y="96" key="FileChooserDialogImpl" timestamp="1608440827842">
+    <state x="421" y="96" key="FileChooserDialogImpl" timestamp="1609331752738">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state x="421" y="95" key="FileChooserDialogImpl/0.0.1280.680/1920.0.1360.728@0.0.1280.680" timestamp="1606110858726" />
-    <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.689/1920.0.1360.738@0.0.1280.689" timestamp="1608440827842" />
+    <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.689/1920.0.1360.738@0.0.1280.689" timestamp="1609331752738" />
     <state x="2367" y="103" key="FileChooserDialogImpl/0.0.1280.689/1920.0.1360.738@1920.0.1360.738" timestamp="1607076947945" />
     <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.689@0.0.1280.689" timestamp="1608366330208" />
     <state width="1237" height="532" key="GridCell.Tab.0.bottom" timestamp="1609322442088">
